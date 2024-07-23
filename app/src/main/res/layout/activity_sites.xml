@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/SiteActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/appbar_layout">
+
+
+            <ExpandableListView
+                android:id="@+id/sites"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
+                android:id="@+id/SearchableSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:textSize="@dimen/_12sdp"
+                android:background="@drawable/bg_accent_border"
+                app:StartSearchTintColor="@color/transparent"
+                app:DoneSearchTintColor="@color/transparent"
+                app:RevealViewBackgroundColor="@color/transparent"
+                app:SearchViewBackgroundColor="@color/transparent"
+                app:ShowBorders="true"
+                app:BoarderColor="@color/colorPrimary"
+                app:BordersSize="@dimen/_1sdp"
+                app:RevealEmptyText="Search"
+
+                android:paddingStart="@dimen/_14sdp"
+                app:SpinnerExpandHeight="@dimen/_300sdp"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUnlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="100dp"
+                android:background="@android:color/transparent"
+                android:padding="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Tap to scan for nearest door"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_centerInParent="true"
+                android:contentDescription="@null"
+                app:srcCompat="@drawable/brivo_circle" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLock"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_centerInParent="true"
+                android:contentDescription="@null"
+                app:srcCompat="@drawable/hotworx_icons" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:padding="20dp"
+                android:textSize="24sp" />
+
+            <pl.bclogic.pulsator4droid.library.PulsatorLayout
+                android:id="@+id/pulsator"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:animateLayoutChanges="true"
+                app:pulse_color="@color/colorPrimary"
+                app:pulse_count="4"
+                app:pulse_duration="1000"
+                app:pulse_interpolator="Linear"
+                app:pulse_repeat="0"
+                app:pulse_startFromScratch="false" />
+
+        </RelativeLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                app:navigationIcon="@drawable/back_btn_img"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivSettings"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:src="@drawable/hotworks_heading">
+
+
+
+
+                </androidx.appcompat.widget.AppCompatImageView>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:progressTint="@color/colorAccent"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.Nutritionist.BasketFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"/>
+
+        <TextView
+            android:id="@+id/fasting_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:visibility="gone"
+            android:text="Breakfast"
+            android:textSize="@dimen/_12sdp" />
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_20sdp"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="4">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                android:layout_weight="2">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_one"-->
+<!--                    android:layout_width="@dimen/_20sdp"-->
+<!--                    android:layout_height="@dimen/_20sdp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/ic_apple"-->
+<!--                    android:tint="@color/colorSignUpButton" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_qty_one"-->
+<!--                    android:layout_width="@dimen/_30sdp"-->
+<!--                    android:layout_height="@dimen/_30sdp"-->
+<!--                    android:background="@drawable/bg_edittext_square"-->
+<!--                    android:paddingTop="@dimen/_7sdp"-->
+<!--                    android:textAlignment="center" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_desc_one"-->
+<!--                    android:layout_width="@dimen/_150sdp"-->
+<!--                    android:layout_height="@dimen/_30sdp"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    android:layout_marginRight="@dimen/_10sdp"-->
+<!--                    android:background="@drawable/bg_edittext_square"-->
+<!--                    android:paddingLeft="@dimen/_5sdp"-->
+<!--                    android:paddingTop="@dimen/_7sdp"-->
+<!--                    android:paddingRight="@dimen/_5sdp"-->
+<!--                    android:text="hello"-->
+<!--                    android:textAlignment="textStart" />-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="@dimen/_15sdp"-->
+<!--                    android:layout_height="@dimen/_15sdp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/ic_info"-->
+<!--                    android:tint="@color/colorBurned" />-->
+<!--            </LinearLayout>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/cal_one"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="340"-->
+<!--                    android:textColor="@color/colorGreen"-->
+<!--                    android:textSize="@dimen/_13sdp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="cal"-->
+<!--                    android:textSize="@dimen/_11sdp" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/food_name_one"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="@dimen/_50sdp"-->
+<!--            android:layout_marginRight="@dimen/_50sdp"-->
+<!--            android:paddingTop="@dimen/_7sdp"-->
+<!--            android:textAlignment="center" />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="4">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                android:layout_weight="2">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_two"-->
+<!--                    android:layout_width="@dimen/_20sdp"-->
+<!--                    android:layout_height="@dimen/_20sdp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/ic_apple"-->
+<!--                    android:tint="@color/colorSignUpButton" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_qty_two"-->
+<!--                    android:layout_width="@dimen/_30sdp"-->
+<!--                    android:layout_height="@dimen/_30sdp"-->
+<!--                    android:background="@drawable/bg_edittext_square"-->
+<!--                    android:paddingTop="@dimen/_7sdp"-->
+<!--                    android:textAlignment="center" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_desc_two"-->
+<!--                    android:layout_width="@dimen/_150sdp"-->
+<!--                    android:layout_height="@dimen/_30sdp"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    android:layout_marginRight="@dimen/_10sdp"-->
+<!--                    android:background="@drawable/bg_edittext_square"-->
+<!--                    android:paddingLeft="@dimen/_5sdp"-->
+<!--                    android:paddingTop="@dimen/_7sdp"-->
+<!--                    android:paddingRight="@dimen/_5sdp"-->
+<!--                    android:textAlignment="textStart" />-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="@dimen/_15sdp"-->
+<!--                    android:layout_height="@dimen/_15sdp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/ic_info"-->
+<!--                    android:tint="@color/colorBurned" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/cal_two"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="340"-->
+<!--                    android:textColor="@color/colorGreen"-->
+<!--                    android:textSize="@dimen/_13sdp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="cal"-->
+<!--                    android:textSize="@dimen/_11sdp" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+        <TextView
+            android:id="@+id/food_name_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginRight="@dimen/_50sdp"
+            android:paddingTop="@dimen/_7sdp"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/colorShadedGrey"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_weight="2"
+                android:text="Total Calories"
+                android:textSize="@dimen/_15sdp" />
+
+            <TextView
+                android:id="@+id/tv_totalCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:text="0"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorGreen"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:text="When:"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:text="Today, "
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:id="@+id/today_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Breakfast"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/breakfast"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/table_border"
+                android:gravity="center_vertical"
+                android:text="@string/breakfast"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBurned"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/lunch"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/table_border"
+                android:gravity="center_vertical"
+                android:text="@string/lunch"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBurned"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/dinner"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/table_border"
+                android:gravity="center_vertical"
+                android:text="@string/dinner"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBurned"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/am_snack"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/table_border"
+                android:gravity="center_vertical"
+                android:text="AM Snack"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBurned"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/pm_snack"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/table_border"
+                android:gravity="center_vertical"
+                android:text="PM Snack"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBurned"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/late_snack"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/table_border"
+                android:gravity="center_vertical"
+                android:text="Late Snack"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBurned"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/colorLightGrey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_toLeftOf="@+id/iv_camera"
+                    android:text="Add Photo: "
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ImageView
+                    android:id="@+id/iv_camera"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="@dimen/_2sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:src="@drawable/camera"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/bg_btn_nutritionist"
+            android:text="Log Food"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_13sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+
+        <TextView
+            android:id="@+id/clear_basket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toLeftOf="@+id/iv_camera"
+            android:text="Clear Basket"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textColor="@color/colorLoginButton"
+            android:textSize="@dimen/_13sdp"/>
+    </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

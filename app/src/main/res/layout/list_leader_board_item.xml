@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_44sdp">
+
+    <LinearLayout
+        android:id="@+id/activity_leader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <TextView
+            android:id="@+id/leader_tv_rank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="left"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/leader_tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="left"
+            android:fontFamily="@font/montserrat_regular"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="left">
+
+            <ImageView
+                android:id="@+id/leader_tv_dash"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/content_description"
+                android:src="@drawable/hyphen"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/leader_tv_cal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorBlack"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorLightBlack"/>
+
+</RelativeLayout>

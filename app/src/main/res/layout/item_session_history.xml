@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_5sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSessionType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="HOT ISO"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="21st May,2020"
+                android:layout_gravity="center_vertical|end"
+                android:gravity="end"
+                android:id="@+id/tvDate"
+                android:textSize="@dimen/_9sdp"
+                android:fontFamily="@font/regular"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/tvCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="20 Calories -  40 Calories"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_10sdp"
+            android:fontFamily="@font/regular"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/colorRed"
+            android:fontFamily="@font/bold"
+            android:paddingBottom="@dimen/_2sdp"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:text="Cancelled"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10sdp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end|center_vertical"
+            android:paddingBottom="@dimen/_2sdp"
+            android:paddingTop="@dimen/_2sdp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/ivDelete"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_delete_black_24dp"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

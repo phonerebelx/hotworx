@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tvTitleDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/choose_an_area_of_the_body_to_focus_on_during_the_workout_then_select_one_of_the_virtual_private_trainer_vpt_videos_available"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlack"
+            android:fontFamily="@font/light"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerViewVPT"
+            android:nestedScrollingEnabled="false"
+            android:paddingBottom="@dimen/_20sdp"
+            android:paddingTop="@dimen/_20sdp"
+            android:clipToPadding="false">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

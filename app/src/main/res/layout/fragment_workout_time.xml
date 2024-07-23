@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_work_out_time"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5.25">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/workoutTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/minutes"
+            android:textAllCaps="true"
+            android:textColor="@color/colorRed"
+            android:textSize="24sp"
+            android:textStyle="bold|normal" />
+
+        <TextView
+            android:id="@+id/workoutTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/workout_complete"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            android:textStyle="bold|normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/containerUpper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp">
+
+            <com.bikomobile.donutprogress.DonutProgress
+                android:id="@+id/donut_progress"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                app:donut_finished_color="@color/colorPrimary"
+                app:donut_finished_stroke_width="10dp"
+                app:donut_text_size="1dp"
+                app:donut_unfinished_color="@color/fieldColor"
+                app:donut_unfinished_stroke_width="10dp" />
+
+            <TextView
+                android:id="@+id/timer_forty_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/colorSignUpButton"
+                android:textSize="27sp"
+                android:textStyle="bold|normal"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/start_timer_forty"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/btn_empty"
+            android:text="@string/start_workout"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp"
+            android:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/rec_forty"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/btn_empty"
+            android:text="@string/record_calories"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="@dimen/_30sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel_timer_forty"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/btn_empty"
+            android:text="@string/cancel_workout"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</LinearLayout>

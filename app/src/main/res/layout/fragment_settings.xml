@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_settings"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_image"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/account"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold|normal"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/to_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/settingsfarwardicon"
+            android:drawableRight="@drawable/settingsfarwardicon"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/personal_info"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorBurned"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorLine"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold|normal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/to_about_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/settingsfarwardicon"
+            android:drawableRight="@drawable/settingsfarwardicon"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/about_app"
+            android:textAppearance="?android:textAppearanceSmall" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorLine" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold|normal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/to_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/settingsfarwardicon"
+            android:drawableRight="@drawable/settingsfarwardicon"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+
+            android:text="@string/feedback_val"
+            android:textAppearance="?android:textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/to_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/settingsfarwardicon"
+            android:drawableRight="@drawable/settingsfarwardicon"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+
+            android:text="@string/help"
+            android:textAppearance="?android:textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/to_policy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/settingsfarwardicon"
+            android:drawableRight="@drawable/settingsfarwardicon"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+
+            android:text="@string/privacy"
+            android:textAppearance="?android:textAppearanceSmall" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:visibility="gone"
+            android:background="@color/colorLine" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_log_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/log_out"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold|normal"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

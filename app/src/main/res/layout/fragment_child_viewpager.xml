@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="40dp"
+    android:paddingEnd="40dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
+
+    <ImageView
+        android:id="@+id/pagerImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/icon_one" />
+
+    <TextView
+        android:id="@+id/pagerHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/pager_calories_burn"
+        android:textColor="@color/colorAccent"
+        android:textSize="26sp"
+        android:gravity="center"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:id="@+id/pagerDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="@string/pager_calories_message"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_13sdp"
+        android:fontFamily="@font/regular"/>
+</LinearLayout>

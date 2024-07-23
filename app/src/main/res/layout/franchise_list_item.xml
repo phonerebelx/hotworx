@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_5sdp"
+    app:cardElevation="@dimen/_10sdp"
+    android:layout_margin="@dimen/_10sdp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Baton Ronge,LA (Highland Road)"
+        android:padding="@dimen/_15sdp"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/regular"
+        android:id="@+id/txtLocation"/>
+
+</androidx.cardview.widget.CardView>

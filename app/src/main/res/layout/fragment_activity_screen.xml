@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_activity_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvGoTOWorkOut"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:backgroundTint="@color/colorWhite"
+            android:minHeight="?android:attr/actionBarSize"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cross_training"
+                android:paddingStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textSize="@dimen/_8sdp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat_regular"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_180sdp"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/dashboard_barchart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
+            android:paddingVertical="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvGoTOWorkOut">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvGoTOWorkOut1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:backgroundTint="@color/colorWhite"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="@dimen/_2sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="26dp">
+
+                <RadioButton
+                    android:id="@+id/btn_weekly"
+                    style="@style/LeaderRadioButton"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:background="@drawable/multicolor_background"
+                    android:fontFamily="@font/bebasneue_regular"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/challenge"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_10sdp" />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvGoTOWorkOut2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_2sdp"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:backgroundTint="@color/colorWhite"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="@dimen/_2sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="26dp">
+
+                <RadioButton
+                    android:id="@+id/btn_monthly"
+                    style="@style/LeaderRadioButton"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:fontFamily="@font/bebasneue_regular"
+                    android:background="@color/colorWhite"
+                    android:paddingStart="5dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/lifetime"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp" />
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+
+        <LinearLayout
+            android:id="@+id/list_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+             />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

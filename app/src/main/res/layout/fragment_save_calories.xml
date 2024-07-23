@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    android:paddingRight="@dimen/activity_vertical_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvOrangeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_italic"
+                            android:text="@string/no_device"
+                            android:textColor="@color/colorRed"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvBlackTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:text="@string/to_pair"
+                            android:fontFamily="@font/montserrat_italic"
+                            android:textSize="24sp"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvTitleDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:lineSpacingExtra="@dimen/_7sdp"
+                        android:text="@string/no_problem_just_enter_your_calories_before_and_after_your_workout"
+                        android:textSize="17sp"
+                        android:textColor="@color/colorBlack"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="30dp"
+                        android:background="@color/colorWhite"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="11dp"
+                            android:text="@string/enter_weight"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/colorWorkOutHead"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_12sdp" />
+                        <EditText
+                            android:id="@+id/weight_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:textColor="@color/colorLightBlack"
+                            android:paddingBottom="4dp"
+                            android:paddingTop="10dp"
+                            android:maxLength="4"
+                            android:inputType="number"
+                            android:imeOptions="actionDone"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:visibility="gone"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/start_cal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:hint="@string/starting_calories_reading"
+                                    android:paddingBottom="4dp"
+                                    android:paddingTop="10dp"
+                                    android:maxLength="4"
+                                    android:inputType="number"
+                                    android:imeOptions="actionDone"
+                                    android:textSize="12sp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:layout_marginStart="0dp"
+                                    android:background="@color/colorBlack" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/start_date"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawableEnd="@drawable/dropdown"
+                                    android:paddingBottom="3dp"
+                                    android:paddingTop="11dp"
+                                    android:text="@string/select_date"
+                                    android:textAppearance="?android:attr/textAppearanceSmall"
+                                    android:textColor="@color/colorWorkOutHead"
+                                    android:textSize="12sp" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:layout_marginStart="2dp"
+                                    android:background="@color/colorBlack" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:visibility="gone"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="1"
+                                android:paddingBottom="10dp"
+                                android:paddingStart="5dp"
+                                android:text="@string/photo"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/colorWorkOutHead"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:id="@+id/upload_cam"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableTint="@color/colorWorkOutHead"
+                                android:padding="10dp"
+                                android:src="@drawable/camera" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/colorBlack" />
+
+                        <ImageView
+                            android:id="@+id/workout_image"
+                            android:layout_width="60dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="20dp"
+                            android:padding="5dp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/session_row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:visibility="gone"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.75"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:text="@string/session_type"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorRed" />
+
+                        <com.thomashaertel.widget.MultiSpinner
+                            android:id="@+id/spinner_sessions"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.25"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="3dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sixty_session_row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:visibility="gone"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.75"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:text="@string/session_type"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorRed" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.25"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="3dp"
+                            android:text="@string/_1_hour_after_burn"
+                            android:textColor="@color/colorRed" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/sixty_session_divider"
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="#B2B2B2"
+                        android:visibility="gone" />
+
+
+                    <TextView
+                        android:id="@+id/session_divider"
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:background="#B2B2B2"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/start_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/start_calorie_big_text"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/colorBurned"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/save_start_read_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_continue"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:visibility="visible"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/containerAnotherWorkOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:text="@string/are_you_starting_n_another_workout"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="horizontal"
+                    android:padding="15dp"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/onClickYesMoreWorkOut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.75"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:text="YES"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.25" />
+
+                    <Button
+                        android:id="@+id/onClickNoMoreWorkOut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.75"
+                        android:background="@color/colorSignUpButton"
+                        android:gravity="center"
+                        android:text="NO"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

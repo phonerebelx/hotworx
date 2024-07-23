@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.MyReferrals.MyReferralFragment">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_320sdp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/reduce_second"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/layout_gradiant_color"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.63"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvFirst"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="My Refferals"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tvNoDataFound"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="bottom"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="No Data Found"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLocationSender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLocationCount"
+                tools:itemCount="4"
+                tools:listitem="@layout/fragment_my_referral_adapter" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@color/colorWhite"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnShareLink"
+                android:layout_width="@dimen/_180sdp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/multicolor_background"
+                android:fontFamily="@font/bebasneue_regular"
+                android:gravity="center"
+                android:text="Share Link"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_20sdp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/ivfirstLastName"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_24sdp"
+        android:layout_marginBottom="@dimen/_180sdp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:paddingBottom="@dimen/_22sdp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

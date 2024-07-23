@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragments.ComposeFragments.ReferralDetail.ReferralDetailFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/business_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_230sdp"
+            android:background="@drawable/layout_gradiant_color"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+<!--                    <io.github.florent37.shapeofview.shapes.CircleView-->
+<!--                        android:id="@+id/imgShapeCircle"-->
+<!--                        android:layout_width="@dimen/_80sdp"-->
+<!--                        android:layout_height="@dimen/_80sdp"-->
+<!--                        android:layout_marginStart="@dimen/_3sdp"-->
+<!--                        android:layout_marginTop="@dimen/_3sdp"-->
+<!--                        app:shape_circle_borderColor="@color/black"-->
+<!--                        app:shape_circle_borderWidth="@dimen/_1sdp"-->
+<!--                        tools:ignore="MissingConstraints">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/ivQrCode"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:contentDescription="@string/no"-->
+<!--                            android:scaleType="fitCenter" />-->
+
+<!--                    </io.github.florent37.shapeofview.shapes.CircleView>-->
+
+                <FrameLayout
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:background="@drawable/qr_code_square_white">
+
+                    <ImageView
+                        android:id="@+id/ivQrCode"
+                        android:layout_gravity="center"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_70sdp"/>
+
+                </FrameLayout>
+                <TextView
+                    android:id="@+id/tvLocationName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text="Home Location"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_rectangle_outline"
+                    android:drawableStart="@drawable/location_icon"
+                    android:drawableEnd="@drawable/dropdown"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Pickup Location"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:background="@color/colorBurned" />
+
+                <TextView
+                    android:id="@+id/tvDropoffLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/shape_rectangle_outline"
+                    android:drawableStart="@drawable/location_icon"
+                    android:drawableEnd="@drawable/dropdown"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Drop off Location"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="Robyn Powell"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUserDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="Vice President of Information Technology"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:drawableStart="@drawable/location_icon"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:fontFamily="@font/regular"
+                    android:gravity="center_vertical"
+                    android:text="robyn.powell@gmail.com"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:drawableStart="@drawable/phone_new"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="@color/white"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/regular"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="(504)874-1034"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvAddressName"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:text="Vice President of Information Technology"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvProperty1"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:elevation="0dp"
+            android:layout_marginTop="@dimen/_145sdp"
+            android:layout_centerHorizontal="true"
+            app:cardBackgroundColor="@color/colorCardRed"
+            app:cardCornerRadius="250dp"
+            app:cardElevation="0dp">
+
+
+            <io.github.florent37.shapeofview.shapes.CircleView
+                android:id="@+id/imgCircle"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_gravity="center"
+                app:shape_circle_borderColor="@color/black"
+                app:shape_circle_borderWidth="@dimen/_1sdp"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/imgIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/no"
+                    android:background="@color/colorCardRed"
+                    android:scaleType="centerCrop" />
+
+            </io.github.florent37.shapeofview.shapes.CircleView>
+
+
+
+            <TextView
+                android:id="@+id/tvfirstLastName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:paddingBottom="@dimen/_22sdp"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_34sdp" />
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</ScrollView>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E45C26</color>
+    <color name="colorPrimaryDark">#E45C26</color>
+    <color name="colorAccent">#E45C26</color>
+    <color name="colorOTP">#d31a17</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorBlack2">#0B0B0B</color>
+    <color name="colorBlack3">#0A0B0B0B</color>
+    <color name="colorLightBlack">#333333</color>
+    <color name="colorLoginButton">#E45C26</color>
+    <color name="colorSignUpButton">#404040</color>
+    <color name="colorToolBar">#E45C26</color>
+    <color name="colorCalorie">#E45C26</color>
+    <color name="colorValHome">#E45C26</color>
+    <color name="colorGray">#f0f0f0</color>
+    <color name="colorSideBar">#F2FFFFFF</color>
+    <color name="colorGrayImage">#f7f7f7</color>
+    <color name="colorBitGray">#f2f2f2</color>
+    <color name="colorRed">#fe0000</color>
+    <color name="colorCardRed">#FE1103</color>
+    <color name="colorDarkRed">#c82506</color>
+    <color name="colorTimer">#e17218</color>
+    <color name="colorWorkOutHead">#4f565e</color>
+    <color name="colorBurned">#7e7e7e</color>
+    <color name="colorNewBurned">#ABABAB</color>
+    <color name="colorStart">#e10100</color>
+    <color name="colorLine">#d6d6d6</color>
+    <color name="colorListHeader">#f28435</color>
+    <color name="radio_button_selected_color">#f15e28</color>
+    <color name="radio_button_unselected_color">#e0e0e0</color>
+    <color name="colorStatusBar">#E45C26</color>
+    <color name="colorBodyFat">#EE2232</color>
+    <color name="fieldColor">#BEBDBE</color>
+    <color name="light_blue">#0000FF</color>
+    <color name="shaded_blue">#009DD0</color>
+    <color name="colorDarkGrey">#413F4D</color>
+    <color name="colorLightGrey">#D2D2D6</color>
+    <color name="colorShadedGrey">#E6E6EA</color>
+    <color name="colorGreen">#31C55B</color>
+    <color name="colorDarkGreen">#007822</color>
+    <color name="selectedBoxColor">#C0C0C0</color>
+    <color name="colorDarkWhite">#F3F3F7</color>
+    <color name="colorYellow">#E8D001</color>
+    <color name="snack_bar_error_red">#cc0029</color>
+    <color name="transparent_black">#50000000</color>
+
+    <string name="hot_yoga">#EA631B</string>
+    <string name="hot_cycle">#E13E2A</string>
+    <string name="hot_row">#009DD0</string>
+
+    <color name="colorLightWhite">#EFB299</color>
+    <color name="colorprogress">#F97E58</color>
+    <color name="white_drawer">#FFF0EF</color>
+    <color name="button_reward">#CC6C44</color>
+    <color name="button_reward2">#DD7D4A</color>
+    <color name="stroke_color">#e7eef8</color>
+    <color name="login_edit_color">#efeae7</color>
+    <color name="login_texture_color">#bdb7b3</color>
+    <color name="colorWhiteLightOpacity">#C3FFFFFF</color>
+    <color name="colorLocationGrey">#f6f6f6</color>
+    <color name="notificationGrey">#d9e8fb</color>
+    <color name="textColorSecondary">#757575</color>
+
+</resources>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:drawable/dialog_holo_light_frame"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_title"
+        android:text="Title"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/bold"
+        android:textSize="@dimen/_14sdp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_description"
+        android:text="@string/description"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/regular"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:lineSpacingExtra="5dp"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/bg_button_corner"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/btnRefresh">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_9sdp"
+            android:fontFamily="@font/light"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_refresh_black_24dp"
+            android:layout_marginStart="@dimen/_5sdp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRecordManually"
+        android:text="@string/inaccurate_calories"
+        android:textSize="@dimen/_9sdp"
+        android:fontFamily="@font/regular"
+        android:textStyle="italic"
+        android:visibility="visible"
+        android:textColor="@color/colorBlack"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10sdp"/>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/colorBlack"
+        android:layout_marginTop="20dp">
+
+    </View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/manual_calories"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_12sdp"
+            android:id="@+id/left_button"
+            android:layout_weight="200"
+            android:gravity="center_vertical|center_horizontal"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBlack"
+            android:layout_weight="1">
+
+        </View>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/continue_"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/colorBlack"
+            android:id="@+id/right_button"
+            android:layout_weight="200"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="?attr/selectableItemBackground"
+            />
+    </LinearLayout>
+</LinearLayout>

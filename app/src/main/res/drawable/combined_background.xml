@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background color -->
+    <item android:drawable="@color/colorSideBar" />
+
+    <item
+        android:gravity="center">
+        <bitmap
+            android:src="@drawable/sidemenu_bottom_logo"
+            android:gravity="bottom"
+            android:scaleWidth="2"
+            android:scaleHeight="1.5"
+             />
+    </item>
+</layer-list>

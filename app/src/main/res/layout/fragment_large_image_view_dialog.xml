@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginHorizontal="@dimen/_10sdp"
+app:cardCornerRadius="@dimen/_10sdp"
+app:cardElevation="@dimen/_15sdp"
+tools:context=".ui.fragments.notifications.ReadNotification.LargeImageView.LargeImageViewDialogFragment">
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="end">
+        <ImageView
+
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_gravity="top|center"
+            android:src="@drawable/hotworks_heading"/>
+
+        <ImageView
+            android:id="@+id/ivCancel"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/cancel_grey"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_35sdp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notificationImage_cv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_heading">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNotification"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/hotworx_icons"
+                android:scaleType="fitXY"/>
+        </androidx.cardview.widget.CardView>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginVertical="@dimen/_12sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/multicolor_background"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="Close"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

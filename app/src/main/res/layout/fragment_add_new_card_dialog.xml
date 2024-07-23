@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".models.SessionBookingModel.FinalSessionBookingModel.ReConformBookingDialog.ReconformBookingDialogFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvGoTOWorkOut"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_gravity="top|center"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:cardBackgroundColor="@color/colorBlack2"
+        android:minHeight="?android:attr/actionBarSize"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/hotworkxs"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_60sdp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:src="@drawable/multicolor_background"/>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvCardNoDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_7sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:paddingHorizontal="@dimen/_4sdp"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginHorizontal="@dimen/_4sdp"
+                        android:src="@drawable/card_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_gravity="bottom"
+            android:paddingVertical="@dimen/_4sdp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_35sdp"
+
+                android:background="@drawable/color_light_accent_background"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="Continue"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_10sdp" />
+
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_2sdp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorWhite"
+
+                    />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/colorWhite"
+            android:text="OR"/>
+            <View
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_2sdp"
+                android:layout_gravity="center"
+                android:background="@color/colorWhite" />
+            <Button
+                android:id="@+id/btnContinue"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_35sdp"
+
+                android:background="@drawable/multicolor_background"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="Update Card"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_10sdp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

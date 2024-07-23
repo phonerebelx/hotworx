@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.BookSession.WebView.WebViewFragment">
+
+  <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/_30sdp"
+      android:layout_gravity="center"
+      android:src="@drawable/down_bar"/>
+
+  <ImageView
+      android:layout_width="@dimen/_130sdp"
+      android:layout_height="@dimen/_40sdp"
+      android:layout_gravity="center"
+
+      android:src="@drawable/hotworks_heading"/>
+
+
+  <TextView
+    android:id="@+id/tvLocationName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:text="@string/lcoation_name"
+    android:textSize="@dimen/_13sdp"
+    android:fontFamily="@font/montserrat_bold"
+    android:textColor="@color/black" />
+
+  <TextView
+    android:id="@+id/tvDescription"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:text="@string/webview_description"
+    android:textSize="@dimen/_10sdp"
+    android:fontFamily="@font/montserrat_regular"
+    android:textColor="@color/black"/>
+
+  <WebView
+      android:id="@+id/wvPayment"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="@dimen/_8sdp"/>
+
+</LinearLayout>

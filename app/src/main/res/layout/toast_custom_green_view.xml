@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toast_tv"
+    android:layout_width="wrap_content"
+    android:paddingHorizontal="@dimen/_5sdp"
+    android:paddingVertical="@dimen/_5sdp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/toast_bg_green"
+    android:gravity="center"
+    android:padding="20dp" />

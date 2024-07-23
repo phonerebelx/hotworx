@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "432233959651",
+    "firebase_url": "https://hotworx-26bed.firebaseio.com",
+    "project_id": "hotworx-26bed",
+    "storage_bucket": "hotworx-26bed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432233959651:android:a8e1b3fa0fa318f79375d6",
+        "android_client_info": {
+          "package_name": "com.hotworx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432233959651-nja2so89sfa32c168nlmoir913ua58iu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpQxYbeGEV9OIIz08O5MTRUkeKoG24QfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432233959651-nja2so89sfa32c168nlmoir913ua58iu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

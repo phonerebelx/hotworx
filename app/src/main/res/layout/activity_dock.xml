@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:elevation="@dimen/_10sdp"
+    android:contentDescription="@string/tap_to_open_menu"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.hotworx.ui.views.TitleBar
+            android:id="@+id/header_main"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <FrameLayout
+            android:id="@+id/mainFrameLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/header_main"
+            android:layout_centerHorizontal="true">
+
+        </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:progressTint="@color/colorAccent"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:id="@+id/sideMneuFragmentContainer"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:elevation="@dimen/_10sdp"
+        android:choiceMode="singleChoice"
+        android:dividerHeight="1dp" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

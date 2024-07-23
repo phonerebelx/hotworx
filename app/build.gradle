@@ -1,0 +1,265 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.plugin.serialization'
+apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'kotlin-parcelize'
+
+
+
+android {
+    namespace "com.hotworx"
+    compileSdkVersion 34
+    buildToolsVersion "33.0.0"
+
+    def envCode = System.getenv("BUILD_NUMBER")
+    if (envCode != null) {
+        envCode = envCode.toInteger()
+    }
+
+
+
+    defaultConfig {
+        applicationId "com.hotworx"
+        minSdkVersion 28
+        targetSdkVersion 34
+        versionCode 50
+        versionName "5.0"
+        versionName System.getenv("BUILD_VERSION") ?: "5.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            //storeFile file('hotworx/hot_worx_keystore.jks')
+            storeFile file('../hot_worx_keystore.jks')
+            //storeFile file("C:/Users/Haroon Traders/AndroidStudioProjects/hotworx-new-android/hot_worx_keystore.jks")
+
+            storePassword 'hotworx'
+            keyAlias = 'hotworx'
+            keyPassword 'hotworx'
+        }
+    }
+
+    buildTypes {
+        release {
+            //minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            testCoverageEnabled = true
+
+        }
+
+    }
+
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.1'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    viewBinding {
+        enabled = true
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    configurations.configureEach {
+        resolutionStrategy {
+            force 'androidx.core:core-ktx:1.6.0'
+        }
+    }
+
+    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+
+
+}
+
+ext.supportLibraryVersion = '28.0.0'
+
+dependencies {
+
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.compose.ui:ui:1.6.0-beta01'
+    implementation 'androidx.core:core-ktx:1.12.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    //noinspection GradleCompatible
+    implementation 'androidx.appcompat:appcompat:1.6.0-alpha04'
+    //RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    //Constraint layout
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    //Fitbit
+    implementation project(path: ':fitbitapi')
+    implementation project(path: ':fitbitauth')
+    implementation project(path: ':fitbitcommon')
+
+    //brivo
+
+    implementation files('../library/brivoaccess-release.aar')
+    implementation files('../library/brivoble-core-release.aar')
+    implementation files('../library/brivoble-release.aar')
+    implementation files('../library/brivocore-release.aar')
+    implementation files('../library/brivolocalauthentication-release.aar')
+    implementation files('../library/brivoonair-release.aar')
+    implementation platform("org.jetbrains.kotlin:kotlin-bom:1.8.0")
+    implementation 'pl.bclogic:pulsator4droid:1.0.3'
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0'
+    implementation 'androidx.biometric:biometric:1.2.0-alpha05'
+
+    //Networking
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+    //For Fonts
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    //Image Loading and Caching
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
+    //Butterknife Annotation
+    implementation 'com.jakewharton:butterknife:8.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.1.0'
+    //GraphView
+    implementation 'com.jjoe64:graphview:4.2.2'
+    //flip animation
+    implementation 'com.github.Binary-Finery:Bungee:master-SNAPSHOT'
+    //pie chart and graph
+    implementation 'com.github.blackfizz:eazegraph:1.2.2@aar'
+    implementation 'com.jjoe64:graphview:4.2.2'
+    //Circular Image View
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Top Segmented Tab
+    implementation 'info.hoang8f:android-segmented:1.0.6'
+    //Bar Chart
+//    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+
+    //MultiSpinner
+    implementation 'com.thomashaertel:multispinner:0.1.1'
+    //Circle progress
+    implementation 'com.bikomobile:donutprogress:1.2.0'
+    //Image Picker
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'com.google.android.material:material:1.12.0-alpha01'
+
+    //Room for offline handling
+    def room_version = '2.5.1'
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    //Work Manager
+    //implementation "android.arch.work:work-runtime:1.0.1"
+    implementation 'androidx.work:work-runtime-ktx:2.8.1'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.11.1'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.11.1'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.11.1'
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+
+    // Declare the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-messaging'
+
+    //Barcode Scanner
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+
+//    implementation 'androidx.activity:activity:1.7.0'
+//    implementation 'androidx.fragment:fragment:1.5.6'
+
+    implementation 'com.github.tsuryo:Swipeable-RecyclerView:1.1'
+    implementation 'com.github.ranaparamveer:customSeekbarAndroid:1.0.1'
+
+    // dimens dependencies
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    //pinviews
+    implementation 'com.chaos.view:pinview:1.4.2'
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2'
+    implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
+    //Alerter
+    implementation 'com.tapadoo.android:alerter:6.1.0'
+
+    implementation 'androidx.activity:activity:1.6.1'
+
+    implementation 'me.relex:circleindicator:2.1.6'
+//    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.oatrice:MPAndroidChart:3.1.5'
+
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    // Compose dependency
+    implementation 'androidx.compose.material:material:1.6.7'
+    implementation 'androidx.activity:activity-compose:1.9.0'
+    implementation platform('androidx.compose:compose-bom:2023.01.00')
+//    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+
+    implementation 'org.slf4j:slf4j-api:1.7.31'
+    implementation 'androidx.activity:activity-ktx:1.8.2'
+    implementation 'androidx.fragment:fragment-ktx:1.6.2'
+
+    // Searchable Spinner
+    implementation 'gr.escsoft.michaelprimez.searchablespinner:SearchableSpinner:1.0.9'
+
+    //Material Icon
+    implementation 'androidx.compose.material:material-icons-extended'
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.2'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+
+    implementation 'com.github.alexzhirkevich:custom-qr-generator:1.6.2'
+    // Paging
+    implementation 'androidx.paging:paging-runtime-ktx:3.0.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+//    implementation 'com.google.dagger:dagger:2.40.5'
+//    kapt 'com.google.dagger:dagger-compiler:2.40.5'
+
+    //Shape of view
+    implementation 'io.github.florent37:shapeofview:1.4.7'
+
+}
+repositories {
+    mavenCentral()
+}

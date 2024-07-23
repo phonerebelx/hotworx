@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_11sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorLightBlack"
+            android:text="22/01/2022"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:id="@+id/cal_reading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_11sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorLightBlack"
+            android:text="100.2"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:id="@+id/avg_bmr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_11sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="10%"
+            android:textColor="@color/colorGreen"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+</RelativeLayout>
