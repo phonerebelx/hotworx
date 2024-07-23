@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -234,8 +233,6 @@
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="@dimen/_90sdp"
                 android:layout_gravity="center"
-                app:shape_circle_borderColor="@color/black"
-                app:shape_circle_borderWidth="@dimen/_1sdp"
                 tools:ignore="MissingConstraints">
 
                 <ImageView
@@ -247,8 +244,6 @@
                     android:scaleType="centerCrop" />
 
             </io.github.florent37.shapeofview.shapes.CircleView>
-
-
 
             <TextView
                 android:id="@+id/tvfirstLastName"
