@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="@dimen/_20sdp"
+    android:background="@color/white"
     android:layout_marginStart="@dimen/_10sdp"
     android:layout_marginTop="@dimen/_5sdp"
     android:layout_marginEnd="@dimen/_10sdp"
@@ -23,23 +24,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <io.github.florent37.shapeofview.shapes.CircleView
-                android:id="@+id/imgCircle"
+            <ImageView
+                android:id="@+id/imgIcon"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
-                android:layout_gravity="center"
+                android:contentDescription="@string/no"
+                android:src="@drawable/hotworx_logo_6"
                 android:background="@drawable/shape_circle"
-                tools:ignore="MissingConstraints">
-
-                <ImageView
-                    android:id="@+id/imgIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/no"
-                    android:src="@drawable/hotworx_logo_6"
-                    android:scaleType="centerCrop" />
-
-            </io.github.florent37.shapeofview.shapes.CircleView>
+                android:scaleType="centerCrop" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -60,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Text"
                     android:fontFamily="@font/montserrat_regular"
-                    android:textSize="@dimen/_10ssp"
+                    android:textSize="@dimen/_8ssp"
                     android:layout_below="@+id/title"
                     android:layout_marginHorizontal="@dimen/_5sdp"/>
 
@@ -88,14 +80,29 @@
             android:textColor="@color/colorDarkGrey"
             android:fontFamily="@font/montserrat_regular"/>
 
-        <ImageView
-            android:id="@+id/banner"
+        <io.github.florent37.shapeofview.shapes.RoundRectView
+            android:id="@+id/imgRect"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_90sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/_5sdp"
-            android:visibility="gone"
             android:layout_marginHorizontal="@dimen/_5sdp"
-            android:scaleType="fitXY"/>
+            app:shape_roundRect_bottomLeftRadius="@dimen/_15sdp"
+            app:shape_roundRect_bottomRightRadius="@dimen/_15sdp"
+            app:shape_roundRect_topLeftRadius="@dimen/_15sdp"
+            android:visibility="gone"
+            app:shape_roundRect_topRightRadius="@dimen/_15sdp"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/no"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"/>
+
+        </io.github.florent37.shapeofview.shapes.RoundRectView>
 
     </LinearLayout>
 

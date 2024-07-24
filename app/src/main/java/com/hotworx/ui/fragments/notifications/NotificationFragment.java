@@ -83,6 +83,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
         if (getArguments()!= null && getArguments().get("hashId") != null){
             hasAccessToHashId = getArguments().get("hashId").toString();
         }
+
         getNotifications();
     }
 
@@ -195,7 +196,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
 
             case "COME_FROM_IMAGE_CLICK" -> {
                 Data notificationData = (Data) data;
-                initImageDialog(notificationData);
+//                initImageDialog(notificationData);
             }
 
         }

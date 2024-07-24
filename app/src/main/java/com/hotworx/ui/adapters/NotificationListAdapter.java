@@ -32,6 +32,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.hotworx.R;
 import com.hotworx.global.Constants;
 import com.hotworx.helpers.UIHelper;
@@ -43,6 +44,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.florent37.shapeofview.ShapeOfView;
 
 public class NotificationListAdapter extends RecyclerView.Adapter<NotificationListAdapter.VH> {
     private Context context;
@@ -87,17 +89,6 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         holder.tvDetail.setText(notificationResponseEntData.get(position).getBody());
         holder.tvtime.setText(UIHelper.getFormattedDate(notificationResponseEntData.get(position).getSent_at(), Constants.DATE_FORMAT_2, Constants.DATE_TIME_FORMAT_TWO));
 
-        if(notificationResponseEntData.get(position).getBanner() != ""){
-            holder.ivBanner.setVisibility(View.VISIBLE);
-
-            Glide.with(context)
-                    .load(notificationResponseEntData.get(position).getBanner())
-                    .placeholder(R.drawable.ic_user)
-                    .into(holder.ivBanner);
-        }else {
-            holder.ivBanner.setVisibility(View.GONE);
-        }
-
         if (!hasAccessToHashId.equals("")) {
             hasAccessToHashId = "";
             onClickItemListener.onItemClick(notificationResponseEntData.get(position), "FIRST_TIME_CALLING");
@@ -108,18 +99,20 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
 //        }
 
         if (notificationResponseEntData.get(position).getImage_url() != null) {
+            holder.imgRect.setVisibility(View.VISIBLE);
             Glide.with(context)
                     .load(notificationResponseEntData.get(position).getImage_url())
-                    .into(holder.ivNotification);
+                    .transform(new RoundedCorners(20))
+                    .into(holder.ivBanner);
         }
 
         if (notificationResponseEntData.get(position).getId().equals(readNotificationId) || notificationResponseEntData.get(position).getRead_status()) {
             notificationResponseEntData.get(position).setRead_status(true);
             holder.ivReadImg.setVisibility(View.VISIBLE);
-            holder.mainView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.notificationGrey));
+//            holder.mainView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.notificationGrey));
         }
 
-        holder.ivNotification.setOnClickListener(v -> {
+        holder.ivBanner.setOnClickListener(v -> {
             onClickItemListener.onItemClick(notificationResponseEntData.get(position),"COME_FROM_IMAGE_CLICK");
         });
 
@@ -169,9 +162,8 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         ImageView ivReadImg;
         @BindView(R.id.banner)
         ImageView ivBanner;
-        @BindView(R.id.ivNotification)
-        ImageView ivNotification;
-
+        @BindView(R.id.imgRect)
+        ShapeOfView imgRect;
         @BindView(R.id.mainView)
         CardView mainView;
 
