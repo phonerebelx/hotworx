@@ -83,18 +83,29 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull NotificationListAdapter.VH holder, int position) {
-        holder.tvBooking.setText(notificationResponseEntData.get(position).getTitle());
-        holder.tvTitle.setText(notificationResponseEntData.get(position).getBody());
-        holder.tvDate.setText(UIHelper.getFormattedDate(notificationResponseEntData.get(position).getSent_at(), Constants.DATE_FORMAT_2, Constants.DATE_TIME_FORMAT_TWO));
+        holder.tvTitle.setText(notificationResponseEntData.get(position).getTitle());
+        holder.tvDetail.setText(notificationResponseEntData.get(position).getBody());
+        holder.tvtime.setText(UIHelper.getFormattedDate(notificationResponseEntData.get(position).getSent_at(), Constants.DATE_FORMAT_2, Constants.DATE_TIME_FORMAT_TWO));
+
+        if(notificationResponseEntData.get(position).getBanner() != ""){
+            holder.ivBanner.setVisibility(View.VISIBLE);
+
+            Glide.with(context)
+                    .load(notificationResponseEntData.get(position).getBanner())
+                    .placeholder(R.drawable.ic_user)
+                    .into(holder.ivBanner);
+        }else {
+            holder.ivBanner.setVisibility(View.GONE);
+        }
 
         if (!hasAccessToHashId.equals("")) {
             hasAccessToHashId = "";
             onClickItemListener.onItemClick(notificationResponseEntData.get(position), "FIRST_TIME_CALLING");
         }
-
-        if (notificationResponseEntData.get(position).getAttachment_url() == null) {
-            holder.llAttachment.setVisibility(View.GONE);
-        }
+//
+//        if (notificationResponseEntData.get(position).getAttachment_url() == null) {
+//            holder.llAttachment.setVisibility(View.GONE);
+//        }
 
         if (notificationResponseEntData.get(position).getImage_url() != null) {
             Glide.with(context)
@@ -104,6 +115,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
 
         if (notificationResponseEntData.get(position).getId().equals(readNotificationId) || notificationResponseEntData.get(position).getRead_status()) {
             notificationResponseEntData.get(position).setRead_status(true);
+            holder.ivReadImg.setVisibility(View.VISIBLE);
             holder.mainView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.notificationGrey));
         }
 
@@ -111,15 +123,15 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
             onClickItemListener.onItemClick(notificationResponseEntData.get(position),"COME_FROM_IMAGE_CLICK");
         });
 
-        holder.llAttachment.setOnClickListener(v -> {
-            getIdForAttachment = notificationResponseEntData.get(position).getId();
-            if (isImageFile(notificationResponseEntData.get(position).getAttachment_url())) {
-                downloadFile(notificationResponseEntData.get(position).getAttachment_url(), "image.jpg");
-
-            } else if (isPdfFile(notificationResponseEntData.get(position).getAttachment_url())) {
-                downloadFile(notificationResponseEntData.get(position).getAttachment_url(), "attachment.pdf");
-            }
-        });
+//        holder.llAttachment.setOnClickListener(v -> {
+//            getIdForAttachment = notificationResponseEntData.get(position).getId();
+//            if (isImageFile(notificationResponseEntData.get(position).getAttachment_url())) {
+//                downloadFile(notificationResponseEntData.get(position).getAttachment_url(), "image.jpg");
+//
+//            } else if (isPdfFile(notificationResponseEntData.get(position).getAttachment_url())) {
+//                downloadFile(notificationResponseEntData.get(position).getAttachment_url(), "attachment.pdf");
+//            }
+//        });
 
         holder.mainView.setOnClickListener(view -> onClickItemListener.onItemClick(notificationResponseEntData.get(position), "Come_From_Click_Notification_Adapter"));
     }
@@ -147,16 +159,18 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
     }
 
     class VH extends RecyclerView.ViewHolder {
-        @BindView(R.id.tvBooking)
-        TextView tvBooking;
-        @BindView(R.id.tvDate)
-        TextView tvDate;
-        @BindView(R.id.tvTitle)
+        @BindView(R.id.title)
         TextView tvTitle;
+        @BindView(R.id.time)
+        TextView tvtime;
+        @BindView(R.id.detail)
+        TextView tvDetail;
+        @BindView(R.id.readImg)
+        ImageView ivReadImg;
+        @BindView(R.id.banner)
+        ImageView ivBanner;
         @BindView(R.id.ivNotification)
         ImageView ivNotification;
-        @BindView(R.id.llAttachment)
-        LinearLayout llAttachment;
 
         @BindView(R.id.mainView)
         CardView mainView;

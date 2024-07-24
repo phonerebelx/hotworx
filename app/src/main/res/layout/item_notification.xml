@@ -65,9 +65,11 @@
                     android:layout_marginHorizontal="@dimen/_5sdp"/>
 
                 <ImageView
+                    android:id="@+id/readImg"
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"
                     android:src="@drawable/read"
+                    android:visibility="gone"
                     android:layout_below="@id/title"
                     android:layout_toEndOf="@id/time"/>
             </RelativeLayout>
@@ -75,6 +77,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Text"
@@ -84,6 +87,15 @@
             android:maxLines="2"
             android:textColor="@color/colorDarkGrey"
             android:fontFamily="@font/montserrat_regular"/>
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:visibility="gone"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:scaleType="fitXY"/>
 
     </LinearLayout>
 
