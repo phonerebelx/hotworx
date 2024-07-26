@@ -13,6 +13,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.CalendarContract;
 import android.text.SpannableString;
 import android.text.format.Time;
@@ -35,6 +36,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -165,6 +167,12 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private Data data;
     private Constraints constraints;
     private Animation popIn;
+    private final MutableLiveData<String> unreadNotifications = new MutableLiveData<>();
+
+    public LiveData<String> getUnreadNotifications() {
+        return unreadNotifications;
+    }
+
 
     DashboardSessionDialogFragment sessionDashboardDialogFragment;
 
@@ -328,12 +336,18 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         EventBus.getDefault().unregister(this);
     }
 
+
+
     @Override
     public void setTitleBar(TitleBar titleBar) {
         super.setTitleBar(titleBar);
         titleBar.showMenuButton();
         titleBar.showSyncBtn();
-        titleBar.showNotificationBtn();
+        getUnreadNotifications().observe(getViewLifecycleOwner(), new Observer<String>() {
+            public void onChanged(String unreadNotifications) {
+                titleBar.showNotificationBtn(unreadNotifications);
+            }
+        });
         titleBar.showBrivoBtn();
         titleBar.setSubHeading(getResources().getString(R.string.welcome));
         titleBar.setContentDescription(getString(R.string.welcome_to_the_dashboard));
@@ -529,7 +543,13 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             try {
                 getUserData userData = GsonFactory.getConfiguredGson()
                         .fromJson(liveData.getValue(), getUserData.class);
-
+                if (userData.getData() != null && !userData.getData().isEmpty() &&
+                        userData.getData().get(0).getData() != null &&
+                        userData.getData().get(0).getData().getUnread_notifications() != null) {
+                    unreadNotifications.setValue( userData.getData().get(0).getData().getUnread_notifications());
+                } else {
+                    unreadNotifications.setValue("0");
+                }
                 if (!userData.getData().get(0).getData().is_brivo_allowed().equals("yes")){
                     EventBus.getDefault().post(new CustomEvents.checkBrivoAllowed());
                 }

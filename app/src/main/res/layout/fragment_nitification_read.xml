@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginHorizontal="@dimen/_20sdp"
     app:cardCornerRadius="@dimen/_10sdp"
-    app:cardElevation="@dimen/_15sdp"
+    app:cardElevation="@dimen/_10sdp"
+    android:background="@color/colorWhite"
     tools:context=".ui.fragments.notifications.ReadNotification.NotificationReadFragment">
 
     <LinearLayout
@@ -86,6 +87,7 @@
                         android:id="@+id/attachmentImg"
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
+                        android:visibility="gone"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:src="@drawable/attachment"
                        android:layout_alignParentEnd="true"/>
@@ -101,7 +103,7 @@
                 android:textSize="@dimen/_10ssp"
                 android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:maxLines="2"
+                android:maxLines="3"
                 android:textColor="@color/colorDarkGrey"
                 android:fontFamily="@font/montserrat_regular"/>
 

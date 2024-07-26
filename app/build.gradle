@@ -28,7 +28,8 @@ android {
         versionName "5.0"
         versionName System.getenv("BUILD_VERSION") ?: "5.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        renderscriptTargetApi 25
+        renderscriptSupportModeEnabled true
         multiDexEnabled true
     }
 
@@ -259,6 +260,8 @@ dependencies {
 
     //Shape of view
     implementation 'io.github.florent37:shapeofview:1.4.7'
+    implementation 'com.ms-square:etsyblur:0.2.1'
+
 
 }
 repositories {

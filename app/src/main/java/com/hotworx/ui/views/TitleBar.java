@@ -20,6 +20,7 @@ public class TitleBar extends RelativeLayout {
     private ImageView ivSync;
     private ImageView ivBrivo;
     private ImageView ivNotification;
+    private TextView tvNotificationNo;
     public BasePreferenceHelper prefHelper;
     private OnClickListener menuButtonListener;
     private OnClickListener backButtonListener;
@@ -58,6 +59,7 @@ public class TitleBar extends RelativeLayout {
         txtTitle = this.findViewById(R.id.txt_subHead);
         txtTitle2 = this.findViewById(R.id.txt_subHead2);
         ivNotification = this.findViewById(R.id.ivNotification);
+        tvNotificationNo = this.findViewById(R.id.tvNotificationNo);
 
         btnLeft = this.findViewById(R.id.btnLeft);
         ivSync = this.findViewById(R.id.ivSync);
@@ -99,13 +101,16 @@ public class TitleBar extends RelativeLayout {
         ivSync.setImageResource(0);
         ivSync.setVisibility(View.INVISIBLE);
     }
-    public void showNotificationBtn(){
+    public void showNotificationBtn(String notificationValue){
+        tvNotificationNo.setVisibility(View.VISIBLE);
+        tvNotificationNo.setText(notificationValue);
         ivNotification.setImageResource(R.drawable.notification_bell);
         ivNotification.setVisibility(View.VISIBLE);
         ivNotification.setOnClickListener(notificationButtonListener);
     }
 
     public void hideNotificationBtn(){
+        tvNotificationNo.setVisibility(View.INVISIBLE);
         ivNotification.setImageResource(0);
         ivNotification.setVisibility(View.INVISIBLE);
     }

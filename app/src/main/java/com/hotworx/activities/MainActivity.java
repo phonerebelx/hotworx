@@ -187,6 +187,7 @@ public class MainActivity extends DockActivity {
                     UIHelper.showLongToastInCenter(getApplicationContext(),
                             R.string.message_wait);
                 } else {
+
                     EventBus.getDefault().post(new CustomEvents.syncSession());
                 }
             }

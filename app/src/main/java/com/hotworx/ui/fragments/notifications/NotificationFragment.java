@@ -2,6 +2,7 @@ package com.hotworx.ui.fragments.notifications;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,7 +54,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
     NotificationReadModel notificationReadModel;
     NotificationReadModel attachmentReadModel;
     String hasAccessToHashId = "";
-
+    String highlightedNotificationId = "";
 
     public static NotificationFragment newInstance(String navigateTo,String hashId,String notification_type, String custom_message, String booking_date, String title, String objid, String calender_title, int duration) {
         Bundle bundle = new Bundle();
@@ -95,6 +97,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
     public void setTitleBar(TitleBar titleBar) {
         super.setTitleBar(titleBar);
         titleBar.showBackButton();
+        titleBar.hideNotificationBtn();
         titleBar.setSubHeading(getString(R.string.notifications));
     }
     @Override
@@ -113,6 +116,11 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
                     notificationListAdapter = new NotificationListAdapter(myDockActivity, hasAccessToHashId,notificationHistoryModel.getData(),this);
                     recyclerViewNotification.setAdapter(notificationListAdapter);
                     tvNotifications.setVisibility(View.GONE);
+
+                    if (!hasAccessToHashId.isEmpty()) {
+                        scrollToNotification(hasAccessToHashId);
+                    }
+
                     hasAccessToHashId = "";
                 } else {
                     tvNotifications.setVisibility(View.VISIBLE);
@@ -122,6 +130,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
             case WebServiceConstants.MARK_NOTIFICATION_READ:
                 notificationReadModel = GsonFactory.getConfiguredGson().fromJson(result, NotificationReadModel.class);
                 if (notificationListAdapter != null) {
+
                     notificationListAdapter.markNotificationAsRead(notificationReadModel.getData().getId().toString());
                 }
                break;
@@ -136,6 +145,16 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
     }
 
 
+    private void scrollToNotification(String notificationId) {
+        recyclerViewNotification.post(() -> {
+            LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerViewNotification.getLayoutManager();
+            int position = notificationListAdapter.getPositionById(notificationId);
+            if (position != -1) {
+                layoutManager.scrollToPositionWithOffset(position, 0);
+            }
+        });
+    }
+
     @Override
     public void onBackPressed() {
         myDockActivity.emptyBackStack();
@@ -145,11 +164,9 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
     private void initNotificationDialog(Data data){
         NotificationReadFragment notificationReadFragment = new NotificationReadFragment();
         notificationReadFragment.notificationData = data;
-        notificationReadFragment.show(
-                getParentFragmentManager(),
-                notificationReadFragment.getTag()
-        );
+        notificationReadFragment.show(getParentFragmentManager(), "NotificationReadFragment");
     }
+
 
     private void initImageDialog(Data data){
         LargeImageViewDialogFragment largeImageViewDialogFragment = new LargeImageViewDialogFragment();
@@ -166,8 +183,8 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
         switch (type) {
             case "Come_From_Click_Notification_Adapter", "FIRST_TIME_CALLING" -> {
                 Data notificationData = (Data) data;
-                if (notificationData.getId() != null) {
-                    initNotificationDialog(notificationData);
+                initNotificationDialog(notificationData);
+                if (notificationData.getId() != null && !notificationData.getRead_status()) {
                     serviceHelper.enqueueCall(
                             webService.getNotificationAsRead(
                                     ApiHeaderSingleton.apiHeader(requireContext()),
@@ -201,5 +218,8 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
 
         }
     }
+
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.hotworx.ui.fragments.notifications.ReadNotification
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -16,13 +17,15 @@ import com.bumptech.glide.Glide
 import com.hotworx.R
 import com.hotworx.databinding.FragmentNitificationReadBinding
 import com.hotworx.models.NotificationHistory.Data
+import com.ms_square.etsyblur.BlurDialogFragment
 
 
-class NotificationReadFragment : DialogFragment() {
+class NotificationReadFragment : BlurDialogFragment() {
 
     lateinit var binding: FragmentNitificationReadBinding
 
     lateinit var notificationData: Data
+    override fun getTheme() = R.style.RoundedCornersDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +33,7 @@ class NotificationReadFragment : DialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentNitificationReadBinding.inflate(inflater, container, false)
+
         setOnClickListener()
         setUi()
 
@@ -81,15 +85,19 @@ class NotificationReadFragment : DialogFragment() {
         }
     }
 
+
     override fun onResume() {
         super.onResume()
         val params: ViewGroup.LayoutParams? = dialog?.window?.attributes
-        params?.width = ViewGroup.LayoutParams.MATCH_PARENT
+
+        val windowParams = dialog?.window?.attributes as WindowManager.LayoutParams
         dialog?.setCancelable(false)
         dialog?.window?.setGravity(Gravity.CENTER)
-        dialog?.window?.attributes = params as WindowManager.LayoutParams
+        dialog?.window?.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
+        dialog?.window?.attributes = windowParams
         dialog?.window?.attributes?.windowAnimations = R.style.DialogAnimation
         dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
+
 
 }
