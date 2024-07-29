@@ -45,6 +45,7 @@ import com.hotworx.helpers.UIHelper;
 import com.hotworx.helpers.Utils;
 import com.hotworx.interfaces.OnClickStringTypeListener;
 import com.hotworx.interfaces.OnClickTypeListener;
+
 import com.hotworx.residemenu.ResideMenu;
 import com.hotworx.retrofit.WebService;
 import com.hotworx.ui.dialog.DashboardSession.DashboardSessionDialogFragment;
@@ -63,6 +64,8 @@ import com.hotworx.ui.views.TitleBar;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -112,11 +115,11 @@ public class MainActivity extends DockActivity {
         super.onCreate(savedInstanceState);
 
 
-        Utils.customToast(this,"notification custom calling");
-
         setContentView(R.layout.activity_dock);
         ButterKnife.bind(this);
         if(getIntent().getExtras()!=null)
+
+
         flag = getIntent().getStringExtra(Constants.flag);
 
         titleBar = header_main;
@@ -327,6 +330,8 @@ public class MainActivity extends DockActivity {
             default:
                 String navigateTo = getIntent().getStringExtra("navigateTo");
                 String hashId = getIntent().getStringExtra("hashId");
+                String image = getIntent().getStringExtra("image");
+                String body = getIntent().getStringExtra("body");
                 String notification_type = getIntent().getStringExtra("notification_type");
                 String custom_message = getIntent().getStringExtra("custom_message");
                 String booking_date = getIntent().getStringExtra("booking_date");
@@ -338,10 +343,12 @@ public class MainActivity extends DockActivity {
                 addDockableFragment(HomeFragment.newInstance(
                         navigateTo,
                         hashId,
+                        image,
+                        body,
+                        title,
                         notification_type,
                         custom_message,
                         booking_date,
-                        title,
                         objid,
                         calendar_title,
                         duration), Constants.HomeFragment);

@@ -48,7 +48,7 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
     private lateinit var pendingSessionAdapter: DashboardPendingSessionAdapter
     private lateinit var btnBookSession: AppCompatButton
     private lateinit var startSessionDialogFragment: StartSessionDialogFragment
-
+    lateinit var set_is_reciprocal_allowed: String
     //var getTodaysPendingSession: ArrayList<TodaysPendingSession>? = null
     private var sessionTypesList: ArrayList<TodaysPendingSession>? = null
     private var selectedSession: TodaysPendingSession? = null
@@ -65,7 +65,7 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
         rvPendingSessions = root.findViewById(R.id.rvPendingSessions)
         tvNoRecordFound = root.findViewById(R.id.tvNoRecordFound)
         btnBookSession = root.findViewById(R.id.btnBookSession)
-
+        Log.d( "onCreateView: ",set_is_reciprocal_allowed.toString())
         setPendingSessionAdapter()
         setOnCLickListener()
         return root
@@ -82,7 +82,7 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
 
     private fun setOnCLickListener() {
         btnBookSession.setOnClickListener {
-            dockActivity.replaceDockableFragment(LocationSelectionFragment())
+            dockActivity.replaceDockableFragment(LocationSelectionFragment(set_is_reciprocal_allowed))
         }
     }
 
@@ -263,4 +263,5 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
     fun setData(sessions: ArrayList<TodaysPendingSession>) {
         sessionTypesList = sessions
     }
+
 }

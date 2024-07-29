@@ -43,6 +43,7 @@ import com.hotworx.ui.adapters.ViewPager.ViewPagerAdapter
 import com.hotworx.ui.dialog.ReferalRedeemBalance.RedeemBalanceDialogFragment
 import com.hotworx.ui.dialog.ReferralLocation.ReferralLocationDialogFragment
 import com.hotworx.ui.fragments.BaseFragment
+import com.hotworx.ui.fragments.MyReferrals.MyReferralFragment
 import com.hotworx.ui.views.TitleBar
 
 class BusinessCardFragment : BaseFragment(), OnClickItemListener {
@@ -52,6 +53,8 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
     lateinit var buy_url: String
     lateinit var trial_url: String
     lateinit var selected_location_name: String
+    lateinit var referralData: Data
+    val args = Bundle()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -96,6 +99,24 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                     setUserDetail()
                     buy_url = getBusinessCardModel.data?.get(0)?.buy_url ?: ""
                     trial_url = getBusinessCardModel.data?.get(0)?.trail_url ?: ""
+
+                     referralData = Data(
+                       buy_url = "",
+                        currency_symbol = "",
+                        lead_id = "",
+                        location_code = getBusinessCardModel.data?.get(0)?.location_code ?: "",
+                        location_name = getBusinessCardModel.data?.get(0)?.location_name ?: "",
+                        remaining_balance = 0,
+                        total_amount_used = 0,
+                        total_gift_amount = 0,
+                        trail_url = getBusinessCardModel.data?.get(0)?.utm_list?.get(0)?.url ?: "",
+                        redeemed_text = "",
+                        location_address = "",
+                    )
+
+                    args.putParcelable("Location_Model", referralData)
+
+
                     getBusinessCardModel.data?.get(0)?.location_address?.let {
                         getBusinessCardModel.data?.get(0)?.location_name?.let { it1 ->
                             selected_location_name = it1
@@ -135,9 +156,18 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             it.tvDropoffLocation.setOnClickListener{
                 initUTMDialog()
             }
+
+            it.cvMulti.setOnClickListener {
+                callMyReferral()
+            }
         }
     }
 
+    fun callMyReferral(){
+        val myReferralFragment = MyReferralFragment()
+        myReferralFragment.arguments = args
+        myDockActivity.replaceDockableFragment(myReferralFragment)
+    }
 
     private fun setUserDetail(){
         binding.tvUserName.text = getBusinessCardModel.name_on_businesscard
@@ -390,14 +420,32 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                     if (it.location_name == selected_location_name) {
                         setUTMText(it.utm_list[0].name?: "")
                         setQrCode(it.utm_list[0].url ?: "")
+                        referralData.location_name = it.location_name
+                        referralData.location_code = it.location_code!!
+                        referralData.trail_url = it.utm_list[0].url!!
                     }
                 }
+
             }
+
             "UTM_DETAIL" -> {
                 setUTMText(receivedData.location_name)
                 setQrCode(receivedData.trail_url ?: "")
+
+                referralData.trail_url = receivedData.trail_url
+
+                getBusinessCardModel.data!!.forEach {loc ->
+                    loc.utm_list.forEach {utm ->
+                        if (utm.name == receivedData.location_name)    {
+                            referralData.location_name = loc.location_name ?: ""
+                            referralData.location_code = loc.location_code ?: ""
+                        }
+                    }
+                }
             }
         }
+
+        args.putParcelable("Location_Model", referralData)
     }
 
     override fun setTitleBar(titleBar: TitleBar) {

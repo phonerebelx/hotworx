@@ -68,7 +68,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
 
         holder.tvTitle.setText(notificationData.getTitle());
         holder.tvDetail.setText(notificationData.getBody());
-        holder.tvtime.setText(UIHelper.getFormattedDate(notificationData.getSent_at(), Constants.DATE_FORMAT_2, Constants.DATE_TIME_FORMAT_TWO));
+        holder.tvtime.setText(notificationData.getSent_at());
 
 
         if (!hasAccessToHashId.equals("")) {
@@ -81,7 +81,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
             holder.tvDetail.setVisibility(View.GONE);
             Glide.with(context)
                     .load(notificationData.getImage_url())
-                    .transform(new RoundedCorners(20))
+                    .transform(new RoundedCorners(10))
                     .into(holder.ivBanner);
         } else {
             holder.imgRect.setVisibility(View.GONE);
@@ -104,28 +104,19 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
             onClickItemListener.onItemClick(notificationData, "COME_FROM_IMAGE_CLICK");
         });
 
-//        holder.ivReadImg.setVisibility(View.GONE);
-//        holder.mainView.setBackground(ContextCompat.getDrawable(context, R.drawable.shape_rectangle_notification));
-//
-//        if (notificationData.getId().equals(hasAccessToHashId)) {
-//            holder.mainView.setBackground(ContextCompat.getDrawable(context, R.drawable.shape_rectangle_notification_white));
-//            holder.ivReadImg.setVisibility(View.VISIBLE);
-//        }
 
         if (notificationData.getId().equals(notificationId)) {
-            Animation anim = new AlphaAnimation(0.0f, 1.0f);
-            anim.setDuration(500);
-            anim.setRepeatMode(Animation.REVERSE);
-            anim.setRepeatCount(2);
+            notificationId = "";
+            new Handler().postDelayed(() -> {
+                Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                anim.setDuration(300);
+                anim.setRepeatMode(Animation.REVERSE);
+                holder.mainView.startAnimation(anim);
+                anim.setRepeatCount(4);
+                new Handler().postDelayed(() -> holder.mainView.clearAnimation(), 3000);
+            }, 1000);
 
-            holder.mainView.startAnimation(anim);
-            new Handler().postDelayed(() -> holder.mainView.clearAnimation(), 2000);
-
-//            holder.mainView.setBackground(ContextCompat.getDrawable(context, R.drawable.shape_rectangle_notification_white));
-//            holder.ivReadImg.setVisibility(View.VISIBLE);
-        }
-
-
+         }
     }
 
     @Override

@@ -72,6 +72,7 @@ import com.hotworx.helpers.InternetHelper;
 import com.hotworx.helpers.UIHelper;
 import com.hotworx.helpers.Utils;
 import com.hotworx.interfaces.DialogBoxInterface;
+import com.hotworx.interfaces.OnClickItemListener;
 import com.hotworx.interfaces.OnClickTypeListener;
 import com.hotworx.models.ActiveSessionModel;
 import com.hotworx.models.DashboardData.DashboardDataModel;
@@ -101,6 +102,7 @@ import com.hotworx.ui.fragments.Rewards.LevelFiveFragment;
 import com.hotworx.ui.fragments.Rewards.LevelSevenFragment;
 import com.hotworx.ui.fragments.Rewards.LevelSixFragment;
 
+import com.hotworx.ui.fragments.notifications.NotificationDialogHomeFragment;
 import com.hotworx.ui.fragments.notifications.NotificationFragment;
 import com.hotworx.ui.views.TitleBar;
 import com.hotworx.workManager.MyWorker;
@@ -132,7 +134,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, OnClickItemListener {
 
     private Unbinder unbinder;
     private final String TAG = HomeFragment.class.getSimpleName();
@@ -174,13 +176,22 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     }
 
 
+    private final MutableLiveData<String> is_new_reciprocal = new MutableLiveData<>();
+
+    public LiveData<String> get_is_new_reciprocal() {
+        return is_new_reciprocal;
+    }
+
+
     DashboardSessionDialogFragment sessionDashboardDialogFragment;
 
 
-    public static HomeFragment newInstance(String navigateTo,String hashId,String notification_type, String custom_message, String booking_date, String title, String objid, String calender_title, int duration) {
+    public static HomeFragment newInstance(String navigateTo, String hashId,String image,String body,String title, String notification_type, String custom_message, String booking_date, String objid, String calender_title, int duration) {
         Bundle bundle = new Bundle();
         bundle.putString("navigateTo", navigateTo);
         bundle.putString("hashId", hashId);
+        bundle.putString("image", image);
+        bundle.putString("body", body);
         bundle.putString(Constants.NOTIFICATION_TYPE, notification_type);
         bundle.putString(Constants.CUSTOM_MESSAGE, custom_message);
         bundle.putString(Constants.BOOKING_DATE, booking_date);
@@ -283,28 +294,24 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             });
         }
 
-        if (getArguments()!= null && getArguments().getString("navigateTo")!=null){
+        if (getArguments()!= null && getArguments().getString("navigateTo")!=null && getArguments().getString("hashId") != null) {
             String navigateTo = getArguments().getString("navigateTo");
             String hashId = getArguments().getString("hashId");
+            String image = getArguments().getString("image");
+            String body = getArguments().getString("body");
             String notification_type = getArguments().getString("notification_type");
             String custom_message = getArguments().getString("custom_message");
             String booking_date = getArguments().getString("booking_date");
-            String title = getArguments().getString("title");
+            String title = getArguments().getString(Constants.CUSTOM_TITLE);
             String objid = getArguments().getString("objid");
             String calendar_title = getArguments().getString("calendar_title");
             int duration = getArguments().getInt("duration",0);
-            myDockActivity.replaceDockableFragment( NotificationFragment.newInstance(
-                    navigateTo,
-                    hashId,
-                    notification_type,
-                    custom_message,
-                    booking_date,
-                    title,
-                    objid,
-                    calendar_title,
-                    duration
-            ));
-            setArguments(null);
+
+            NotificationDialogHomeFragment notificationDialogHomeFragment = new NotificationDialogHomeFragment(this);
+            notificationDialogHomeFragment.setNotificationModel(hashId,title,body,image);
+            notificationDialogHomeFragment.show(
+                    getParentFragmentManager(), Constants.notificationDialogHomeFragment
+            );
         }
     }
 
@@ -540,17 +547,19 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             }
         }
         if (Constants.PROFILE_API_CALLING.equals(tag)){
+
             try {
                 getUserData userData = GsonFactory.getConfiguredGson()
                         .fromJson(liveData.getValue(), getUserData.class);
                 if (userData.getData() != null && !userData.getData().isEmpty() &&
                         userData.getData().get(0).getData() != null &&
                         userData.getData().get(0).getData().getUnread_notifications() != null) {
+                    is_new_reciprocal.setValue( userData.getData().get(0).getData().getNew_reciprocal_enabled());
                     unreadNotifications.setValue( userData.getData().get(0).getData().getUnread_notifications());
                 } else {
                     unreadNotifications.setValue("0");
                 }
-                if (!userData.getData().get(0).getData().is_brivo_allowed().equals("yes")){
+                if (!userData.getData().get(0).getData().is_brivo_allowed().equals("yes")) {
                     EventBus.getDefault().post(new CustomEvents.checkBrivoAllowed());
                 }
 
@@ -613,6 +622,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         } else {
             ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager()); //viewPager.getAdapter() instanceof ViewPagerAdapter ? (ViewPagerAdapter) viewPager.getAdapter() : new ViewPagerAdapter(getChildFragmentManager());
             PendingSessionFragment psf = new PendingSessionFragment();
+            psf.set_is_reciprocal_allowed = get_is_new_reciprocal().getValue().toString();
             psf.setData(getTodaysPendingSession);
             adapter.addFrag(psf, "PSF's");
 
@@ -994,8 +1004,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
         startActivity(new Intent(getDockActivity(), SitesActivity.class));
         myDockActivity.finish();
-//        myDockActivity.replaceDockableFragment(new BrivoUserSiteFragment());
-
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -1003,4 +1011,42 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         myDockActivity.replaceDockableFragment(new NotificationFragment());
 
     }
+
+    @Override
+    public <T> void onItemClick(T data, @NonNull String type) {
+        if (type.equals("COME_FROM_CLOSE")){
+            setArguments(null);
+        }else{
+            if (getArguments()!= null && getArguments().getString("navigateTo")!=null) {
+                String navigateTo = getArguments().getString("navigateTo");
+                String hashId = getArguments().getString("hashId");
+                String image = getArguments().getString("image");
+                String body = getArguments().getString("body");
+                String notification_type = getArguments().getString("notification_type");
+                String custom_message = getArguments().getString("custom_message");
+                String booking_date = getArguments().getString("booking_date");
+                String title = getArguments().getString(Constants.CUSTOM_TITLE);
+                String objid = getArguments().getString("objid");
+                String calendar_title = getArguments().getString("calendar_title");
+                int duration = getArguments().getInt("duration", 0);
+
+
+                myDockActivity.replaceDockableFragment(NotificationFragment.newInstance(
+                        navigateTo,
+                        hashId,
+                        notification_type,
+                        custom_message,
+                        booking_date,
+                        title,
+                        objid,
+                        calendar_title,
+                        duration
+                ));
+            }
+        setArguments(null);
+        }
+    }
+
+
+
 }

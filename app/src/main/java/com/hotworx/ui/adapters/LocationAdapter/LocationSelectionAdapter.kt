@@ -34,6 +34,9 @@ class LocationSelectionAdapter(val context: Context, val onItemClickInterface: O
             binding.tvTitle.text = item.location_name
             binding.tvDesc.text = "this location will charge extra ${item.reciprocal_fees ?: ""}${item.currency_symbol?: ""}"
             if (item.location_tier == "Standard"){
+                Glide.with(context)
+                    .load(R.drawable.standard)
+                    .into(binding.ivTier)
                 val params = binding.tvTitle.layoutParams as ViewGroup.MarginLayoutParams
                 params.topMargin = binding.root.context.resources.getDimensionPixelSize(R.dimen._15sdp)
                 binding.tvTitle.layoutParams = params
@@ -42,13 +45,13 @@ class LocationSelectionAdapter(val context: Context, val onItemClickInterface: O
 
             if (item.location_tier == "Premium") {
                 Glide.with(context)
-                    .load(R.drawable.premium3d)
+                    .load(R.drawable.premium)
                     .into(binding.ivTier)
             }
 
             if (item.location_tier == "Elite"){
                Glide.with(context)
-                    .load(R.drawable.elite3d)
+                    .load(R.drawable.elite)
                     .into(binding.ivTier)
             }
 
@@ -66,7 +69,7 @@ class LocationSelectionAdapter(val context: Context, val onItemClickInterface: O
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = locations[position]
         holder.bindItems(item)
-        binding.tvTitle.setOnClickListener {
+        binding.cvGoTOWorkOut.setOnClickListener {
             if (item.is_allow == "yes") onItemClickInterface.onItemClick(item.location_name,"From_Location_Adapter")
         }
     }

@@ -42,6 +42,7 @@ class NotificationReadFragment : BlurDialogFragment() {
             val attachmentUrl = notificationData.attachment_url
 
             if (!attachmentUrl.isNullOrEmpty()) {
+
                 try {
                     val uri = Uri.parse(attachmentUrl)
                     val httpIntent = Intent(Intent.ACTION_VIEW, uri)

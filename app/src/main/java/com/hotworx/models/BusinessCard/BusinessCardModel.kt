@@ -1,5 +1,9 @@
 package com.hotworx.models.BusinessCard
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+
 data class BusinessCardModel(
     val address: String?,
     val business_email: String?,

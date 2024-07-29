@@ -6,15 +6,15 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Data(
-    val buy_url: String,
-    val currency_symbol: String,
-    val lead_id: String,
-    val location_code: String,
-    val location_name: String,
-    val remaining_balance: Int,
-    val total_amount_used: Int,
-    val total_gift_amount: Int,
-    val trail_url: String,
-    val redeemed_text: String?,
-    val location_address: String = "",
+    var buy_url: String,
+    var currency_symbol: String,
+    var lead_id: String,
+    var location_code: String,
+    var location_name: String,
+    var remaining_balance: Int,
+    var total_amount_used: Int,
+    var total_gift_amount: Int,
+    var trail_url: String,
+    var redeemed_text: String?,
+    var location_address: String = "",
 ): Parcelable
