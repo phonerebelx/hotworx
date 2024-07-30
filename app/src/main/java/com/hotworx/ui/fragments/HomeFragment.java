@@ -350,9 +350,15 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         super.setTitleBar(titleBar);
         titleBar.showMenuButton();
         titleBar.showSyncBtn();
+
         getUnreadNotifications().observe(getViewLifecycleOwner(), new Observer<String>() {
             public void onChanged(String unreadNotifications) {
                 titleBar.showNotificationBtn(unreadNotifications);
+
+                if (unreadNotifications.equals("0")) {
+                    titleBar.hideNotificationText();
+                }
+
             }
         });
         titleBar.showBrivoBtn();
@@ -543,6 +549,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 );
                 setUpGraph(getDashboardApiResponse.getData().getNinety_days_summary());
             } catch (Exception e) {
+                Log.d("Exception: ",e.getMessage().toString());
                 Utils.customToast(requireContext(), getResources().getString(R.string.error_failure));
             }
         }
@@ -622,7 +629,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         } else {
             ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager()); //viewPager.getAdapter() instanceof ViewPagerAdapter ? (ViewPagerAdapter) viewPager.getAdapter() : new ViewPagerAdapter(getChildFragmentManager());
             PendingSessionFragment psf = new PendingSessionFragment();
-            psf.set_is_reciprocal_allowed = get_is_new_reciprocal().getValue().toString();
+            psf.set_is_reciprocal_allowed = get_is_new_reciprocal().getValue();
             psf.setData(getTodaysPendingSession);
             adapter.addFrag(psf, "PSF's");
 
@@ -946,7 +953,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     public void onRefresh() {
         swipeRefreshLayout.setRefreshing(false);
         callApi(Constants.DASHBOARDCALLING);
-
+        callApi(Constants.PROFILE_API_CALLING);
     }
 
     private void addEventToCalender(String date) {

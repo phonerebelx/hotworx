@@ -109,6 +109,13 @@ public class TitleBar extends RelativeLayout {
         ivNotification.setOnClickListener(notificationButtonListener);
     }
 
+
+    public void hideNotificationText(){
+        tvNotificationNo.setVisibility(View.INVISIBLE);
+    }
+
+
+
     public void hideNotificationBtn(){
         tvNotificationNo.setVisibility(View.INVISIBLE);
         ivNotification.setImageResource(0);

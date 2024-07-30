@@ -96,7 +96,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                             liveData.value,
                             BusinessCardModel::class.java
                         )
-                    setUserDetail()
+                    setUserDetail(getBusinessCardModel.data?.get(0)?.location_email,getBusinessCardModel.data?.get(0)?.location_phone)
                     buy_url = getBusinessCardModel.data?.get(0)?.buy_url ?: ""
                     trial_url = getBusinessCardModel.data?.get(0)?.trail_url ?: ""
 
@@ -169,11 +169,11 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         myDockActivity.replaceDockableFragment(myReferralFragment)
     }
 
-    private fun setUserDetail(){
+    private fun setUserDetail(email: String?, phone: String?){
         binding.tvUserName.text = getBusinessCardModel.name_on_businesscard
         binding.tvUserDetail.text = getBusinessCardModel.card_title
-        binding.tvEmail.text = getBusinessCardModel.business_email
-        binding.tvPhone.text = getBusinessCardModel.phone_number
+        binding.tvEmail.text = email ?: ""
+        binding.tvPhone.text = phone ?: ""
     }
     private fun setImageOrData() {
         if (prefHelper.imagePath != null) {
@@ -247,6 +247,8 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         arrayString.add(lastFullName)
         return arrayString
     }
+
+
     private fun initUTMDialog() {
         val referralData = ArrayList<Data>()
         if (getBusinessCardModel.data != null){
@@ -408,7 +410,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
     }
 
 
-
     override fun <T> onItemClick(data: T, type: String) {
         val receivedData = data as com.hotworx.models.ComposeModel.RefferalDetailModel.Data
 
@@ -418,11 +419,15 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                 selected_location_name = receivedData.location_name
                 getBusinessCardModel.data!!.forEach {
                     if (it.location_name == selected_location_name) {
-                        setUTMText(it.utm_list[0].name?: "")
-                        setQrCode(it.utm_list[0].url ?: "")
+                       it.utm_list.let { array ->
+
+                           setUTMText(array[0].name?: "")
+                           setQrCode(array[0].url ?: "")
+                       }
                         referralData.location_name = it.location_name
                         referralData.location_code = it.location_code!!
                         referralData.trail_url = it.utm_list[0].url!!
+                        setUserDetail(it.location_email,it.location_phone)
                     }
                 }
 
@@ -431,7 +436,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             "UTM_DETAIL" -> {
                 setUTMText(receivedData.location_name)
                 setQrCode(receivedData.trail_url ?: "")
-
                 referralData.trail_url = receivedData.trail_url
 
                 getBusinessCardModel.data!!.forEach {loc ->

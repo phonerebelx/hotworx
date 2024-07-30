@@ -65,7 +65,6 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
         rvPendingSessions = root.findViewById(R.id.rvPendingSessions)
         tvNoRecordFound = root.findViewById(R.id.tvNoRecordFound)
         btnBookSession = root.findViewById(R.id.btnBookSession)
-        Log.d( "onCreateView: ",set_is_reciprocal_allowed.toString())
         setPendingSessionAdapter()
         setOnCLickListener()
         return root
