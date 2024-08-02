@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="headerName"
+            type="String" />
+
+        <variable
+            name="listener"
+            type="com.hotsquad.hotsquadlist.listener.GenericListeners" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:gravity="center"
+            android:layout_centerVertical="true">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:onClick="@{() -> listener.onTapBack()}"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/arrow_left"
+                android:contentDescription="@string/no" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="@{headerName}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                tools:text="@string/text" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

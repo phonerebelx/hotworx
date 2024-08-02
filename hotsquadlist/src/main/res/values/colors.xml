@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="zircon">#F5F8FF</color>
+    <color name="white_light">#33F5F8FF</color>
+    <color name="blue">#3366FF</color>
+    <color name="mirage">#161c24</color>
+    <color name="background">#F5F8FF</color>
+    <color name="grey">#F5F5F5</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+    <color name="transparent">#00000000</color>
+    <color name="dark_transparent">#24000000</color>
+    <color name="light_transparent">#16000000</color>
+    <color name="place_holder_color">#B6B6B6</color>
+    <color name="alto">#E0E0E0</color>
+    <color name="wildSand">#f4f4f4</color>
+    <color name="light_black">#424244</color>
+    <color name="red">#FF0000</color>
+    <color name="darkBlue">#1f244b</color>
+    <color name="black_light">#80000000</color>
+    <color name="shadow_light">#e7e7e7</color>
+    <color name="green">#4AD991</color>
+    <color name="sunset_orange">#FF4842</color>
+    <color name="yellow">#FFC107</color>
+    <color name="tileColor">#212B36</color>
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="retrofit_logging_request">Sending request %s on %s%n%s%s</string>
+    <string name="retrofit_logging_response">Received response for %s in %.1fms%n%s</string>
+    <string name="error_msg_no_internet">Not connected to internet</string>
+    <string name="error_msg_unauthorized">Your session has timed out. Please login again.</string>
+    <string name="page_not_found">Page not found</string>
+    <string name="bad_request">Bad Request</string>
+    <string name="service_unavailable">Service Unavailable</string>
+    <string name="server_error">Server Error</string>
+    <string name="account_block_by_admin_msg">Dear user, Your account has been locked. Please contact our support</string>
+    <string name="internal_server_error">Internal Server Error</string>
+    <string name="unexpected_error_occurred">Unexpected Error Occurred</string>
+    <string name="retrofit_request_method_type"> Method </string>
+    <string name="loading">Loading</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="no">No</string>
+    <string name="text">Text</string>
+</resources>
