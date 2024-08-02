@@ -14,6 +14,7 @@ data class BusinessCardModel(
     val insta_profile_link: String?,
     val name_on_businesscard: String?,
     val phone_number: String?,
+    val employee_address: String?,
     val trail_text: String?,
 
 )

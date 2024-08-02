@@ -38,10 +38,12 @@ import com.hotworx.models.ComposeModel.MyReferrals.MyReferralDataModel
 import com.hotworx.models.ComposeModel.RefferalDetailModel.AmbassadorReferralDataModel
 import com.hotworx.models.ComposeModel.RefferalDetailModel.Data
 import com.hotworx.models.ComposeModel.RefferalDetailModel.URLsetModel.UrlDataMode
+import com.hotworx.models.ReferralQr.ReferralQrDataModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.ViewPager.ViewPagerAdapter
 import com.hotworx.ui.dialog.ReferalRedeemBalance.RedeemBalanceDialogFragment
 import com.hotworx.ui.dialog.ReferralLocation.ReferralLocationDialogFragment
+import com.hotworx.ui.dialog.ReferralQr.QrDialogFragment
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.MyReferrals.MyReferralFragment
 import com.hotworx.ui.views.TitleBar
@@ -54,6 +56,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
     lateinit var trial_url: String
     lateinit var selected_location_name: String
     lateinit var referralData: Data
+    lateinit var referralQrDataModel: ReferralQrDataModel
     val args = Bundle()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,10 +99,18 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                             liveData.value,
                             BusinessCardModel::class.java
                         )
+
+
                     setUserDetail(getBusinessCardModel.data?.get(0)?.location_email,getBusinessCardModel.data?.get(0)?.location_phone)
                     buy_url = getBusinessCardModel.data?.get(0)?.buy_url ?: ""
                     trial_url = getBusinessCardModel.data?.get(0)?.trail_url ?: ""
 
+                    //set QR model
+                    referralQrDataModel = ReferralQrDataModel(
+                        getBusinessCardModel.name_on_businesscard ?: "",
+                        getBusinessCardModel.employee_address ?: "",
+                        getBusinessCardModel.data?.get(0)?.utm_list?.get(0)?.url ?: ""
+                    )
                      referralData = Data(
                        buy_url = "",
                         currency_symbol = "",
@@ -159,6 +170,10 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
 
             it.cvMulti.setOnClickListener {
                 callMyReferral()
+            }
+            it.ivQrCode.setOnClickListener {
+                Log.d("setOnClickListener: ",referralQrDataModel.toString())
+                initQrDialog(referralQrDataModel)
             }
         }
     }
@@ -381,6 +396,20 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         binding.ivQrCode.setImageBitmap(generateQrBitmap)
     }
 
+
+    private fun initQrDialog(referralQrDataModel: ReferralQrDataModel) {
+        val qrDialogFragment = QrDialogFragment()
+        qrDialogFragment.checkComeFromBusinessCard = true
+        qrDialogFragment.setContext(requireContext())
+        qrDialogFragment.dockActivity = dockActivity
+        qrDialogFragment.qrModel = referralQrDataModel
+        qrDialogFragment.show(
+            parentFragmentManager,
+            qrDialogFragment.tag
+        )
+    }
+
+
     private fun sendUrl() {
         if (::getBusinessCardModel.isInitialized && ::buy_url.isInitialized && ::trial_url.isInitialized){
             val setUrlDataMode = getBusinessCardModel?.let { details ->
@@ -417,32 +446,39 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             "LOCATION_DETAIL" -> {
                 setLocationText(receivedData.location_name, receivedData.location_address)
                 selected_location_name = receivedData.location_name
+
+
                 getBusinessCardModel.data!!.forEach {
                     if (it.location_name == selected_location_name) {
                        it.utm_list.let { array ->
-
                            setUTMText(array[0].name?: "")
                            setQrCode(array[0].url ?: "")
+                           referralQrDataModel.url = array[0].url ?: ""
+
                        }
                         referralData.location_name = it.location_name
                         referralData.location_code = it.location_code!!
                         referralData.trail_url = it.utm_list[0].url!!
                         setUserDetail(it.location_email,it.location_phone)
                     }
-                }
 
+                }
             }
+
 
             "UTM_DETAIL" -> {
                 setUTMText(receivedData.location_name)
                 setQrCode(receivedData.trail_url ?: "")
-                referralData.trail_url = receivedData.trail_url
+
+                referralQrDataModel.url = receivedData.trail_url
+                    referralData.trail_url = receivedData.trail_url
 
                 getBusinessCardModel.data!!.forEach {loc ->
                     loc.utm_list.forEach {utm ->
                         if (utm.name == receivedData.location_name)    {
                             referralData.location_name = loc.location_name ?: ""
                             referralData.location_code = loc.location_code ?: ""
+
                         }
                     }
                 }

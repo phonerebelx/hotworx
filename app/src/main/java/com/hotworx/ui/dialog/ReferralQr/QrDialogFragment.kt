@@ -15,6 +15,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.github.alexzhirkevich.customqrgenerator.QrData
@@ -42,16 +44,34 @@ class QrDialogFragment : BottomSheetDialogFragment() {
     lateinit var dockActivity: DockActivity
     lateinit var generateQrBitmap: Bitmap
     lateinit var getContext: Context
+    var checkComeFromBusinessCard: Boolean = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentQrDialogBinding.inflate(layoutInflater)
+        updateUIForBusiness()
         setQrCode()
         setData()
         setOnClickListener()
         return binding.root
+    }
+
+
+    private fun updateUIForBusiness(){
+        if (checkComeFromBusinessCard){
+            val params1 = binding.fl1.layoutParams as LinearLayout.LayoutParams
+            params1.weight = 0.5f
+            binding.fl1.layoutParams = params1
+
+
+            val params2 = binding.fl2.layoutParams as LinearLayout.LayoutParams
+            params2.weight = 0.5f
+            binding.fl2.layoutParams = params1
+            binding.fl2.visibility = View.VISIBLE
+        }
     }
  
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -147,8 +167,7 @@ class QrDialogFragment : BottomSheetDialogFragment() {
 
             it.btnShare.setOnClickListener {
                 if (::generateQrBitmap.isInitialized) {
-                    Log.d("setOnClick", generateQrBitmap.toString())
-                    getContext.shareBitmap(bitmap = generateQrBitmap)
+                   getContext.shareBitmap(bitmap = generateQrBitmap)
                 }
             }
         }
