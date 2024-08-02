@@ -12,13 +12,15 @@ buildscript {
         maven { url 'https://maven.google.com/' }
         maven { url 'https://plugins.gradle.org/m2/' }
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-        
+
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.1'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0'
+        classpath 'com.android.tools.build:gradle:7.2.2'
+//        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0'
         classpath "org.jetbrains.kotlin:kotlin-serialization:1.4.21"
-        classpath 'com.google.gms:google-services:4.3.8'  // Google Services plugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.8'
+        // Google Services plugin
 
         // Add the Crashlytics Gradle plugin
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
@@ -37,10 +39,9 @@ allprojects {
         mavenCentral()
         maven { url 'https://maven.google.com/' }
         maven { url 'https://jitpack.io' }
-        
+
     }
 }
-
 
 task clean(type: Delete) {
     delete rootProject.buildDir

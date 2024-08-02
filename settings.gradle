@@ -1,2 +1,3 @@
 include ':app',':fitbitapi', ':fitbitauth', ':fitbitcommon'
 rootProject.name='hotworx'
+include ':hotsquadlist'

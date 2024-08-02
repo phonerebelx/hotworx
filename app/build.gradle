@@ -18,8 +18,6 @@ android {
         envCode = envCode.toInteger()
     }
 
-
-
     defaultConfig {
         applicationId "com.hotworx"
         minSdkVersion 28
@@ -116,6 +114,9 @@ dependencies {
     implementation project(path: ':fitbitapi')
     implementation project(path: ':fitbitauth')
     implementation project(path: ':fitbitcommon')
+
+    //hotsquad
+    implementation project(path: ':hotsquadlist')
 
     //brivo
 

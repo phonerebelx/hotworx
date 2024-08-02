@@ -1,0 +1,104 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables { useSupportLibrary = true }
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+    namespace 'com.hotsquad.hotsquadlist'
+}
+
+final networkDependencies = [
+        retrofit             : "com.squareup.retrofit2:retrofit:2.9.0",
+        retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:2.9.0",
+        okHttp3Logging       : "com.squareup.okhttp3:logging-interceptor:4.9.2"
+]
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+
+    //Kotlin and Coroutines
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
+    //retrofit network dependencies
+    implementation networkDependencies.values()
+
+    //GSON
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    //multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //lifecycle,live data
+    def lifeCycleVersion = "2.5.1"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common:$lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
+
+    //responsive SDP
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //SpinKit for loading
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+    // EasyPermissions by Google
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    //Shape of view
+    implementation 'io.github.florent37:shapeofview:1.4.7'
+
+    //Image Picker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+    // Koin main features for Android (Scope,ViewModel ...)
+    def koin_version = "3.1.6"
+    implementation "io.insert-koin:koin-android:$koin_version"
+
+    //String utils
+    implementation 'org.apache.commons:commons-lang3:3.10'
+}
+
+static def releaseTime() {
+    return new Date().format("MMM-dd")
+}
