@@ -21,6 +21,8 @@
     <color name="colorGrayImage">#f7f7f7</color>
     <color name="colorBitGray">#f2f2f2</color>
     <color name="colorRed">#fe0000</color>
+    <color name="text_color">#EF5E23</color>
+    <color name="text_color_black">#333334</color>
     <color name="colorCardRed">#FE1103</color>
     <color name="colorDarkRed">#c82506</color>
     <color name="colorTimer">#e17218</color>

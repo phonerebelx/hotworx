@@ -35,6 +35,7 @@ import com.hotworx.ui.fragments.ActivityScreenNew.NewActivityScreenFragment;
 import com.hotworx.ui.fragments.BusinessCard.BusinessCardFragment;
 import com.hotworx.ui.fragments.ComposeFragments.ReferralDetail.ReferralDetailFragment;
 import com.hotworx.ui.fragments.GetStarted.GetStartedFragment;
+import com.hotworx.ui.fragments.HotsquadList.CreateHotsquadFragment;
 import com.hotworx.ui.fragments.Intermittent.IntermittentFastingFragment;
 import com.hotworx.ui.fragments.LeaderBoard.LeaderBoardFragment;
 import com.hotworx.ui.fragments.Nutritionist.NutritionistFragment;
@@ -148,7 +149,7 @@ public class SideMenuFragment extends BaseFragment {
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null, null));
-        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad, new LeaderBoardFragment(), null, null));
+        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad, new CreateHotsquadFragment(), null, null));
         drawerList.add(new NavigationItem(R.string.rewards, R.drawable.icon_menu_rewards, new LatestRewardFragment(), null, null));
 
         if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
