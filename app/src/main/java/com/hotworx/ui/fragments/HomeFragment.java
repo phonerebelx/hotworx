@@ -58,6 +58,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.hotworx.R;
 import com.hotworx.Singletons.ApiHeaderSingleton;
@@ -256,6 +257,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build();
 
+        FirebaseApp.initializeApp(getContext());
         getFirebaseToken();
         apiCallForIntermittentPlan();
         callApi(Constants.PROFILE_API_CALLING);
