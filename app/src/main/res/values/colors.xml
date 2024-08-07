@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#E45C26</color>
     <color name="colorAccent">#E45C26</color>
     <color name="colorAccent2">#FAAC58</color>
-    <color name="transparent_orange">#C6F8E8E3</color>
+    <color name="transparent_orange">#DCF8CABC</color>
     <color name="colorOTP">#d31a17</color>
     <color name="colorWhite">#fff</color>
     <color name="colorBlack">#000</color>
@@ -61,6 +61,7 @@
     <color name="button_reward2">#DD7D4A</color>
     <color name="stroke_color">#e7eef8</color>
     <color name="login_edit_color">#efeae7</color>
+    <color name="hint_color">#3A3A3A</color>
     <color name="login_texture_color">#bdb7b3</color>
     <color name="colorWhiteLightOpacity">#C3FFFFFF</color>
     <color name="colorLocationGrey">#f6f6f6</color>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainView"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_3sdp"
+    android:background="@color/white"
+    android:elevation="@dimen/_20sdp"
+    android:layout_marginStart="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginEnd="@dimen/_10sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_rectangle_orange_outline"
+        android:padding="@dimen/_8sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <io.github.florent37.shapeofview.shapes.RoundRectView
+                android:id="@+id/imgCircle"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_gravity="center"
+                app:shape_roundRect_bottomLeftRadius="@dimen/_6sdp"
+                app:shape_roundRect_bottomRightRadius="@dimen/_6sdp"
+                app:shape_roundRect_topLeftRadius="@dimen/_6sdp"
+                app:shape_roundRect_topRightRadius="@dimen/_6sdp"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/no"
+                    android:background="@color/transparent_orange"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:contentDescription="@string/no"
+                    android:layout_gravity="center"
+                    android:src="@drawable/person_green"
+                    android:scaleType="centerCrop" />
+            </io.github.florent37.shapeofview.shapes.RoundRectView>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Text"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_11ssp"
+                android:layout_marginHorizontal="@dimen/_5sdp"/>
+
+            <TextView
+                android:id="@+id/counter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/Text"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/_10ssp"
+                android:layout_below="@+id/title" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+
