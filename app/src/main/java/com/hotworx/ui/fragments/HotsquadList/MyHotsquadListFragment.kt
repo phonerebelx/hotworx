@@ -26,16 +26,8 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val staticList = listOf(
-            HotsquadItem("My Family", 2, R.drawable.listicon),
-            HotsquadItem("My Friends & Family", 12, R.drawable.listicon),
-            HotsquadItem("Hot ISO", 0, R.drawable.listicon)
-        )
-
-        val adapter = SquadListAdapter(staticList, this)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = adapter
+        
+        setAdapter()
     }
 
     override fun onItemClick(item: HotsquadItem) {
@@ -46,6 +38,19 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         super.setTitleBar(titleBar)
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.leaderboard)
+    }
+
+    private fun setAdapter() {
+
+        val squadList = listOf(
+            HotsquadItem("My Family", 2, R.drawable.listicon),
+            HotsquadItem("My Friends & Family", 12, R.drawable.listicon),
+            HotsquadItem("Hot ISO", 0, R.drawable.listicon)
+        )
+
+        val adapter = SquadListAdapter(squadList, this)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
     }
 
     override fun onDestroyView() {
