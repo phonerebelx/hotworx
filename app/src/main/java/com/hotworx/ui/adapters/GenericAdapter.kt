@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
@@ -59,8 +58,8 @@ class GenericAdapter<T> internal constructor(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: T) {
-            binding.setVariable(BR.item, item)
-            binding.setVariable(BR.listener, itemClickListener)
+//            binding.setVariable(BR.item, item)
+//            binding.setVariable(BR.listener, itemClickListener)
             binding.executePendingBindings()
         }
     }

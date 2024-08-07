@@ -1,18 +1,18 @@
 package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
-import com.hotworx.databinding.FragmentHotsquadCreateBinding
 import com.hotworx.databinding.FragmentMyHotsquadListBinding
+import com.hotworx.models.HotsquadList.HotsquadItem
+import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
 
-
-class MyHotsquadListFragment : BaseFragment() {
+class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListener {
     private var _binding: FragmentMyHotsquadListBinding? = null
     private val binding get() = _binding!!
 
@@ -27,6 +27,19 @@ class MyHotsquadListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val staticList = listOf(
+            HotsquadItem("My Family", 2, R.drawable.listicon),
+            HotsquadItem("My Friends & Family", 12, R.drawable.listicon),
+            HotsquadItem("Hot ISO", 0, R.drawable.listicon)
+        )
+
+        val adapter = SquadListAdapter(staticList, this)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
+    }
+
+    override fun onItemClick(item: HotsquadItem) {
+        // Handle item click here
     }
 
     override fun setTitleBar(titleBar: TitleBar) {
