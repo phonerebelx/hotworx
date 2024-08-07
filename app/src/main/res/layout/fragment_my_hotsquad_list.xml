@@ -1,75 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_leader_board"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:padding="@dimen/_10sdp">
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textLayoutTitle"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/Title"
-            android:textColorHint="@color/textColorSecondary"
-            app:hintTextColor="@color/textColorSecondary">
+            android:text="@string/hotsquad_list"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/text_color"/>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/titleEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_regular"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/hint_color"
-                android:textColorHint="@color/textColorSecondary"
-                android:inputType="text"
-                android:textColor="@color/hint_color" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textLayoutDescription"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/descriptionn"
-            android:layout_marginTop="@dimen/_9sdp"
-            android:textColorHint="@color/textColorSecondary"
-            app:hintTextColor="@color/textColorSecondary">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/descriptionEt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_regular"
-                android:imeOptions="actionNext"
-                android:backgroundTint="@color/hint_color"
-                android:textColorHint="@color/textColorSecondary"
-                android:inputType="text"
-                android:textColor="@color/hint_color" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCreateHotsquad"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_weight="1"
-            android:background="@drawable/multicolor_background"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:text="@string/add_list"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_16sdp"
-            android:fontFamily="@font/bebasneue_regular" />
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:spanCount="2"
+            tools:listitem="@layout/item_myhotsquadlist"/>
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
