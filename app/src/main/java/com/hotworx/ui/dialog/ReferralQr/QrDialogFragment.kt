@@ -27,6 +27,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.hotworx.Extensions.shareBitmap
+import com.hotworx.Extensions.shareLink
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentQrDialogBinding
 import com.hotworx.helpers.Utils
@@ -167,7 +168,9 @@ class QrDialogFragment : BottomSheetDialogFragment() {
 
             it.btnShare.setOnClickListener {
                 if (::generateQrBitmap.isInitialized) {
-                   getContext.shareBitmap(bitmap = generateQrBitmap)
+
+                   getContext.shareLink(qrModel.url)
+
                 }
             }
         }

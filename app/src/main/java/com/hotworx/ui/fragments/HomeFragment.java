@@ -26,6 +26,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -629,7 +630,12 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         } else {
             ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager()); //viewPager.getAdapter() instanceof ViewPagerAdapter ? (ViewPagerAdapter) viewPager.getAdapter() : new ViewPagerAdapter(getChildFragmentManager());
             PendingSessionFragment psf = new PendingSessionFragment();
-            psf.set_is_reciprocal_allowed = get_is_new_reciprocal().getValue();
+            String reciprocalValue = get_is_new_reciprocal().getValue();
+            if (reciprocalValue != null) {
+                psf.setSet_is_reciprocal_allowed(reciprocalValue);
+            } else {
+                psf.setSet_is_reciprocal_allowed("no");
+            }
             psf.setData(getTodaysPendingSession);
             adapter.addFrag(psf, "PSF's");
 
