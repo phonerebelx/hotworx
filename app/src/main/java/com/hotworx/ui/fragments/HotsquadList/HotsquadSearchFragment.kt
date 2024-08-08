@@ -2,44 +2,25 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.datepicker.DateValidatorPointForward
-import com.google.gson.Gson
-import com.hotsquad.hotsquadlist.utils.Constant
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
-import com.hotworx.databinding.FragmentHotsquadCreateBinding
 import com.hotworx.databinding.FragmentHotsquadSearchBinding
-import com.hotworx.databinding.ItemUserFormBinding
-import com.hotworx.models.HotsquadList.SearchUserModel
-import com.hotworx.models.HotsquadList.UserFormFieldModel
 import com.hotworx.models.HotsquadList.UserModel
+import com.hotworx.ui.adapters.HotsquadListAdapter.UserListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
-import java.text.Normalizer.Form
+import java.util.regex.Pattern
 
 class HotsquadSearchFragment : BaseFragment() {
     private var _binding: FragmentHotsquadSearchBinding? = null
     private val binding get() = _binding!!
 
-    /**
-     * List
-     */
-    private val userListForServer = ArrayList<UserModel>()
-    private lateinit var uList: SearchUserModel
-    private var dynamicField: MutableList<UserFormFieldModel> = ArrayList()
-
-    /**
-     * Variables
-     */
-    var personCount = 0
-    /**
-     * Dynamic Layout
-     */
-    private lateinit var bindingItemUserForm: ItemUserFormBinding
+    private val userList = ArrayList<UserModel>()
+    private lateinit var userListAdapter: UserListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,50 +33,33 @@ class HotsquadSearchFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.addUSer.setOnClickListener(View.OnClickListener {
+        userListAdapter = UserListAdapter(userList)
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = userListAdapter
+        }
 
-            when {
-                TextUtils.isEmpty(binding.titleEt.text.toString()) -> {
-                    binding.titleEt.error = "Field Required!!"
-                    binding.titleEt.requestFocus()
-                }
-                else -> {
-
-                    /**
-                     * clear before add data
-                     */
-                    userListForServer.clear()
-
-                    dynamicField.forEach {
-
-                        Log.d(
-                            "Dynamic",
-                            " User Form Fields \n"
-                                .plus("Title: ").plus(it.searchedName.text.toString())
-                        )
-                        when {
-                            TextUtils.isEmpty(it.searchedName.text.toString()) -> {
-                                it.searchedName.error = "Field Required!!"
-                                it.searchedName.requestFocus()
-                            }
-                            else -> userListForServer.add(
-                                UserModel(
-                                    it.searchedName.text.toString()
-                                )
-                            )
-                        }
-                    }
-
-                    uList = SearchUserModel(userListForServer)
-                }
+        binding.addUSer.setOnClickListener {
+            val inputText = binding.titleEt.text.toString()
+            if (TextUtils.isEmpty(inputText)) {
+                binding.titleEt.error = "Field Required!!"
+                binding.titleEt.requestFocus()
+            } else if (!isValidEmailOrPhone(inputText)) {
+                binding.titleEt.error = "Invalid Email or Phone Number!"
+                binding.titleEt.requestFocus()
+            } else {
+                val userModel = UserModel(inputText)
+                userList.add(userModel)
+                userListAdapter.notifyItemInserted(userList.size - 1)
+                binding.titleEt.text?.clear()
             }
-        })
+        }
+    }
 
-        bindingItemUserForm = ItemUserFormBinding.inflate(
-            layoutInflater,
-            binding.layoutForPassengerListForm,
-            false
-        )
+    private fun isValidEmailOrPhone(input: String): Boolean {
+        val emailPattern = Patterns.EMAIL_ADDRESS
+        val phonePattern = Pattern.compile("^\\+?[0-9]{10,13}\$")
+        return emailPattern.matcher(input).matches() || phonePattern.matcher(input).matches()
     }
 
     override fun setTitleBar(titleBar: TitleBar) {
