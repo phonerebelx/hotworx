@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="@dimen/_7sdp"
-    android:padding="@dimen/_7sdp"
+    android:padding="@dimen/_5sdp"
     android:layout_marginTop="@dimen/_5sdp"
     android:layout_marginBottom="@dimen/_5sdp"
     android:layout_marginStart="@dimen/_5sdp"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_regular"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="3"
             android:layout_weight="1"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_5sdp"
@@ -34,8 +34,15 @@
             android:textSize="@dimen/_14ssp" />
 
         <ImageView
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_17sdp"
+            android:layout_height="@dimen/_17sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@drawable/editicon"
+            android:contentDescription="@string/no" />
+
+        <ImageView
+            android:layout_width="@dimen/_17sdp"
+            android:layout_height="@dimen/_17sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:src="@drawable/trash"
             android:contentDescription="@string/no" />
