@@ -2,7 +2,8 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Patterns
+import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +34,7 @@ class HotsquadSearchFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userListAdapter = UserListAdapter(userList)
+        userListAdapter = UserListAdapter(userList, ::onDeleteItemClicked)
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = userListAdapter
@@ -52,14 +53,29 @@ class HotsquadSearchFragment : BaseFragment() {
                 userList.add(userModel)
                 userListAdapter.notifyItemInserted(userList.size - 1)
                 binding.titleEt.text?.clear()
+                updateSearchButtonVisibility()
             }
         }
+
+        updateSearchButtonVisibility()
     }
 
     private fun isValidEmailOrPhone(input: String): Boolean {
-        val emailPattern = Patterns.EMAIL_ADDRESS
+        val emailPattern = android.util.Patterns.EMAIL_ADDRESS
         val phonePattern = Pattern.compile("^\\+?[0-9]{10,13}\$")
         return emailPattern.matcher(input).matches() || phonePattern.matcher(input).matches()
+    }
+
+    private fun updateSearchButtonVisibility() {
+        binding.btnSearchUser.visibility = if (userList.size >= 1) View.VISIBLE else View.GONE
+    }
+
+    private fun onDeleteItemClicked(position: Int) {
+        if (position in userList.indices) {
+            userList.removeAt(position)
+            userListAdapter.notifyItemRemoved(position)
+            updateSearchButtonVisibility()
+        }
     }
 
     override fun setTitleBar(titleBar: TitleBar) {

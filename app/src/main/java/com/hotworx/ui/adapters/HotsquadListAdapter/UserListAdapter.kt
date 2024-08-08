@@ -9,17 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
 import com.hotworx.models.HotsquadList.UserModel
 
-class UserListAdapter(private val userList: MutableList<UserModel>) : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
+class UserListAdapter(
+    private val userList: MutableList<UserModel>,
+    private val onDeleteClick: (Int) -> Unit
+) : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View,private val adapter: UserListAdapter) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.tvUserName)
-        private val deleteImageView: ImageView = itemView.findViewById(R.id.ivDelete)
+        private val deleteImageView: ImageView = itemView.findViewById(R.id.ivDelete) // Ensure this ID matches your XML
 
-        fun bind(user: UserModel) {
+        fun bind(user: UserModel, position: Int) {
             nameTextView.text = user.searchedName
-
             deleteImageView.setOnClickListener {
-                adapter.removeAt(position)
+                onDeleteClick(position)
             }
         }
     }
@@ -27,20 +29,12 @@ class UserListAdapter(private val userList: MutableList<UserModel>) : RecyclerVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_user_form, parent, false)
-        return ViewHolder(view,this)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(userList[position])
+        holder.bind(userList[position], position)
     }
 
     override fun getItemCount(): Int = userList.size
-
-    fun removeAt(position: Int) {
-        if (position >= 0 && position < userList.size) {
-            userList.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, itemCount)
-        }
-    }
 }

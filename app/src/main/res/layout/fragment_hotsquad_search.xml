@@ -69,6 +69,19 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_30sdp"/>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSearchUser"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/multicolor_background"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/search"
+            android:visibility="gone"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_14sdp"
+            android:fontFamily="@font/bebasneue_regular" />
+
     </LinearLayout>
 
 </LinearLayout>
