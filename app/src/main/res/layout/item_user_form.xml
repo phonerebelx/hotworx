@@ -31,7 +31,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:text="@string/text"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_12ssp" />
 
         <ImageView
             android:layout_width="@dimen/_17sdp"
@@ -41,6 +41,7 @@
             android:contentDescription="@string/no" />
 
         <ImageView
+            android:id="@+id/ivDelete"
             android:layout_width="@dimen/_17sdp"
             android:layout_height="@dimen/_17sdp"
             android:layout_marginEnd="@dimen/_10sdp"

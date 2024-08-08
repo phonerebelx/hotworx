@@ -19,7 +19,7 @@ class HotsquadSearchFragment : BaseFragment() {
     private var _binding: FragmentHotsquadSearchBinding? = null
     private val binding get() = _binding!!
 
-    private val userList = ArrayList<UserModel>()
+    private val userList = mutableListOf<UserModel>()
     private lateinit var userListAdapter: UserListAdapter
 
     override fun onCreateView(
