@@ -103,8 +103,6 @@
                         android:textSize="@dimen/_12ssp"
                         android:layout_marginHorizontal="@dimen/_5sdp"/>
 
-
-
                     <ImageView
                         android:id="@+id/attachmentImg"
                         android:layout_width="@dimen/_20sdp"

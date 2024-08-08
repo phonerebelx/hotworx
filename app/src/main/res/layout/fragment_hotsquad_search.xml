@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_leader_board"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hotsquad_list"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/text_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textLayoutTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_name"
+                android:layout_weight="1"
+                android:textColorHint="@color/textColorSecondary"
+                app:hintTextColor="@color/textColorSecondary">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/titleEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:imeOptions="actionNext"
+                    android:textSize="@dimen/_12ssp"
+                    android:backgroundTint="@color/hint_color"
+                    android:textColorHint="@color/textColorSecondary"
+                    android:inputType="text"
+                    android:textColor="@color/hint_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/addUSer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/addicon"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutForPassengerListForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

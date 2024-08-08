@@ -45,6 +45,11 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_hotsquad_search.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_latest_reward.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
@@ -90,6 +95,11 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_user_form.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -97,13 +107,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48572693-4e8f-4229-a717-18ad3a6b4297" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/app/hotworx.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/adapters/HotsquadListAdapter/SquadMemberListAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/MyHotsquadListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/MyHotsquadListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_rectangle_orange_outline.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_rectangle_orange_outline.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/activities/DockActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/activities/DockActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/adapters/HotsquadListAdapter/SquadListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/adapters/HotsquadListAdapter/SquadListAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_hotsquad_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_hotsquad_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_nitification_read.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_nitification_read.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_myhotsquadlist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_myhotsquadlist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,10 +169,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "Z:/My Projects/Android Projects/Hotworx ali github",
+    "last_opened_file_path": "Z:/My Projects/Android Projects/Hotworx ali github/app/src/main/res/layout",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   },
   "keyToStringList": {
@@ -168,13 +184,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\layout" />
+      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.hotworx.models.HotsquadList" />
       <recent name="com.hotworx.ui.adapters" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">

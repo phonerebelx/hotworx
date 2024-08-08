@@ -90,14 +90,14 @@ public abstract class DockActivity extends AppCompatActivity
         super.onResume();
     }
 
+
+
     public void replaceDockableFragment(BaseFragment frag) {
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction();
 
         transaction.replace(getDockFrameLayoutId(), frag);
-        transaction
-                .addToBackStack(
-                        getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST
+        transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST
                                 : null).commit();
     }
 

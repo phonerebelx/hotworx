@@ -1,11 +1,13 @@
 package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
+import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentMyHotsquadListBinding
 import com.hotworx.models.HotsquadList.HotsquadItem
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
@@ -32,6 +34,7 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
     override fun onItemClick(item: HotsquadItem) {
         // Handle item click here
+        Log.d("MyHotsquadListFragment", "Item clicked: ${item.title}")
     }
 
     override fun setTitleBar(titleBar: TitleBar) {
@@ -48,9 +51,12 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
             HotsquadItem("Hot ISO", 0, R.drawable.listicon)
         )
 
-        val adapter = SquadListAdapter(squadList, this)
+        val adapter = SquadListAdapter(squadList, this, activity as? DockActivity)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+//        val adapter = SquadListAdapter(squadList, this)
+//        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+//        binding.recyclerView.adapter = adapter
     }
 
     override fun onDestroyView() {
