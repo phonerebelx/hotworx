@@ -13,6 +13,7 @@ import com.hotworx.databinding.FragmentHotsquadSearchBinding
 import com.hotworx.models.HotsquadList.UserModel
 import com.hotworx.ui.adapters.HotsquadListAdapter.UserListAdapter
 import com.hotworx.ui.fragments.BaseFragment
+import com.hotworx.ui.fragments.HotsquadList.Bottomsheet.SearchUserBottomSheet
 import com.hotworx.ui.views.TitleBar
 import java.util.regex.Pattern
 
@@ -22,6 +23,11 @@ class HotsquadSearchFragment : BaseFragment() {
 
     private val userList = mutableListOf<UserModel>()
     private lateinit var userListAdapter: UserListAdapter
+
+    /**
+     * Bottom Sheet
+     */
+    private lateinit var searchUserBottomSheet: SearchUserBottomSheet
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,8 +63,11 @@ class HotsquadSearchFragment : BaseFragment() {
             }
         }
 
-        binding.btnSearchUser.setOnClickListener{
+        //Bottom Sheet
+        searchUserBottomSheet = SearchUserBottomSheet(object : SearchUserBottomSheet.OnItemClickListener{})
 
+        binding.btnSearchUser.setOnClickListener{
+            searchUserBottomSheet.show(parentFragmentManager, "TAG")
         }
 
         updateSearchButtonVisibility()
