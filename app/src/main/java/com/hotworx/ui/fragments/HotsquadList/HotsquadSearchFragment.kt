@@ -57,6 +57,10 @@ class HotsquadSearchFragment : BaseFragment() {
             }
         }
 
+        binding.btnSearchUser.setOnClickListener{
+
+        }
+
         updateSearchButtonVisibility()
     }
 
