@@ -51,12 +51,9 @@ class NotificationDialogHomeFragment(val onItemClick: OnClickItemListener) : Dia
         binding.tvDesc.text = notificationModel.body
     }
 
-
     fun setNotificationModel(id: String?,title: String?,body: String?,image: String?){
         notificationModel =  NotificationModel(id,title,body,image)
-
     }
-
 
     private fun setOnClickListener(){
         binding.ivCancel.setOnClickListener {
@@ -70,7 +67,6 @@ class NotificationDialogHomeFragment(val onItemClick: OnClickItemListener) : Dia
         }
 
     }
-
 
     override fun onResume() {
         super.onResume()

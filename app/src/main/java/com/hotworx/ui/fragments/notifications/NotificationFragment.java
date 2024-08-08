@@ -167,7 +167,6 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
         notificationReadFragment.show(getParentFragmentManager(), "NotificationReadFragment");
     }
 
-
     private void initImageDialog(Data data){
         LargeImageViewDialogFragment largeImageViewDialogFragment = new LargeImageViewDialogFragment();
         largeImageViewDialogFragment.notificationData = data;

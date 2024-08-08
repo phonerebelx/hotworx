@@ -261,7 +261,8 @@ dependencies {
     implementation 'io.github.florent37:shapeofview:1.4.7'
     implementation 'com.ms-square:etsyblur:0.2.1'
 
-
+    //SpinKit for loading
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 }
 repositories {
     mavenCentral()

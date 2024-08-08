@@ -12,6 +12,7 @@
     <string name="unexpected_error_occurred">Unexpected Error Occurred</string>
     <string name="retrofit_request_method_type"> Method </string>
     <string name="loading">Loading</string>
+    <string name="registered_member">Registered Member</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="no">No</string>
