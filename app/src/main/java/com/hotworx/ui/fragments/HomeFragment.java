@@ -432,7 +432,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 //    }
     ////////////////////////////closed due to new dashboard //////////////////////////////////////////////
     private String getCurrentDate(int type) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         DateFormat dateFormat2 = new SimpleDateFormat("MMM dd yyyy", Locale.getDefault());
 
         Date date = new Date();
@@ -465,6 +465,12 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 //            dayBefore_textview.setText(content);
 //        }
         return dateFormat.format(calendar.getTime());
+    }
+
+    private String getCurrentDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(date); // Return the formatted date as a string
     }
 
     private void apiCallForOverAllSummary(String date) {
@@ -516,7 +522,8 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             case Constants.DASHBOARDCALLING:
                 getServiceHelper().enqueueCallExtended(
                         getWebService().getDashboard(
-                                ApiHeaderSingleton.apiHeader(requireContext())
+                                ApiHeaderSingleton.apiHeader(requireContext()),
+                                getCurrentDate()
                         ), Constants.DASHBOARDCALLING, true
                 );
 
