@@ -33,9 +33,10 @@ import com.hotworx.ui.adapters.FrequentlyBooked.FrequentBookingAdapter
 import com.hotworx.ui.adapters.LocationAdapter.LocationSelectionAdapter
 import com.hotworx.ui.dialog.BookSession.LocationFeeUpdateDialogFragment
 import com.hotworx.ui.fragments.BaseFragment
+import com.hotworx.ui.fragments.HomeFragment
 import com.hotworx.ui.views.TitleBar
 
-class LocationSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickStringTypeListener,
+class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragment(), OnItemClickInterface, OnClickStringTypeListener,
     OnClickItemListener {
     private lateinit var rvCountryBooking: RecyclerView
     private lateinit var frequentlyBookingAdapter: FrequentBookingAdapter
@@ -60,7 +61,9 @@ class LocationSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickS
         rvLocationSelector = root.findViewById(R.id.rvLocationSelector)
         etLocation = root.findViewById(R.id.etLocation)
 //        acpLocationSpinner = root.findViewById(R.id.acpLocationSpinner)
+
         callApi(Constants.GETBOOKINGLOCATION, "")
+
 
         return root
     }
@@ -69,11 +72,19 @@ class LocationSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickS
     private fun callApi(type: String, data: String) {
         when (type) {
             Constants.GETBOOKINGLOCATION -> {
+               if (is_reciprocal_allowed == "yes"){
                 getServiceHelper().enqueueCallExtended(
                     getWebService().getBookingLocations_v2(
                         ApiHeaderSingleton.apiHeader(requireContext())
                     ), Constants.GETBOOKINGLOCATION, true
                 )
+               } else {
+                   getServiceHelper().enqueueCallExtended(
+                       getWebService().getBookingLocations(
+                           ApiHeaderSingleton.apiHeader(requireContext())
+                       ), Constants.GETBOOKINGLOCATION, true
+                   )
+               }
             }
         }
     }
@@ -100,7 +111,6 @@ class LocationSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickS
 
                 } catch (e: Exception) {
                     GsonFactory.getConfiguredGson()?.fromJson(liveData.value, ErrorResponseEnt::class.java)?.let { errorResponseEnt ->
-                        Log.d( "onSuccess: ",errorResponseEnt.toString())
                         dockActivity?.showErrorMessage(errorResponseEnt.error)
                     }
                 }
@@ -119,7 +129,7 @@ class LocationSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickS
             }
         }
 
-        val bookingSelectionFragment = BookingSelectionFragment()
+        val bookingSelectionFragment = BookingSelectionFragment(is_reciprocal_allowed = this.is_reciprocal_allowed)
         bookingSelectionFragment.arguments = args
         dockActivity.replaceDockableFragment(bookingSelectionFragment)
     }
@@ -133,42 +143,51 @@ class LocationSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickS
                     sessionBookingDataModel.locations.forEach {
                         if (getLocation == it.location_name) {
                             getLocationDetail = it
+                            return@forEach // Return early once found
                         }
                     }
-
-
-
                 }
 
+                if (!::getLocationDetail.isInitialized) {
+                     dockActivity?.showErrorMessage("Location not found")
+                    return
+                }
             }
+
             "Frequent Location" -> {
                 if (getLocation.isNotEmpty()) {
                     sessionBookingDataModel.frequently_locations.forEach {
                         if (getLocation == it.location_name) {
                             getFrequentLocationDetail = it
+                            return@forEach
                         }
                     }
 
                 }
+
+                if (!::getFrequentLocationDetail.isInitialized) {
+                    dockActivity?.showErrorMessage("Frequent Location not found")
+                    return
+                }
             }
         }
 
-        if ((::getLocationDetail.isInitialized && getLocationDetail.location_tier != "Standard")
-            &&
-            type == "Location"
-            ) {
-            initExtraPayDialog(getLocationDetail,"Location")
-        }
-        else if ((::getFrequentLocationDetail.isInitialized && getFrequentLocationDetail.location_tier != "Standard")
-            &&
-            type == "Frequent Location"
-            ) {
-            initExtraPayDialog(getFrequentLocationDetail, "Frequent Location")
-        }
-        else{
-            moveToNextFragment(getLocationDetail,type)
-        }
 
+        if (type == "Location") {
+            if (getLocationDetail.location_tier != "Standard" &&
+                (getLocationDetail.location_tier == "Premium" || getLocationDetail.location_tier == "Elite")) {
+                initExtraPayDialog(getLocationDetail, "Location")
+            } else {
+                moveToNextFragment(getLocationDetail, type)
+            }
+        } else if (type == "Frequent Location") {
+            if (getFrequentLocationDetail.location_tier != "Standard" &&
+                (getFrequentLocationDetail.location_tier == "Premium" || getFrequentLocationDetail.location_tier == "Elite")) {
+                initExtraPayDialog(getFrequentLocationDetail, "Frequent Location")
+            } else {
+                moveToNextFragment(getFrequentLocationDetail, type)
+            }
+        }
     }
 
 
@@ -182,7 +201,7 @@ class LocationSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickS
 
     private fun setLocationAdapter(locationArray: ArrayList<Location>) {
         if (locationArray.size > 0) {
-            locationBookingAdapter = LocationSelectionAdapter(requireContext(), this)
+            locationBookingAdapter = LocationSelectionAdapter(requireContext(), this,is_reciprocal_allowed)
             locationBookingAdapter.setList(locationArray)
             rvLocationSelector.adapter = locationBookingAdapter
         }

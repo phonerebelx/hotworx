@@ -43,15 +43,15 @@ class LocationFeeUpdateDialogFragment : DialogFragment() {
         binding.tvTitle.text = getLocationDetail.location_name.toString() ?: ""
         binding.tvDescription.text = getLocationDetail.description.toString() ?: ""
         if (getLocationDetail.location_tier == "Premium") {
-            Glide.with(dockActivity)
+            Glide.with(requireContext())
                 .load(R.drawable.premium)
-                .into(binding.ivPremium)
+                .into(binding.ivTier)
         }
 
         if (getLocationDetail.location_tier == "Elite"){
-            Glide.with(dockActivity)
+            Glide.with(requireContext())
                 .load(R.drawable.elite)
-                .into(binding.ivPremium)
+                .into(binding.ivTier)
         }
     }
 

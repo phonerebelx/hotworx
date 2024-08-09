@@ -5,6 +5,7 @@ data class Data(
     val attachment_url: String?,
     val body: String,
     val image_url: String?,
+    val banner: String?,
     val sent_at: String,
     val title: String,
     var read_status: Boolean,

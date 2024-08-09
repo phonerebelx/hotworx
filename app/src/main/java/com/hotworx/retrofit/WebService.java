@@ -108,9 +108,11 @@ public interface WebService {
     );
 
     //DashBoard Api
+    @FormUrlEncoded
     @POST("getDashboard")
     Call<ResponseBody> getDashboard(
-            @HeaderMap Map<String, String> headers
+            @HeaderMap Map<String, String> headers ,
+            @Field("current_date") String currentDate
     );
 
     //Delete Session API

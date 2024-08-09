@@ -11,10 +11,16 @@ import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import com.google.gson.Gson;
 import com.hotworx.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Iterator;
 import java.util.Timer;
 
 import spencerstudios.com.bungeelib.Bungee;
@@ -35,20 +41,27 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        //printKeyHash(this);
+
+
         Intent intent = getIntent();
         if (intent != null && intent.getExtras() != null) {
-
-            intent.putExtra("navigateTo", "NotificationFragment");
             Bundle extras = intent.getExtras();
+            if (!extras.containsKey("navigateTo")){
+            intent.putExtra("navigateTo", "NotificationFragment");
+
             for (String key : extras.keySet()) {
                 Object value = extras.get(key);
+
                 if (value instanceof String || value instanceof Integer) {
                     if ( key.equals("id")){
                         intent.putExtra("hashId", value.toString());
                     }
+                    if (key.equals("image") || key.equals("title") || key.equals("body")) {
+                        intent.putExtra(key, value.toString());
+                    }
                 }
             }
+        }
         }
     }
 
@@ -75,6 +88,8 @@ public class SplashActivity extends BaseActivity {
 
                 intent.putExtra("navigateTo",getIntent().getStringExtra("navigateTo"));
                 intent.putExtra("hashId",getIntent().getStringExtra("hashId"));
+                intent.putExtra("image",getIntent().getStringExtra("image"));
+                intent.putExtra("body",getIntent().getStringExtra("body"));
                 intent.putExtra("notification_type",getIntent().getStringExtra("notification_type"));
                 intent.putExtra("custom_message",getIntent().getStringExtra("custom_message"));
                 intent.putExtra("booking_date",getIntent().getStringExtra("booking_date"));

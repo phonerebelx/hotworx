@@ -575,5 +575,8 @@ class ProfileAndGoalFragment : BaseFragment() {
 
     override fun setTitleBar(titleBar: TitleBar) {
         titleBar.hideTitleBar()
+        titleBar.hideNotificationBtn()
+        titleBar.hideNotificationText()
+        titleBar.hideBrivoBtn()
     }
 }

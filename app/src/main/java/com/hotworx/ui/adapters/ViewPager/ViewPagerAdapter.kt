@@ -17,7 +17,7 @@ class ViewPagerAdapter(private val items: BusinessCardModel) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items.data?.get(position) ?: Data("","","","","","","", arrayListOf()))
+        holder.bind(items.data?.get(position) ?: Data("","","","","","","","","", arrayListOf()))
     }
 
     override fun getItemCount(): Int {

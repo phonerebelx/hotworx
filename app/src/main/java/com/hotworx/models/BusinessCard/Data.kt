@@ -7,6 +7,8 @@ data class Data(
     val location_code: String?,
     val location_name: String?,
     val location_address: String?,
+    val location_email: String?,
+    val location_phone: String?,
     val trail_url: String?,
     val utm_list: ArrayList<UtmModel>
 )

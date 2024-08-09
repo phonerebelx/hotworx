@@ -75,7 +75,8 @@ public class ServiceHelper {
                             if (tag.equals(WebServiceConstants.GET_FOOD)
                                     || tag.equals(WebServiceConstants.GET_BARCODE_FOOD)
                                     || tag.equals(WebServiceConstants.GET_EXERCISE_DATA)
-                                    || tag.equals(WebServiceConstants.MARK_NOTIFICATION_READ)){
+                                    || tag.equals(WebServiceConstants.MARK_NOTIFICATION_READ)
+                                    || tag.equals(WebServiceConstants.GET_NOTIFICATION_HISTORY)){
                                 serviceResponseLisener.ResponseSuccess(responseBody, tag);
                             } else {
                                 BaseModel baseModel = GsonFactory.getConfiguredGson().fromJson(responseBody, BaseModel.class);

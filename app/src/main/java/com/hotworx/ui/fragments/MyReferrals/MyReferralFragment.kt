@@ -2,6 +2,7 @@ package com.hotworx.ui.fragments.MyReferrals
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,9 +39,11 @@ class MyReferralFragment : BaseFragment() {
         try {
             args = requireArguments()
             getLocationDetail = args.getParcelable<com.hotworx.models.ComposeModel.RefferalDetailModel.Data>("Location_Model")!!
-
+            Log.d("onCreateView: ",args.toString())
         } catch (e: Exception) {
+
             myDockActivity.showErrorMessage("Data not found")
+
         }
         SetonClickListener()
         callApi(Constants.GET_LEAD_AMASADOR, "")
@@ -104,7 +107,6 @@ class MyReferralFragment : BaseFragment() {
     private fun initSearchView(list: List<Data>) {
 
         if (::getLocationDetail.isInitialized) {
-
 
             var referralDetails = listOf<ReferralDetail>()
 

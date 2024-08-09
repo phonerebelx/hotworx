@@ -186,6 +186,7 @@ public class FreeFormFragment extends BaseFragment implements OnFreeFormItemClic
             case WebServiceConstants.GET_FOOD:
 
                 GetFoodResponse mContentPojo = GsonFactory.getConfiguredGson().fromJson(result, GetFoodResponse.class);
+
                 list = mContentPojo.getBranded();
                 apiCallForGetFavoriteFood();
                 UIHelper.hideSoftKeyboard(getDockActivity(), getDockActivity()
@@ -208,6 +209,7 @@ public class FreeFormFragment extends BaseFragment implements OnFreeFormItemClic
                 break;
 
             case WebServiceConstants.GET_FAVORITE_FOOD:
+
                 GetFavoriteFoodsResponse mContentPojo2 = GsonFactory.getConfiguredGson().fromJson(result, GetFavoriteFoodsResponse.class);
                 if (mContentPojo2 != null && mContentPojo2.getAllData().size() > 0) {
                     favFoodlist = (List<GetFavoriteFoodsResponse.Food_list>) mContentPojo2.getAllData().get(0).getFood_list();
@@ -216,7 +218,6 @@ public class FreeFormFragment extends BaseFragment implements OnFreeFormItemClic
                     UIHelper.hideSoftKeyboard(getDockActivity(), getDockActivity().getWindow().getDecorView());
                 }
                 break;
-
         }
     }
 
