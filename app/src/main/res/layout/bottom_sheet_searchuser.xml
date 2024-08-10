@@ -17,28 +17,88 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:visibility="gone"
             app:SpinKit_Color="@color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_gravity="center_vertical"
                     android:text="@string/registered_member"
+                    android:layout_weight="3"
                     android:textColor="@color/mirage"
                     android:textSize="@dimen/_14ssp" />
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="end"
+                    android:text="@string/select_all"
+                    android:layout_weight="1"
+                    android:textColor="@color/sunset_orange"
+                    android:textSize="@dimen/_12ssp" />
+
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:spanCount="2"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_registereduserlist"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/your_contacts"
+                    android:layout_weight="3"
+                    android:textColor="@color/mirage"
+                    android:textSize="@dimen/_14ssp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="end"
+                    android:text="@string/select_all"
+                    android:layout_weight="1"
+                    android:textColor="@color/sunset_orange"
+                    android:textSize="@dimen/_12ssp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:spanCount="2"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_registereduserlist"/>
 
         </LinearLayout>
 

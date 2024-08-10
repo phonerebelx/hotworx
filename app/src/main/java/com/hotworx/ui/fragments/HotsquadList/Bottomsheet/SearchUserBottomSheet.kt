@@ -2,17 +2,19 @@ package com.hotworx.ui.fragments.HotsquadList.Bottomsheet
 
 import android.app.Dialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.*
-import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.hotworx.R
 import com.hotworx.databinding.BottomSheetSearchuserBinding
+import com.hotworx.models.HotsquadList.RegisteredMemberItem
+import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter
 
 
-class SearchUserBottomSheet(private val itemClickListener: OnItemClickListener): BottomSheetDialogFragment() {
+
+class SearchUserBottomSheet(): BottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetSearchuserBinding
 
@@ -40,7 +42,7 @@ class SearchUserBottomSheet(private val itemClickListener: OnItemClickListener):
             parentLayout?.let { bottomSheet ->
                 val behaviour = BottomSheetBehavior.from(bottomSheet)
                 val layoutParams = bottomSheet.layoutParams
-                layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
+                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
                 bottomSheet.layoutParams = layoutParams
                 behaviour.state = BottomSheetBehavior.STATE_EXPANDED
             }
@@ -51,7 +53,7 @@ class SearchUserBottomSheet(private val itemClickListener: OnItemClickListener):
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         /* Set Adapter */
-//        setAdapter()
+        setAdapter()
         
         /**
          * Filter List Locally on Text Change
@@ -65,6 +67,20 @@ class SearchUserBottomSheet(private val itemClickListener: OnItemClickListener):
 //            override fun afterTextChanged(s: Editable) {}
 //        })
 
+    }
+
+    private fun setAdapter() {
+
+        val registeredMemberList = listOf(
+            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
+            RegisteredMemberItem("John smith", "", "john.smaith@gmail.com",R.drawable.registeredmember),
+            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
+            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
+        )
+
+        val adapter = SearchRegisteredAdapter(registeredMemberList)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = adapter
     }
 
     interface OnItemClickListener {

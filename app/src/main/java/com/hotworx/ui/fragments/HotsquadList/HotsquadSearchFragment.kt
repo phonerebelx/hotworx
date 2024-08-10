@@ -64,7 +64,7 @@ class HotsquadSearchFragment : BaseFragment() {
         }
 
         //Bottom Sheet
-        searchUserBottomSheet = SearchUserBottomSheet(object : SearchUserBottomSheet.OnItemClickListener{})
+        searchUserBottomSheet = SearchUserBottomSheet()
 
         binding.btnSearchUser.setOnClickListener{
             searchUserBottomSheet.show(parentFragmentManager, "TAG")
