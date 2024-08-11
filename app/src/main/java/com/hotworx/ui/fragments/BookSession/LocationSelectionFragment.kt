@@ -146,11 +146,7 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
                             getLocationDetail = it
                         }
                     }
-
-
-
                 }
-
             }
             "Frequent Location" -> {
                 if (getLocation.isNotEmpty()) {
@@ -159,27 +155,31 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
                             getFrequentLocationDetail = it
                         }
                     }
-
                 }
             }
         }
 
-        if ((::getLocationDetail.isInitialized && getLocationDetail.location_tier != "Standard" && (getLocationDetail.location_tier == "Premium" || getLocationDetail.location_tier == "Elite"))
-            &&
-            type == "Location"
+        // Check if the properties are initialized before proceeding
+        if (type == "Location" && ::getLocationDetail.isInitialized) {
+            if (getLocationDetail.location_tier != "Standard" &&
+                (getLocationDetail.location_tier == "Premium" || getLocationDetail.location_tier == "Elite")
             ) {
-            initExtraPayDialog(getLocationDetail,"Location")
-        }
-        else if ((::getFrequentLocationDetail.isInitialized && getFrequentLocationDetail.location_tier != "Standard" && (getLocationDetail.location_tier == "Premium" || getLocationDetail.location_tier == "Elite"))
-            &&
-            type == "Frequent Location"
+                initExtraPayDialog(getLocationDetail, "Location")
+            } else {
+                moveToNextFragment(getLocationDetail, type)
+            }
+        } else if (type == "Frequent Location" && ::getFrequentLocationDetail.isInitialized) {
+            if (getFrequentLocationDetail.location_tier != "Standard" &&
+                (getFrequentLocationDetail.location_tier == "Premium" || getFrequentLocationDetail.location_tier == "Elite")
             ) {
-            initExtraPayDialog(getFrequentLocationDetail, "Frequent Location")
+                initExtraPayDialog(getFrequentLocationDetail, "Frequent Location")
+            } else {
+                moveToNextFragment(getFrequentLocationDetail, type)
+            }
+        } else {
+            // Handle the case where the location is not found or not initialized
+            Log.e("LocationSelection", "Location details not initialized or not found")
         }
-        else{
-            moveToNextFragment(getLocationDetail,type)
-        }
-
     }
 
 

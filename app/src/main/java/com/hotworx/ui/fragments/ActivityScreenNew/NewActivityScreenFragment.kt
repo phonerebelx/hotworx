@@ -271,49 +271,142 @@ class NewActivityScreenFragment : BaseFragment(), OnClickItemListener,
     }
 
 
+//    private fun setTimelineAdapter(timelineAdapterArray: ArrayList<NinetyDaysActivity>) {
+//        nintyDaysActivityAdapter = ActivityByTimelineAdapter(requireContext(), this)
+//
+//        if (timelineAdapterArray.size > 0) {
+//            binding.tvDataNotFound.visibility = View.GONE
+//
+//            nintyDaysActivityAdapter.setList(timelineAdapterArray)
+//            binding.rvTimeline.adapter = nintyDaysActivityAdapter
+//
+//
+//        } else {
+//            nintyDaysActivityAdapter.setList(ArrayList())
+//            binding.rvTimeline.adapter = nintyDaysActivityAdapter
+//            binding.tvDataNotFound.visibility = View.VISIBLE
+//
+//        }
+//    }
+
     private fun setTimelineAdapter(timelineAdapterArray: ArrayList<NinetyDaysActivity>) {
+        // Initialize the adapter
         nintyDaysActivityAdapter = ActivityByTimelineAdapter(requireContext(), this)
 
-        if (timelineAdapterArray.size > 0) {
+        // Check if the list is not empty
+        if (timelineAdapterArray.isNotEmpty()) {
+            // Hide the "Data Not Found" message
             binding.tvDataNotFound.visibility = View.GONE
 
+            // Set the list in the adapter
             nintyDaysActivityAdapter.setList(timelineAdapterArray)
-            binding.rvTimeline.adapter = nintyDaysActivityAdapter
-
-
         } else {
-            nintyDaysActivityAdapter.setList(ArrayList())
-            binding.rvTimeline.adapter = nintyDaysActivityAdapter
+            // Show the "Data Not Found" message
             binding.tvDataNotFound.visibility = View.VISIBLE
 
+            // Pass an empty list to the adapter
+            nintyDaysActivityAdapter.setList(ArrayList())
         }
+
+        // Attach the adapter to the RecyclerView
+        binding.rvTimeline.adapter = nintyDaysActivityAdapter
     }
 
+//    private fun setOnClickListener() {
+//        binding.btnNinty.setOnClickListener {
+//
+//            binding.etWorkOut.setText("")
+//            binding.btnNinty.isChecked = true
+//            binding.btnLifetime.isChecked = false
+//            binding.btnNinty.setBackgroundResource(R.drawable.multicolor_background)
+//            binding.btnNinty.setTextColor(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.colorWhite
+//                )
+//            )
+//            binding.btnLifetime.setBackgroundResource(R.color.colorWhite)
+//            binding.btnLifetime.setTextColor(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.colorBlack
+//                )
+//            )
+//            if (::getActivityData.isInitialized) {
+//                setTimelineAdapter(ArrayList(getActivityData.ninety_days_activities))
+//                initSearchView("NintyDaysActivity", getActivityData.ninety_days_activities)
+//
+//            } else {
+//                setTimelineAdapter(ArrayList())
+//            }
+//        }
+//
+//        binding.btnLifetime.setOnClickListener {
+//
+//            binding.etWorkOut.setText("")
+//
+//            binding.btnNinty.isChecked = false
+//            binding.btnLifetime.isChecked = true
+//
+//
+//            binding.btnLifetime.setBackgroundResource(R.drawable.multicolor_background)
+//            binding.btnLifetime.setTextColor(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.colorWhite
+//                )
+//            )
+//            binding.btnNinty.setBackgroundResource(R.color.colorWhite)
+//            binding.btnNinty.setTextColor(
+//                ContextCompat.getColor(
+//                    requireContext(),
+//                    R.color.colorBlack
+//                )
+//            )
+//
+//            if (binding.tvDataNotFound.isVisible) {
+//                binding.tvDataNotFound.visibility = View.GONE
+//            }
+//
+//            binding.rvTimeline.layoutManager = LinearLayoutManager(requireContext())
+//            binding.rvTimeline.adapter = activityAdapter.withLoadStateHeaderAndFooter(
+//                header = LoaderAdapter(),
+//                footer = LoaderAdapter()
+//            )
+//
+//            lifecycleScope.launch {
+//                viewModel.list.collectLatest {
+//
+//                    activityAdapter.submitData(it)
+//                }
+//            }
+//            initSearchView("AllTimeActivity", ArrayList())
+//
+//        }
+//
+//
+//    }
 
     private fun setOnClickListener() {
         binding.btnNinty.setOnClickListener {
+            Log.d("DataCheckNinty", "Ninety Days Activities: ${getActivityData.ninety_days_activities}")
 
             binding.etWorkOut.setText("")
             binding.btnNinty.isChecked = true
             binding.btnLifetime.isChecked = false
             binding.btnNinty.setBackgroundResource(R.drawable.multicolor_background)
             binding.btnNinty.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.colorWhite
-                )
+                ContextCompat.getColor(requireContext(), R.color.colorWhite)
             )
             binding.btnLifetime.setBackgroundResource(R.color.colorWhite)
             binding.btnLifetime.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.colorBlack
-                )
+                ContextCompat.getColor(requireContext(), R.color.colorBlack)
             )
+
             if (::getActivityData.isInitialized) {
+                // Pass the data to setTimelineAdapter to update the adapter
                 setTimelineAdapter(ArrayList(getActivityData.ninety_days_activities))
                 initSearchView("NintyDaysActivity", getActivityData.ninety_days_activities)
-
             } else {
                 setTimelineAdapter(ArrayList())
             }
@@ -321,48 +414,40 @@ class NewActivityScreenFragment : BaseFragment(), OnClickItemListener,
 
         binding.btnLifetime.setOnClickListener {
 
+            Log.d("DataCheckLifTime", "Ninety Days Activities: ${getActivityData.ninety_days_activities}")
+
             binding.etWorkOut.setText("")
 
             binding.btnNinty.isChecked = false
             binding.btnLifetime.isChecked = true
-
-
             binding.btnLifetime.setBackgroundResource(R.drawable.multicolor_background)
             binding.btnLifetime.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.colorWhite
-                )
+                ContextCompat.getColor(requireContext(), R.color.colorWhite)
             )
             binding.btnNinty.setBackgroundResource(R.color.colorWhite)
             binding.btnNinty.setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.colorBlack
-                )
+                ContextCompat.getColor(requireContext(), R.color.colorBlack)
             )
 
             if (binding.tvDataNotFound.isVisible) {
                 binding.tvDataNotFound.visibility = View.GONE
             }
 
+            // Set the paging adapter
             binding.rvTimeline.layoutManager = LinearLayoutManager(requireContext())
             binding.rvTimeline.adapter = activityAdapter.withLoadStateHeaderAndFooter(
                 header = LoaderAdapter(),
                 footer = LoaderAdapter()
             )
 
+            // Reload the data for the lifetime activities
             lifecycleScope.launch {
                 viewModel.list.collectLatest {
-
                     activityAdapter.submitData(it)
                 }
             }
             initSearchView("AllTimeActivity", ArrayList())
-
         }
-
-
     }
 
 
