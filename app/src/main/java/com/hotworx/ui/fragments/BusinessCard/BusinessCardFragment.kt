@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.viewpager2.widget.ViewPager2
@@ -58,6 +59,8 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
     lateinit var referralData: Data
     lateinit var referralQrDataModel: ReferralQrDataModel
     val args = Bundle()
+    var selectedUrl = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -72,10 +75,21 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         setImageOrData()
         callApi(Constants.GET_EMPLOYEE_REFERRAL, "")
 
+        binding.checkBox.isChecked = true
+
+        // Set up checkbox listener to update URL dynamically
+        binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            selectedUrl = if (isChecked) {
+                trial_url
+            } else {
+                buy_url
+            }
+            // Update the QR code and referral data based on checkbox selection
+            updateReferralData(selectedUrl)
+        }
+
         return binding.root
     }
-
-
 
     private fun <T> callApi(type: String, data: T) {
         when (type) {
@@ -88,6 +102,43 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         }
     }
 
+    private fun updateReferralData(selectedUrl: String) {
+        Log.d("SelectedURL", "UpdateReferralData - Selected URL: $selectedUrl")
+
+        // Update referralQrDataModel and referralData using the selected URL
+        referralQrDataModel = ReferralQrDataModel(
+            getBusinessCardModel.name_on_businesscard ?: "",
+            getBusinessCardModel.employee_address ?: "",
+            selectedUrl
+        )
+        referralData = Data(
+            buy_url = buy_url,
+            currency_symbol = "",
+            lead_id = "",
+            location_code = getBusinessCardModel.data?.get(0)?.location_code ?: "",
+            location_name = getBusinessCardModel.data?.get(0)?.location_name ?: "",
+            remaining_balance = 0,
+            total_amount_used = 0,
+            total_gift_amount = 0,
+            trail_url = trial_url,
+            redeemed_text = "",
+            location_address = ""
+        )
+
+        // Set location details
+        getBusinessCardModel.data?.get(0)?.let { locationData ->
+            selected_location_name = locationData.location_name ?: ""
+            setLocationText(locationData.location_name ?: "", locationData.location_address ?: "")
+        }
+
+        // Update the UTM text and QR code based on the selected URL
+        val utmName = if (binding.checkBox.isChecked) "Trial URL" else "Buy URL"
+        setUTMText(utmName)
+        setQrCode(selectedUrl)
+
+        // Pass updated data via args if necessary
+        args.putParcelable("Location_Model", referralData)
+    }
 
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
         super.onSuccess(liveData, tag)
@@ -100,19 +151,41 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                             BusinessCardModel::class.java
                         )
 
+                    // Handle UTM list
+                    val utmList = getBusinessCardModel.data?.get(0)?.utm_list ?: emptyList()
+                    utmList.forEach { utm ->
+                        // Log each UTM URL
+                        Log.d("url", "UTM Name: ${utm.name}, URL: ${utm.url}")
+                        Log.d("Buy_URL", "UTM Name: ${utm.name}, URL: ${utm.buy_url}")
+                        Log.d("TRAIL_URL", "UTM Name: ${utm.name}, URL: ${utm.trail_url}")
+                    }
 
-                    setUserDetail(getBusinessCardModel.data?.get(0)?.location_email,getBusinessCardModel.data?.get(0)?.location_phone)
-                    buy_url = getBusinessCardModel.data?.get(0)?.buy_url ?: ""
-                    trial_url = getBusinessCardModel.data?.get(0)?.trail_url ?: ""
+                    // Set the buy_url and trial_url from the first UTM list item
+                    val firstUtm = utmList.getOrNull(0) ?: run {
+                        Log.d("UTM List", "No UTM data available")
+                        null
+                    }
+                    buy_url = firstUtm?.buy_url ?: ""
+                    trial_url = firstUtm?.trail_url ?: ""
 
-                    //set QR model
+                    val defaultUrl = if (binding.checkBox.isChecked) {
+                        trial_url
+                    } else {
+                        buy_url
+                    }
+                    selectedUrl = defaultUrl
+                    Log.d("DefaultURL", "Default URL: $defaultUrl")
+                    updateReferralData(defaultUrl)
+
+
+                    // Set referralQrDataModel and referralData
                     referralQrDataModel = ReferralQrDataModel(
                         getBusinessCardModel.name_on_businesscard ?: "",
                         getBusinessCardModel.employee_address ?: "",
-                        getBusinessCardModel.data?.get(0)?.utm_list?.get(0)?.url ?: ""
+                        selectedUrl
                     )
-                     referralData = Data(
-                       buy_url = "",
+                    referralData = Data(
+                        buy_url = firstUtm?.buy_url ?: "",
                         currency_symbol = "",
                         lead_id = "",
                         location_code = getBusinessCardModel.data?.get(0)?.location_code ?: "",
@@ -120,26 +193,23 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                         remaining_balance = 0,
                         total_amount_used = 0,
                         total_gift_amount = 0,
-                        trail_url = getBusinessCardModel.data?.get(0)?.utm_list?.get(0)?.url ?: "",
+                        trail_url = firstUtm?.trail_url ?: "",
                         redeemed_text = "",
-                        location_address = "",
+                        location_address = ""
                     )
 
                     args.putParcelable("Location_Model", referralData)
 
-
-                    getBusinessCardModel.data?.get(0)?.location_address?.let {
-                        getBusinessCardModel.data?.get(0)?.location_name?.let { it1 ->
-                            selected_location_name = it1
-                            setLocationText(
-                                it1,
-                                it
-                            )
-                        }
+                    // Set location details
+                    getBusinessCardModel.data?.get(0)?.let { locationData ->
+                        selected_location_name = locationData.location_name ?: ""
+                        setLocationText(locationData.location_name ?: "", locationData.location_address ?: "")
                     }
-                     val utmName = getBusinessCardModel.data?.get(0)?.utm_list?.get(0)?.name ?: "UTM not found"
+
+                    // Set UTM text and QR code for the first UTM item
+                    val utmName = firstUtm?.name ?: "UTM not found"
                     setUTMText(utmName)
-                    setQrCode(getBusinessCardModel.data?.get(0)?.utm_list?.get(0)?.url ?: "")
+                    setQrCode(selectedUrl)
 
                 } catch (e: Exception) {
                     Utils.customToast(requireContext(), resources.getString(R.string.error_failure))
@@ -147,7 +217,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             }
         }
     }
-
 
     override fun onFailure(message: String, tag: String) {
         if (Constants.GET_EMPLOYEE_REFERRAL == tag) {
@@ -390,19 +459,25 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         return bitmap
     }
 
-
     private fun setQrCode( url: String) {
-        generateQrBitmap = generateQr(requireContext(),url)
+        val url = referralQrDataModel.url
+        if (url.isNullOrEmpty()) {
+            Log.d("QRCodeDialog", "URL received in dialog: $url")
+            Utils.customToast(requireContext(), "URL is not available.")
+            return
+        }
+        generateQrBitmap = generateQr(requireContext(), url)
         binding.ivQrCode.setImageBitmap(generateQrBitmap)
     }
 
-
     private fun initQrDialog(referralQrDataModel: ReferralQrDataModel) {
+        referralQrDataModel.url = selectedUrl // Ensure selectedUrl is set here
+        Log.d("QrDialog", "Referral URL: ${referralQrDataModel.url}")
         val qrDialogFragment = QrDialogFragment()
+        qrDialogFragment.qrModel = referralQrDataModel
         qrDialogFragment.checkComeFromBusinessCard = true
         qrDialogFragment.setContext(requireContext())
         qrDialogFragment.dockActivity = dockActivity
-        qrDialogFragment.qrModel = referralQrDataModel
         qrDialogFragment.show(
             parentFragmentManager,
             qrDialogFragment.tag
@@ -453,12 +528,12 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                        it.utm_list.let { array ->
                            setUTMText(array[0].name?: "")
                            setQrCode(array[0].url ?: "")
-                           referralQrDataModel.url = array[0].url ?: ""
+                           referralQrDataModel.url = selectedUrl
 
                        }
                         referralData.location_name = it.location_name
                         referralData.location_code = it.location_code!!
-                        referralData.trail_url = it.utm_list[0].url!!
+                        referralData.trail_url = selectedUrl
                         setUserDetail(it.location_email,it.location_phone)
                     }
 
@@ -468,10 +543,10 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
 
             "UTM_DETAIL" -> {
                 setUTMText(receivedData.location_name)
-                setQrCode(receivedData.trail_url ?: "")
+                setQrCode(selectedUrl)
 
-                referralQrDataModel.url = receivedData.trail_url
-                    referralData.trail_url = receivedData.trail_url
+                referralQrDataModel.url = selectedUrl
+                    referralData.trail_url = selectedUrl
 
                 getBusinessCardModel.data!!.forEach {loc ->
                     loc.utm_list.forEach {utm ->

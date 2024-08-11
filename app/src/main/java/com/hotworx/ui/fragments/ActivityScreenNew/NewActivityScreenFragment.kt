@@ -546,11 +546,9 @@ class NewActivityScreenFragment : BaseFragment(), OnClickItemListener,
         runnable?.let { handler.removeCallbacks(it) }
     }
 
-
     override fun onItemClick(value: TodaysPendingSession, type: String) {
 
     }
-
 }
 
 

@@ -170,6 +170,7 @@ class QrDialogFragment : BottomSheetDialogFragment() {
                 if (::generateQrBitmap.isInitialized) {
 
                    getContext.shareLink(qrModel.url)
+                    Log.d("vjhvvdschjd",qrModel.url)
 
                 }
             }
