@@ -99,10 +99,10 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         holder.mainView.setOnClickListener(v -> {
             onClickItemListener.onItemClick(notificationData, "Come_From_Click_Notification_Adapter");
         });
-
-        holder.ivBanner.setOnClickListener(v -> {
-            onClickItemListener.onItemClick(notificationData, "COME_FROM_IMAGE_CLICK");
-        });
+//
+//        holder.ivBanner.setOnClickListener(v -> {
+//            onClickItemListener.onItemClick(notificationData, "COME_FROM_IMAGE_CLICK");
+//        });
 
 
         if (notificationData.getId().equals(notificationId)) {

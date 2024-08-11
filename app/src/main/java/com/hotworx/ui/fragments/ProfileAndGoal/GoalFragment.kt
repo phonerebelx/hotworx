@@ -70,6 +70,9 @@ class GoalFragment : BaseFragment() {
         super.setTitleBar(titleBar)
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.fitness_goal)
+        titleBar.hideNotificationBtn()
+        titleBar.hideNotificationText()
+        titleBar.hideBrivoBtn()
     }
 
     private fun initView() {

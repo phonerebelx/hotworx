@@ -26,6 +26,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -350,9 +351,15 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         super.setTitleBar(titleBar);
         titleBar.showMenuButton();
         titleBar.showSyncBtn();
+
         getUnreadNotifications().observe(getViewLifecycleOwner(), new Observer<String>() {
             public void onChanged(String unreadNotifications) {
                 titleBar.showNotificationBtn(unreadNotifications);
+
+                if (unreadNotifications.equals("0")) {
+                    titleBar.hideNotificationText();
+                }
+
             }
         });
         titleBar.showBrivoBtn();
@@ -425,7 +432,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 //    }
     ////////////////////////////closed due to new dashboard //////////////////////////////////////////////
     private String getCurrentDate(int type) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         DateFormat dateFormat2 = new SimpleDateFormat("MMM dd yyyy", Locale.getDefault());
 
         Date date = new Date();
@@ -458,6 +465,12 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 //            dayBefore_textview.setText(content);
 //        }
         return dateFormat.format(calendar.getTime());
+    }
+
+    private String getCurrentDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(date); // Return the formatted date as a string
     }
 
     private void apiCallForOverAllSummary(String date) {
@@ -509,7 +522,8 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             case Constants.DASHBOARDCALLING:
                 getServiceHelper().enqueueCallExtended(
                         getWebService().getDashboard(
-                                ApiHeaderSingleton.apiHeader(requireContext())
+                                ApiHeaderSingleton.apiHeader(requireContext()),
+                                getCurrentDate()
                         ), Constants.DASHBOARDCALLING, true
                 );
 
@@ -543,6 +557,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 );
                 setUpGraph(getDashboardApiResponse.getData().getNinety_days_summary());
             } catch (Exception e) {
+                Log.d("Exception: ",e.getMessage().toString());
                 Utils.customToast(requireContext(), getResources().getString(R.string.error_failure));
             }
         }
@@ -622,7 +637,12 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         } else {
             ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager()); //viewPager.getAdapter() instanceof ViewPagerAdapter ? (ViewPagerAdapter) viewPager.getAdapter() : new ViewPagerAdapter(getChildFragmentManager());
             PendingSessionFragment psf = new PendingSessionFragment();
-            psf.set_is_reciprocal_allowed = get_is_new_reciprocal().getValue().toString();
+            String reciprocalValue = get_is_new_reciprocal().getValue();
+            if (reciprocalValue != null) {
+                psf.setSet_is_reciprocal_allowed(reciprocalValue);
+            } else {
+                psf.setSet_is_reciprocal_allowed("no");
+            }
             psf.setData(getTodaysPendingSession);
             adapter.addFrag(psf, "PSF's");
 
@@ -946,7 +966,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     public void onRefresh() {
         swipeRefreshLayout.setRefreshing(false);
         callApi(Constants.DASHBOARDCALLING);
-
+        callApi(Constants.PROFILE_API_CALLING);
     }
 
     private void addEventToCalender(String date) {

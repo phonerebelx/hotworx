@@ -103,6 +103,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
     @Override
     public void ResponseFailure(String message, String tag) {
         super.ResponseFailure(message, tag);
+        tvNotifications.setText("No Notification Found");
 
     }
     public void ResponseSuccess(String result, String Tag) {
@@ -111,7 +112,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
 
                 notificationHistoryModel = GsonFactory.getConfiguredGson().fromJson(result, NotificationHistoryModel.class);
 
-                if (notificationHistoryModel.getData() != null && notificationHistoryModel.getData().get(0) != null && notificationHistoryModel.getData().size() > 0) {
+                if (notificationHistoryModel.getData() != null && !notificationHistoryModel.getData().isEmpty()) {
                     recyclerViewNotification.setLayoutManager(new LinearLayoutManager(myDockActivity));
                     notificationListAdapter = new NotificationListAdapter(myDockActivity, hasAccessToHashId,notificationHistoryModel.getData(),this);
                     recyclerViewNotification.setAdapter(notificationListAdapter);
@@ -124,6 +125,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
                     hasAccessToHashId = "";
                 } else {
                     tvNotifications.setVisibility(View.VISIBLE);
+                    tvNotifications.setText("No Notification Found");
                 }
 
                 break;

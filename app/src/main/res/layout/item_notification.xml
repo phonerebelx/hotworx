@@ -79,7 +79,7 @@
             android:textSize="@dimen/_10ssp"
             android:layout_marginHorizontal="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_12sdp"
-            android:maxLines="5"
+            android:maxLines="2"
             android:textColor="@color/colorDarkGrey"
             android:fontFamily="@font/montserrat_regular"/>
 

@@ -43,6 +43,7 @@
             android:orientation="horizontal">
 
             <FrameLayout
+                android:id="@+id/fl1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -52,7 +53,6 @@
                 android:layout_width="@dimen/_105sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="center|bottom"
-
                 android:background="@drawable/multicolor_background"
                 android:paddingStart="@dimen/_4sdp"
                 android:fontFamily="@font/montserrat_bold"
@@ -65,14 +65,15 @@
 
 
             <FrameLayout
+                android:id="@+id/fl2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:visibility="gone"
                 android:layout_weight="0.5">
             <Button
                 android:id="@+id/btnShare"
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_25sdp"
+                android:layout_width="@dimen/_105sdp"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="end|bottom"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:background="@drawable/multicolor_background"

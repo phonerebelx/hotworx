@@ -111,7 +111,6 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
 
                 } catch (e: Exception) {
                     GsonFactory.getConfiguredGson()?.fromJson(liveData.value, ErrorResponseEnt::class.java)?.let { errorResponseEnt ->
-                        Log.d( "onSuccess: ",errorResponseEnt.toString())
                         dockActivity?.showErrorMessage(errorResponseEnt.error)
                     }
                 }
@@ -144,41 +143,50 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
                     sessionBookingDataModel.locations.forEach {
                         if (getLocation == it.location_name) {
                             getLocationDetail = it
+                            return@forEach // Return early once found
                         }
                     }
                 }
+
+                if (!::getLocationDetail.isInitialized) {
+                     dockActivity?.showErrorMessage("Location not found")
+                    return
+                }
             }
+
             "Frequent Location" -> {
                 if (getLocation.isNotEmpty()) {
                     sessionBookingDataModel.frequently_locations.forEach {
                         if (getLocation == it.location_name) {
                             getFrequentLocationDetail = it
+                            return@forEach
                         }
                     }
+
+                }
+
+                if (!::getFrequentLocationDetail.isInitialized) {
+                    dockActivity?.showErrorMessage("Frequent Location not found")
+                    return
                 }
             }
         }
 
-        // Check if the properties are initialized before proceeding
-        if (type == "Location" && ::getLocationDetail.isInitialized) {
+
+        if (type == "Location") {
             if (getLocationDetail.location_tier != "Standard" &&
-                (getLocationDetail.location_tier == "Premium" || getLocationDetail.location_tier == "Elite")
-            ) {
+                (getLocationDetail.location_tier == "Premium" || getLocationDetail.location_tier == "Elite")) {
                 initExtraPayDialog(getLocationDetail, "Location")
             } else {
                 moveToNextFragment(getLocationDetail, type)
             }
-        } else if (type == "Frequent Location" && ::getFrequentLocationDetail.isInitialized) {
+        } else if (type == "Frequent Location") {
             if (getFrequentLocationDetail.location_tier != "Standard" &&
-                (getFrequentLocationDetail.location_tier == "Premium" || getFrequentLocationDetail.location_tier == "Elite")
-            ) {
+                (getFrequentLocationDetail.location_tier == "Premium" || getFrequentLocationDetail.location_tier == "Elite")) {
                 initExtraPayDialog(getFrequentLocationDetail, "Frequent Location")
             } else {
                 moveToNextFragment(getFrequentLocationDetail, type)
             }
-        } else {
-            // Handle the case where the location is not found or not initialized
-            Log.e("LocationSelection", "Location details not initialized or not found")
         }
     }
 
@@ -193,7 +201,7 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
 
     private fun setLocationAdapter(locationArray: ArrayList<Location>) {
         if (locationArray.size > 0) {
-            locationBookingAdapter = LocationSelectionAdapter(requireContext(), this)
+            locationBookingAdapter = LocationSelectionAdapter(requireContext(), this,is_reciprocal_allowed)
             locationBookingAdapter.setList(locationArray)
             rvLocationSelector.adapter = locationBookingAdapter
         }
