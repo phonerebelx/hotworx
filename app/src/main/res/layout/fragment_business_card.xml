@@ -169,9 +169,8 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:fontFamily="@font/montserrat_italic"
                                 android:text="@string/Use_trial"
                                 android:textColor="@color/white"
@@ -181,12 +180,12 @@
                                 android:id="@+id/checkBox"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:scaleX="1.2"
-                                android:scaleY="1.2"
+                                android:scaleX="1"
+                                android:layout_marginStart="@dimen/_3sdp"
+                                android:scaleY="1"
                                 android:buttonTint="@color/radio_button_unselected_color" />
 
                         </LinearLayout>
-
 
                     </LinearLayout>
 
