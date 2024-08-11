@@ -57,12 +57,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="fixed">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_business_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_business_card.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$onCreate$1$1$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/SplashActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$LastDiffUtilCallback.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$OnItemClickListener$DefaultImpls.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$OnItemClickListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/bindingAdapter/BindingAdapter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/ActivityLoginBinding.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/ActivityLoginBindingImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/ActivitySplashBinding.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/LayoutHeaderBinding.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/extensions/ActivityExtKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/extensions/IntentExtKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/generated/callback/OnClickListener$Listener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/generated/callback/OnClickListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/helper/MainClass$onCreate$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/helper/MainClass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt$ViewModelModule$1$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt$ViewModelModule$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/listener/DialogListeners$DefaultImpls.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/listener/GenericListeners.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/request/LoginRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/request/RegistrationRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/response/GlobalResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/response/LoginResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Error.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Loading.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/RemoteConstant.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/Routes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/SoService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/APIError$Companion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/APIError.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/BaseDataSource$callApi$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt$performNetworkCallOperation$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt$performNetworkCallOperation$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataSource$login$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataSource.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/ErrorHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/repository/AppRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +125,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R5CR82TGVPA)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\ESHOP\.android\avd\Testing_Device.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -220,7 +273,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723406780204</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723407565478</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723407565478</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723407804954</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723407804954</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
