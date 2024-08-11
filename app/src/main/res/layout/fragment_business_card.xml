@@ -172,10 +172,10 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/montserrat_bold"
+                                android:fontFamily="@font/montserrat_italic"
                                 android:text="@string/Use_trial"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_14ssp"/>
+                                android:textSize="@dimen/_13ssp"/>
 
                             <CheckBox
                                 android:id="@+id/checkBox"

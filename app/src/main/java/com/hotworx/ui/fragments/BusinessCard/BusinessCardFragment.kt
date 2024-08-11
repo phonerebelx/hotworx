@@ -484,35 +484,34 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         )
     }
 
-
-    private fun sendUrl() {
-        if (::getBusinessCardModel.isInitialized && ::buy_url.isInitialized && ::trial_url.isInitialized){
-            val setUrlDataMode = getBusinessCardModel?.let { details ->
-                UrlDataMode(
-                    details.buy_text ?: "",
-                    buy_url,
-                    details.trail_text  ?: "",
-                    trial_url
-                )
-            }
-
-            if (setUrlDataMode != null) {
-                val message = """
-                ${setUrlDataMode.buy_text}
-                ${setUrlDataMode.buy_url}
-
-                ${setUrlDataMode.trail_text}
-                ${setUrlDataMode.trail_url}
-            """.trimIndent()
-                context?.shareLink(message)
-            } else {
-                Utils.customToast(requireContext(), "Something Went Wrong")
-            }
-        }else{
-            Utils.customToast(requireContext(), "Url not found")
-        }
-    }
-
+    //Not in a use
+//    private fun sendUrl() {
+//        if (::getBusinessCardModel.isInitialized && ::buy_url.isInitialized && ::trial_url.isInitialized){
+//            val setUrlDataMode = getBusinessCardModel?.let { details ->
+//                UrlDataMode(
+//                    details.buy_text ?: "",
+//                    buy_url,
+//                    details.trail_text  ?: "",
+//                    trial_url
+//                )
+//            }
+//
+//            if (setUrlDataMode != null) {
+//                val message = """
+//                ${setUrlDataMode.buy_text}
+//                ${setUrlDataMode.buy_url}
+//
+//                ${setUrlDataMode.trail_text}
+//                ${setUrlDataMode.trail_url}
+//            """.trimIndent()
+//                context?.shareLink(message)
+//            } else {
+//                Utils.customToast(requireContext(), "Something Went Wrong")
+//            }
+//        }else{
+//            Utils.customToast(requireContext(), "Url not found")
+//        }
+//    }
 
     override fun <T> onItemClick(data: T, type: String) {
         val receivedData = data as com.hotworx.models.ComposeModel.RefferalDetailModel.Data
