@@ -45,7 +45,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             String image = map.get("image");
             String title = map.get("title");
             String body = map.get("body");
-            Log.d("onMessageReceived: ",body.toString());
+
             sendNotification(title, body,id,image, KEY_MESSAGE_TYPE_DEFAULT, 0, new Intent(this, SplashActivity.class));
         }
 

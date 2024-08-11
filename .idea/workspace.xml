@@ -5,47 +5,12 @@
       <config />
     </shared>
     <layouts>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dock.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_otp.xml">
-        <config>
-          <theme>@style/Theme.AppCompat.Light.NoActionBar.FullScreen</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_root.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet_searchuser.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_box_internet.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_activity_detail.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_activity_screen.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_list.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_booking_selection.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -55,47 +20,17 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard_session_adapter.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_hotsquad_create.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_activity_screen.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_hotsquad_search.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_latest_reward.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_leaderboard.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_level_five.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_hotsquad_list.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_referral.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_nitification_read.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_dashboard.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -105,22 +40,12 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_myhotsquadlist.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_qr_dialog.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_notification.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_registereduserlist.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_user_form.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_workout_time.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -131,22 +56,66 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48572693-4e8f-4229-a717-18ad3a6b4297" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/HotsquadList/UserFormFieldModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/Bottomsheet/SearchUserBottomSheet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/Bottomsheet/SearchUserBottomSheet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/HotsquadSearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/HotsquadSearchFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet_searchuser.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet_searchuser.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotsquadlist/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotsquadlist/src/main/res/values/strings.xml" afterDir="false" />
+    <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="fixed">
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$onCreate$1$1$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/SplashActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$LastDiffUtilCallback.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$OnItemClickListener$DefaultImpls.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$OnItemClickListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/bindingAdapter/BindingAdapter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/ActivityLoginBinding.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/ActivityLoginBindingImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/ActivitySplashBinding.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/LayoutHeaderBinding.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/extensions/ActivityExtKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/extensions/IntentExtKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/generated/callback/OnClickListener$Listener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/generated/callback/OnClickListener.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/helper/MainClass$onCreate$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/helper/MainClass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt$ViewModelModule$1$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt$ViewModelModule$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/listener/DialogListeners$DefaultImpls.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/listener/GenericListeners.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/request/LoginRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/request/RegistrationRequest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/response/GlobalResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/response/LoginResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Error.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Loading.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/RemoteConstant.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/Routes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/SoService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/APIError$Companion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/APIError.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/BaseDataSource$callApi$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt$performNetworkCallOperation$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt$performNetworkCallOperation$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataSource$login$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataSource.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/ErrorHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/repository/AppRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,28 +125,11 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R5CR82TGVPA)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\ESHOP\.android\avd\Testing_Device.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="hotworx" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -195,10 +147,9 @@
   }
 }]]></component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 2
+  &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2kHDOh3Ya1r1KEwS3Fksvi1Zhc8" />
+  <component name="ProjectId" id="2kTVTwP3K01kJsGmbIG29gfPiKI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -209,12 +160,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "Z:/My Projects/Android Projects/Hotworx ali github/app/src/main/res/layout",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "last_opened_file_path": "Z:/My Projects/Android Projects/Hotworx ali github"
   },
   "keyToStringList": {
     "kotlin-gradle-user-dirs": [
@@ -222,24 +172,6 @@
     ]
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\layout" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
-    </key>
-    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
-      <recent name="com.hotworx.ui.adapters.HotsquadListAdapter" />
-      <recent name="com.hotworx.models.HotsquadList" />
-      <recent name="com.hotworx.ui.fragments.HotsquadList.Bottomsheet" />
-      <recent name="com.hotworx.ui.adapters" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.hotworx.ui.adapters.HotsquadListAdapter" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="hotworx.app.main" />
@@ -311,12 +243,59 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="48572693-4e8f-4229-a717-18ad3a6b4297" name="Changes" comment="" />
-      <created>1722931580242</created>
+      <changelist id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="" />
+      <created>1723307568434</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1722931580242</updated>
+      <updated>1723307568434</updated>
     </task>
+    <task id="LOCAL-00001" summary="activity screen working , 1 crash fixed">
+      <option name="closed" value="true" />
+      <created>1723382689426</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723382689426</updated>
+    </task>
+    <task id="LOCAL-00002" summary="buy url, trail url done on check box">
+      <option name="closed" value="true" />
+      <created>1723403771002</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723403771002</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723406780204</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723406780204</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723407565478</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723407565478</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723407804954</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723407804954</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="activity screen working , 1 crash fixed" />
+    <MESSAGE value="buy url, trail url done on check box" />
+    <MESSAGE value="fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed" />
   </component>
 </project>

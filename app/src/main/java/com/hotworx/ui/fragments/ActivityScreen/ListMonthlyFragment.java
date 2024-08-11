@@ -25,6 +25,8 @@ import butterknife.Unbinder;
 public class ListMonthlyFragment extends BaseFragment {
     Unbinder unbinder;
     private static final String MONTH_KEY = "month_key";
+    private ActivityListAdapter adapter;
+    private List<CaloriesObject> mCaloriesObject;
     @BindView(R.id.list_activity)
     ListView listView;
 
@@ -43,9 +45,16 @@ public class ListMonthlyFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_monthly,container,false);
         unbinder = ButterKnife.bind(this,view);
-        List<CaloriesObject> mCaloriesObject = (List<CaloriesObject>) getArguments().getSerializable(MONTH_KEY);
-        listView.setAdapter(new ActivityListAdapter(myDockActivity, mCaloriesObject));
+        mCaloriesObject = (List<CaloriesObject>) getArguments().getSerializable(MONTH_KEY);
+        adapter = new ActivityListAdapter(myDockActivity, mCaloriesObject);
+        listView.setAdapter(adapter);
         return view;
+    }
+
+    public void updateList(List<CaloriesObject> newCaloriesObject) {
+        this.mCaloriesObject.clear();
+        this.mCaloriesObject.addAll(newCaloriesObject);
+        adapter.notifyDataSetChanged();
     }
 
     @Override

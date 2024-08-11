@@ -7,4 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class UtmModel(
     val name: String?,
     val url: String?,
+    val buy_url: String?,
+    val trail_url: String?,
 ): Parcelable

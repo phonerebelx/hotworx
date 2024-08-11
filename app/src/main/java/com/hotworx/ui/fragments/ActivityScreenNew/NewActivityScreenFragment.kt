@@ -271,24 +271,46 @@ class NewActivityScreenFragment : BaseFragment(), OnClickItemListener,
     }
 
 
+//    private fun setTimelineAdapter(timelineAdapterArray: ArrayList<NinetyDaysActivity>) {
+//        nintyDaysActivityAdapter = ActivityByTimelineAdapter(requireContext(), this)
+//
+//        if (timelineAdapterArray.size > 0) {
+//            binding.tvDataNotFound.visibility = View.GONE
+//
+//            nintyDaysActivityAdapter.setList(timelineAdapterArray)
+//            binding.rvTimeline.adapter = nintyDaysActivityAdapter
+//
+//
+//        } else {
+//            nintyDaysActivityAdapter.setList(ArrayList())
+//            binding.rvTimeline.adapter = nintyDaysActivityAdapter
+//            binding.tvDataNotFound.visibility = View.VISIBLE
+//
+//        }
+//    }
+
     private fun setTimelineAdapter(timelineAdapterArray: ArrayList<NinetyDaysActivity>) {
+        // Initialize the adapter
         nintyDaysActivityAdapter = ActivityByTimelineAdapter(requireContext(), this)
 
-        if (timelineAdapterArray.size > 0) {
+        // Check if the list is not empty
+        if (timelineAdapterArray.isNotEmpty()) {
+            // Hide the "Data Not Found" message
             binding.tvDataNotFound.visibility = View.GONE
 
+            // Set the list in the adapter
             nintyDaysActivityAdapter.setList(timelineAdapterArray)
-            binding.rvTimeline.adapter = nintyDaysActivityAdapter
-
-
         } else {
-            nintyDaysActivityAdapter.setList(ArrayList())
-            binding.rvTimeline.adapter = nintyDaysActivityAdapter
+            // Show the "Data Not Found" message
             binding.tvDataNotFound.visibility = View.VISIBLE
 
+            // Pass an empty list to the adapter
+            nintyDaysActivityAdapter.setList(ArrayList())
         }
-    }
 
+        // Attach the adapter to the RecyclerView
+        binding.rvTimeline.adapter = nintyDaysActivityAdapter
+    }
 
     private fun setOnClickListener() {
         binding.btnNinty.setOnClickListener {
@@ -364,7 +386,6 @@ class NewActivityScreenFragment : BaseFragment(), OnClickItemListener,
 
 
     }
-
 
     private fun initSearchView(checkActivity: String, list: List<NinetyDaysActivity>) {
 
@@ -461,11 +482,9 @@ class NewActivityScreenFragment : BaseFragment(), OnClickItemListener,
         runnable?.let { handler.removeCallbacks(it) }
     }
 
-
     override fun onItemClick(value: TodaysPendingSession, type: String) {
 
     }
-
 }
 
 

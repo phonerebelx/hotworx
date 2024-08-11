@@ -141,20 +141,54 @@
                         android:layout_height="@dimen/_70sdp"/>
 
                 </FrameLayout>
-                <TextView
-                    android:id="@+id/tvLocationName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="center_vertical"
-                    android:layout_gravity="center_vertical"
-                    android:maxLines="2"
-                    android:text="Home Location"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_13ssp"
-                    android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvLocationName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="center_vertical"
+                            android:maxLines="2"
+                            android:text="Home Location"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/_13ssp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_italic"
+                                android:text="@string/Use_trial"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_13ssp"/>
+
+                            <CheckBox
+                                android:id="@+id/checkBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleX="1"
+                                android:layout_marginStart="@dimen/_3sdp"
+                                android:scaleY="1"
+                                android:buttonTint="@color/radio_button_unselected_color" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <TextView
