@@ -154,7 +154,8 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
 
                     // Set UTM text and QR code for the first UTM item
                     val utmName = firstUtm?.name ?: "UTM not found"
-                    val utmUrlName = firstUtm?.url_list?.get(0)?.type ?: "UTM not found"
+                    val utmUrlName = firstUtm?.url_list?.get(0)?.type ?: ""
+                    selectedUrl =firstUtm?.url_list?.get(0)?.url ?: ""
                     setUTMText(utmName)
                     setUTMURLText(utmUrlName)
                     setQrCode(selectedUrl)
@@ -509,6 +510,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                        it.utm_list.let { array ->
                            UTM_ID = array[0].id?:""
                            setUTMText(array[0].name?: "")
+                           setUTMURLText(array[0].name?: "")
                            setQrCode(array[0].url ?: "")
                            referralQrDataModel.url = array[0].url.toString()
 
@@ -529,7 +531,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                 UTM_ID = receivedData.utm_id
 
                 selectedUrl=  referralQrDataModel.url
-                    referralData.trail_url = selectedUrl
+                referralData.trail_url = selectedUrl
 
                 getBusinessCardModel.data!!.forEach {loc ->
                     loc.utm_list.forEach {utm ->
@@ -544,27 +546,21 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             }
 
             "LOCATION_URL" -> {
-                setUTMURLText(receivedData.type)
-                selectedUrl = receivedData.url
-                referralQrDataModel.url =  selectedUrl
+                val receiveData: Data = data as Data
+                selectedUrl = receiveData.url
+                val selectedType = receiveData.type
+
+                // Directly assign the selected type to the tvUTMURL field
+                binding.tvUTMURL.text = selectedType
+
+                // Continue with any other logic, e.g., setting the QR code, etc.
+                setUTMURLText(selectedType)
                 setQrCode(selectedUrl)
 
-                Log.d("safyfdyafydfsay", selectedUrl) // Ensure this logs the correct URL
+                Log.d("SelectedURL", selectedUrl)
+                Log.d("SelectedType", selectedType)
 
-                UTM_ID = receivedData.utm_id
-
-                selectedUrl = referralQrDataModel.url
-
-                // Debugging output to verify URL assignment
-                getBusinessCardModel.data!!.forEach { loc ->
-                    loc.utm_list.forEach { utm ->
-                        if (utm.id.toString() == UTM_ID) { // Ensure you are checking the correct ID
-                            binding.tvUTMURL.text = utm.url_list[0].type
-                        }
-                    }
-                }
             }
-
         }
 
         args.putParcelable("Location_Model", referralData)
