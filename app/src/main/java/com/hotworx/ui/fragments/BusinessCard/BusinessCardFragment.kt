@@ -471,7 +471,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
     }
 
     private fun setQrCode( url: String) {
-        val url = referralQrDataModel.url
+        val url = selectedUrl
         if (url.isNullOrEmpty()) {
             Log.d("QRCodeDialog", "URL received in dialog: $url")
             Utils.customToast(requireContext(), "URL is not available.")
@@ -482,7 +482,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
     }
 
     private fun initQrDialog(referralQrDataModel: ReferralQrDataModel) {
-        referralQrDataModel.url = selectedUrl // Ensure selectedUrl is set here
+        selectedUrl = referralQrDataModel.url // Ensure selectedUrl is set here
         Log.d("QrDialog", "Referral URL: ${referralQrDataModel.url}")
         val qrDialogFragment = QrDialogFragment()
         qrDialogFragment.qrModel = referralQrDataModel
@@ -510,7 +510,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                            UTM_ID = array[0].id?:""
                            setUTMText(array[0].name?: "")
                            setQrCode(array[0].url ?: "")
-                           referralQrDataModel.url = selectedUrl
+                           referralQrDataModel.url = array[0].url.toString()
 
                        }
                         referralData.location_name = it.location_name
@@ -522,14 +522,13 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                 }
             }
 
-
             "UTM_DETAIL" -> {
                 setUTMText(receivedData.location_name)
                 setQrCode(selectedUrl)
 
                 UTM_ID = receivedData.utm_id
 
-                referralQrDataModel.url = selectedUrl
+                selectedUrl=  referralQrDataModel.url
                     referralData.trail_url = selectedUrl
 
                 getBusinessCardModel.data!!.forEach {loc ->
@@ -543,6 +542,29 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                     }
                 }
             }
+
+            "LOCATION_URL" -> {
+                setUTMURLText(receivedData.type)
+                selectedUrl = receivedData.url
+                referralQrDataModel.url =  selectedUrl
+                setQrCode(selectedUrl)
+
+                Log.d("safyfdyafydfsay", selectedUrl) // Ensure this logs the correct URL
+
+                UTM_ID = receivedData.utm_id
+
+                selectedUrl = referralQrDataModel.url
+
+                // Debugging output to verify URL assignment
+                getBusinessCardModel.data!!.forEach { loc ->
+                    loc.utm_list.forEach { utm ->
+                        if (utm.id.toString() == UTM_ID) { // Ensure you are checking the correct ID
+                            binding.tvUTMURL.text = utm.url_list[0].type
+                        }
+                    }
+                }
+            }
+
         }
 
         args.putParcelable("Location_Model", referralData)
