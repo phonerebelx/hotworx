@@ -508,7 +508,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                     if (it.location_name == selected_location_name) {
                        it.utm_list.let { array ->
                            setUTMText(array[0].name?: "")
-                           setUTMURLText(array[0].name?: "")
                            setQrCode(array[0].url ?: "")
                            referralQrDataModel.url = array[0].url.toString()
 
