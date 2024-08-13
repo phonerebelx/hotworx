@@ -149,6 +149,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
 
                     // Set location details
                     getBusinessCardModel.data?.get(0)?.let { locationData ->
+                        setUserDetail(email = locationData.location_email, phone = locationData.location_phone)
                         selected_location_name = locationData.location_name ?: ""
                         setLocationText(locationData.location_name ?: "", locationData.location_address ?: "")
                     }
@@ -517,7 +518,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                         referralData.trail_url = selectedUrl
                         setUserDetail(it.location_email,it.location_phone)
                     }
-
                 }
             }
 
