@@ -573,7 +573,6 @@ public class WorkoutTimeFragment extends BaseFragment {
                     RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().insert(burntSession);
                     clearSession();
                 } else {
-                    Toast.makeText(getContext(),"elseeeeeeeeeee"+getCurrentDate(),Toast.LENGTH_LONG).show();
                     RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().updateCancellation("yes", "0", ApplicationManager.getInstance(myDockActivity).getSessionId(), getCurrentDate());
                     clearSession();
                 }

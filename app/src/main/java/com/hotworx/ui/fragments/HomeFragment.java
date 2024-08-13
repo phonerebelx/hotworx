@@ -548,7 +548,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     private String getCurrentDate() {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sdf.setTimeZone(TimeZone.getDefault()); // Automatically picks the device's current time zone
         return sdf.format(date);
     }
@@ -563,7 +563,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             myDockActivity.showErrorMessage(message);
         }
     }
-
 
     /////////////////////////// new extended webservice /////////////////////////////
 
