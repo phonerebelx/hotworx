@@ -570,11 +570,11 @@ public class WorkoutTimeFragment extends BaseFragment {
                             true,
                             Constants.WORKOUT_AFTER_BURN_DURATION,
                             "yes");
-
                     RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().insert(burntSession);
                     clearSession();
                 } else {
-                    RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().updateCancellation("yes", "0", ApplicationManager.getInstance(myDockActivity).getSessionId());
+                    Toast.makeText(getContext(),"elseeeeeeeeeee"+getCurrentDate(),Toast.LENGTH_LONG).show();
+                    RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().updateCancellation("yes", "0", ApplicationManager.getInstance(myDockActivity).getSessionId(), getCurrentDate());
                     clearSession();
                 }
             }

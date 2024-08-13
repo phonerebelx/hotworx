@@ -218,7 +218,7 @@ public class SaveCaloriesFragment extends BaseFragment {
     }
 
     private void saveStartSession() {
-        SessionEnt sessionEnt = new SessionEnt(getStartCalories(), "",currentDate, getCurrentDate(), activeSession.getType(), Constants.Other, false, activeSession.getDuration(), "no", activeSession.getSession_record_id());
+        SessionEnt sessionEnt = new SessionEnt(getStartCalories(), "",getCurrentDate(),"", activeSession.getType(), Constants.Other, false, activeSession.getDuration(), "no", activeSession.getSession_record_id());
         long session_id = RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().insert(sessionEnt);
         ApplicationManager.getInstance(myDockActivity).setSessionId((int) session_id);
         saveStartSessionIntoRoom();
@@ -321,8 +321,8 @@ public class SaveCaloriesFragment extends BaseFragment {
         SessionEnt burntSession = new SessionEnt(
                 "0",
                 "",
-                currentDate,
                 getCurrentDate(),
+                "",
                 "0",
                 "",
                 Constants.AFTERBURN,

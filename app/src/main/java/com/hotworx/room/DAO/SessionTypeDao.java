@@ -30,8 +30,8 @@ public interface SessionTypeDao {
     @Query("UPDATE session SET end_calories = :end_calories, end_picture = :end_picture,end_date = :end_date,session_type_end = :session_type_end WHERE id = :id")
     void updateEndCalories(String end_calories,String end_picture,String end_date,String session_type_end,int id);
 
-    @Query("UPDATE session SET is_cancelled = :iscancelled,end_calories =:session_calories WHERE id = :id")
-    void updateCancellation(String iscancelled,String session_calories,int id);
+    @Query("UPDATE session SET is_cancelled = :iscancelled,end_calories =:session_calories, end_date = :end_date WHERE id = :id")
+    void updateCancellation(String iscancelled,String session_calories,int id, String end_date);
 
     @Query("DELETE FROM session  WHERE activity_id = :activity_id")
     void deleteSessionByActivityId(String activity_id);
