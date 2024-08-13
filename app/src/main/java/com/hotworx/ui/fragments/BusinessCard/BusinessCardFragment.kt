@@ -124,10 +124,10 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                     referralQrDataModel = ReferralQrDataModel(
                         getBusinessCardModel.name_on_businesscard ?: "",
                         getBusinessCardModel.employee_address ?: "",
-                        selectedUrl
+                        selectedUrl ?: ""
                     )
                     referralData = Data(
-                        buy_url = firstUtm?.buy_url ?: "",
+                        buy_url = firstUtm?.url_list?.get(0)?.url.toString(),
                         currency_symbol = "",
                         lead_id = "",
                         firstUtm?.id.toString(),
@@ -136,10 +136,10 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                         remaining_balance = 0,
                         total_amount_used = 0,
                         total_gift_amount = 0,
-                        trail_url = firstUtm?.trail_url ?: "",
+                        trail_url = firstUtm?.url_list?.get(0)?.url.toString(),
                         redeemed_text = "",
                         location_address = "",
-                        "",
+                        url = firstUtm?.url_list?.get(0)?.url ?: "",
                         "",
                         ""
                     )
@@ -286,7 +286,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
 
     private fun initURLDialog() {
         val referralData = ArrayList<Data>()
-        val selectedUtmId = "8"
+        val selectedUtmId = UTM_ID
         Log.d("jdbkjvkd",UTM_ID)
         if (getBusinessCardModel.data != null) {
             getBusinessCardModel.data!!.forEach { businessCard ->
@@ -483,8 +483,8 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
     }
 
     private fun initQrDialog(referralQrDataModel: ReferralQrDataModel) {
-        selectedUrl = referralQrDataModel.url // Ensure selectedUrl is set here
-        Log.d("QrDialog", "Referral URL: ${referralQrDataModel.url}")
+        referralQrDataModel.url= selectedUrl  // Ensure selectedUrl is set here
+        Log.d("QrDialog", "Referral URL: $referralQrDataModel.url")
         val qrDialogFragment = QrDialogFragment()
         qrDialogFragment.qrModel = referralQrDataModel
         qrDialogFragment.checkComeFromBusinessCard = true
@@ -503,12 +503,10 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             "LOCATION_DETAIL" -> {
                 setLocationText(receivedData.location_name, receivedData.location_address)
                 selected_location_name = receivedData.location_name
-                UTM_ID = receivedData.utm_id
 
                 getBusinessCardModel.data!!.forEach {
                     if (it.location_name == selected_location_name) {
                        it.utm_list.let { array ->
-                           UTM_ID = array[0].id?:""
                            setUTMText(array[0].name?: "")
                            setUTMURLText(array[0].name?: "")
                            setQrCode(array[0].url ?: "")
@@ -528,18 +526,21 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                 setUTMText(receivedData.location_name)
                 setQrCode(selectedUrl)
 
-                UTM_ID = receivedData.utm_id
+                UTM_ID = receivedData.utm_id ?: ""
 
                 selectedUrl=  referralQrDataModel.url
                 referralData.trail_url = selectedUrl
 
+                Log.d("DEBUG_UTM_ID", "UTM_ID before loop: $UTM_ID")
+
                 getBusinessCardModel.data!!.forEach {loc ->
                     loc.utm_list.forEach {utm ->
-                        UTM_ID = utm.id.toString()
                         if (utm.name == receivedData.location_name)    {
+                            UTM_ID = utm.id?.toString() ?: ""
                             referralData.location_name = loc.location_name ?: ""
                             referralData.location_code = loc.location_code ?: ""
 
+                            Log.d("DEBUG_UTM_ID_UPDATED", "UTM_ID updated to: $UTM_ID")
                         }
                     }
                 }
@@ -550,6 +551,8 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                 selectedUrl = receiveData.url
                 val selectedType = receiveData.type
 
+                val selectedUtmId = receiveData.utm_id
+                Log.d("selectedUtmIdDDDD", selectedUtmId)
                 // Directly assign the selected type to the tvUTMURL field
                 binding.tvUTMURL.text = selectedType
 
