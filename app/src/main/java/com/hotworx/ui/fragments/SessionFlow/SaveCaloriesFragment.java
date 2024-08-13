@@ -50,6 +50,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -212,13 +213,12 @@ public class SaveCaloriesFragment extends BaseFragment {
         }
     }
 
-
     private void callApiForSetWeight(String weight) {
         getServiceHelper().enqueueCall(getWebService().setWeight(apiHeader, weight), WebServiceConstants.SET_WEIGHT, false);
     }
 
     private void saveStartSession() {
-        SessionEnt sessionEnt = new SessionEnt(getStartCalories(), "", currentDate, activeSession.getType(), Constants.Other, false, activeSession.getDuration(), "no", activeSession.getSession_record_id());
+        SessionEnt sessionEnt = new SessionEnt(getStartCalories(), "",activeSession.getDate(), getCurrentDate(), activeSession.getType(), Constants.Other, false, activeSession.getDuration(), "no", activeSession.getSession_record_id());
         long session_id = RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().insert(sessionEnt);
         ApplicationManager.getInstance(myDockActivity).setSessionId((int) session_id);
         saveStartSessionIntoRoom();
@@ -292,6 +292,13 @@ public class SaveCaloriesFragment extends BaseFragment {
         }
     }
 
+    private String getCurrentDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getDefault()); // Automatically picks the device's current time zone
+        return sdf.format(date);
+    }
+
     private void savingWorkOutBurntCalories() {
         if (RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().getSession(ApplicationManager.getInstance(myDockActivity).getSessionId()) != null) {
             String end_calroies = RoomBuilder.getHotWorxDatabase(myDockActivity).getSessionTypeDao().getSession(ApplicationManager.getInstance(myDockActivity).getSessionId()).getEnd_calories();
@@ -311,10 +318,11 @@ public class SaveCaloriesFragment extends BaseFragment {
         String activity_id = timestamp.toString();
         ApplicationManager.getInstance(myDockActivity).setActivityId(activity_id);
 
-        SessionEnt burntSession = new SessionEnt("0",
+        SessionEnt burntSession = new SessionEnt(
+                "0",
                 "",
                 activeSession.getDate(),
-                currentDate,
+                getCurrentDate(),
                 "0",
                 "",
                 Constants.AFTERBURN,

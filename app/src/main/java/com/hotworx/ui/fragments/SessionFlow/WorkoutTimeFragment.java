@@ -47,6 +47,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -416,10 +417,11 @@ public class WorkoutTimeFragment extends BaseFragment {
         String activity_id = timestamp.toString();
         ApplicationManager.getInstance(myDockActivity).setActivityId(activity_id);
 
-        SessionEnt burntSession = new SessionEnt("0",
+        SessionEnt burntSession = new SessionEnt(
+                "0",
                 "",
                 activeSession.getDate(),
-                currentDate,
+                getCurrentDate(),
                 "0",
                 "",
                 Constants.AFTERBURN,
@@ -536,20 +538,28 @@ public class WorkoutTimeFragment extends BaseFragment {
         alarmManager.cancel(pendingIntent);
     }
 
+    private String getCurrentDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getDefault()); // Automatically picks the device's current time zone
+        return sdf.format(date);
+    }
+
     private void exitDialog() {
         UIHelper.showAlertDialog(getResources().getString(R.string.are_you_sure_cancel), "", myDockActivity, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (isAfterBurnWorkoutSession) {
-                    String currentDate = new SimpleDateFormat(Constants.DATE_FORMAT, Locale.US).format(new Date());
+                    String currentDate = new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(new Date());
                     Long timestamp = System.currentTimeMillis() / 1000;
                     String activity_id = timestamp.toString();
                     ApplicationManager.getInstance(myDockActivity).setActivityId(activity_id);
 
-                    SessionEnt burntSession = new SessionEnt("0",
+                    SessionEnt burntSession = new SessionEnt(
+                            "0",
                             "",
                             activeSession.getDate(),
-                            currentDate,
+                            getCurrentDate(),
                             "0",
                             "",
                             Constants.AFTERBURN,
@@ -575,6 +585,7 @@ public class WorkoutTimeFragment extends BaseFragment {
             }
         });
     }
+
 
     @Override
     public void onBackPressed() {
