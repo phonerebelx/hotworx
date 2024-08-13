@@ -534,11 +534,12 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
 
                 getBusinessCardModel.data!!.forEach {loc ->
                     loc.utm_list.forEach {utm ->
+
                         if (utm.name == receivedData.location_name)    {
                             UTM_ID = utm.id?.toString() ?: ""
+
                             referralData.location_name = loc.location_name ?: ""
                             referralData.location_code = loc.location_code ?: ""
-
                             Log.d("DEBUG_UTM_ID_UPDATED", "UTM_ID updated to: $UTM_ID")
                         }
                     }
