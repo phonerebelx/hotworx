@@ -10,19 +10,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
 import com.hotworx.databinding.FragmentHotsquadSearchBinding
+import com.hotworx.helpers.Utils
+import com.hotworx.interfaces.LoadingListener
 import com.hotworx.models.HotsquadList.UserModel
 import com.hotworx.ui.adapters.HotsquadListAdapter.UserListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.HotsquadList.Bottomsheet.SearchUserBottomSheet
 import com.hotworx.ui.views.TitleBar
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
 
-class HotsquadSearchFragment : BaseFragment() {
+class HotsquadSearchFragment : BaseFragment(), LoadingListener {
     private var _binding: FragmentHotsquadSearchBinding? = null
     private val binding get() = _binding!!
 
     private val userList = mutableListOf<UserModel>()
     private lateinit var userListAdapter: UserListAdapter
+    private var isLoading = false
+    var resultString = ""
 
     /**
      * Bottom Sheet
@@ -60,6 +68,9 @@ class HotsquadSearchFragment : BaseFragment() {
                 userListAdapter.notifyItemInserted(userList.size - 1)
                 binding.titleEt.text?.clear()
                 updateSearchButtonVisibility()
+
+                resultString = convertListToString(userList)
+                Log.d("USERLISTTTTTTSep",resultString.toString())
             }
         }
 
@@ -67,10 +78,19 @@ class HotsquadSearchFragment : BaseFragment() {
         searchUserBottomSheet = SearchUserBottomSheet()
 
         binding.btnSearchUser.setOnClickListener{
+            // Pass resultString to the Bottom Sheet
+            val bundle = Bundle()
+            bundle.putString("resultString", resultString)
+            Log.d("resultString",resultString.toString())
+            searchUserBottomSheet.arguments = bundle
             searchUserBottomSheet.show(parentFragmentManager, "TAG")
         }
 
         updateSearchButtonVisibility()
+    }
+
+    fun convertListToString(userList: List<UserModel>): String {
+        return userList.joinToString(separator = "||") { it.searchedName.toString() }
     }
 
     private fun isValidEmailOrPhone(input: String): Boolean {
@@ -80,13 +100,15 @@ class HotsquadSearchFragment : BaseFragment() {
     }
 
     private fun updateSearchButtonVisibility() {
-        binding.btnSearchUser.visibility = if (userList.size >= 1) View.VISIBLE else View.GONE
-    }
+        binding.btnSearchUser.visibility = if (userList.isNotEmpty()) View.VISIBLE else View.GONE    }
 
     private fun onDeleteItemClicked(position: Int) {
-        if (position in userList.indices) {
+        if (position >= 0 && position < userList.size) {
             userList.removeAt(position)
             userListAdapter.notifyItemRemoved(position)
+            userListAdapter.notifyItemRangeChanged(position, userList.size)
+
+
             updateSearchButtonVisibility()
         }
     }
@@ -95,6 +117,45 @@ class HotsquadSearchFragment : BaseFragment() {
         super.setTitleBar(titleBar)
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.leaderboard)
+    }
+
+
+    //For BottomSheet
+    private fun addSquadMember(){
+        onLoadingStarted()
+        webService?.searchAddSquadMember(
+           ""
+        )?.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                onLoadingFinished()
+                try {
+                    if (response.code() == 200 && response.body() != null) {
+
+                    }
+                } catch (ex: Exception) {
+                    Utils.customToast(requireContext(), resources.getString(R.string.internal_exception_messsage))
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                onLoadingFinished()
+                Utils.customToast(requireContext(), t.toString())
+            }
+        })
+    }
+
+    override fun onLoadingStarted() {
+        isLoading = true
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    override fun onLoadingFinished() {
+        isLoading = false
+        binding.progressBar.visibility = View.GONE
+    }
+
+    override fun onProgressUpdated(percentLoaded: Int) {
+
     }
 
     override fun onDestroyView() {

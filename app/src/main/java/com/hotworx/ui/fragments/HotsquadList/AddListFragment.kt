@@ -54,7 +54,6 @@ class AddListFragment : BaseFragment() , LoadingListener {
     override fun setTitleBar(titleBar: TitleBar) {
         super.setTitleBar(titleBar)
         titleBar.showBackButton()
-        titleBar.subHeading = getString(R.string.leaderboard)
     }
 
     private fun createHotSquadList(){

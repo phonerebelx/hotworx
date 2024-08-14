@@ -655,4 +655,11 @@ public interface WebService {
     Call<ResponseBody> getHotsquadList(
             @HeaderMap Map<String, String> headers
     );
+
+    //Create HotSquad list
+    @FormUrlEncoded
+    @POST("hotsquad/CheckHotSquadUsers")
+    Call<ResponseBody> searchAddSquadMember(
+            @Field("search_list") String search_list
+    );
 }
