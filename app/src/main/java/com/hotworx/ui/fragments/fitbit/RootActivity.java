@@ -44,6 +44,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
+import java.util.TimeZone;
 
 import static com.hotworx.global.Constants.WORKOUT_AFTER_BURN_NAME;
 
@@ -360,7 +361,7 @@ public class RootActivity extends BaseActivity implements AuthenticationHandler,
 
     private void saveStartSession(String caloriesOut) {
         String currentDate = new SimpleDateFormat(Constants.DATE_FORMAT, Locale.US).format(new Date());
-        SessionEnt sessionEnt = new SessionEnt(caloriesOut, "", currentDate, activeSession.getType(), Constants.FITBIT, false, activeSession.getDuration(), "no", activeSession.getSession_record_id());
+        SessionEnt sessionEnt = new SessionEnt(caloriesOut, "", currentDate,"", activeSession.getType(), Constants.FITBIT, false, activeSession.getDuration(), "no", activeSession.getSession_record_id());
         long session_id = RoomBuilder.getHotWorxDatabase(this).getSessionTypeDao().insert(sessionEnt);
         ApplicationManager.getInstance(this).setSessionId((int) session_id);
         saveStartSessionIntoRoom();
@@ -397,16 +398,24 @@ public class RootActivity extends BaseActivity implements AuthenticationHandler,
 //        }
     }
 
+    private String getCurrentDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getDefault()); // Automatically picks the device's current time zone
+        return sdf.format(date);
+    }
+
     private void saveOneHourCalories(String caloriesOut) {
         String currentDate = new SimpleDateFormat(Constants.DATE_FORMAT, Locale.US).format(new Date());
         timestamp = System.currentTimeMillis() / 1000;
         String activity_id = timestamp.toString();
         ApplicationManager.getInstance(this).setActivityId(activity_id);
 
-        SessionEnt burntSession = new SessionEnt(activeSession.getStartCalories(),
+        SessionEnt burntSession = new SessionEnt(
+                activeSession.getStartCalories(),
                 "",
                 activeSession.getDate(),
-                currentDate,
+                getCurrentDate(),
                 caloriesOut,
                 "",
                 Constants.AFTERBURN,

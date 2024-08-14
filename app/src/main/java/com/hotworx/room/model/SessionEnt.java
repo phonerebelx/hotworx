@@ -56,10 +56,11 @@ public class SessionEnt {
     }
 
     @Ignore
-    public SessionEnt(String start_calories,String start_picture,String start_date,String workout_type,String session_type_start,boolean is_afterburn,String session_time,String is_cancelled, String session_record_id){
+    public SessionEnt(String start_calories,String start_picture,String start_date,String end_date,String workout_type,String session_type_start,boolean is_afterburn,String session_time,String is_cancelled, String session_record_id){
         this.start_calories = start_calories;
         this.start_picture = start_picture;
         this.start_date = start_date;
+        this.end_date = end_date;
         this.session_type_start = session_type_start;
         this.workout_type = workout_type;
         this.is_afterburn = is_afterburn;
@@ -73,6 +74,7 @@ public class SessionEnt {
         this.start_calories = start_calories;
         this.start_picture = start_picture;
         this.start_date = start_date;
+        this.end_date = end_date;
         this.end_calories = end_calories;
         this.end_picture = end_picture;
         this.session_type_start = session_type_start;
@@ -82,7 +84,6 @@ public class SessionEnt {
         this.is_afterburn = is_afterburn;
         this.session_time = session_time;
         this.is_cancelled = is_cancelled;
-        this.end_date = end_date;
         this.session_type_end = session_type_end;
     }
 

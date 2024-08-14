@@ -5,47 +5,12 @@
       <config />
     </shared>
     <layouts>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dock.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_otp.xml">
-        <config>
-          <theme>@style/Theme.AppCompat.Light.NoActionBar.FullScreen</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_root.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet_searchuser.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_box_internet.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_activity_detail.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_fitness.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_activity_screen.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_list.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -65,32 +30,17 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_hotsquad_create.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard_session_adapter.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_hotsquad_search.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_inter_nutritionist.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_latest_reward.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_leaderboard.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_level_five.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_hotsquad_list.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_milestone.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -105,7 +55,7 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_nitification_read.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_dashboard.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -115,22 +65,32 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_myhotsquadlist.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_qr_dialog.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_notification.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_referral_location.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_registereduserlist.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_referral_url.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_user_form.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_workout_time.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_referral_url.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/single_referral_location_adapter.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -141,9 +101,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48572693-4e8f-4229-a717-18ad3a6b4297" name="Changes" comment="fixed">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,24 +118,12 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="hotworx" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="buddylist-module" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -193,10 +139,9 @@
   }
 }</component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 2
+  &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2kHDOh3Ya1r1KEwS3Fksvi1Zhc8" />
+  <component name="ProjectId" id="2kTVTwP3K01kJsGmbIG29gfPiKI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -204,15 +149,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Android App.app.executor": "Run",
+    "DEBUGGABLE_DEVICE": "tecno_bf7-adb-1048533372003926-FuyubT._adb-tls-connect._tcp",
+    "DEBUGGABLE_PROCESS": "com.hotworx",
+    "DEBUGGER_ID": "Auto",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHOW_ALL_PROCESSES": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "Z:/My Folder/practice projects/MFBS",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "last_opened_file_path": "Z:/My Folder/practice projects/flight aviation"
   },
   "keyToStringList": {
     "kotlin-gradle-user-dirs": [
@@ -223,19 +171,11 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\layout" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
-      <recent name="com.hotworx.ui.adapters.HotsquadListAdapter" />
-      <recent name="com.hotworx.models.HotsquadList" />
-      <recent name="com.hotworx.ui.fragments.HotsquadList.Bottomsheet" />
-      <recent name="com.hotworx.ui.adapters" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.hotworx.ui.adapters.HotsquadListAdapter" />
+      <recent name="com.hotworx.ui.dialog.ReferralUrl" />
+      <recent name="com.hotworx.models.BusinessCard" />
+      <recent name="com.hotworx.ui.adapters.ReferralUrl" />
     </key>
   </component>
   <component name="RunManager">
@@ -309,15 +249,175 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="48572693-4e8f-4229-a717-18ad3a6b4297" name="Changes" comment="" />
-      <created>1722931580242</created>
+      <changelist id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="" />
+      <created>1723307568434</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1722931580242</updated>
+      <updated>1723307568434</updated>
     </task>
+    <task id="LOCAL-00001" summary="activity screen working , 1 crash fixed">
+      <option name="closed" value="true" />
+      <created>1723382689426</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723382689426</updated>
+    </task>
+    <task id="LOCAL-00002" summary="buy url, trail url done on check box">
+      <option name="closed" value="true" />
+      <created>1723403771002</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723403771002</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723406780204</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723406780204</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723407565478</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723407565478</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723407804954</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723407804954</updated>
+    </task>
+    <task id="LOCAL-00006" summary="bottom sheet completed">
+      <option name="closed" value="true" />
+      <created>1723476264502</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723476264502</updated>
+    </task>
+    <task id="LOCAL-00007" summary="url problem fixed">
+      <option name="closed" value="true" />
+      <created>1723480800722</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723480800722</updated>
+    </task>
+    <task id="LOCAL-00008" summary="url problem fixed">
+      <option name="closed" value="true" />
+      <created>1723503438091</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723503438091</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fixed issues">
+      <option name="closed" value="true" />
+      <created>1723527368912</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723527368912</updated>
+    </task>
+    <task id="LOCAL-00010" summary="date issue fixed">
+      <option name="closed" value="true" />
+      <created>1723527892482</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723527892482</updated>
+    </task>
+    <task id="LOCAL-00011" summary="utm id default fixed">
+      <option name="closed" value="true" />
+      <created>1723533744550</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723533744550</updated>
+    </task>
+    <task id="LOCAL-00012" summary="start date fixed">
+      <option name="closed" value="true" />
+      <created>1723545979148</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1723545979148</updated>
+    </task>
+    <task id="LOCAL-00013" summary="end date fixed">
+      <option name="closed" value="true" />
+      <created>1723551416726</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723551416726</updated>
+    </task>
+    <task id="LOCAL-00014" summary="home fragment fixed">
+      <option name="closed" value="true" />
+      <created>1723552016553</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1723552016553</updated>
+    </task>
+    <task id="LOCAL-00015" summary="name fixed in business card fragment">
+      <option name="closed" value="true" />
+      <created>1723552399981</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1723552399981</updated>
+    </task>
+    <task id="LOCAL-00016" summary="business card fixed">
+      <option name="closed" value="true" />
+      <created>1723555930733</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1723555930733</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fixed">
+      <option name="closed" value="true" />
+      <created>1723568550133</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1723568550133</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="activity screen working , 1 crash fixed" />
+    <MESSAGE value="buy url, trail url done on check box" />
+    <MESSAGE value="bottom sheet completed" />
+    <MESSAGE value="url problem fixed" />
+    <MESSAGE value="fixed issues" />
+    <MESSAGE value="date issue fixed" />
+    <MESSAGE value="utm id default fixed" />
+    <MESSAGE value="start date fixed" />
+    <MESSAGE value="end date fixed" />
+    <MESSAGE value="home fragment fixed" />
+    <MESSAGE value="name fixed in business card fragment" />
+    <MESSAGE value="business card fixed" />
     <MESSAGE value="fixed" />
     <option name="LAST_COMMIT_MESSAGE" value="fixed" />
   </component>

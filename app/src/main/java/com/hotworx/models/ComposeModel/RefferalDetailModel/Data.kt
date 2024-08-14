@@ -9,6 +9,7 @@ data class Data(
     var buy_url: String,
     var currency_symbol: String,
     var lead_id: String,
+    var utm_id: String,
     var location_code: String,
     var location_name: String,
     var remaining_balance: Int,
@@ -17,4 +18,7 @@ data class Data(
     var trail_url: String,
     var redeemed_text: String?,
     var location_address: String = "",
+    var url: String,
+    var type: String,
+    var description: String,
 ): Parcelable

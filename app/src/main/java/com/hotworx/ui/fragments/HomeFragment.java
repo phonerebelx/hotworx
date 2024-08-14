@@ -121,6 +121,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -250,6 +251,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         swipeRefreshLayout.setOnRefreshListener(this);
         mWorkManager = WorkManager.getInstance();
 
+
+        Log.d("currentDateeee",getCurrentDate());
+
         data = new Data.Builder()
                 .putString(Constants.USER_ID, prefHelper.getUserId())
                 .build();
@@ -346,8 +350,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         EventBus.getDefault().unregister(this);
     }
 
-
-
     @Override
     public void setTitleBar(TitleBar titleBar) {
         super.setTitleBar(titleBar);
@@ -372,15 +374,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private void initAnimations() {
         popIn = AnimationUtils.loadAnimation(myDockActivity, R.anim.pop_in);
     }
-
-
-    ////////////////////////////closed due to new dashboard //////////////////////////////////////////////
-//    private void initAdapter() {
-//        rvDetail.setLayoutManager(new LinearLayoutManager(getDockActivity(), LinearLayoutManager.VERTICAL, false));
-//        adapter = new HomeAdapter(getDockActivity());
-//        rvDetail.setAdapter(adapter);
-//    }
-
 
     public void createWorkoutSessionDialog() {
         if (prefHelper.getActiveSession() != null && !checkWorkoutSessionDialogShowing()) {
@@ -408,30 +401,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         }
     }
 
-    ////////////////////////////closed due to new dashboard //////////////////////////////////////////////
-//    private void setCurrentDate() {
-//        DateFormat dateFormat = new SimpleDateFormat("MMM dd yyyy", Locale.getDefault());
-//        Date date = new Date();
-//        dateFormat.format(date);
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(date);
-//
-//
-//        calendar.add(Calendar.DATE, 0);
-//        today = dateFormat.format(calendar.getTime());
-//        today_textview.setText(today);
-//        today_textview.setContentDescription("current date is " + today);
-//
-//        calendar.add(Calendar.DATE, -1);
-//        yesterday = dateFormat.format(calendar.getTime());
-//        yesterday_textview.setText(yesterday);
-//
-//        calendar.add(Calendar.DATE, -1);
-//        daybefore = dateFormat.format(calendar.getTime());
-//        dayBefore_textview.setText(daybefore);
-//        apiCallForOverAllSummary(getCurrentDate(0));
-//
-//    }
     ////////////////////////////closed due to new dashboard //////////////////////////////////////////////
     private String getCurrentDate(int type) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
@@ -467,12 +436,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 //            dayBefore_textview.setText(content);
 //        }
         return dateFormat.format(calendar.getTime());
-    }
-
-    private String getCurrentDate() {
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return sdf.format(date); // Return the formatted date as a string
     }
 
     private void apiCallForOverAllSummary(String date) {
@@ -541,7 +504,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         }
     }
 
-
     /////////////////////////// new extended webservice /////////////////////////////
     @Override
     public void onSuccess(LiveData<String> liveData, String tag) {
@@ -586,6 +548,13 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         }
     }
 
+    private String getCurrentDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getDefault()); // Automatically picks the device's current time zone
+        return sdf.format(date);
+    }
+
     @Override
     public void onFailure(String message, String tag) {
         if (!isAdded()) { return; }
@@ -596,7 +565,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             myDockActivity.showErrorMessage(message);
         }
     }
-
 
     /////////////////////////// new extended webservice /////////////////////////////
 
