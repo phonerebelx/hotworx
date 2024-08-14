@@ -1,6 +1,5 @@
 package com.hotworx.ui.adapters.HotsquadListAdapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,19 +30,17 @@ class SquadListAdapter(
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
 
         fun bind(item: HotsquadItem) {
-            titleTextView.text = item.title
-            countTextView.text = item.count.toString()
-            iconImageView.setImageResource(item.iconResId)
+            titleTextView.text = item.name
+            countTextView.text = item.totalMembers.toString()
+//            iconImageView.setImageResource(item.iconResId)
 
             cardView.setOnClickListener {
-                Log.d("SquadListAdapter", "Card clicked: ${item.title}")
-                val hotsquadSearchFragment = HotsquadSearchFragment()
-                dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
+                listener.onItemClick(item)
             }
 
             addButton.setOnClickListener {
-                Log.d("SquadListAdapter", "Add button clicked: ${item.title}")
-                listener.onItemClick(item)
+                val hotsquadSearchFragment = HotsquadSearchFragment()
+                dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
             }
         }
     }
@@ -56,6 +53,16 @@ class SquadListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(items[position])
     }
+
+    fun getPositionById(listId: String): Int {
+        for (i in items.indices) {
+            if (items.get(i).squadId == listId) {
+                return i
+            }
+        }
+        return -1
+    }
+
 
     override fun getItemCount(): Int = items.size
 }

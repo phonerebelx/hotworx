@@ -651,5 +651,8 @@ public interface WebService {
             @Field("desc") String desc
     );
 
-
+    @GET("hotsquad/getSquadList")
+    Call<ResponseBody> getHotsquadList(
+            @HeaderMap Map<String, String> headers
+    );
 }

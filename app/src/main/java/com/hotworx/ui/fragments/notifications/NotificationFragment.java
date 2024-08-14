@@ -24,16 +24,10 @@ import com.hotworx.interfaces.OnClickItemListener;
 import com.hotworx.models.NotificationHistory.Data;
 import com.hotworx.models.NotificationHistory.NotificationHistoryModel;
 import com.hotworx.models.NotificationHistory.NotificationRead.NotificationReadModel;
-import com.hotworx.requestEntity.NotificationResponseEnt;
-import com.hotworx.requestEntity.VideoEnt;
-import com.hotworx.requestEntity.VideoResponseEnt;
 import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.ui.adapters.NotificationListAdapter;
-import com.hotworx.ui.adapters.VideoCategoryAdapter;
-import com.hotworx.ui.adapters.VideoListAdapter;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.fragments.HomeFragment;
-import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
 import com.hotworx.ui.fragments.notifications.ReadNotification.LargeImageView.LargeImageViewDialogFragment;
 import com.hotworx.ui.fragments.notifications.ReadNotification.NotificationReadFragment;
 import com.hotworx.ui.views.TitleBar;
@@ -71,6 +65,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
         notificationFragment.setArguments(bundle);
         return notificationFragment;
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -106,6 +101,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
         tvNotifications.setText("No Notification Found");
 
     }
+
     public void ResponseSuccess(String result, String Tag) {
         switch (Tag) {
             case WebServiceConstants.GET_NOTIFICATION_HISTORY:
