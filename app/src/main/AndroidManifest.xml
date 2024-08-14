@@ -45,7 +45,7 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:replace="android:theme,android:allowBackup">
+        tools:replace="android:theme,android:allowBackup,android:name">
 
         <provider
             android:name="androidx.core.content.FileProvider"

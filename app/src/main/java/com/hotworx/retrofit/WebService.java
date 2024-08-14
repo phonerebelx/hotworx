@@ -124,8 +124,6 @@ public interface WebService {
             @Field("lead_record_id") String lead_record_id
     );
 
-
-
     //   v2 api's for booking session work
 
 
@@ -143,8 +141,6 @@ public interface WebService {
             @Field("selected_date") String selected_date,
             @Field("view_type") String view_type
     );
-
-
 
     @FormUrlEncoded
     @POST("booking/bookSession_v2")
@@ -213,7 +209,6 @@ public interface WebService {
     Call<ResponseBody> getCaloriesStat(
             @HeaderMap Map<String, String> headers
     );
-
 
     //Profile
     @GET("general/view_profile")
@@ -415,7 +410,6 @@ public interface WebService {
             @Query("notification_id") String notification_id,
             @Query("user_action") String user_action);
 
-
     //notification api's
     @POST("general/get_notification_history")
     Call<ResponseBody> getNotificationHistory(
@@ -434,8 +428,6 @@ public interface WebService {
            @Query("id") String id
 
     );
-
-
 
     // Nutrition Calories
     @POST("general/get_intermittent_plan")
@@ -649,7 +641,15 @@ public interface WebService {
     );
 
 
+    //HotSquad List
 
+    //Create HotSquad list
+    @FormUrlEncoded
+    @POST("hotsquad/createSquad")
+    Call<ResponseBody> createHotsquadList(
+            @Field("name") String name,
+            @Field("desc") String desc
+    );
 
 
 }
