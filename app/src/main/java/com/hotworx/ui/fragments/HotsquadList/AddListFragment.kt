@@ -112,22 +112,17 @@ class AddListFragment : BaseFragment() , LoadingListener {
         super.onSuccess(liveData, tag)
         when (tag) {
             Constants.CREATE_SQUADLIST -> {
-                onLoadingStarted()
                 try {
                     val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, CreateHotsquadModel::class.java)!!
-                    if (response.message == "success"){
+                    if (response.success){
                         val myHotsquadListFragment = MyHotsquadListFragment()
                         dockActivity.replaceDockableFragment(myHotsquadListFragment)
-                        onLoadingFinished()
                     }else{
-                        onLoadingFinished()
                         dockActivity?.showErrorMessage("Something Went Wrong")
                     }
-
                 } catch (e: Exception) {
                     val genericMsgResponse = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
-                    onLoadingFinished()
                     dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
                     Log.i("dummy error", e.message.toString())
                 }

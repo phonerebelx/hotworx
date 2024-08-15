@@ -190,6 +190,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             }
             it.tvDropoffLocation.setOnClickListener{
                 initUTMDialog()
+                Log.d("setOnClickListenerURLL: ",selectedUrl)
             }
 
             it.tvUTMURL.setOnClickListener{
@@ -217,6 +218,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         binding.tvEmail.text = email ?: ""
         binding.tvPhone.text = phone ?: ""
     }
+
     private fun setImageOrData() {
         if (prefHelper.imagePath != null) {
             binding.tvfirstLastName.visibility = View.GONE
