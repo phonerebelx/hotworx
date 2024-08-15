@@ -28,6 +28,8 @@ class ReferralLocationDialogFragment(private val clickListener: OnClickItemListe
     lateinit var referralData: List<Data>
     var veriftyIsLocationOrNot by Delegates.notNull<Boolean>()
     lateinit var referralLocationAdapter: ReferralLocationAdapter
+    var utm = ""
+    var titleValue = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,10 +37,15 @@ class ReferralLocationDialogFragment(private val clickListener: OnClickItemListe
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentReferralLocationBinding.inflate(layoutInflater)
-        setCountData()
-        Log.d("onCreateView: ",referralData.toString())
-        initRecyclerView(referralData)
 
+        arguments?.let { bundle ->
+            utm = bundle.getString("UTMVALUE")?.trim() ?: ""
+            Log.d("jskjhjkh",utm)
+        }
+
+        setCountData()
+        initRecyclerView(referralData)
+        Log.d("onCreateView: ",referralData.toString())
 
         return binding.root
     }
@@ -46,8 +53,15 @@ class ReferralLocationDialogFragment(private val clickListener: OnClickItemListe
 
     @SuppressLint("SetTextI18n")
     private fun setCountData(){
-        binding.tvLocationCount.text = "Location List (0${referralData.size})"
+        val countText = if (utm.equals("UTM", ignoreCase = true)) {
+            "UTM List (${referralData.size})"
+        } else {
+            "Home Location (${referralData.size})"
+        }
+        binding.tvLocationCount.text = countText
     }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

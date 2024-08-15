@@ -10,11 +10,9 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.hotworx.databinding.FragmentReferralUrlBinding
 import com.hotworx.databinding.FragmentReferralurlBinding
 import com.hotworx.interfaces.OnClickItemListener
 import com.hotworx.models.ComposeModel.RefferalDetailModel.Data
-import com.hotworx.ui.adapters.ReferralLocation.ReferralLocationAdapter
 import com.hotworx.ui.adapters.ReferralUrl.ReferralUrlAdapter
 import kotlin.properties.Delegates
 
