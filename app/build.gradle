@@ -19,7 +19,6 @@ android {
     }
 
 
-
     defaultConfig {
         applicationId "com.hotworx"
         minSdkVersion 28
