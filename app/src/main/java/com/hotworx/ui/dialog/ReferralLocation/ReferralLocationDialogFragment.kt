@@ -54,9 +54,9 @@ class ReferralLocationDialogFragment(private val clickListener: OnClickItemListe
     @SuppressLint("SetTextI18n")
     private fun setCountData(){
         val countText = if (utm.equals("UTM", ignoreCase = true)) {
-            "UTM List (${referralData.size})"
+            "UTM(${referralData.size})"
         } else {
-            "Home Location (${referralData.size})"
+            "Location(${referralData.size})"
         }
         binding.tvLocationCount.text = countText
     }
