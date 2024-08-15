@@ -3,15 +3,8 @@ package com.hotworx.models.HotsquadList
 import com.google.gson.annotations.SerializedName
 
 data class HotsquadItem(
-    @SerializedName("squad_id")
-    val squadId: String,
-
-    @SerializedName("name")
+    val squad_id: String,
     val name: String,
-
-    @SerializedName("desc")
-    val description: String,
-
-    @SerializedName("total_members")
-    val totalMembers: Int
+    val desc: String,
+    val total_members: Int
 )

@@ -78,12 +78,7 @@ class HotsquadSearchFragment : BaseFragment(), LoadingListener {
         searchUserBottomSheet = SearchUserBottomSheet()
 
         binding.btnSearchUser.setOnClickListener{
-            // Pass resultString to the Bottom Sheet
-            val bundle = Bundle()
-            bundle.putString("resultString", resultString)
-            Log.d("resultString",resultString.toString())
-            searchUserBottomSheet.arguments = bundle
-            searchUserBottomSheet.show(parentFragmentManager, "TAG")
+            addSquadMember()
         }
 
         updateSearchButtonVisibility()
@@ -119,18 +114,21 @@ class HotsquadSearchFragment : BaseFragment(), LoadingListener {
         titleBar.subHeading = getString(R.string.leaderboard)
     }
 
-
     //For BottomSheet
     private fun addSquadMember(){
         onLoadingStarted()
         webService?.searchAddSquadMember(
-           ""
+           resultString
         )?.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 onLoadingFinished()
                 try {
                     if (response.code() == 200 && response.body() != null) {
-
+                        val bundle = Bundle()
+                        bundle.putString("resultString", resultString)
+//                        Log.d("resultString",resultString.toString())
+                        searchUserBottomSheet.arguments = bundle
+                        searchUserBottomSheet.show(parentFragmentManager, "TAG")
                     }
                 } catch (ex: Exception) {
                     Utils.customToast(requireContext(), resources.getString(R.string.internal_exception_messsage))

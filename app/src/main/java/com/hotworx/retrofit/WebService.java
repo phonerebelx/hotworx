@@ -647,6 +647,7 @@ public interface WebService {
     @FormUrlEncoded
     @POST("hotsquad/createSquad")
     Call<ResponseBody> createHotsquadList(
+            @HeaderMap Map<String, String> headers,
             @Field("name") String name,
             @Field("desc") String desc
     );

@@ -2,15 +2,27 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import com.hotworx.R
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentAddListBinding
+import com.hotworx.global.Constants
 import com.hotworx.helpers.Utils
 import com.hotworx.interfaces.LoadingListener
+import com.hotworx.models.ErrorResponseEnt
+import com.hotworx.models.HotsquadList.CreateHotsquadModel
+import com.hotworx.models.HotsquadList.HotsquadListModel
 import com.hotworx.models.HotsquadList.UserModel
+import com.hotworx.models.UserData.GetUserGoalData
+import com.hotworx.models.UserData.ResponseUserGoalModel
+import com.hotworx.models.UserData.ResponseUserProfileModel
+import com.hotworx.models.UserData.getUserData
+import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
 import okhttp3.ResponseBody
@@ -45,8 +57,7 @@ class AddListFragment : BaseFragment() , LoadingListener {
                 binding.descriptionEt.requestFocus()
             } else {
                 //createHotSquadList()
-                val myHotsquadListFragment = MyHotsquadListFragment()
-                dockActivity.replaceDockableFragment(myHotsquadListFragment)
+                callApi(Constants.CREATE_SQUADLIST, "")
             }
         }
     }
@@ -56,29 +67,77 @@ class AddListFragment : BaseFragment() , LoadingListener {
         titleBar.showBackButton()
     }
 
-    private fun createHotSquadList(){
-        onLoadingStarted()
-        webService?.createHotsquadList(
-            binding.titleEt.text.toString(),
-            binding.descriptionEt.text.toString()
-        )?.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                onLoadingFinished()
+//    private fun createHotSquadList(){
+//        onLoadingStarted()
+//        webService?.createHotsquadList(
+//            ApiHeaderSingleton.apiHeader(requireContext()),
+//            binding.titleEt.text.toString(),
+//            binding.descriptionEt.text.toString()
+//        )?.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                onLoadingFinished()
+//                try {
+//                    if (response.code() == 200 && response.body() != null) {
+//                        val myHotsquadListFragment = MyHotsquadListFragment()
+//                        dockActivity.replaceDockableFragment(myHotsquadListFragment)
+//                    }
+//                } catch (ex: Exception) {
+//                    Utils.customToast(requireContext(), resources.getString(R.string.internal_exception_messsage))
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                onLoadingFinished()
+//                Utils.customToast(requireContext(), t.toString())
+//            }
+//        })
+//    }
+
+    private fun callApi(type: String, data: String) {
+        when (type) {
+            Constants.CREATE_SQUADLIST -> {
+                getServiceHelper().enqueueCallExtended(
+                    getWebService().createHotsquadList(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        binding.titleEt.text.toString(),
+                        binding.descriptionEt.text.toString(),
+                    ), Constants.CREATE_SQUADLIST, true
+                )
+
+            }
+        }
+    }
+
+    override fun onSuccess(liveData: LiveData<String>, tag: String) {
+        super.onSuccess(liveData, tag)
+        when (tag) {
+            Constants.CREATE_SQUADLIST -> {
+                onLoadingStarted()
                 try {
-                    if (response.code() == 200 && response.body() != null) {
+                    val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, CreateHotsquadModel::class.java)!!
+                    if (response.message == "success"){
                         val myHotsquadListFragment = MyHotsquadListFragment()
                         dockActivity.replaceDockableFragment(myHotsquadListFragment)
+                        onLoadingFinished()
+                    }else{
+                        onLoadingFinished()
+                        dockActivity?.showErrorMessage("Something Went Wrong")
                     }
-                } catch (ex: Exception) {
-                    Utils.customToast(requireContext(), resources.getString(R.string.internal_exception_messsage))
+
+                } catch (e: Exception) {
+                    val genericMsgResponse = GsonFactory.getConfiguredGson()
+                        ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
+                    onLoadingFinished()
+                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                    Log.i("dummy error", e.message.toString())
                 }
             }
+        }
+    }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                onLoadingFinished()
-                Utils.customToast(requireContext(), t.toString())
-            }
-        })
+    override fun onFailure(message: String, tag: String) {
+        myDockActivity?.showErrorMessage(message)
+        Log.i("xxError", "Error")
     }
 
     override fun onLoadingStarted() {

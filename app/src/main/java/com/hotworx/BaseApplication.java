@@ -25,6 +25,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+
         BaseApplication.context = getApplicationContext();
         AuthenticationManager.configure(this, generateAuthenticationConfiguration(this, RootActivity.class));
     }

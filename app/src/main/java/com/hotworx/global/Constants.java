@@ -95,6 +95,7 @@ public class Constants {
     public static final String GET_LEAD_AMASADOR = "GET_LEAD_AMASADOR";
     public static final String GET_EMPLOYEE_REFERRAL = "GET_EMPLOYEE_REFERRAL";
 
-
+    //Hotsquad
+    public static final String CREATE_SQUADLIST = "CREATE_SQUADLIST";
 
 }

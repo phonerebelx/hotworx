@@ -103,6 +103,7 @@ public abstract class BaseFragment extends Fragment implements webServiceRespons
         if (webService == null) {
             webService = WebServiceFactory.getWebServiceInstanceWithCustomInterceptor(getDockActivity(), WebServiceConstants.BASE_URL);
         }
+
         if (serviceHelper == null) {
             serviceHelper = new ServiceHelper(this,this, getDockActivity(), webService);
         }

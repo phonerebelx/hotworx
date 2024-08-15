@@ -31,7 +31,7 @@ class SquadListAdapter(
 
         fun bind(item: HotsquadItem) {
             titleTextView.text = item.name
-            countTextView.text = item.totalMembers.toString()
+            countTextView.text = item.total_members.toString()
 //            iconImageView.setImageResource(item.iconResId)
 
             cardView.setOnClickListener {
@@ -56,13 +56,12 @@ class SquadListAdapter(
 
     fun getPositionById(listId: String): Int {
         for (i in items.indices) {
-            if (items.get(i).squadId == listId) {
+            if (items.get(i).squad_id == listId) {
                 return i
             }
         }
         return -1
     }
-
 
     override fun getItemCount(): Int = items.size
 }
