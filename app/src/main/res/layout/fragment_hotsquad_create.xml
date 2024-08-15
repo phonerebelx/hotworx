@@ -34,7 +34,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCreateHotsquad"
             android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_weight="1"
             android:padding="@dimen/_14sdp"
             android:background="@drawable/multicolor_background"

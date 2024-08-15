@@ -67,32 +67,6 @@ class AddListFragment : BaseFragment() , LoadingListener {
         titleBar.showBackButton()
     }
 
-//    private fun createHotSquadList(){
-//        onLoadingStarted()
-//        webService?.createHotsquadList(
-//            ApiHeaderSingleton.apiHeader(requireContext()),
-//            binding.titleEt.text.toString(),
-//            binding.descriptionEt.text.toString()
-//        )?.enqueue(object : Callback<ResponseBody> {
-//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                onLoadingFinished()
-//                try {
-//                    if (response.code() == 200 && response.body() != null) {
-//                        val myHotsquadListFragment = MyHotsquadListFragment()
-//                        dockActivity.replaceDockableFragment(myHotsquadListFragment)
-//                    }
-//                } catch (ex: Exception) {
-//                    Utils.customToast(requireContext(), resources.getString(R.string.internal_exception_messsage))
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-//                onLoadingFinished()
-//                Utils.customToast(requireContext(), t.toString())
-//            }
-//        })
-//    }
-
     private fun callApi(type: String, data: String) {
         when (type) {
             Constants.CREATE_SQUADLIST -> {

@@ -32,6 +32,7 @@
                 android:backgroundTint="@color/hint_color"
                 android:textColorHint="@color/textColorSecondary"
                 android:inputType="text"
+                android:textSize="@dimen/_12ssp"
                 android:textColor="@color/hint_color" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,13 +55,14 @@
                 android:backgroundTint="@color/hint_color"
                 android:textColorHint="@color/textColorSecondary"
                 android:inputType="text"
+                android:textSize="@dimen/_12ssp"
                 android:textColor="@color/hint_color" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddList"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_weight="1"
             android:background="@drawable/multicolor_background"
             android:layout_gravity="center"
