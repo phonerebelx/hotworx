@@ -65,9 +65,7 @@
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"/>
 
-
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 

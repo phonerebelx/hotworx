@@ -366,6 +366,14 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                 }
             }
                 val referralLocationDialogFragment = ReferralLocationDialogFragment(this)
+                // Create a Bundle and add the data
+                val bundle = Bundle().apply {
+    //                putSerializable("referralData", referralData) // Assuming referralData is Serializable
+                    putString("UTMVALUE", "UTM")
+                }
+
+                // Set the bundle as arguments
+                referralLocationDialogFragment.arguments = bundle
                 referralLocationDialogFragment.referralData = referralData
                 referralLocationDialogFragment.veriftyIsLocationOrNot = false
                 referralLocationDialogFragment.show(
@@ -539,7 +547,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
 
                         if (utm.name == receivedData.location_name)    {
                             UTM_ID = utm.id?.toString() ?: ""
-
+                            selectedUrl = utm.url_list[0].url.toString()
                             referralData.location_name = loc.location_name ?: ""
                             referralData.location_code = loc.location_code ?: ""
                             Log.d("DEBUG_UTM_ID_UPDATED", "UTM_ID updated to: $UTM_ID")

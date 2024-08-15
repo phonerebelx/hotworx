@@ -10,17 +10,16 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.hotworx.databinding.FragmentReferralUrlBinding
+import com.hotworx.databinding.FragmentReferralurlBinding
 import com.hotworx.interfaces.OnClickItemListener
 import com.hotworx.models.ComposeModel.RefferalDetailModel.Data
-import com.hotworx.ui.adapters.ReferralLocation.ReferralLocationAdapter
 import com.hotworx.ui.adapters.ReferralUrl.ReferralUrlAdapter
 import kotlin.properties.Delegates
 
 
 class ReferralUrlDialogFragment(private val clickListener: OnClickItemListener) : BottomSheetDialogFragment(),OnClickItemListener {
 
-    lateinit var binding: FragmentReferralUrlBinding
+    lateinit var binding: FragmentReferralurlBinding
     lateinit var referralData: List<Data>
     var veriftyIsLocationOrNot by Delegates.notNull<Boolean>()
     lateinit var referralLocationAdapter: ReferralUrlAdapter
@@ -30,7 +29,7 @@ class ReferralUrlDialogFragment(private val clickListener: OnClickItemListener) 
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentReferralUrlBinding.inflate(layoutInflater)
+        binding = FragmentReferralurlBinding.inflate(layoutInflater)
         setCountData()
         Log.d("onCreateView: ",referralData.toString())
         initRecyclerView(referralData)
