@@ -7,12 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentHotsquadSearchBinding
+import com.hotworx.global.Constants
 import com.hotworx.helpers.Utils
 import com.hotworx.interfaces.LoadingListener
+import com.hotworx.models.ErrorResponseEnt
+import com.hotworx.models.HotsquadList.CreateHotsquadModel
 import com.hotworx.models.HotsquadList.UserModel
+import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.UserListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.HotsquadList.Bottomsheet.SearchUserBottomSheet
@@ -23,7 +29,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
 
-class HotsquadSearchFragment : BaseFragment(), LoadingListener {
+class HotsquadSearchFragment : BaseFragment(){
     private var _binding: FragmentHotsquadSearchBinding? = null
     private val binding get() = _binding!!
 
@@ -31,6 +37,7 @@ class HotsquadSearchFragment : BaseFragment(), LoadingListener {
     private lateinit var userListAdapter: UserListAdapter
     private var isLoading = false
     var resultString = ""
+    var squadId = ""
 
     /**
      * Bottom Sheet
@@ -47,6 +54,12 @@ class HotsquadSearchFragment : BaseFragment(), LoadingListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Retrieve the ID from the arguments
+        arguments?.let {
+            squadId = it.getString("squad_id")?: ""
+            Log.d("squadIDDDDD",squadId)
+        }
 
         userListAdapter = UserListAdapter(userList, ::onDeleteItemClicked)
         binding.recyclerView.apply {
@@ -78,14 +91,15 @@ class HotsquadSearchFragment : BaseFragment(), LoadingListener {
         searchUserBottomSheet = SearchUserBottomSheet()
 
         binding.btnSearchUser.setOnClickListener{
-            addSquadMember()
+            callApi(Constants.SEARCH_SQUADLIST,"")
         }
 
         updateSearchButtonVisibility()
     }
 
     fun convertListToString(userList: List<UserModel>): String {
-        return userList.joinToString(separator = "||") { it.searchedName.toString() }
+        val stringList = userList.map { "\"${it.searchedName}\"" } // Convert each item to a quoted string
+        return stringList.joinToString(prefix = "[", postfix = "]", separator = ",\n")
     }
 
     private fun isValidEmailOrPhone(input: String): Boolean {
@@ -103,7 +117,6 @@ class HotsquadSearchFragment : BaseFragment(), LoadingListener {
             userListAdapter.notifyItemRemoved(position)
             userListAdapter.notifyItemRangeChanged(position, userList.size)
 
-
             updateSearchButtonVisibility()
         }
     }
@@ -114,47 +127,92 @@ class HotsquadSearchFragment : BaseFragment(), LoadingListener {
         titleBar.subHeading = getString(R.string.leaderboard)
     }
 
-    //For BottomSheet
-    private fun addSquadMember(){
-        onLoadingStarted()
-        webService?.searchAddSquadMember(
-           resultString
-        )?.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                onLoadingFinished()
+
+    private fun callApi(type: String, data: String) {
+        when (type) {
+            Constants.SEARCH_SQUADLIST -> {
+                getServiceHelper().enqueueCallExtended(
+                    getWebService().searchAddSquadMember(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        squadId,
+                        resultString,
+                    ), Constants.SEARCH_SQUADLIST, true
+                )
+            }
+        }
+    }
+
+    override fun onSuccess(liveData: LiveData<String>, tag: String) {
+        super.onSuccess(liveData, tag)
+        when (tag) {
+            Constants.SEARCH_SQUADLIST -> {
                 try {
-                    if (response.code() == 200 && response.body() != null) {
+                    val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, CreateHotsquadModel::class.java)!!
+                    if (response.status){
                         val bundle = Bundle()
-                        bundle.putString("resultString", resultString)
-//                        Log.d("resultString",resultString.toString())
+                        bundle.putSerializable("resultString", response.data.toString())
+                        Log.d("resultString",resultString.toString())
                         searchUserBottomSheet.arguments = bundle
                         searchUserBottomSheet.show(parentFragmentManager, "TAG")
+                    }else{
+                        dockActivity?.showErrorMessage("Something Went Wrong")
                     }
-                } catch (ex: Exception) {
-                    Utils.customToast(requireContext(), resources.getString(R.string.internal_exception_messsage))
+                } catch (e: Exception) {
+                    val genericMsgResponse = GsonFactory.getConfiguredGson()
+                        ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
+                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                    Log.i("dummy error", e.message.toString())
                 }
             }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                onLoadingFinished()
-                Utils.customToast(requireContext(), t.toString())
-            }
-        })
+        }
     }
 
-    override fun onLoadingStarted() {
-        isLoading = true
-        binding.progressBar.visibility = View.VISIBLE
+    override fun onFailure(message: String, tag: String) {
+        myDockActivity?.showErrorMessage(message)
+        Log.i("xxError", "Error")
     }
 
-    override fun onLoadingFinished() {
-        isLoading = false
-        binding.progressBar.visibility = View.GONE
-    }
+    //For BottomSheet
+//    private fun addSquadMember(){
+//        onLoadingStarted()
+//        webService?.searchAddSquadMember(
+//           resultString
+//        )?.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                onLoadingFinished()
+//                try {
+//                    if (response.code() == 200 && response.body() != null) {
+//                        val bundle = Bundle()
+//                        bundle.putString("resultString", resultString)
+////                        Log.d("resultString",resultString.toString())
+//                        searchUserBottomSheet.arguments = bundle
+//                        searchUserBottomSheet.show(parentFragmentManager, "TAG")
+//                    }
+//                } catch (ex: Exception) {
+//                    Utils.customToast(requireContext(), resources.getString(R.string.internal_exception_messsage))
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                onLoadingFinished()
+//                Utils.customToast(requireContext(), t.toString())
+//            }
+//        })
+//    }
 
-    override fun onProgressUpdated(percentLoaded: Int) {
-
-    }
+//    override fun onLoadingStarted() {
+//        isLoading = true
+//        binding.progressBar.visibility = View.VISIBLE
+//    }
+//
+//    override fun onLoadingFinished() {
+//        isLoading = false
+//        binding.progressBar.visibility = View.GONE
+//    }
+//
+//    override fun onProgressUpdated(percentLoaded: Int) {
+//
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

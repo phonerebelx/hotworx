@@ -10,7 +10,7 @@ import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentMyHotsquadListBinding
 import com.hotworx.global.WebServiceConstants
-import com.hotworx.models.HotsquadList.HotsquadItem
+import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.models.HotsquadList.HotsquadListModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
@@ -37,11 +37,11 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         getSquadList()
 
         // Ensure hotsquadListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
-        hotsquadListModel = HotsquadListModel(data = emptyList(), msg = "")
+        hotsquadListModel = HotsquadListModel(data = emptyList(),status =false,message = "")
         setAdapter(squadList = hotsquadListModel.data)
     }
 
-    override fun onItemClick(item: HotsquadItem) {
+    override fun onItemClick(item: Hotsquad) {
         // Handle item click here
 //        Log.d("MyHotsquadListFragment", "Item clicked: ${item.title}")
     }
@@ -61,7 +61,7 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         titleBar.subHeading = getString(R.string.hotsquad_list)
     }
 
-    private fun setAdapter(squadList: List<HotsquadItem>) {
+    private fun setAdapter(squadList: List<Hotsquad>) {
         adapter = SquadListAdapter(squadList, this, activity as? DockActivity)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter

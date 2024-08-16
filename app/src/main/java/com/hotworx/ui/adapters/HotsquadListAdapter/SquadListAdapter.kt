@@ -1,5 +1,6 @@
 package com.hotworx.ui.adapters.HotsquadListAdapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,17 +10,19 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
 import com.hotworx.activities.DockActivity
-import com.hotworx.models.HotsquadList.HotsquadItem
+import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.ui.fragments.HotsquadList.HotsquadSearchFragment
 
 class SquadListAdapter(
-    private val items: List<HotsquadItem>,
+    private val items: List<Hotsquad>,
     private val listener: OnItemClickListener,
     private val dockActivity: DockActivity? = null
 ) : RecyclerView.Adapter<SquadListAdapter.ViewHolder>() {
 
+    var id = ""
+
     interface OnItemClickListener {
-        fun onItemClick(item: HotsquadItem)
+        fun onItemClick(item: Hotsquad)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,7 +32,7 @@ class SquadListAdapter(
         private val addButton: ImageView = itemView.findViewById(R.id.addButton)
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
 
-        fun bind(item: HotsquadItem) {
+        fun bind(item: Hotsquad) {
             titleTextView.text = item.name
             countTextView.text = item.total_members.toString()
 //            iconImageView.setImageResource(item.iconResId)
@@ -39,8 +42,14 @@ class SquadListAdapter(
             }
 
             addButton.setOnClickListener {
-                val hotsquadSearchFragment = HotsquadSearchFragment()
+                val hotsquadSearchFragment = HotsquadSearchFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("squad_id", item.squad_id)
+                    }
+                }
                 dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
+//                val hotsquadSearchFragment = HotsquadSearchFragment()
+//                dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
             }
         }
     }
@@ -56,7 +65,7 @@ class SquadListAdapter(
 
     fun getPositionById(listId: String): Int {
         for (i in items.indices) {
-            if (items.get(i).squad_id == listId) {
+            if (items[i].squad_id == listId) {
                 return i
             }
         }

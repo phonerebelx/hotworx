@@ -97,5 +97,6 @@ public class Constants {
 
     //Hotsquad
     public static final String CREATE_SQUADLIST = "CREATE_SQUADLIST";
+    public static final String SEARCH_SQUADLIST = "SEARCH_SQUADLIST";
 
 }

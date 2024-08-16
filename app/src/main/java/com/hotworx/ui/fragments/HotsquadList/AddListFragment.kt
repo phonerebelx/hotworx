@@ -30,7 +30,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AddListFragment : BaseFragment() , LoadingListener {
+class AddListFragment : BaseFragment(){
     private var _binding: FragmentAddListBinding? = null
     private val binding get() = _binding!!
     private var isLoading = false
@@ -88,7 +88,7 @@ class AddListFragment : BaseFragment() , LoadingListener {
             Constants.CREATE_SQUADLIST -> {
                 try {
                     val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, CreateHotsquadModel::class.java)!!
-                    if (response.success){
+                    if (response.status){
                         val myHotsquadListFragment = MyHotsquadListFragment()
                         dockActivity.replaceDockableFragment(myHotsquadListFragment)
                     }else{
@@ -109,19 +109,19 @@ class AddListFragment : BaseFragment() , LoadingListener {
         Log.i("xxError", "Error")
     }
 
-    override fun onLoadingStarted() {
-        isLoading = true
-        binding.progressBar.visibility = View.VISIBLE
-    }
-
-    override fun onLoadingFinished() {
-        isLoading = false
-        binding.progressBar.visibility = View.GONE
-    }
-
-    override fun onProgressUpdated(percentLoaded: Int) {
-
-    }
+//    override fun onLoadingStarted() {
+//        isLoading = true
+//        binding.progressBar.visibility = View.VISIBLE
+//    }
+//
+//    override fun onLoadingFinished() {
+//        isLoading = false
+//        binding.progressBar.visibility = View.GONE
+//    }
+//
+//    override fun onProgressUpdated(percentLoaded: Int) {
+//
+//    }
 
     override fun onBackPressed() {
         super.onBackPressed() // If not loading, proceed with the default back button action
