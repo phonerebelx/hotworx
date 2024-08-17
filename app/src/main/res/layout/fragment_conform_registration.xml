@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.VIDeviceManagement.ConformRegistrationFragment">
+
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="start|center"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/_12sdp" />
+
+
+    <TextView
+        android:id="@+id/tvRegisterContext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="start|center"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="bold" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/spinner_location"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="bold" />
+
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linInteriorColor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/bg_accent_border"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10sdp">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/acpLocationSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_spinner_arrow"
+            android:dropDownWidth="match_parent"
+            android:dropDownVerticalOffset="@dimen/_42sdp"
+            android:gravity="center_vertical"
+            android:popupBackground="@drawable/bg_accent_border" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/spinner_suana"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="bold" />
+
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/bg_accent_border"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10sdp">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/acpSuanaSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_spinner_arrow"
+            android:dropDownWidth="match_parent"
+            android:dropDownVerticalOffset="@dimen/_42sdp"
+            android:gravity="center_vertical"
+            android:popupBackground="@drawable/bg_accent_border" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_background"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="@dimen/_10sdp" />
+
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_8sdp"
+        android:text="Select an option"
+        android:textColor="@android:color/darker_gray"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="@dimen/_10sdp" />
+</LinearLayout>

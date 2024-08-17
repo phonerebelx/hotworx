@@ -47,6 +47,7 @@
 
     <string name="leaderboard">Leaderboard</string>
     <string name="hotsquadlist">HOTSQUAD List</string>
+    <string name="vi_management">Vi Management</string>
     <string name="Title">Add your title</string>
     <string name="search_name">Search By Phone No,Email</string>
     <string name="descriptionn">Add your description</string>
@@ -154,7 +155,15 @@
     <string name="cross_training_balance_ratio">Cross Training Balance Ratio</string>
     <string name="fitness_goal_message">Fitness Goals updated successfully</string>
     <string name="session_breakdown">Session Breakdown</string>
+    <string name="vi_device">Vi Devices Management</string>
+    <string name="register_device">Register Your Chromebox Device</string>
+    <string name="register_device_context">Welcome! To begin managing your Chromebox devices, please register them by following the steps below.</string>
+    <string name="unregister_device">Unregister Your Chromebox Device</string>
+    <string name="unregister_device_context">To remove a Chromebox device from your management system, please follow the steps below.</string>
 
+    <string name="vi_device_context">The Virtual Instructor Software is the system that runs inside your saunas delivering workouts to your members on schedule, 24/7. Use the VI Device Management module to register your Chromeboxes to the appropriate channels, depending on the sauna number, whether it\'s a lobby TV, or FX Zone tv. Before registering, please make sure your Chromebox is connected to power and wifi.</string>
+    <string name="spinner_location">Location</string>
+    <string name="spinner_suana">Suana</string>
 
     <string name="record_calories_burned">RECORD CALORIES BURNED</string>
     <string name="_1_hour_after_burn_">1 HOUR</string>

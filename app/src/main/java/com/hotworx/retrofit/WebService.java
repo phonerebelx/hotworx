@@ -8,6 +8,8 @@ import com.hotworx.models.BrivoRequestModel.SetLeadIdForBrivoToken;
 import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
+import com.hotworx.models.ViModel.Registration.SetRegisterLocationModel;
+import com.hotworx.models.ViModel.Unregistraion.SetUnRegisterLocationModel;
 import com.hotworx.requestEntity.AddExerciseDataModel;
 import com.hotworx.requestEntity.DeleteCalRequestBody;
 import com.hotworx.requestEntity.SetFavoriteFood;
@@ -15,6 +17,7 @@ import com.hotworx.requestEntity.SetIntermittentPlan;
 import com.hotworx.requestEntity.UpdateSessionEnt;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -665,4 +668,24 @@ public interface WebService {
             @Field("squad_id") String squad_id,
             @Field("search_list") String search_list
     );
+
+
+    // Vi Management
+    @POST("vi/list_location_suana")
+    Call<ResponseBody> getListLocationSuana(
+            @HeaderMap Map<String, String> headers
+    );
+
+    @POST("vi/register_device")
+    Call<ResponseBody> registerDevice(
+            @HeaderMap Map<String, String> headers,
+            @Body List<SetRegisterLocationModel> body
+    );
+
+    @POST("vi/unregister_device")
+    Call<ResponseBody> unRegisterDevice(
+            @HeaderMap Map<String, String> headers,
+            @Body List<SetUnRegisterLocationModel> body
+    );
+
 }

@@ -320,6 +320,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                 position: Int,
                 id: Long
             ) {
+
                 selectedSpinnerSlot = slotNameArray[position]
                 tvSelectSession.text = selectedSpinnerSlot
                 slotArrayList.forEach {

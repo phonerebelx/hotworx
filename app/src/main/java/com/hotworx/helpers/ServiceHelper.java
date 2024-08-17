@@ -146,6 +146,7 @@ public class ServiceHelper {
                     else if (response.code() == 551) {
                         apiListener.onFailureWithResponseCode(response.code(), "You've been forced logout", tag);
                     }
+
                     else if (response.code() == 552) {
                         apiListener.onFailureWithResponseCode(response.code(), "New version of app is available, please update to continue", tag);
                     }
