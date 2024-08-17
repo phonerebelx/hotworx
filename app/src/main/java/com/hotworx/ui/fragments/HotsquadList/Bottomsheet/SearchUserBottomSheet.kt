@@ -2,6 +2,7 @@ package com.hotworx.ui.fragments.HotsquadList.Bottomsheet
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -9,7 +10,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.hotworx.R
 import com.hotworx.databinding.BottomSheetSearchuserBinding
+import com.hotworx.models.HotsquadList.CreateHotsquadModel
 import com.hotworx.models.HotsquadList.RegisteredMemberItem
+import com.hotworx.models.HotsquadList.SearchUserModel
+import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter
 
 
@@ -51,6 +55,14 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        // Get the response string from the arguments
+        val responseString = arguments?.getString("response")
+
+        // Optionally parse the response string back to your model
+        val response = GsonFactory.getConfiguredGson()?.fromJson(responseString, SearchUserModel::class.java)
+
+        Log.d("REsponseeeeee", response?.data?.foundUser.toString())
 
         /* Set Adapter */
         setAdapter()

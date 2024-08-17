@@ -7,6 +7,7 @@ import com.hotworx.models.BrivoRequestModel.BrivoCredentialRequestModel;
 import com.hotworx.models.BrivoRequestModel.SetLeadIdForBrivoToken;
 import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
+import com.hotworx.models.HotsquadList.SearchListRequest;
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
 import com.hotworx.requestEntity.AddExerciseDataModel;
 import com.hotworx.requestEntity.DeleteCalRequestBody;
@@ -15,6 +16,7 @@ import com.hotworx.requestEntity.SetIntermittentPlan;
 import com.hotworx.requestEntity.UpdateSessionEnt;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -662,7 +664,6 @@ public interface WebService {
     @POST("hotsquad/searchSquadMembers")
     Call<ResponseBody> searchAddSquadMember(
             @HeaderMap Map<String, String> headers,
-            @Field("squad_id") String squad_id,
-            @Field("search_list") String search_list
+            @Body SearchListRequest request // Accepting the custom request body
     );
 }

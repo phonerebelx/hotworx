@@ -26,6 +26,7 @@ import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.UIHelper;
 import com.hotworx.helpers.Utils;
+import com.hotworx.models.HotsquadList.HotsquadListModel;
 import com.hotworx.models.NavigationItem;
 import com.hotworx.models.UserData.getUserData;
 import com.hotworx.retrofit.GsonFactory;
@@ -36,6 +37,7 @@ import com.hotworx.ui.fragments.BusinessCard.BusinessCardFragment;
 import com.hotworx.ui.fragments.ComposeFragments.ReferralDetail.ReferralDetailFragment;
 import com.hotworx.ui.fragments.GetStarted.GetStartedFragment;
 import com.hotworx.ui.fragments.HotsquadList.CreateHotsquadFragment;
+import com.hotworx.ui.fragments.HotsquadList.MyHotsquadListFragment;
 import com.hotworx.ui.fragments.Intermittent.IntermittentFastingFragment;
 import com.hotworx.ui.fragments.LeaderBoard.LeaderBoardFragment;
 import com.hotworx.ui.fragments.Nutritionist.NutritionistFragment;
@@ -87,6 +89,7 @@ public class SideMenuFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         setDrawerList();
         profileLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +152,18 @@ public class SideMenuFragment extends BaseFragment {
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null, null));
-        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad, new CreateHotsquadFragment(), null, null));
+        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad,new MyHotsquadListFragment(), null, null));
+//        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad, new CreateHotsquadFragment(), null, null));
+//        HotsquadListModel response = GsonFactory.getConfiguredGson().fromJson(liveData.getValue(), HotsquadListModel.class);
+//
+//        if (response.getData() == null || response.getData().isEmpty()) {
+//            // If the list is empty, redirect to CreateHotsquadFragment
+////            drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad, new CreateHotsquadFragment(), null, null));
+//        } else {
+//            // If the list is not empty, redirect to the list fragment class
+////            drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad,new MyHotsquadListFragment(), null, null));
+//        }
+
         drawerList.add(new NavigationItem(R.string.rewards, R.drawable.icon_menu_rewards, new LatestRewardFragment(), null, null));
 
         if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {

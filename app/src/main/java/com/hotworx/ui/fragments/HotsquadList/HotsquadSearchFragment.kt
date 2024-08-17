@@ -17,6 +17,8 @@ import com.hotworx.helpers.Utils
 import com.hotworx.interfaces.LoadingListener
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.CreateHotsquadModel
+import com.hotworx.models.HotsquadList.SearchListRequest
+import com.hotworx.models.HotsquadList.SearchUserModel
 import com.hotworx.models.HotsquadList.UserModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.UserListAdapter
@@ -38,6 +40,7 @@ class HotsquadSearchFragment : BaseFragment(){
     private var isLoading = false
     var resultString = ""
     var squadId = ""
+    var jsonArray: List<String> = mutableListOf()
 
     /**
      * Bottom Sheet
@@ -82,8 +85,9 @@ class HotsquadSearchFragment : BaseFragment(){
                 binding.titleEt.text?.clear()
                 updateSearchButtonVisibility()
 
-                resultString = convertListToString(userList)
-                Log.d("USERLISTTTTTTSep",resultString.toString())
+                jsonArray = convertListToJsonArray(userList)
+
+                Log.d("sjkhakjhdks",jsonArray.toString())
             }
         }
 
@@ -91,15 +95,14 @@ class HotsquadSearchFragment : BaseFragment(){
         searchUserBottomSheet = SearchUserBottomSheet()
 
         binding.btnSearchUser.setOnClickListener{
+            // Call the function to get the JSON array and store it in a variable
             callApi(Constants.SEARCH_SQUADLIST,"")
         }
-
         updateSearchButtonVisibility()
     }
 
-    fun convertListToString(userList: List<UserModel>): String {
-        val stringList = userList.map { "\"${it.searchedName}\"" } // Convert each item to a quoted string
-        return stringList.joinToString(prefix = "[", postfix = "]", separator = ",\n")
+    fun convertListToJsonArray(userList: List<UserModel>): List<String> {
+        return userList.map { it.searchedName?: ""}
     }
 
     private fun isValidEmailOrPhone(input: String): Boolean {
@@ -127,15 +130,18 @@ class HotsquadSearchFragment : BaseFragment(){
         titleBar.subHeading = getString(R.string.leaderboard)
     }
 
-
     private fun callApi(type: String, data: String) {
         when (type) {
             Constants.SEARCH_SQUADLIST -> {
+                val request = SearchListRequest(
+                    squadId,       // Your squad ID
+                    search_list = jsonArray  // Your list of search strings
+                )
+
                 getServiceHelper().enqueueCallExtended(
                     getWebService().searchAddSquadMember(
                         ApiHeaderSingleton.apiHeader(requireContext()),
-                        squadId,
-                        resultString,
+                        request
                     ), Constants.SEARCH_SQUADLIST, true
                 )
             }
@@ -147,11 +153,14 @@ class HotsquadSearchFragment : BaseFragment(){
         when (tag) {
             Constants.SEARCH_SQUADLIST -> {
                 try {
-                    val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, CreateHotsquadModel::class.java)!!
+                    val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, SearchUserModel::class.java)!!
                     if (response.status){
-                        val bundle = Bundle()
-                        bundle.putSerializable("resultString", response.data.toString())
-                        Log.d("resultString",resultString.toString())
+                        // Create a Bundle to hold the response data
+                        val bundle = Bundle().apply {
+                            putString("response", liveData.value) // Pass the raw JSON string or serialize specific parts as needed
+                        }
+
+                        // Pass the Bundle to the Bottom Sheet
                         searchUserBottomSheet.arguments = bundle
                         searchUserBottomSheet.show(parentFragmentManager, "TAG")
                     }else{
