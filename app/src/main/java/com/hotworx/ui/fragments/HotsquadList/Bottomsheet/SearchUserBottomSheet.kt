@@ -86,19 +86,6 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
     }
 
 
-//    private fun setAdapter() {
-//
-//        val registeredMemberList = listOf(
-//            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
-//            RegisteredMemberItem("John smith", "", "john.smaith@gmail.com",R.drawable.registeredmember),
-//            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
-//            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
-//        )
-//
-//        val adapter = SearchRegisteredAdapter(FoundUser,requireContext(), activity as? DockActivity)
-//        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-//        binding.recyclerView.adapter = adapter
-//    }
 
     interface OnItemClickListener {
 //        fun onItemClick(item: TourTypeResponse.Type) {}
