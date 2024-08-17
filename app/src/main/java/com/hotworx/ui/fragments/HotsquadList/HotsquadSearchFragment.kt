@@ -152,29 +152,38 @@ class HotsquadSearchFragment : BaseFragment(){
         super.onSuccess(liveData, tag)
         when (tag) {
             Constants.SEARCH_SQUADLIST -> {
-                try {
-                    val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, SearchUserModel::class.java)!!
-                    if (response.status){
-                        // Create a Bundle to hold the response data
-                        val bundle = Bundle().apply {
-                            putString("response", liveData.value) // Pass the raw JSON string or serialize specific parts as needed
-                        }
+                val responseJson = liveData.value
+                Log.d("Response", "LiveData value: $responseJson")
 
-                        // Pass the Bundle to the Bottom Sheet
-                        searchUserBottomSheet.arguments = bundle
-                        searchUserBottomSheet.show(parentFragmentManager, "TAG")
-                    }else{
-                        dockActivity?.showErrorMessage("Something Went Wrong")
+                if (responseJson != null) {
+                    try {
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SearchUserModel::class.java)!!
+                        if (response.status) {
+                            // Create a Bundle to hold the response data
+                            val bundle = Bundle().apply {
+                                putString("response", responseJson) // Pass the raw JSON string
+                            }
+
+                            // Pass the Bundle to the Bottom Sheet
+                            searchUserBottomSheet.arguments = bundle
+                            searchUserBottomSheet.show(parentFragmentManager, "TAG")
+                        } else {
+                            dockActivity?.showErrorMessage("Something Went Wrong")
+                        }
+                    } catch (e: Exception) {
+                        val genericMsgResponse = GsonFactory.getConfiguredGson()
+                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
+                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                        Log.i("Error", e.message.toString())
                     }
-                } catch (e: Exception) {
-                    val genericMsgResponse = GsonFactory.getConfiguredGson()
-                        ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
-                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
-                    Log.i("dummy error", e.message.toString())
+                } else {
+                    Log.e("Error", "LiveData value is null")
+                    dockActivity?.showErrorMessage("No response from server")
                 }
             }
         }
     }
+
 
     override fun onFailure(message: String, tag: String) {
         myDockActivity?.showErrorMessage(message)

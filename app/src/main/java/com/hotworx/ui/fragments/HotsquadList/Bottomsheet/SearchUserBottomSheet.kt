@@ -8,10 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.hotworx.R
 import com.hotworx.databinding.BottomSheetSearchuserBinding
-import com.hotworx.models.HotsquadList.CreateHotsquadModel
-import com.hotworx.models.HotsquadList.RegisteredMemberItem
+import com.hotworx.models.HotsquadList.FoundUser
 import com.hotworx.models.HotsquadList.SearchUserModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter
@@ -56,34 +54,51 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        // Get the response string from the arguments
         val responseString = arguments?.getString("response")
+        Log.d("Response String", "Response String from arguments: $responseString")
 
-        // Optionally parse the response string back to your model
-        val response = GsonFactory.getConfiguredGson()?.fromJson(responseString, SearchUserModel::class.java)
+        if (responseString != null) {
+            val response = GsonFactory.getConfiguredGson()?.fromJson(responseString, SearchUserModel::class.java)
+            Log.d("ParsedResponse", "Parsed Response: $response")
 
-        Log.d("REsponseeeeee", response?.data?.foundUser.toString())
-
-        /* Set Adapter */
-        setAdapter()
-
+            if (response?.status == true) {
+                val foundUserList = response.data?.foundUser ?: emptyList()
+                Log.d("FoundUserList", "Found User List: $foundUserList")
+                setAdapter(foundUserList)
+            } else {
+                Log.e("Error", "Response status is false or null")
+            }
+        } else {
+            Log.e("Error", "Response String is null")
+        }
     }
 
+    private fun setAdapter(foundUserList: List<FoundUser>) {
+        val adapter = SearchRegisteredAdapter(foundUserList, requireContext(), object : SearchRegisteredAdapter.OnItemClickListener {
+            override fun onItemClick(item: FoundUser) {
+                // Handle item click
+                Log.d("ItemClicked", "Name: ${item.name}, Email: ${item.email}")
+            }
+        })
 
-
-    private fun setAdapter() {
-
-        val registeredMemberList = listOf(
-            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
-            RegisteredMemberItem("John smith", "", "john.smaith@gmail.com",R.drawable.registeredmember),
-            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
-            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
-        )
-
-        val adapter = SearchRegisteredAdapter(registeredMemberList)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
+
+
+//    private fun setAdapter() {
+//
+//        val registeredMemberList = listOf(
+//            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
+//            RegisteredMemberItem("John smith", "", "john.smaith@gmail.com",R.drawable.registeredmember),
+//            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
+//            RegisteredMemberItem("John smith", "03242788955", "",R.drawable.registeredmember),
+//        )
+//
+//        val adapter = SearchRegisteredAdapter(FoundUser,requireContext(), activity as? DockActivity)
+//        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+//        binding.recyclerView.adapter = adapter
+//    }
 
     interface OnItemClickListener {
 //        fun onItemClick(item: TourTypeResponse.Type) {}

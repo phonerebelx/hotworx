@@ -1,5 +1,6 @@
 package com.hotworx.ui.adapters.HotsquadListAdapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,15 +8,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
-import com.hotworx.models.HotsquadList.RegisteredMemberItem
+import com.hotworx.activities.DockActivity
+import com.hotworx.models.HotsquadList.FoundUser
 
 class SearchRegisteredAdapter(
-    private val items: List<RegisteredMemberItem>,
+    private val items: List<FoundUser>,
+    private val context: Context,
+    private val itemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<SearchRegisteredAdapter.ViewHolder>() {
 
-//    interface OnItemClickListener {
-//        fun onItemClick(item: RegisteredMemberItem)
-//    }
+    interface OnItemClickListener {
+        fun onItemClick(item: FoundUser)
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
@@ -23,11 +27,11 @@ class SearchRegisteredAdapter(
         private val phoneTextView: TextView = itemView.findViewById(R.id.tvPhone)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
 
-        fun bind(item: RegisteredMemberItem) {
+        fun bind(item: FoundUser) {
             nameTextView.text = item.name
             emailTextView.text = item.email
             phoneTextView.text = item.phone
-            iconImageView.setImageResource(item.iconResId)
+//            iconImageView.setImageResource(item.profileImageUrl)
         }
     }
 
