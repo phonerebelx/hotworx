@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.VIDeviceManagement.RegistrationFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="start|center"
+        android:text="@string/vi_device"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/_12sdp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="start|center"
+        android:text="@string/vi_device_context"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textSize="@dimen/_10sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_background"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="center"
+        android:text="Register Device"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="@dimen/_10sdp" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUnRegister"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_background"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="center"
+        android:text="UnRegister Device"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="@dimen/_10sdp" />
+
+
+</LinearLayout>

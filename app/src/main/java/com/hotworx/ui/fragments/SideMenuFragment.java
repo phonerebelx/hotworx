@@ -45,6 +45,7 @@ import com.hotworx.ui.fragments.ProfileAndGoal.GoalFragment;
 import com.hotworx.ui.fragments.ProfileAndGoal.ProfileAndGoalFragment;
 import com.hotworx.ui.fragments.Rewards.LatestRewardFragment;
 import com.hotworx.ui.fragments.Settings.SettingsFragment;
+import com.hotworx.ui.fragments.VIDeviceManagement.RegistrationFragment;
 import com.hotworx.ui.fragments.VPT.VPTFragment;
 import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
 import com.hotworx.ui.views.TitleBar;
@@ -149,6 +150,7 @@ public class SideMenuFragment extends BaseFragment {
             drawerList.add(new NavigationItem(R.string.business,0,  new BusinessCardFragment(), null, Constants.BUSINESS_CARD));
           }
         drawerList.add(new NavigationItem(R.string.home, R.drawable.icon_menu_home, null, null, Constants.ACTION_HOME));
+        drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null, null));
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null, null));

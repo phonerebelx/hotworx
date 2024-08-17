@@ -19,6 +19,7 @@
             android:fontFamily="@font/montserrat_regular"
             android:textStyle="bold"
             android:layout_gravity="center_vertical"
+            android:textSize="@dimen/_10sdp"
             android:text="Gender Not Found"
             android:textColor="@android:color/black" />
     </LinearLayout>

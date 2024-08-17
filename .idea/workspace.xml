@@ -107,18 +107,108 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="fixed">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/ViModel/GetAllLocation/Data.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/ViModel/GetAllLocation/GetAllLocationModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/ViModel/GetAllLocation/SaunaDetail.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/ViModel/Registration/RegisterLocationResponseModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/ViModel/Registration/SetRegisterLocationModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/ViModel/Unregistraion/SetUnRegisterLocationModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/VIDeviceManagement/ConformRegistrationFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/VIDeviceManagement/RegistrationFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_conform_registration.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_registeration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/ServiceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/ServiceHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/micsAdapter/SpinnerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/micsAdapter/SpinnerAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/Bottomsheet/SearchUserBottomSheet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/Bottomsheet/SearchUserBottomSheet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/HotsquadSearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/HotsquadSearchFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/BookSession/BookingSelectionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/BookSession/BookingSelectionFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/SideMenuFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/SideMenuFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_spinner_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_spinner_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/182dce2aad925bcb51c8f9f961dbc5ed/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/182dce2aad925bcb51c8f9f961dbc5ed/transformed/instrumented_classes.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/BuildConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/DataBinderMapperImpl$InnerBrLookup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/DataBinderMapperImpl$InnerLayoutIdLookup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/DataBinderMapperImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/BaseActivity$genericNetworkErrorHandler$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/BaseActivity$genericNetworkErrorHandler$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/BaseActivity$genericNetworkErrorHandler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/BaseActivity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$onCreate$1$1$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$onCreate$1$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/LoginActivity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$LastDiffUtilCallback.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$OnItemClickListener$DefaultImpls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter$OnItemClickListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/adapter/GenericAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/bindingAdapter/BindingAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/ActivityLoginBinding.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/ActivityLoginBindingImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/LayoutHeaderBinding.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/databinding/LayoutLoadingBinding.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/extensions/ActivityExtKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/extensions/IntentExtKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/generated/callback/OnClickListener$Listener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/generated/callback/OnClickListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/helper/MainClass$onCreate$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/helper/MainClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/InjectUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt$ViewModelModule$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt$ViewModelModule$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/listener/DialogListeners$DefaultImpls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/listener/GenericListeners.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/request/LoginRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/request/RegistrationRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/response/GlobalResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/model/response/LoginResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Error.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Loading.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/ApiResponseCallback.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/RemoteConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/Routes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/SoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/APIError$Companion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/APIError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/BaseDataSource$callApi$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt$performNetworkCallOperation$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt$performNetworkCallOperation$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataSource$login$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/DataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/network/domain/ErrorHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2280ec3db86ceb52e91853fb72a50c89/transformed/instrumented_classes/com/hotsquad/hotsquadlist/repository/AppRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/BaseActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/BaseActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/LoginActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/LoginActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debugUnitTest/META-INF/hotsquadlist_debugUnitTest.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debugUnitTest/com/hotsquad/hotsquadlist/ExampleUnitTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +281,8 @@
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "Z:/My Projects/Android Projects/Hotworx ali github/app/src/main/res/layout"
+    "last_opened_file_path": "Z:/My Projects/Android Projects/Hotworx ali github/app/src/main/res/layout",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   },
   "keyToStringList": {
     "kotlin-gradle-user-dirs": [
