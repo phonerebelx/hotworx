@@ -10,8 +10,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.hotworx.databinding.BottomSheetSearchuserBinding
 import com.hotworx.models.HotsquadList.FoundUser
+import com.hotworx.models.HotsquadList.NotFoundUser
 import com.hotworx.models.HotsquadList.SearchUserModel
 import com.hotworx.retrofit.GsonFactory
+import com.hotworx.ui.adapters.HotsquadListAdapter.SearchNotFoundUserAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter
 
 
@@ -19,6 +21,7 @@ import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter
 class SearchUserBottomSheet(): BottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetSearchuserBinding
+    private var foundUserListForServer = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,8 +66,9 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
 
             if (response?.status == true) {
                 val foundUserList = response.data?.foundUser ?: emptyList()
-                Log.d("FoundUserList", "Found User List: $foundUserList")
-                setAdapter(foundUserList)
+                val notFoundUserList = response.data?.notFoundUser ?: emptyList()
+                setFoundUserAdapter(foundUserList)
+                setNotFoundUserAdapter(notFoundUserList)
             } else {
                 Log.e("Error", "Response status is false or null")
             }
@@ -73,11 +77,31 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
         }
     }
 
-    private fun setAdapter(foundUserList: List<FoundUser>) {
+    private fun setNotFoundUserAdapter(notFoundUserList: List<NotFoundUser>) {
+        val adapter = SearchNotFoundUserAdapter(notFoundUserList, requireContext(), object : SearchNotFoundUserAdapter.OnItemClickListener {
+            override fun onItemClick(item: NotFoundUser) {
+                // Handle item click
+                Log.d("ItemClicked", "Name: ${item.searchBy}, Email: ${item.recordStatus}")
+            }
+        })
+
+        binding.recyclerViewContact.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewContact.adapter = adapter
+    }
+
+    private fun setFoundUserAdapter(foundUserList: List<FoundUser>) {
         val adapter = SearchRegisteredAdapter(foundUserList, requireContext(), object : SearchRegisteredAdapter.OnItemClickListener {
             override fun onItemClick(item: FoundUser) {
                 // Handle item click
-                Log.d("ItemClicked", "Name: ${item.name}, Email: ${item.email}")
+                Log.d("ItemClicked", "Name: ${item.name}, Email: ${item.squadInviteId}")
+                item?.let {
+                    if (item.selected) {
+                        foundUserListForServer.add(it.squadInviteId)
+                    } else {
+                        foundUserListForServer.remove(it.squadInviteId)
+                    }
+                    Log.d(TAG, "DaysList ${foundUserListForServer.toString()}")
+                }
             }
         })
 

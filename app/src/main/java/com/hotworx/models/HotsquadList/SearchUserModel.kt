@@ -20,7 +20,8 @@ data class FoundUser(
     val name: String,
     val email: String,
     val phone: String,
-    @SerializedName("profile_image_url") val profileImageUrl: String
+    val profile_image_url: String,
+    var selected: Boolean = false
 )
 
 data class NotFoundUser(

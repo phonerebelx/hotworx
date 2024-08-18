@@ -163,7 +163,6 @@ class HotsquadSearchFragment : BaseFragment(){
                             val bundle = Bundle().apply {
                                 putString("response", responseJson) // Pass the raw JSON string
                             }
-
                             // Pass the Bundle to the Bottom Sheet
                             searchUserBottomSheet.arguments = bundle
                             searchUserBottomSheet.show(parentFragmentManager, "TAG")

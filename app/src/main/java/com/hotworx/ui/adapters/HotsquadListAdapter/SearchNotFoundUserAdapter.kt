@@ -19,25 +19,21 @@ class SearchNotFoundUserAdapter(
 ) : RecyclerView.Adapter<SearchNotFoundUserAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(item: FoundUser)
+        fun onItemClick(item: NotFoundUser)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
-        private val emailTextView: TextView = itemView.findViewById(R.id.tvEmail)
-        private val phoneTextView: TextView = itemView.findViewById(R.id.tvPhone)
-        private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
+        private val titleTextView: TextView = itemView.findViewById(R.id.tvTitle)
+        private val statusTextView: TextView = itemView.findViewById(R.id.tvStatus)
 
         fun bind(item: NotFoundUser) {
-            nameTextView.text = item.name
-            emailTextView.text = item.email
-            phoneTextView.text = item.phone
-//            iconImageView.setImageResource(item.profileImageUrl)
+            titleTextView.text = item.searchBy
+            statusTextView.text = item.recordStatus
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_registereduserlist, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_notfounduserlist, parent, false)
         return ViewHolder(view)
     }
 

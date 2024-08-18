@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
 import com.hotworx.activities.DockActivity
@@ -14,7 +16,7 @@ import com.hotworx.models.HotsquadList.FoundUser
 class SearchRegisteredAdapter(
     private val items: List<FoundUser>,
     private val context: Context,
-    private val itemClickListener: OnItemClickListener
+    private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<SearchRegisteredAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
@@ -26,12 +28,24 @@ class SearchRegisteredAdapter(
         private val emailTextView: TextView = itemView.findViewById(R.id.tvEmail)
         private val phoneTextView: TextView = itemView.findViewById(R.id.tvPhone)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
+        private val cardView: CardView = itemView.findViewById(R.id.listMainView)
+        private val imgcheck: ImageView = itemView.findViewById(R.id.imgCheck)
 
         fun bind(item: FoundUser) {
             nameTextView.text = item.name
             emailTextView.text = item.email
             phoneTextView.text = item.phone
-//            iconImageView.setImageResource(item.profileImageUrl)
+//            iconImageView.setImageResource(item.profile_image_url)
+
+            // Set the visibility based on the selected state
+            imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+
+            cardView.setOnClickListener {
+               item.selected = !item.selected
+               imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+               notifyItemChanged(adapterPosition)
+               listener.onItemClick(item)
+            }
         }
     }
 
