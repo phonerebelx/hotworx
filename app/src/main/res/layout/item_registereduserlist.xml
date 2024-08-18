@@ -5,37 +5,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/header_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:layout_gravity="center_vertical"
-                android:text="@string/registered_member"
-                android:layout_weight="3"
-                android:textColor="@color/mirage"
-                android:textSize="@dimen/_14ssp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="end"
-                android:text="@string/select_all"
-                android:layout_weight="1"
-                android:textColor="@color/sunset_orange"
-                android:textSize="@dimen/_12ssp" />
-
-        </LinearLayout>
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/listMainView"
@@ -43,7 +13,6 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/_4sdp"
             android:backgroundTint="@color/white"
-            android:layout_below="@id/header_layout"
             android:elevation="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_5sdp"
