@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
 import com.hotworx.activities.DockActivity
@@ -15,7 +16,7 @@ import com.hotworx.models.HotsquadList.NotFoundUser
 class SearchNotFoundUserAdapter(
     private val items: List<NotFoundUser>,
     private val context: Context,
-    private val itemClickListener: OnItemClickListener
+    private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<SearchNotFoundUserAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
@@ -25,10 +26,21 @@ class SearchNotFoundUserAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.tvTitle)
         private val statusTextView: TextView = itemView.findViewById(R.id.tvStatus)
+        private val cardView: CardView = itemView.findViewById(R.id.listMainView)
+        private val imgcheck: ImageView = itemView.findViewById(R.id.imgCheck)
 
         fun bind(item: NotFoundUser) {
             titleTextView.text = item.searchBy
             statusTextView.text = item.recordStatus
+
+            // Set the visibility based on the selected state
+            imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+
+            cardView.setOnClickListener {
+                item.selected = !item.selected
+                imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+                listener.onItemClick(item)
+            }
         }
     }
 

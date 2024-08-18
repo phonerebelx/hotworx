@@ -27,5 +27,6 @@ data class FoundUser(
 data class NotFoundUser(
     @SerializedName("referral_inviteId") val referralInviteId: String,
     @SerializedName("search_by") val searchBy: String,
-    @SerializedName("record_status") val recordStatus: String
+    @SerializedName("record_status") val recordStatus: String,
+    var selected: Boolean = false
 )

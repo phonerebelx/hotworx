@@ -22,6 +22,7 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetSearchuserBinding
     private var foundUserListForServer = mutableListOf<String>()
+    private var notfoundUserListForServer = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -80,8 +81,14 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
     private fun setNotFoundUserAdapter(notFoundUserList: List<NotFoundUser>) {
         val adapter = SearchNotFoundUserAdapter(notFoundUserList, requireContext(), object : SearchNotFoundUserAdapter.OnItemClickListener {
             override fun onItemClick(item: NotFoundUser) {
-                // Handle item click
-                Log.d("ItemClicked", "Name: ${item.searchBy}, Email: ${item.recordStatus}")
+                item?.let {
+                    if (item.selected) {
+                        notfoundUserListForServer.add(it.referralInviteId)
+                    } else {
+                        notfoundUserListForServer.remove(it.referralInviteId)
+                    }
+                    Log.d(TAG, "notfoundUserList ${notfoundUserListForServer.toString()}")
+                }
             }
         })
 
@@ -92,15 +99,13 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
     private fun setFoundUserAdapter(foundUserList: List<FoundUser>) {
         val adapter = SearchRegisteredAdapter(foundUserList, requireContext(), object : SearchRegisteredAdapter.OnItemClickListener {
             override fun onItemClick(item: FoundUser) {
-                // Handle item click
-                Log.d("ItemClicked", "Name: ${item.name}, Email: ${item.squadInviteId}")
                 item?.let {
                     if (item.selected) {
                         foundUserListForServer.add(it.squadInviteId)
                     } else {
                         foundUserListForServer.remove(it.squadInviteId)
                     }
-                    Log.d(TAG, "DaysList ${foundUserListForServer.toString()}")
+                    Log.d(TAG, "foundUserList ${foundUserListForServer.toString()}")
                 }
             }
         })
