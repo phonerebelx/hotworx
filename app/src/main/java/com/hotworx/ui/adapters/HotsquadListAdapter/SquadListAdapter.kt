@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,7 @@ class SquadListAdapter(
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
         private val addButton: ImageView = itemView.findViewById(R.id.addButton)
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
+        private val iconLayout: RelativeLayout = itemView.findViewById(R.id.iconLayout)
 
         fun bind(item: Hotsquad) {
             titleTextView.text = item.name
@@ -48,8 +50,12 @@ class SquadListAdapter(
                     }
                 }
                 dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
-//                val hotsquadSearchFragment = HotsquadSearchFragment()
-//                dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
+            }
+
+            if(item.has_squad_access){
+                iconLayout.visibility = View.VISIBLE
+            }else{
+                iconLayout.visibility = View.GONE
             }
         }
     }

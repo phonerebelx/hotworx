@@ -122,6 +122,7 @@
                     android:id="@+id/iconLayout"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="match_parent"
+                    android:visibility="gone"
                     android:background="@color/colorRed">
 
                     <ImageView
