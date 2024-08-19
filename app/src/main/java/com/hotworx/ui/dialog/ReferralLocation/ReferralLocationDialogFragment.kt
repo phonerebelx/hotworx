@@ -74,8 +74,6 @@ class ReferralLocationDialogFragment(private val clickListener: OnClickItemListe
 
     }
 
-
-
     private fun initRecyclerView(referralData: List<Data>){
         if (referralData.size > 0) {
             referralLocationAdapter = ReferralLocationAdapter(requireContext(), this)

@@ -4,47 +4,50 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.hotworx.R
-import com.hotworx.databinding.FragmentRedeemBalanceDialogBinding
-import com.hotworx.databinding.FragmentRedeemInfoDialogBinding
 import com.hotworx.databinding.FragmentRefersquadInviteDialogBinding
-import org.w3c.dom.Text
-
 
 class ReferSquadInviteDialogFragment : DialogFragment() {
+
     lateinit var binding: FragmentRefersquadInviteDialogBinding
-    lateinit var referralUrl: String
+    private var referralUrl: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRefersquadInviteDialogBinding.inflate(layoutInflater)
+        binding = FragmentRefersquadInviteDialogBinding.inflate(inflater, container, false)
+
+        arguments?.let {
+            referralUrl = it.getString("REFERRAL_URL")
+        }
+
         setData()
-        setOnCLickListener()
+        setOnClickListener()
         return binding.root
     }
+
     private fun setData(){
         binding.let{
-//            it.tvReferalDesc.text = Html.fromHtml( redeemed_text, Html.FROM_HTML_MODE_LEGACY)
-        }
-    }
-
-    private fun setOnCLickListener(){
-        binding.let {
-            it.btnSendReferral.setOnClickListener {
-                dialog?.dismiss()
+            referralUrl?.let { url ->
+               Log.d("bjbdjkbjkb",url.toString())
             }
         }
     }
 
-
+    private fun setOnClickListener(){
+        binding.btnSendReferral.setOnClickListener {
+            // Implement what happens when the referral is sent
+            dialog?.dismiss()
+        }
+    }
 
     override fun onResume() {
         super.onResume()
@@ -58,4 +61,13 @@ class ReferSquadInviteDialogFragment : DialogFragment() {
         dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
+    companion object {
+        fun newInstance(referralUrl: String): ReferSquadInviteDialogFragment {
+            val fragment = ReferSquadInviteDialogFragment()
+            val args = Bundle()
+            args.putString("REFERRAL_URL", referralUrl)
+            fragment.arguments = args
+            return fragment
+        }
+    }
 }

@@ -42,6 +42,7 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     private var notfoundUserListForServer = mutableListOf<String>()
     protected var myDockActivity: DockActivity? = null
     var squadID = ""
+    var referralUrl = ""
     lateinit var  referSquadInviteDialogFragment: ReferSquadInviteDialogFragment
 
     override fun onCreateView(
@@ -88,6 +89,7 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
             if (response?.status == true) {
                 val foundUserList = response.data?.foundUser ?: emptyList()
                 val notFoundUserList = response.data?.notFoundUser ?: emptyList()
+                referralUrl = response.data?.referralUrl?: ""
                 setFoundUserAdapter(foundUserList)
                 setNotFoundUserAdapter(notFoundUserList)
             } else {
@@ -97,7 +99,7 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
             Log.e("Error", "Response String is null")
         }
 
-        referSquadInviteDialogFragment = ReferSquadInviteDialogFragment()
+        referSquadInviteDialogFragment = ReferSquadInviteDialogFragment.newInstance(referralUrl)
 
         binding.SendInvite.setOnClickListener(View.OnClickListener {
             callInvitationApi(Constants.SEND_MEMBER_INVITATION,"")
@@ -219,7 +221,6 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                         if (response.status) {
 //                            val referSquadInviteFragment = ReferSquadInviteFragment()
 //                            dockActivity?.replaceDockableFragment(referSquadInviteFragment)
-
                             initRedeemInfo()
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
