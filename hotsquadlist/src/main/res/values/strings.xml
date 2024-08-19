@@ -18,5 +18,7 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="no">No</string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
     <string name="text">Text</string>
 </resources>

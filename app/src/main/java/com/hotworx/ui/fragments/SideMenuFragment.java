@@ -38,6 +38,7 @@ import com.hotworx.ui.fragments.ComposeFragments.ReferralDetail.ReferralDetailFr
 import com.hotworx.ui.fragments.GetStarted.GetStartedFragment;
 import com.hotworx.ui.fragments.HotsquadList.CreateHotsquadFragment;
 import com.hotworx.ui.fragments.HotsquadList.MyHotsquadListFragment;
+import com.hotworx.ui.fragments.HotsquadList.PendingInvitesFragment;
 import com.hotworx.ui.fragments.Intermittent.IntermittentFastingFragment;
 import com.hotworx.ui.fragments.LeaderBoard.LeaderBoardFragment;
 import com.hotworx.ui.fragments.Nutritionist.NutritionistFragment;
@@ -51,6 +52,7 @@ import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
 import com.hotworx.ui.views.TitleBar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -155,16 +157,18 @@ public class SideMenuFragment extends BaseFragment {
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null, null));
         drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad,new MyHotsquadListFragment(), null, null));
-//        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad, new CreateHotsquadFragment(), null, null));
-//        HotsquadListModel response = GsonFactory.getConfiguredGson().fromJson(liveData.getValue(), HotsquadListModel.class);
+        drawerList.add(new NavigationItem(R.string.pending_invite, R.drawable.icon_menu_hotsquad,new PendingInvitesFragment(), null, null));
+
+        //Create Child item for Hotsquad list
+//        NavigationItem hotsquadListItem = new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad, new MyHotsquadListFragment(), null, null);
 //
-//        if (response.getData() == null || response.getData().isEmpty()) {
-//            // If the list is empty, redirect to CreateHotsquadFragment
-////            drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad, new CreateHotsquadFragment(), null, null));
-//        } else {
-//            // If the list is not empty, redirect to the list fragment class
-////            drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad,new MyHotsquadListFragment(), null, null));
-//        }
+//        // Create child items
+//        List<NavigationItem> hotsquadChildItems = new ArrayList<>();
+//        hotsquadChildItems.add(new NavigationItem(R.string.pending_invite, R.drawable.icon_menu_hotsquad, new PendingInvitesFragment(), null, null));
+//
+//        hotsquadListItem.setSubItems(hotsquadChildItems); // Set child items
+//
+//        drawerList.add(hotsquadListItem);
 
         drawerList.add(new NavigationItem(R.string.rewards, R.drawable.icon_menu_rewards, new LatestRewardFragment(), null, null));
 
@@ -199,47 +203,19 @@ public class SideMenuFragment extends BaseFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
 
+                if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
                     if (position == index) {
                         //drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new InterNutritionistFragment(), null, null));
                         drawerList.set(index, new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null, null));
 
-//                    if (IntermittentHelpers.INSTANCE.getIntermittentPlanData()) {
-//                        drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new InterNutritionistFragment(), null, null));
-//                    }
-//
-//                    if (prefHelper.getIntermittentStatus()) {
-//                        if (prefHelper.getIntermittentData().getActive()) {
-//                            if (!UIHelper.checkIfTimeWithinDay(UIHelper.convert24HourTo12Hour(prefHelper.getIntermittentData().getStart_time()),
-//                                    UIHelper.convert24HourTo12Hour(prefHelper.getIntermittentData().getEnd_time()), prefHelper.getIntermittentData().getIntermittent_hrs_in_Secs(),
-//                                    UIHelper.getCurrentTime())) {
-//                                drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new InterNutritionistFragment(), null, null));
-//                            } else {
-//                                if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null
-//                                        && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
-//                                    drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new NutritionistFragment(), null, null));
-//                                }
-//                            }
-//                        } else {
-//                            if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null
-//                                    && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
-//                                drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new NutritionistFragment(), null, null));
-//                            }
-//                        }
-//                }
-//                    else {
-//                        if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null
-//                                && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
-//                            drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new NutritionistFragment(), null, null));
-//                        }
-//                    }
                         adapter.notifyDataSetChanged();
                     }
                 }
 
                 myDockActivity.closeDrawer();
                 NavigationItem navigationItem = drawerList.get(position);
+
                 if (navigationItem.getFragment() != null) {
                     myDockActivity.replaceDockableFragment(navigationItem.getFragment());
                 } else if (navigationItem.getUrl() != null) {

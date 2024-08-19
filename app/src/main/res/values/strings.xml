@@ -47,6 +47,7 @@
 
     <string name="leaderboard">Leaderboard</string>
     <string name="hotsquadlist">HOTSQUAD List</string>
+    <string name="pending_invite">Pending Invites</string>
     <string name="vi_management">Vi Management</string>
     <string name="Title">Add your title</string>
     <string name="search_name">Search By Phone No,Email</string>
@@ -280,6 +281,7 @@
     <string name="SV_ST">SAVE START READING</string>
     <string name="Text">Text</string>
     <string name="hotsquad_list">My HOTSQUAD List</string>
+    <string name="pending_req">Pending Squad Request</string>
     <string name="add_hotsquad_list">Add more HOTSQUAD to List</string>
     <string name="create_hotsquad">Create hotsquad</string>
     <string name="refer_friends">Refer Friends and Earn $5</string>

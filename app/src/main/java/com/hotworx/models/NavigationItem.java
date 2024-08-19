@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment;
 
 import com.hotworx.ui.fragments.BaseFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NavigationItem {
 
 
@@ -13,6 +16,8 @@ public class NavigationItem {
     private BaseFragment fragment;
     private String url;
     private String action;
+    private List<NavigationItem> subItems; // Add this field
+
 
     public NavigationItem(int text, int drawable,BaseFragment fragment,String url,String action) {
         mText = text;
@@ -20,6 +25,7 @@ public class NavigationItem {
         this.fragment = fragment;
         this.url = url;
         this.action = action;
+        this.subItems = new ArrayList<>(); // Initialize subItems
     }
 
     public int getText() {
@@ -60,5 +66,14 @@ public class NavigationItem {
 
     public void setAction(String action) {
         this.action = action;
+    }
+
+    // Add a method to set child items
+    public void setSubItems(List<NavigationItem> subItems) {
+        this.subItems = subItems;
+    }
+
+    public List<NavigationItem> getSubItems() {
+        return subItems;
     }
 }

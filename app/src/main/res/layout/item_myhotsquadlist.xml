@@ -76,9 +76,9 @@
                         tools:text="@string/text"
                         android:maxLines="2"
                         android:layout_marginTop="@dimen/_8sdp"
-                        android:fontFamily="@font/montserrat_regular"
+                        android:fontFamily="@font/montserrat_bold"
                         android:textColor="@color/hint_color"
-                        android:textSize="@dimen/_11ssp"
+                        android:textSize="@dimen/_12ssp"
                         android:layout_marginHorizontal="@dimen/_5sdp"/>
 
                     <LinearLayout
@@ -102,8 +102,8 @@
                             tools:text="@string/Text"
                             android:layout_marginHorizontal="@dimen/_3sdp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:textSize="@dimen/_10ssp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:textSize="@dimen/_12ssp"
                             android:layout_below="@+id/title" />
 
                         <TextView
