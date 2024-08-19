@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/cvReferSquad"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_290sdp"
+    android:layout_gravity="top|center"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_15sdp"
+    android:backgroundTint="@color/colorWhite"
+    android:minHeight="?android:attr/actionBarSize"
+    app:cardCornerRadius="@dimen/_10sdp"
+    app:cardElevation="@dimen/_15sdp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/hotworks_heading"/>
+
+        <TextView
+            android:id="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/add_hotsquad_list"
+            android:textColor="@color/text_color"
+            android:layout_below="@+id/icon"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/header_layout"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/hotsquad_list_detail"
+            android:textColor="@color/text_color_black"
+            android:textSize="@dimen/_13ssp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSendReferral"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_weight="1"
+            android:padding="@dimen/_14sdp"
+            android:layout_below="@id/desc"
+            android:background="@drawable/multicolor_background"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:text="@string/refer_friends"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_14sdp"
+            android:fontFamily="@font/bebasneue_regular" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

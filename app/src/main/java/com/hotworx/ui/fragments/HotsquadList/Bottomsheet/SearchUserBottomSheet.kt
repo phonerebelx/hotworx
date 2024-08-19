@@ -28,6 +28,8 @@ import com.hotworx.models.HotsquadList.sendReferralInvitationRequest
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchNotFoundUserAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter
+import com.hotworx.ui.dialog.NewActivityDialog.ReferSquadInviteDialogFragment
+import com.hotworx.ui.dialog.RedeemInfo.RedeemInfoDialogFragment
 import com.hotworx.ui.fragments.BaseBottomsheetFragment
 import com.hotworx.ui.fragments.HotsquadList.MyHotsquadListFragment
 import com.hotworx.ui.fragments.HotsquadList.ReferSquadInviteFragment
@@ -40,7 +42,7 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     private var notfoundUserListForServer = mutableListOf<String>()
     protected var myDockActivity: DockActivity? = null
     var squadID = ""
-
+    lateinit var  referSquadInviteDialogFragment: ReferSquadInviteDialogFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,8 +81,6 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         val responseString = arguments?.getString("response")
         squadID = arguments?.getString("squad_id")?: ""
 
-        Log.d("Response String", "Response String from arguments: $responseString")
-
         if (responseString != null) {
             val response = GsonFactory.getConfiguredGson()?.fromJson(responseString, SearchUserModel::class.java)
             Log.d("ParsedResponse", "Parsed Response: $response")
@@ -96,6 +96,8 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         } else {
             Log.e("Error", "Response String is null")
         }
+
+        referSquadInviteDialogFragment = ReferSquadInviteDialogFragment()
 
         binding.SendInvite.setOnClickListener(View.OnClickListener {
             callInvitationApi(Constants.SEND_MEMBER_INVITATION,"")
@@ -215,8 +217,10 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                     try {
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, ReferralInviteModel::class.java)!!
                         if (response.status) {
-                            val referSquadInviteFragment = ReferSquadInviteFragment()
-                            dockActivity?.replaceDockableFragment(referSquadInviteFragment)
+//                            val referSquadInviteFragment = ReferSquadInviteFragment()
+//                            dockActivity?.replaceDockableFragment(referSquadInviteFragment)
+
+                            initRedeemInfo()
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }
@@ -234,7 +238,12 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         }
     }
 
-
+    private fun initRedeemInfo(){
+        referSquadInviteDialogFragment.show(
+            childFragmentManager,
+            Constants.REFERRAL_INVITATION
+        )
+    }
 
     interface OnItemClickListener {
 //        fun onItemClick(item: TourTypeResponse.Type) {}

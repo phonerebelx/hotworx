@@ -286,7 +286,7 @@
     <string name="add_list">Add List</string>
     <string name="send_invite">Send Invite</string>
     <string name="referral_invite">Referral Invite</string>
-    <string name="hotsquad_list_detail">You don’t have any busy list, click icon to create one</string>
+    <string name="hotsquad_list_detail">If You don’t have any member in your hotsquad list, click icon to create one</string>
     <string name="SV_CB">SAVE CALORIES BURNED</string>
     <string name="one_hour">01:00:00</string>
     <string name="done_">DONE</string>
