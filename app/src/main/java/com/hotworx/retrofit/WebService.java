@@ -9,6 +9,7 @@ import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
 import com.hotworx.models.HotsquadList.SearchListRequest;
 import com.hotworx.models.HotsquadList.sendMemberInvitationRequest;
+import com.hotworx.models.HotsquadList.sendReferralInvitationRequest;
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
 import com.hotworx.models.ViModel.Registration.SetRegisterLocationModel;
 import com.hotworx.models.ViModel.Unregistraion.SetUnRegisterLocationModel;
@@ -672,6 +673,12 @@ public interface WebService {
     Call<ResponseBody> sendSquadMemberInvitation(
             @HeaderMap Map<String, String> headers,
             @Body sendMemberInvitationRequest request // Accepting the custom request body
+    );
+
+    @POST("hotsquad/sendSquadRefarralInvitation")
+    Call<ResponseBody> sendReferralInvitation(
+            @HeaderMap Map<String, String> headers,
+            @Body sendReferralInvitationRequest request // Accepting the custom request body
     );
 
     // Vi Management

@@ -99,5 +99,6 @@ public class Constants {
     public static final String CREATE_SQUADLIST = "CREATE_SQUADLIST";
     public static final String SEARCH_SQUADLIST = "SEARCH_SQUADLIST";
     public static final String SEND_MEMBER_INVITATION = "SEND_MEMBER_INVITATION";
+    public static final String SEND_REFERRAL_INVITATION = "SEND_REFERRAL_INVITATION";
 
 }
