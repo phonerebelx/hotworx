@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import com.hotworx.Extensions.shareLink
 import com.hotworx.R
 import com.hotworx.databinding.FragmentRefersquadInviteDialogBinding
 
@@ -45,7 +46,9 @@ class ReferSquadInviteDialogFragment : DialogFragment() {
     private fun setOnClickListener(){
         binding.btnSendReferral.setOnClickListener {
             // Implement what happens when the referral is sent
-            dialog?.dismiss()
+            activity?.shareLink(referralUrl.toString())
+            Log.d("vjhvvdschjd",referralUrl.toString())
+//            dialog?.dismiss()
         }
     }
 
