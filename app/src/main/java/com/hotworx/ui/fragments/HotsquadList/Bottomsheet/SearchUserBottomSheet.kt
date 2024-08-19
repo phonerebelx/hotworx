@@ -1,28 +1,46 @@
 package com.hotworx.ui.fragments.HotsquadList.Bottomsheet
 
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.hotworx.Singletons.ApiHeaderSingleton
+import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.BottomSheetSearchuserBinding
+import com.hotworx.global.Constants
+import com.hotworx.global.WebServiceConstants
+import com.hotworx.helpers.ServiceHelper
+import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.FoundUser
 import com.hotworx.models.HotsquadList.NotFoundUser
 import com.hotworx.models.HotsquadList.SearchUserModel
+import com.hotworx.models.HotsquadList.sendMemberInvitationRequest
 import com.hotworx.retrofit.GsonFactory
+import com.hotworx.retrofit.WebService
+import com.hotworx.retrofit.WebServiceFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchNotFoundUserAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter
+import com.hotworx.ui.fragments.BaseBottomsheetFragment
 
 
-
-class SearchUserBottomSheet(): BottomSheetDialogFragment() {
+class SearchUserBottomSheet(): BaseBottomsheetFragment(){
 
     private lateinit var binding: BottomSheetSearchuserBinding
     private var foundUserListForServer = mutableListOf<String>()
     private var notfoundUserListForServer = mutableListOf<String>()
+    protected var myDockActivity: DockActivity? = null
+    var squadID = ""
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,6 +77,8 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val responseString = arguments?.getString("response")
+        squadID = arguments?.getString("squad_id")?: ""
+
         Log.d("Response String", "Response String from arguments: $responseString")
 
         if (responseString != null) {
@@ -76,6 +96,14 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
         } else {
             Log.e("Error", "Response String is null")
         }
+
+        binding.SendInvite.setOnClickListener(View.OnClickListener {
+            callInvitationApi(Constants.SEND_MEMBER_INVITATION,"")
+        })
+    }
+
+    override fun onFailureWithResponseCode(code: Int, message: String, tag: String) {
+        TODO("Not yet implemented")
     }
 
     private fun setNotFoundUserAdapter(notFoundUserList: List<NotFoundUser>) {
@@ -114,7 +142,52 @@ class SearchUserBottomSheet(): BottomSheetDialogFragment() {
         binding.recyclerView.adapter = adapter
     }
 
+    private fun callInvitationApi(type: String, data: String) {
+        when (type) {
+            Constants.SEND_MEMBER_INVITATION -> {
+                val request = sendMemberInvitationRequest(
+                    squadID,       // Your squad ID
+                    squad_invite_list = foundUserListForServer  // Your list of search strings
+                )
 
+                getServiceHelpers()?.enqueueCallExtended(
+                    getWebServices()?.sendSquadMemberInvitation(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        request
+                    ), Constants.SEND_MEMBER_INVITATION, true
+                )
+            }
+        }
+    }
+
+    override fun onSuccess(liveData: LiveData<String>, tag: String) {
+        super.onSuccess(liveData, tag)
+        when (tag) {
+            Constants.SEND_MEMBER_INVITATION -> {
+                val responseJson = liveData.value
+                Log.d("Response", "LiveData value: $responseJson")
+
+                if (responseJson != null) {
+                    try {
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SearchUserModel::class.java)!!
+                        if (response.status) {
+                            binding.tvNoListFound.visibility = View.VISIBLE
+                        } else {
+                            dockActivity?.showErrorMessage("Something Went Wrong")
+                        }
+                    } catch (e: Exception) {
+                        val genericMsgResponse = GsonFactory.getConfiguredGson()
+                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
+                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                        Log.i("Error", e.message.toString())
+                    }
+                } else {
+                    Log.e("Error", "LiveData value is null")
+                    dockActivity?.showErrorMessage("No response from server")
+                }
+            }
+        }
+    }
 
     interface OnItemClickListener {
 //        fun onItemClick(item: TourTypeResponse.Type) {}

@@ -137,7 +137,6 @@ class HotsquadSearchFragment : BaseFragment(){
                     squadId,       // Your squad ID
                     search_list = jsonArray  // Your list of search strings
                 )
-
                 getServiceHelper().enqueueCallExtended(
                     getWebService().searchAddSquadMember(
                         ApiHeaderSingleton.apiHeader(requireContext()),
@@ -161,7 +160,8 @@ class HotsquadSearchFragment : BaseFragment(){
                         if (response.status) {
                             // Create a Bundle to hold the response data
                             val bundle = Bundle().apply {
-                                putString("response", responseJson) // Pass the raw JSON string
+                                putString("response", responseJson) // Pass the raw JSON
+                                putString("squad_id", squadId) // Pass the squadId
                             }
                             // Pass the Bundle to the Bottom Sheet
                             searchUserBottomSheet.arguments = bundle
@@ -183,53 +183,10 @@ class HotsquadSearchFragment : BaseFragment(){
         }
     }
 
-
     override fun onFailure(message: String, tag: String) {
         myDockActivity?.showErrorMessage(message)
         Log.i("xxError", "Error")
     }
-
-    //For BottomSheet
-//    private fun addSquadMember(){
-//        onLoadingStarted()
-//        webService?.searchAddSquadMember(
-//           resultString
-//        )?.enqueue(object : Callback<ResponseBody> {
-//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                onLoadingFinished()
-//                try {
-//                    if (response.code() == 200 && response.body() != null) {
-//                        val bundle = Bundle()
-//                        bundle.putString("resultString", resultString)
-////                        Log.d("resultString",resultString.toString())
-//                        searchUserBottomSheet.arguments = bundle
-//                        searchUserBottomSheet.show(parentFragmentManager, "TAG")
-//                    }
-//                } catch (ex: Exception) {
-//                    Utils.customToast(requireContext(), resources.getString(R.string.internal_exception_messsage))
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-//                onLoadingFinished()
-//                Utils.customToast(requireContext(), t.toString())
-//            }
-//        })
-//    }
-
-//    override fun onLoadingStarted() {
-//        isLoading = true
-//        binding.progressBar.visibility = View.VISIBLE
-//    }
-//
-//    override fun onLoadingFinished() {
-//        isLoading = false
-//        binding.progressBar.visibility = View.GONE
-//    }
-//
-//    override fun onProgressUpdated(percentLoaded: Int) {
-//
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

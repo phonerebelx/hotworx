@@ -25,54 +25,76 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/header_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/registered_member"
+                        android:textColor="@color/mirage"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <TextView
+                        android:id="@+id/SendInvite"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="end"
+                        android:text="@string/send_invite"
+                        android:layout_weight="1"
+                        android:textColor="@color/sunset_orange"
+                        android:textSize="@dimen/_14ssp" />
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:layout_below="@id/header_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:spanCount="2"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_registereduserlist"/>
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/tvNoListFound"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/registered_member"
-                    android:layout_weight="3"
-                    android:textColor="@color/mirage"
-                    android:textSize="@dimen/_14ssp" />
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/regular"
+                    android:visibility="gone"
+                    android:text="Invite Sent Successfully"
+                    android:textColor="@color/colorBurned"
+                    android:textSize="@dimen/_12sdp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="end"
-                    android:text="@string/select_all"
-                    android:layout_weight="1"
-                    android:textColor="@color/sunset_orange"
-                    android:textSize="@dimen/_12ssp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSendReferral"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:background="@drawable/multicolor_background"
+                    android:layout_gravity="center"
+                    android:text="@string/send_invite"
+                    android:visibility="gone"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_16sdp"
+                    android:fontFamily="@font/bebasneue_regular" />
 
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingBottom="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:spanCount="2"
-                tools:itemCount="2"
-                tools:listitem="@layout/item_registereduserlist"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSendReferral"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:background="@drawable/multicolor_background"
-                android:layout_gravity="center"
-                android:text="@string/send_invite"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_16sdp"
-                android:fontFamily="@font/bebasneue_regular" />
+            </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -87,12 +109,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
                     android:layout_gravity="center_vertical"
                     android:text="@string/your_contacts"
-                    android:layout_weight="3"
                     android:textColor="@color/mirage"
                     android:textSize="@dimen/_14ssp" />
 
@@ -101,10 +122,11 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="end"
-                    android:text="@string/select_all"
+                    android:text="@string/referral_invite"
                     android:layout_weight="1"
                     android:textColor="@color/sunset_orange"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_14ssp" />
+
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -125,6 +147,7 @@
                 android:background="@drawable/multicolor_background"
                 android:layout_gravity="center"
                 android:text="@string/referral_invite"
+                android:visibility="gone"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_16sdp"
                 android:fontFamily="@font/bebasneue_regular" />

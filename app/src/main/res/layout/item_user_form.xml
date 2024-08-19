@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="@dimen/_7sdp"
-    android:padding="@dimen/_8sdp"
+    android:padding="@dimen/_5sdp"
     android:background="@drawable/shape_rectangle"
+    android:backgroundTint="@color/white"
     android:layout_marginTop="@dimen/_5sdp"
     android:layout_marginBottom="@dimen/_5sdp"
     android:layout_marginStart="@dimen/_5sdp"
@@ -30,7 +31,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:text="@string/text"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp" />
+            android:textSize="@dimen/_11ssp" />
 
         <ImageView
             android:layout_width="@dimen/_17sdp"
