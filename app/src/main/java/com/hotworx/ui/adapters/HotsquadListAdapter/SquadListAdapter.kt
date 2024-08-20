@@ -13,6 +13,7 @@ import com.hotworx.R
 import com.hotworx.activities.DockActivity
 import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.ui.fragments.HotsquadList.HotsquadSearchFragment
+import com.hotworx.ui.fragments.HotsquadList.SquadMemberDetailFragment
 
 class SquadListAdapter(
     private val items: List<Hotsquad>,
@@ -31,17 +32,12 @@ class SquadListAdapter(
         private val countTextView: TextView = itemView.findViewById(R.id.counter)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
         private val addButton: ImageView = itemView.findViewById(R.id.addButton)
-        private val cardView: CardView = itemView.findViewById(R.id.listMainView)
         private val iconLayout: RelativeLayout = itemView.findViewById(R.id.iconLayout)
+        private val cvMainView: CardView = itemView.findViewById(R.id.cvMainView)
 
         fun bind(item: Hotsquad) {
             titleTextView.text = item.name
             countTextView.text = item.total_members.toString()
-//            iconImageView.setImageResource(item.iconResId)
-
-            cardView.setOnClickListener {
-                listener.onItemClick(item)
-            }
 
             addButton.setOnClickListener {
                 val hotsquadSearchFragment = HotsquadSearchFragment().apply {
@@ -50,6 +46,15 @@ class SquadListAdapter(
                     }
                 }
                 dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
+            }
+
+            cvMainView.setOnClickListener {
+                val squadMemberDetailBinding = SquadMemberDetailFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("squad_id", item.squad_id)
+                    }
+                }
+                dockActivity?.replaceDockableFragment(squadMemberDetailBinding)
             }
 
             if(item.has_squad_access){

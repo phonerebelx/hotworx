@@ -533,6 +533,8 @@
     <string name="after_you_added_food">After you add foods to the Basket, you will have a chance to review the food, change the time you ate them, and change serving sizes before adding to your food log.</string>
     <string name="avg_cal">Avg. cal deficit/\noverage</string>
     <string name="enter_weight">Enter Your Weight in lbs</string>
+    <string name="no_squad_members_found">No Squad Members Found</string>
+    <string name="squad_members">My Friend List</string>
     <string name="otp_message_success">OTP has been sent to your email address</string>
 
     <string name="about_hotworx" translatable="false">
