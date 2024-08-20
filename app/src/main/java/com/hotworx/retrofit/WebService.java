@@ -8,6 +8,7 @@ import com.hotworx.models.BrivoRequestModel.SetLeadIdForBrivoToken;
 import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
 import com.hotworx.models.HotsquadList.SearchListRequest;
+import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest;
 import com.hotworx.models.HotsquadList.sendMemberInvitationRequest;
 import com.hotworx.models.HotsquadList.sendReferralInvitationRequest;
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
@@ -684,6 +685,12 @@ public interface WebService {
     @GET("hotsquad/getPendingSquadMemberInvitationList")
     Call<ResponseBody> getPendingRequestList(
             @HeaderMap Map<String, String> headers
+    );
+
+    @POST("hotsquad/squadInvitationResponse")
+    Call<ResponseBody> PendingRequestAccept(
+            @HeaderMap Map<String, String> headers,
+            @Body pendingListAcceptRejectRequest request // Accepting the custom request body
     );
 
     // Vi Management

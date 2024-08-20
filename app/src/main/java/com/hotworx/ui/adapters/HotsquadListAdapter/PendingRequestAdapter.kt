@@ -1,5 +1,6 @@
 package com.hotworx.ui.adapters.HotsquadListAdapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,18 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
 import com.bumptech.glide.Glide
 import com.hotworx.activities.DockActivity
+import com.hotworx.models.HotsquadList.FoundUser
 import com.hotworx.models.HotsquadList.PendingInvitationResponse.SquadData
+import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter.OnItemClickListener
 
 class PendingRequestAdapter(
     private val items: List<SquadData>,
-    private val listener: OnItemClickListener,
-    private val dockActivity: DockActivity? = null
+    private val context: Context,
+    private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<PendingRequestAdapter.ViewHolder>() {
 
     var id = ""
 
     interface OnItemClickListener {
         fun onItemClick(item: SquadData)
+        fun onItemClickDecline(item: SquadData)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -45,10 +49,11 @@ class PendingRequestAdapter(
                 .into(iconImageView)
 
             declineButton.setOnClickListener {
-//                listener.onItemClick(item)
+                listener.onItemClickDecline(item)
             }
 
             acceptButton.setOnClickListener {
+                listener.onItemClick(item)
             }
         }
     }
