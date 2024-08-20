@@ -212,7 +212,7 @@
     <string name="week">Mon</string>
     <string name="day">22</string>
     <string name="current_weight">Current Weight (Lbs)</string>
-    <string name="weekly_session">HOTWORKX Weekly Session goal (2 digit)</string>
+    <string name="weekly_session">HOTWORX Weekly Session goal (2 digit)</string>
     <string name="save">Save</string>
     <string name="error">Error</string>
     <string name="success">Success</string>

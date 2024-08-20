@@ -699,16 +699,18 @@ public interface WebService {
             @HeaderMap Map<String, String> headers
     );
 
+
     @POST("vi/register_device")
     Call<ResponseBody> registerDevice(
             @HeaderMap Map<String, String> headers,
-            @Body List<SetRegisterLocationModel> body
+            @Body SetRegisterLocationModel body
     );
 
     @POST("vi/unregister_device")
     Call<ResponseBody> unRegisterDevice(
             @HeaderMap Map<String, String> headers,
-            @Body List<SetUnRegisterLocationModel> body
+            @Body SetUnRegisterLocationModel body
     );
+
 
 }

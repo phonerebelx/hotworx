@@ -11,13 +11,9 @@ import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentConformRegistrationBinding
 import com.hotworx.global.Constants
-import com.hotworx.helpers.UtilsHelpers
-import com.hotworx.helpers.UtilsHelpers.Companion.getDeviceId
 import com.hotworx.micsAdapter.SpinnerAdapter
 import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.ViModel.GetAllLocation.Data
 import com.hotworx.models.ViModel.GetAllLocation.GetAllLocationModel
-import com.hotworx.models.ViModel.GetAllLocation.SaunaDetail
 import com.hotworx.models.ViModel.Registration.RegisterLocationResponseModel
 import com.hotworx.models.ViModel.Registration.SetRegisterLocationModel
 import com.hotworx.models.ViModel.Unregistraion.SetUnRegisterLocationModel
@@ -33,6 +29,7 @@ class ConformRegistrationFragment : BaseFragment() {
     lateinit var registerLocationModel: SetRegisterLocationModel
     lateinit var unRegisterLocationModel: SetUnRegisterLocationModel
     private var service = ""
+    private var deviceId = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,11 +38,12 @@ class ConformRegistrationFragment : BaseFragment() {
         val args = arguments
         if (args != null) {
             service = args.getString("register_service") ?: "Register"
+            deviceId = args.getString("device_id") ?: ""
+
         }
         setOnClickListener()
         setText()
         callApi("list_location_suana", "")
-
         return binding.root
     }
 
@@ -64,7 +62,7 @@ class ConformRegistrationFragment : BaseFragment() {
                 getServiceHelper().enqueueCallExtended(
                     getWebService().registerDevice(
                         ApiHeaderSingleton.apiHeader(requireContext()),
-                        arrayListOf(data as SetRegisterLocationModel)
+                        data as SetRegisterLocationModel
                     ), "register_device", true
                 )
             }
@@ -73,7 +71,7 @@ class ConformRegistrationFragment : BaseFragment() {
                 getServiceHelper().enqueueCallExtended(
                     getWebService().unRegisterDevice(
                         ApiHeaderSingleton.apiHeader(requireContext()),
-                        arrayListOf(data as SetUnRegisterLocationModel)
+                        data as SetUnRegisterLocationModel
                     ), "unRegister_device", true
                 )
             }
@@ -86,10 +84,11 @@ class ConformRegistrationFragment : BaseFragment() {
         when (tag) {
             "list_location_suana" -> {
                 try {
+
                     getAllLocation = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, GetAllLocationModel::class.java)!!
-
                     setSpinner(getAllLocation, "For_Location")
+
                 } catch (e: Exception) {
                     GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, ErrorResponseEnt::class.java)
@@ -150,16 +149,33 @@ class ConformRegistrationFragment : BaseFragment() {
 
             "For_Suana" -> {
                 val suanaItems = arrayListOf<String>()
-                var locationId: String = ""
+                val suanaNo = arrayListOf<String>()
+                var locationId = ""
                 getAllLocation.data.forEach { location ->
                     if (location.name == selectedLocation) {
                         locationId = location.location_id.toString()
+
                         location.sauna_details.forEach { suana ->
-                            suanaItems.add(suana.sauna_no.toString())
+                            when (val saunaNo = suana.sauna_no) {
+                                is Int -> {
+                                    suanaItems.add("Suana : $saunaNo")
+                                    suanaNo.add("$saunaNo")
+                                }
+                                is Double -> {
+                                    suanaItems.add("Suana : ${saunaNo.toInt()}")
+                                    suanaNo.add("${saunaNo.toInt()}")
+                                }
+                                is String -> {
+                                    suanaItems.add("Suana : $saunaNo")
+                                    suanaNo.add("$saunaNo")
+                                }
+                                else -> {
+                                    println("Unexpected type: ${saunaNo::class.simpleName}")
+                                }
+                            }
                         }
                     }
                 }
-
 
                 val suanaAdapter = SpinnerAdapter(requireContext(), suanaItems, "Select Suana")
                 binding.acpSuanaSpinner.adapter = suanaAdapter
@@ -176,7 +192,7 @@ class ConformRegistrationFragment : BaseFragment() {
 
                                 if (service == "Register") {
                                     registerLocationModel = SetRegisterLocationModel(
-                                        getDeviceId(requireContext()),
+                                        deviceId,
                                         "",
                                         locationId
                                     )
@@ -194,15 +210,15 @@ class ConformRegistrationFragment : BaseFragment() {
 
                                 if (service == "Register") {
                                     registerLocationModel = SetRegisterLocationModel(
-                                        getDeviceId(requireContext()),
-                                        suanaItems[position - 1],
+                                        deviceId,
+                                        suanaNo[position - 1],
                                         locationId
                                     )
                                     Log.d("onItemSelected: ", registerLocationModel.toString())
 
                                 } else {
                                     unRegisterLocationModel = SetUnRegisterLocationModel(
-                                        suanaItems[position - 1],
+                                        suanaNo[position - 1],
                                         locationId
                                     )
 
