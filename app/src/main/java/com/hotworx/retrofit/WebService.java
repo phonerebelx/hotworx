@@ -11,6 +11,7 @@ import com.hotworx.models.HotsquadList.SearchListRequest;
 import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest;
 import com.hotworx.models.HotsquadList.sendMemberInvitationRequest;
 import com.hotworx.models.HotsquadList.sendReferralInvitationRequest;
+import com.hotworx.models.HotsquadList.squadMemberDetailRequest;
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
 import com.hotworx.models.ViModel.Registration.SetRegisterLocationModel;
 import com.hotworx.models.ViModel.Unregistraion.SetUnRegisterLocationModel;
@@ -691,6 +692,12 @@ public interface WebService {
     Call<ResponseBody> PendingRequestAccept(
             @HeaderMap Map<String, String> headers,
             @Body pendingListAcceptRejectRequest request // Accepting the custom request body
+    );
+
+    @POST("hotsquad/getSquadDetails")
+    Call<ResponseBody> getSquadDetail(
+            @HeaderMap Map<String, String> headers,
+            @Body squadMemberDetailRequest request // Accepting the custom request body
     );
 
     // Vi Management
