@@ -39,6 +39,11 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         // Ensure hotsquadListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
         hotsquadListModel = HotsquadListModel(data = emptyList(),status =false,message = "")
         setAdapter(squadList = hotsquadListModel.data)
+
+        binding.createSquad.setOnClickListener{
+            val createHotsquadFragment = CreateHotsquadFragment()
+            dockActivity.replaceDockableFragment(createHotsquadFragment)
+        }
     }
 
     override fun onItemClick(item: Hotsquad) {

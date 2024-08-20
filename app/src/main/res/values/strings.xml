@@ -212,7 +212,7 @@
     <string name="week">Mon</string>
     <string name="day">22</string>
     <string name="current_weight">Current Weight (Lbs)</string>
-    <string name="weekly_session">HOTWORKX Weekly Session goal (2 digit)</string>
+    <string name="weekly_session">HOTWORX Weekly Session goal (2 digit)</string>
     <string name="save">Save</string>
     <string name="error">Error</string>
     <string name="success">Success</string>
@@ -285,6 +285,7 @@
     <string name="pending_req">Pending Squad Request</string>
     <string name="add_hotsquad_list">Add more HOTSQUAD Member to List</string>
     <string name="create_hotsquad">Create hotsquad</string>
+    <string name="create_squad">Create Squad</string>
     <string name="refer_friends">Refer Friends and Earn $5</string>
     <string name="add_list">Add List</string>
     <string name="send_invite">Send Invite</string>
