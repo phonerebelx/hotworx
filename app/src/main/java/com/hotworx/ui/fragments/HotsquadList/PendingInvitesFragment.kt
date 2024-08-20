@@ -53,7 +53,7 @@ class PendingInvitesFragment : BaseFragment(){
         getPendingRequestList()
 
         // Ensure PendingListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
-        pendingRequestModel = PendingInvitationResponse(status =false,message = "",data = emptyList())
+        pendingRequestModel = PendingInvitationResponse(status =false,message = "",data = mutableListOf())
         setAdapter(pendingRequestModel.data)
     }
 
@@ -96,6 +96,7 @@ class PendingInvitesFragment : BaseFragment(){
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, PendingInvitationResponse::class.java)!!
                         if (response.status) {
                             dockActivity?.showSuccessMessage(response.message)
+
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }
@@ -113,9 +114,9 @@ class PendingInvitesFragment : BaseFragment(){
         }
     }
 
-    private fun setAdapter(pendingList: List<PendingInvitationResponse.SquadData>) {
+    private fun setAdapter(pendingList: MutableList<PendingInvitationResponse.SquadData>) {
         val adapter = PendingRequestAdapter(pendingList, requireContext(), object : PendingRequestAdapter.OnItemClickListener {
-            override fun onItemClick(item: PendingInvitationResponse.SquadData) {
+            override fun onItemClick(item: PendingInvitationResponse.SquadData, position: Int) {
                 item?.let {
                     val request = pendingListAcceptRejectRequest(
                         item.squad_id.toString(),
@@ -128,10 +129,13 @@ class PendingInvitesFragment : BaseFragment(){
                             request
                         ), Constants.PENDING_ACCEPT_REJECT, true
                     )
+
+                    // Pass the position to the success handler
+                    onItemActionSuccess(position)
                 }
             }
 
-            override fun onItemClickDecline(item: PendingInvitationResponse.SquadData) {
+            override fun onItemClickDecline(item: PendingInvitationResponse.SquadData,position: Int) {
                 item?.let {
                     val request = pendingListAcceptRejectRequest(
                         item.squad_id.toString(),
@@ -144,12 +148,21 @@ class PendingInvitesFragment : BaseFragment(){
                             request
                         ), Constants.PENDING_ACCEPT_REJECT, true
                     )
+
+                    onItemActionSuccess(position)
                 }
             }
         })
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+    }
+
+    private fun onItemActionSuccess(position: Int) {
+        adapter?.let {
+            it.items.removeAt(position)
+            it.notifyItemRemoved(position)
+        }
     }
 
     override fun ResponseFailure(message: String?, tag: String?) {

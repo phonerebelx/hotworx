@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     android:id="@+id/cvReferSquad"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="@dimen/_250sdp"
     android:layout_gravity="top|center"
     android:layout_marginHorizontal="@dimen/_13sdp"
@@ -16,17 +16,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ImageView
+        android:id="@+id/crossIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_gravity="end"
+        android:src="@drawable/cross"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:padding="@dimen/_8sdp"
         android:layout_marginHorizontal="@dimen/_13sdp">
-
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:src="@drawable/hotworks_heading"/>
 
         <TextView
             android:id="@+id/header_layout"
@@ -36,8 +40,7 @@
             android:text="@string/add_hotsquad_list"
             android:layout_marginTop="@dimen/_10sdp"
             android:textColor="@color/text_color"
-            android:layout_below="@+id/icon"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_12ssp" />
 
         <TextView
             android:id="@+id/desc"
@@ -48,7 +51,7 @@
             android:fontFamily="@font/montserrat_regular"
             android:text="@string/hotsquad_list_detail"
             android:textColor="@color/text_color_black"
-            android:textSize="@dimen/_13ssp" />
+            android:textSize="@dimen/_10ssp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSendReferral"
@@ -62,7 +65,7 @@
             android:layout_marginTop="@dimen/_35sdp"
             android:text="@string/refer_friends"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_14sdp"
+            android:textSize="@dimen/_13sdp"
             android:fontFamily="@font/bebasneue_regular" />
 
     </RelativeLayout>

@@ -19,7 +19,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_10sdp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -112,29 +111,31 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:gravity="center_horizontal"
-                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/declineBtn"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_35sdp"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:text="@string/decline"
                     android:textSize="@dimen/_12sdp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/bebasneue_regular"
                     android:textColor="@color/white"
                     android:background="@drawable/multicolor_background"
-                    android:backgroundTint="@color/colorDarkRed"
-                    />
+                    android:backgroundTint="@color/colorDarkRed" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/AcceptBtn"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_35sdp"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:backgroundTint="@color/green"
                     android:text="@string/accept"
+                    android:layout_weight="1"
                     android:textSize="@dimen/_12sdp"
                     android:fontFamily="@font/bebasneue_regular"
                     android:textColor="@color/white"

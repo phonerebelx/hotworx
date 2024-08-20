@@ -17,7 +17,7 @@ import com.hotworx.models.HotsquadList.PendingInvitationResponse.SquadData
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter.OnItemClickListener
 
 class PendingRequestAdapter(
-    private val items: List<SquadData>,
+    val items: MutableList<SquadData>,
     private val context: Context,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<PendingRequestAdapter.ViewHolder>() {
@@ -25,8 +25,8 @@ class PendingRequestAdapter(
     var id = ""
 
     interface OnItemClickListener {
-        fun onItemClick(item: SquadData)
-        fun onItemClickDecline(item: SquadData)
+        fun onItemClick(item: SquadData,position:Int)
+        fun onItemClickDecline(item: SquadData,position:Int)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,7 +37,7 @@ class PendingRequestAdapter(
         private val declineButton: AppCompatButton = itemView.findViewById(R.id.declineBtn)
         private val acceptButton: AppCompatButton = itemView.findViewById(R.id.AcceptBtn)
 
-        fun bind(item: SquadData) {
+        fun bind(item: SquadData , position: Int) {
             nameTextView.text = item.request_from?.name
             emailTextView.text = item.request_from?.email
             sentTextView.text = item.request_from?.sent_at
@@ -49,11 +49,11 @@ class PendingRequestAdapter(
                 .into(iconImageView)
 
             declineButton.setOnClickListener {
-                listener.onItemClickDecline(item)
+                listener.onItemClickDecline(item,position)
             }
 
             acceptButton.setOnClickListener {
-                listener.onItemClick(item)
+                listener.onItemClick(item, position = position)
             }
         }
     }
@@ -64,7 +64,7 @@ class PendingRequestAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position], position)
     }
 
     fun getPositionById(listId: String): Int {
@@ -74,6 +74,11 @@ class PendingRequestAdapter(
             }
         }
         return -1
+    }
+
+    fun removeItem(position: Int) {
+        items.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     override fun getItemCount(): Int = items.size

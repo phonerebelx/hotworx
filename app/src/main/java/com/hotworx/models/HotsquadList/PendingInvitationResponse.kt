@@ -3,7 +3,7 @@ package com.hotworx.models.HotsquadList
 data class PendingInvitationResponse(
     val status: Boolean,
     val message: String,
-    val data: List<SquadData> = emptyList()
+    val data: MutableList<SquadData>
 ) {
     data class SquadData(
         var squad_id: String? = null,

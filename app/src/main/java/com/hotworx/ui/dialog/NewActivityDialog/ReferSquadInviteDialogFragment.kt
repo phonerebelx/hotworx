@@ -48,7 +48,11 @@ class ReferSquadInviteDialogFragment : DialogFragment() {
             // Implement what happens when the referral is sent
             activity?.shareLink(referralUrl.toString())
             Log.d("vjhvvdschjd",referralUrl.toString())
-//            dialog?.dismiss()
+
+        }
+
+        binding.crossIcon.setOnClickListener{
+            dialog?.dismiss()
         }
     }
 
