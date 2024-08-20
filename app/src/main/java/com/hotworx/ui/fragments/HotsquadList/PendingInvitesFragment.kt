@@ -148,7 +148,6 @@ class PendingInvitesFragment : BaseFragment(){
                             request
                         ), Constants.PENDING_ACCEPT_REJECT, true
                     )
-
                     onItemActionSuccess(position)
                 }
             }
