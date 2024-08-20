@@ -14,6 +14,7 @@ data class PendingInvitationResponse(
     ) {
         data class RequestFrom(
             var name: String? = null,
+            var profile_image_url: String? = null,
             var email: String? = null,
             var phone: String? = null,
             var sent_at: String? = null

@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
+import com.bumptech.glide.Glide
 import com.hotworx.activities.DockActivity
 import com.hotworx.models.HotsquadList.PendingInvitationResponse.SquadData
 
@@ -35,7 +37,12 @@ class PendingRequestAdapter(
             nameTextView.text = item.request_from?.name
             emailTextView.text = item.request_from?.email
             sentTextView.text = item.request_from?.sent_at
-//            iconImageView.setImageResource(item.request_from?.)
+
+            // Use itemView.context to get the context
+            Glide.with(itemView.context)
+                .load(item.request_from?.profile_image_url)
+                .placeholder(R.drawable.placeholder) // Optional placeholder
+                .into(iconImageView)
 
             declineButton.setOnClickListener {
 //                listener.onItemClick(item)

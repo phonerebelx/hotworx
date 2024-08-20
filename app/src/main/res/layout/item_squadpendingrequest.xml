@@ -7,9 +7,9 @@
         android:id="@+id/listMainView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_4sdp"
+        app:cardCornerRadius="@dimen/_6sdp"
         android:background="@color/white"
-        android:elevation="@dimen/_20sdp"
+        android:elevation="@dimen/_25sdp"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_10sdp"
@@ -19,19 +19,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_7sdp"
+            android:padding="@dimen/_10sdp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/detailLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="@dimen/_5sdp"
                 android:orientation="horizontal">
 
                 <io.github.florent37.shapeofview.shapes.CircleView
                     android:id="@+id/imgCircle"
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_45sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:layout_gravity="center"
                     tools:ignore="MissingConstraints">
 
@@ -73,7 +75,7 @@
                             android:layout_marginTop="@dimen/_7sdp"
                             android:fontFamily="@font/montserrat_bold"
                             android:textColor="@color/hint_color"
-                            android:textSize="@dimen/_12ssp"
+                            android:textSize="@dimen/_13ssp"
                             android:layout_marginHorizontal="@dimen/_5sdp"/>
 
                         <TextView
@@ -107,34 +109,36 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/declineBtn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:text="@string/decline"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/bebasneue_regular"
                     android:textColor="@color/white"
                     android:background="@drawable/multicolor_background"
                     android:backgroundTint="@color/colorDarkRed"
-                    android:layout_weight="1"
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/AcceptBtn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_5sdp"
                     android:backgroundTint="@color/green"
                     android:text="@string/accept"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/bebasneue_regular"
                     android:textColor="@color/white"
-                    android:background="@drawable/multicolor_background"
-                    android:layout_weight="1"
-                    />
+                    android:background="@drawable/multicolor_background" />
 
             </LinearLayout>
 
