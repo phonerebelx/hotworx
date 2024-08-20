@@ -681,6 +681,11 @@ public interface WebService {
             @Body sendReferralInvitationRequest request // Accepting the custom request body
     );
 
+    @GET("hotsquad/getPendingSquadMemberInvitationList")
+    Call<ResponseBody> getPendingRequestList(
+            @HeaderMap Map<String, String> headers
+    );
+
     // Vi Management
     @POST("vi/list_location_suana")
     Call<ResponseBody> getListLocationSuana(
