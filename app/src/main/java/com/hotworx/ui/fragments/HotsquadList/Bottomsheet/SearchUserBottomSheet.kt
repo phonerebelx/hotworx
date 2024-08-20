@@ -57,25 +57,32 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         const val TAG = "SearchUserBottomSheet"
     }
 
+//    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+//        val dialog = super.onCreateDialog(savedInstanceState)
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//
+//        dialog.setOnShowListener {
+//            val bottomSheetDialog = it as BottomSheetDialog
+//            val parentLayout = bottomSheetDialog.findViewById<View>(
+//                com.google.android.material.R.id.design_bottom_sheet
+//            )
+//            parentLayout?.let { bottomSheet ->
+//                val behaviour = BottomSheetBehavior.from(bottomSheet)
+//                val layoutParams = bottomSheet.layoutParams
+//                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+//                bottomSheet.layoutParams = layoutParams
+//                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+//            }
+//        }
+//        return dialog
+//    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-        dialog.setOnShowListener {
-            val bottomSheetDialog = it as BottomSheetDialog
-            val parentLayout = bottomSheetDialog.findViewById<View>(
-                com.google.android.material.R.id.design_bottom_sheet
-            )
-            parentLayout?.let { bottomSheet ->
-                val behaviour = BottomSheetBehavior.from(bottomSheet)
-                val layoutParams = bottomSheet.layoutParams
-                layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-                bottomSheet.layoutParams = layoutParams
-                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
-            }
-        }
         return dialog
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
