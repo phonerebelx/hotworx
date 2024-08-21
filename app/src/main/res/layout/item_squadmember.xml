@@ -49,34 +49,43 @@
 
             </io.github.florent37.shapeofview.shapes.CircleView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                tools:text="@string/text"
+                android:maxLines="2"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:fontFamily="@font/bebasneue_regular"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginHorizontal="@dimen/_5sdp"/>
 
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/text"
-                    android:maxLines="2"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/bebasneue_regular"
-                    android:textColor="@color/hint_color"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_marginHorizontal="@dimen/_5sdp"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp">
 
                 <ImageView
-                    android:id="@+id/imgCheck"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:src="@drawable/imgcheck"
-                    android:visibility="gone"
+                    android:id="@+id/imgCheckBox"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:src="@drawable/square_small"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@string/no"/>
 
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/imgCheck"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:src="@drawable/check"
+                    android:visibility="gone"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:contentDescription="@string/no"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

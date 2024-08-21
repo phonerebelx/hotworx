@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -32,6 +33,7 @@ class SquadMemberListAdapter(
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
         private val imgcheck: ImageView = itemView.findViewById(R.id.imgCheck)
+        private val imgCheckBox: ImageView = itemView.findViewById(R.id.imgCheckBox)
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
 
         fun bind(item: SquadMemberDetailsResponse.SquadData.Member) {
@@ -46,12 +48,14 @@ class SquadMemberListAdapter(
             // Set the visibility based on the selected state
             imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
 
-            cardView.setOnClickListener {
-                item.selected = !item.selected
-                imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
-                notifyItemChanged(adapterPosition)
-                listener.onItemClick(item)
-            }
+            if(item.has_squad_access){
+                imgCheckBox.setOnClickListener {
+                    item.selected = !item.selected
+                    imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+                    notifyItemChanged(adapterPosition)
+                    listener.onItemClick(item)
+                }
+            }else{ }
 //            cardView.setOnClickListener {
 //                listener.onItemClick(item)
 //            }

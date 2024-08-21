@@ -37,6 +37,7 @@ class SquadMemberDetailFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
     private val binding get() = _binding!!
     private var adapter: SquadMemberListAdapter? = null
     private var squadId: String = ""
+    var squadAccess = false
     private var userListForServer = mutableListOf<String>()
     private lateinit var memberListModel: SquadMemberDetailsResponse.SquadData
 
@@ -54,7 +55,9 @@ class SquadMemberDetailFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
         // Retrieve the squad ID from the fragment arguments
         arguments?.let {
             squadId = it.getString("squad_id") ?: ""
+            squadAccess = it.getBoolean("squad_access")
             Log.d("SquadID", squadId)
+            Log.d("squadAccess",squadAccess.toString())
         }
 
         callInvitationApi(Constants.GET_SQUAD_MEMBER_LIST, "")
@@ -166,6 +169,7 @@ class SquadMemberDetailFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
         adapter = SquadMemberListAdapter(members, requireContext(),object : SquadMemberListAdapter.OnItemClickListener {
             override fun onItemClick(item: SquadMemberDetailsResponse.SquadData.Member) {
                 item?.let {
+
                     if (item.selected) {
                         userListForServer.add(it.member_id)
                     } else {

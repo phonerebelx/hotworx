@@ -59,6 +59,7 @@ class SquadListAdapter(
                 val squadMemberDetailBinding = SquadMemberDetailFragment().apply {
                     arguments = Bundle().apply {
                         putString("squad_id", item.squad_id)
+                        putBoolean("squad_access", item.has_squad_access)
                     }
                 }
                 dockActivity?.replaceDockableFragment(squadMemberDetailBinding)
