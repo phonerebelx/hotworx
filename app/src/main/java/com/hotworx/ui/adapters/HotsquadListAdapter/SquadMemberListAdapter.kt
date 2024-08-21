@@ -32,12 +32,18 @@ class SquadMemberListAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
+        private val statusTextView: TextView = itemView.findViewById(R.id.tvStatus)
+        private val emailTextView: TextView = itemView.findViewById(R.id.tvEmail)
+        private val phoneTextView: TextView = itemView.findViewById(R.id.tvPhone)
         private val imgcheck: ImageView = itemView.findViewById(R.id.imgCheck)
         private val imgCheckBox: ImageView = itemView.findViewById(R.id.imgCheckBox)
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
 
         fun bind(item: SquadMemberDetailsResponse.SquadData.Member) {
             nameTextView.text = item.name
+            statusTextView.text = item.invite_message
+            emailTextView.text = item.email
+            phoneTextView.text = item.phone
 
             // Use itemView.context to get the context
             Glide.with(itemView.context)

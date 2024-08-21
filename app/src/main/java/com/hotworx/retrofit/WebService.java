@@ -707,6 +707,13 @@ public interface WebService {
             @Body removeSquadMemberRequest request // Accepting the custom request body
     );
 
+
+    //App setting
+    @GET("general/GetAppSettings")
+    Call<ResponseBody> getAppSetting(
+            @HeaderMap Map<String, String> headers
+    );
+
     // Vi Management
     @POST("vi/list_location_suana")
     Call<ResponseBody> getListLocationSuana(
