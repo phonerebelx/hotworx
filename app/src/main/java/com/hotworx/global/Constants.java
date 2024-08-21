@@ -105,4 +105,7 @@ public class Constants {
     public static final String REMOVE_SQUAD_MEMBER = "REMOVE_SQUAD_MEMBER";
     public static final String SEND_REFERRAL_INVITATION = "SEND_REFERRAL_INVITATION";
     public static final String REFERRAL_INVITATION = "REFERRAL_INVITATION";
+
+    //Hotsquad Session
+    public static final String SESSION_MEMBER = "SESSION_MEMBER";
 }

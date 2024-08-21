@@ -27,6 +27,7 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     private lateinit var hotsquadListModel: HotsquadListModel
     private var adapter: SquadListAdapter? = null
     private var dashboardShare: String = ""
+    private var recordId: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +43,9 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         // Retrieve the squad ID from the fragment arguments
         arguments?.let {
             dashboardShare = it.getString("Dashboard_share") ?: ""
+            recordId = it.getString("RecordId") ?: ""
             Log.d("squadAccess",dashboardShare.toString())
+            Log.d("RecordId",recordId.toString())
         }
 
         if(dashboardShare == "dashboardShare"){
@@ -88,11 +91,11 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
     private fun setAdapter(squadList: List<Hotsquad>) {
         if(dashboardShare == "dashboardShare"){
-            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,dashboardShare)
+            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,dashboardShare,recordId)
             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerView.adapter = adapter
         }else{
-            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,"")
+            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,"","")
             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerView.adapter = adapter
         }

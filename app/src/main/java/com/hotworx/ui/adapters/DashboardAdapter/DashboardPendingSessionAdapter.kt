@@ -95,6 +95,7 @@ class DashboardPendingSessionAdapter(
             val myhotsquadlistBinding = MyHotsquadListFragment().apply {
                 arguments = Bundle().apply {
                     putString("Dashboard_share", "dashboardShare")
+                    putString("RecordId", item.session_record_id)
                 }
             }
             dockActivity?.replaceDockableFragment(myhotsquadlistBinding)

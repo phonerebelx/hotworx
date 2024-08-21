@@ -15,13 +15,15 @@ import com.hotworx.R
 import com.hotworx.activities.DockActivity
 import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.ui.fragments.HotsquadList.HotsquadSearchFragment
+import com.hotworx.ui.fragments.HotsquadList.SessionMemberListFragment
 import com.hotworx.ui.fragments.HotsquadList.SquadMemberDetailFragment
 
 class SquadListAdapter(
     private val items: List<Hotsquad>,
     private val listener: OnItemClickListener,
     private val dockActivity: DockActivity? = null,
-    private val dashboardShare: String // Add this parameter
+    private val dashboardShare: String, // Add this parameter
+    private val recordId: String // Add this parameter
 ) : RecyclerView.Adapter<SquadListAdapter.ViewHolder>() {
 
     var id = ""
@@ -61,14 +63,27 @@ class SquadListAdapter(
                 .placeholder(R.drawable.placeholder) // Optional placeholder
                 .into(iconImageView)
 
-            cvMainView.setOnClickListener {
-                val squadMemberDetailBinding = SquadMemberDetailFragment().apply {
-                    arguments = Bundle().apply {
-                        putString("squad_id", item.squad_id)
-                        putBoolean("squad_access", item.has_squad_access)
+            if (dashboardShare == "dashboardShare") {
+                cvMainView.setOnClickListener {
+                    val sessionMemberListBinding = SessionMemberListFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("squad_id", item.squad_id)
+                            putString("recordId", recordId)
+                        }
                     }
+                    dockActivity?.replaceDockableFragment(sessionMemberListBinding)
                 }
-                dockActivity?.replaceDockableFragment(squadMemberDetailBinding)
+            } else {
+                // If it's not from the dashboardShare, check the has_squad_access property
+                cvMainView.setOnClickListener {
+                    val squadMemberDetailBinding = SquadMemberDetailFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("squad_id", item.squad_id)
+                            putBoolean("squad_access", item.has_squad_access)
+                        }
+                    }
+                    dockActivity?.replaceDockableFragment(squadMemberDetailBinding)
+                }
             }
 
             addButton.setOnClickListener {

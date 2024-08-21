@@ -8,6 +8,7 @@ import com.hotworx.models.BrivoRequestModel.SetLeadIdForBrivoToken;
 import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
 import com.hotworx.models.HotsquadList.SearchListRequest;
+import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest;
 import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest;
 import com.hotworx.models.HotsquadList.removeSquadMemberRequest;
 import com.hotworx.models.HotsquadList.sendMemberInvitationRequest;
@@ -712,6 +713,13 @@ public interface WebService {
     @GET("general/GetAppSettings")
     Call<ResponseBody> getAppSetting(
             @HeaderMap Map<String, String> headers
+    );
+
+    //Session Booking
+    @POST("hotsquad/getSquadMembersForSessionInvite")
+    Call<ResponseBody> getSquadMemberForSession(
+            @HeaderMap Map<String, String> headers,
+            @Body SquadSessionMemberRequest request // Accepting the custom request body
     );
 
     // Vi Management
