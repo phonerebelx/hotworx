@@ -76,7 +76,6 @@ class SessionMemberListAdapter(
                     listener.onItemClick(item)
                 }
             }
-
 //            cardView.setOnClickListener {
 //                listener.onItemClick(item)
 //            }

@@ -19,7 +19,9 @@ import com.hotworx.global.Constants
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.RemoveMemberResponse
 import com.hotworx.models.HotsquadList.Session.SessionMemberResponse
+import com.hotworx.models.HotsquadList.Session.SquadSessionInvitationResponse
 import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest
+import com.hotworx.models.HotsquadList.Session.sendSquadSessionMemberRequest
 import com.hotworx.models.HotsquadList.SquadMemberDetailsResponse
 import com.hotworx.models.HotsquadList.removeSquadMemberRequest
 import com.hotworx.models.HotsquadList.squadMemberDetailRequest
@@ -37,7 +39,9 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
     private var adapter: SessionMemberListAdapter? = null
     private var member_ivite_id: String = ""
     private var squadId: String = ""
-    private var recordId: String = ""
+    private var squadName: String = ""
+    private var memberId: String = ""
+    private var userListForServer = mutableListOf<String>()
     private lateinit var memberListModel: SessionMemberResponse.SquadData
 
     override fun onCreateView(
@@ -54,17 +58,20 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
         // Retrieve the squad ID from the fragment arguments
         arguments?.let {
             squadId = it.getString("squad_id") ?: ""
-            recordId = it.getString("recordId")?: ""
+            memberId = it.getString("recordId")?: ""
+            squadName = it.getString("SquadName")?: ""
             Log.d("SquadID", squadId)
-            Log.d("recordId", recordId)
+            Log.d("recordId", memberId)
+            Log.d("SquadName", squadName)
 //            Log.d("squadAccess",squadAccess.toString())
         }
 
         callInvitationApi(Constants.SESSION_MEMBER, "")
 
-        binding.tvRemove.setOnClickListener{
-            callInvitationApi(Constants.REMOVE_SQUAD_MEMBER, "")
+        binding.btnSentList.setOnClickListener{
+            callInvitationApi(Constants.SEND_SESSION_MEMBER, "")
         }
+
     }
 
     override fun onItemClick(item: SquadMemberDetailsResponse.SquadData.Member) {
@@ -76,7 +83,7 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
             Constants.SESSION_MEMBER -> {
                 val request = SquadSessionMemberRequest(
                     squad_id = squadId,       // Your squad ID
-                    recordId
+                    memberId
                 )// Your list of search strings)
 
                 getServiceHelper()?.enqueueCallExtended(
@@ -87,30 +94,22 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
                 )
             }
 
-//            Constants.REMOVE_SQUAD_MEMBER -> {
-//
-//                dockActivity?.showMaterialAlertDialog("Are you sure You want to remove!",object :
-//                    DialogListeners {
-//                    override fun onNegativeButtonTap(dialog: DialogInterface?) {
-//                        dialog?.dismiss()
-//                    }
-//
-//                    override fun onPositionButtonTap(dialog: DialogInterface?) {
-//                        dialog?.dismiss()
-//                        val request = removeSquadMemberRequest(
-//                            squadId,       // Your squad ID
-//                            userListForServer
-//                        )
-//
-//                        getServiceHelper()?.enqueueCallExtended(
-//                            getWebService()?.removeSquadMember(
-//                                ApiHeaderSingleton.apiHeader(requireContext()),
-//                                request
-//                            ), Constants.REMOVE_SQUAD_MEMBER, true
-//                        )
-//                    }
-//                })
-//            }
+            Constants.SEND_SESSION_MEMBER -> {
+
+                val request = sendSquadSessionMemberRequest(
+                    squadId,       // Your squad ID
+                    squadName,
+                    memberId,
+                    userListForServer
+                )
+
+                getServiceHelper()?.enqueueCallExtended(
+                    getWebService()?.sendSquadSessionMemberRequest(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        request
+                    ), Constants.SEND_SESSION_MEMBER, true
+                )
+            }
         }
     }
 
@@ -142,29 +141,29 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
                 }
             }
 
-//            Constants.REMOVE_SQUAD_MEMBER -> {
-//                val responseJson = liveData.value
-//                Log.d("Response", "LiveData value: $responseJson")
-//
-//                if (responseJson != null) {
-//                    try {
-//                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, RemoveMemberResponse::class.java)!!
-//                        if (response.status) {
-//                            dockActivity.showSuccessMessage(response.message)
-//                        } else {
-//
-//                        }
-//                    } catch (e: Exception) {
-//                        val genericMsgResponse = GsonFactory.getConfiguredGson()
-//                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
-//                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
-//                        Log.i("Error", e.message.toString())
-//                    }
-//                } else {
-//                    Log.e("Error", "LiveData value is null")
-//                    dockActivity?.showErrorMessage("No response from server")
-//                }
-//            }
+            Constants.SEND_SESSION_MEMBER -> {
+                val responseJson = liveData.value
+                Log.d("Response", "LiveData value: $responseJson")
+
+                if (responseJson != null) {
+                    try {
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SquadSessionInvitationResponse::class.java)!!
+                        if (response.status) {
+                            dockActivity.showSuccessMessage(response.message)
+                        } else {
+
+                        }
+                    } catch (e: Exception) {
+                        val genericMsgResponse = GsonFactory.getConfiguredGson()
+                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
+                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                        Log.i("Error", e.message.toString())
+                    }
+                } else {
+                    Log.e("Error", "LiveData value is null")
+                    dockActivity?.showErrorMessage("No response from server")
+                }
+            }
         }
     }
 
@@ -173,12 +172,12 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
             override fun onItemClick(item: SessionMemberResponse.SquadData.Member) {
                 item?.let {
 
-//                    if (item.selected) {
-//                        userListForServer.add(it.member_id)
-//                    } else {
-//                        userListForServer.remove(it.member_id)
-//                    }
-//                    Log.d(TAG, "userListForServer ${userListForServer.toString()}")
+                    if (item.selected) {
+                        userListForServer.add(it.member_invite_id?:"")
+                    } else {
+                        userListForServer.remove(it.member_invite_id?:"")
+                    }
+                    Log.d(TAG, "userListForServer ${userListForServer.toString()}")
                 }
             }
         })

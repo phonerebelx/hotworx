@@ -69,6 +69,7 @@ class SquadListAdapter(
                         arguments = Bundle().apply {
                             putString("squad_id", item.squad_id)
                             putString("recordId", recordId)
+                            putString("SquadName", item.name)
                         }
                     }
                     dockActivity?.replaceDockableFragment(sessionMemberListBinding)

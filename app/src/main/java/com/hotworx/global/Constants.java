@@ -108,4 +108,5 @@ public class Constants {
 
     //Hotsquad Session
     public static final String SESSION_MEMBER = "SESSION_MEMBER";
+    public static final String SEND_SESSION_MEMBER = "SEND_SESSION_MEMBER";
 }
