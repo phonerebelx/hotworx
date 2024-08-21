@@ -20,7 +20,8 @@ data class SquadMemberDetailsResponse(
             val profile_image_url: String,
             val invite_status: String,
             val invite_message: String?,
-            val has_squad_access: Boolean
+            val has_squad_access: Boolean,
+            var selected: Boolean
         )
     }
 }

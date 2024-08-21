@@ -67,6 +67,15 @@
                     android:textSize="@dimen/_12ssp"
                     android:layout_marginHorizontal="@dimen/_5sdp"/>
 
+                <ImageView
+                    android:id="@+id/imgCheck"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/imgcheck"
+                    android:visibility="gone"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/no"/>
+
             </LinearLayout>
 
         </LinearLayout>

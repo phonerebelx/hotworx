@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
@@ -154,6 +155,7 @@ class PendingInvitesFragment : BaseFragment(){
 
         // Set adapter to RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.itemAnimator = DefaultItemAnimator() // Ensure animations are enabled
         binding.recyclerView.adapter = adapter
     }
 

@@ -102,6 +102,7 @@ public class Constants {
     public static final String PENDING_ACCEPT_REJECT = "PENDING_ACCEPT_REJECT";
     public static final String SEND_MEMBER_INVITATION = "SEND_MEMBER_INVITATION";
     public static final String GET_SQUAD_MEMBER_LIST = "GET_SQUAD_MEMBER_LIST";
+    public static final String REMOVE_SQUAD_MEMBER = "REMOVE_SQUAD_MEMBER";
     public static final String SEND_REFERRAL_INVITATION = "SEND_REFERRAL_INVITATION";
     public static final String REFERRAL_INVITATION = "REFERRAL_INVITATION";
 }

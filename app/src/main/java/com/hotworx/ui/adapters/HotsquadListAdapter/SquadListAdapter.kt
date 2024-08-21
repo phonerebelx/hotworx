@@ -69,6 +69,7 @@ class SquadListAdapter(
             }else{
                 iconLayout.visibility = View.GONE
             }
+
         }
     }
 

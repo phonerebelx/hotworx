@@ -1,6 +1,7 @@
 package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +13,11 @@ import com.hotworx.databinding.FragmentMyHotsquadListBinding
 import com.hotworx.global.WebServiceConstants
 import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.models.HotsquadList.HotsquadListModel
+import com.hotworx.models.NotificationHistory.NotificationHistoryModel
+import com.hotworx.models.NotificationHistory.NotificationRead.NotificationReadModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
+import com.hotworx.ui.adapters.NotificationListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
 
@@ -38,17 +42,26 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
         // Ensure hotsquadListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
         hotsquadListModel = HotsquadListModel(data = emptyList(),status =false,message = "")
+
         setAdapter(squadList = hotsquadListModel.data)
 
         binding.createSquad.setOnClickListener{
-            val createHotsquadFragment = CreateHotsquadFragment()
-            dockActivity.replaceDockableFragment(createHotsquadFragment)
+            val addListFragment = AddListFragment()
+            dockActivity.replaceDockableFragment(addListFragment)
+            val transaction = fragmentManager?.beginTransaction()
+            // Optionally add to back stack
+            transaction?.addToBackStack(null)
         }
     }
 
     override fun onItemClick(item: Hotsquad) {
         // Handle item click here
 //        Log.d("MyHotsquadListFragment", "Item clicked: ${item.title}")
+    }
+
+    override fun setTitleBar(titleBar: TitleBar) {
+        titleBar.showBackButton()
+        titleBar.subHeading = getString(R.string.hotsquad_list)
     }
 
     private fun getSquadList() {
@@ -61,34 +74,47 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         )
     }
 
-    override fun setTitleBar(titleBar: TitleBar) {
-        titleBar.showBackButton()
-        titleBar.subHeading = getString(R.string.hotsquad_list)
-    }
-
     private fun setAdapter(squadList: List<Hotsquad>) {
         adapter = SquadListAdapter(squadList, this, activity as? DockActivity)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
 
-    override fun ResponseFailure(message: String?, tag: String?) {
-        binding.tvNoListFound.text = "No Squad List Found"
-        binding.tvNoListFound.visibility = View.VISIBLE
+    override fun ResponseSuccess(result: String?, Tag: String?) {
+        when (Tag) {
+            WebServiceConstants.GET_SQUAD_LIST -> {
+                Log.d("ResponseSuccess", "ResponseSuccess called with result: $result")
+                hotsquadListModel = GsonFactory.getConfiguredGson().fromJson(result, HotsquadListModel::class.java)
+
+                if (hotsquadListModel.data.isNullOrEmpty()) {
+                    Log.d("EmptyList", "List is empty, redirecting to CreateHotsquadFragment")
+                    val createHotsquadFragment = CreateHotsquadFragment()
+                    dockActivity.replaceDockableFragment(createHotsquadFragment)
+                    val transaction = fragmentManager?.beginTransaction()
+                    transaction?.remove(this)
+                } else {
+                    Log.d("NonEmptyList", "List is not empty, showing items")
+                    binding.tvNoListFound.visibility = View.GONE
+                    setAdapter(hotsquadListModel.data)
+                }
+            }
+            else -> {
+                // Handle other cases if necessary
+                Log.d("ResponseSuccessss", "Unhandled Tag: $Tag")
+            }
+        }
     }
 
-    override fun ResponseSuccess(result: String?, Tag: String?) {
-        hotsquadListModel = GsonFactory.getConfiguredGson().fromJson(result, HotsquadListModel::class.java)
-
-        if (!hotsquadListModel.data.isNullOrEmpty()) {
-            binding.tvNoListFound.visibility = View.GONE
-            setAdapter(hotsquadListModel.data)
-        } else {
-            val createHotsquadFragment = CreateHotsquadFragment()
-            dockActivity.replaceDockableFragment(createHotsquadFragment)
-//            binding.tvNoListFound.visibility = View.VISIBLE
-//            binding.tvNoListFound.text = "No Squad List Found"
-        }
+    override fun ResponseFailure(message: String?, tag: String?) {
+       if(hotsquadListModel.data.isNullOrEmpty()){
+           Log.d("EmptyListttt", "List is empty, redirecting to CreateHotsquadFragment")
+           val createHotsquadFragment = CreateHotsquadFragment()
+           dockActivity.replaceDockableFragment(createHotsquadFragment)
+           val transaction = fragmentManager?.beginTransaction()
+           transaction?.remove(this)
+//           binding.tvNoListFound.text = "No Squad List Found"
+//           binding.tvNoListFound.visibility = View.VISIBLE
+       }else{}
     }
 
     private fun scrollToNotification(listId: String) {

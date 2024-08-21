@@ -9,6 +9,7 @@ import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
 import com.hotworx.models.HotsquadList.SearchListRequest;
 import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest;
+import com.hotworx.models.HotsquadList.removeSquadMemberRequest;
 import com.hotworx.models.HotsquadList.sendMemberInvitationRequest;
 import com.hotworx.models.HotsquadList.sendReferralInvitationRequest;
 import com.hotworx.models.HotsquadList.squadMemberDetailRequest;
@@ -698,6 +699,12 @@ public interface WebService {
     Call<ResponseBody> getSquadDetail(
             @HeaderMap Map<String, String> headers,
             @Body squadMemberDetailRequest request // Accepting the custom request body
+    );
+
+    @POST("hotsquad/removeSquadMember")
+    Call<ResponseBody> removeSquadMember(
+            @HeaderMap Map<String, String> headers,
+            @Body removeSquadMemberRequest request // Accepting the custom request body
     );
 
     // Vi Management
