@@ -97,6 +97,7 @@ class HotsquadSearchFragment : BaseFragment(){
         binding.btnSearchUser.setOnClickListener{
             // Call the function to get the JSON array and store it in a variable
             callApi(Constants.SEARCH_SQUADLIST,"")
+
         }
         updateSearchButtonVisibility()
     }
@@ -166,6 +167,8 @@ class HotsquadSearchFragment : BaseFragment(){
                             // Pass the Bundle to the Bottom Sheet
                             searchUserBottomSheet.arguments = bundle
                             searchUserBottomSheet.show(parentFragmentManager, "TAG")
+
+                            userListAdapter?.clear()
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }

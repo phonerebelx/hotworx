@@ -36,5 +36,10 @@ class UserListAdapter(
         holder.bind(userList[position], position)
     }
 
+    fun clear() {
+        userList.clear() // Assuming squadList is your list of items
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int = userList.size
 }
