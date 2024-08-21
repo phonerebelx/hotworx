@@ -52,7 +52,6 @@
                         android:fontFamily="@font/montserrat_bold"
                         android:gravity="end"
                         android:text="@string/send_invite"
-                        android:visibility="gone"
                         android:layout_weight="1"
                         android:textColor="@color/sunset_orange"
                         android:textSize="@dimen/_13ssp" />

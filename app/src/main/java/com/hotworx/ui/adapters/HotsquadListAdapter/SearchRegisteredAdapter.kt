@@ -1,6 +1,7 @@
 package com.hotworx.ui.adapters.HotsquadListAdapter
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hotworx.R
@@ -26,6 +28,7 @@ class SearchRegisteredAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
+        private val statusTextView: TextView = itemView.findViewById(R.id.tvStatus)
         private val emailTextView: TextView = itemView.findViewById(R.id.tvEmail)
         private val phoneTextView: TextView = itemView.findViewById(R.id.tvPhone)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
@@ -34,6 +37,7 @@ class SearchRegisteredAdapter(
 
         fun bind(item: FoundUser) {
             nameTextView.text = item.name
+            statusTextView.text = item.squad_invite_status
             emailTextView.text = item.email
             phoneTextView.text = item.phone
 
@@ -46,11 +50,16 @@ class SearchRegisteredAdapter(
             // Set the visibility based on the selected state
             imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
 
-            cardView.setOnClickListener {
-               item.selected = !item.selected
-               imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
-               notifyItemChanged(adapterPosition)
-               listener.onItemClick(item)
+            if(item.squad_invite_status == null){
+                cardView.setOnClickListener {
+                    item.selected = !item.selected
+                    imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+                    notifyItemChanged(adapterPosition)
+                    listener.onItemClick(item)
+                }
+            }else{
+                val color = ContextCompat.getColor(context, R.color.colorLine)
+                cardView.backgroundTintList = ColorStateList.valueOf(color)
             }
         }
     }

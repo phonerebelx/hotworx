@@ -116,19 +116,13 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         val adapter = SearchRegisteredAdapter(foundUserList, requireContext(), object : SearchRegisteredAdapter.OnItemClickListener {
             override fun onItemClick(item: FoundUser) {
                 item?.let {
-                    if(item.squadInviteStatus == null){
-                        if (item.selected) {
-                            binding.SendInvite.visibility = View.VISIBLE
-                            foundUserListForServer.add(it.squadInviteId)
-                        } else {
-                            foundUserListForServer.remove(it.squadInviteId)
-                        }
-                        Log.d(TAG, "foundUserList ${foundUserListForServer.toString()}")
-                    }else{
-                        binding.SendInvite.visibility = View.GONE
-                        item.selected = false // Force selected to be false
-                        Toast.makeText(requireContext(), "Member is already added to your list", Toast.LENGTH_LONG).show()
+                    if (item.selected) {
+                        binding.SendInvite.visibility = View.VISIBLE
+                        foundUserListForServer.add(it.squadInviteId)
+                    } else {
+                        foundUserListForServer.remove(it.squadInviteId)
                     }
+                    Log.d(TAG, "foundUserList ${foundUserListForServer.toString()}")
                 }
             }
         })

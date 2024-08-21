@@ -62,38 +62,56 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvName"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/_5sdp"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:maxLines="2"
-                        android:textColor="@color/hint_color"
-                        android:textSize="@dimen/_11ssp"
-                        tools:text="@string/text" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_5sdp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:maxLines="2"
+                            android:layout_weight="1"
+                            android:textColor="@color/hint_color"
+                            android:textSize="@dimen/_11ssp"
+                            tools:text="@string/text" />
+
+                        <TextView
+                            android:id="@+id/tvStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/text"
+                            android:gravity="end"
+                            android:layout_gravity="end"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:textColor="@color/colorStart"
+                            android:textSize="@dimen/_9ssp"
+                            android:layout_marginHorizontal="@dimen/_3sdp"/>
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvPhone"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="@string/text"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/hint_color"
-                        android:textSize="@dimen/_11ssp"
-                        android:layout_marginHorizontal="@dimen/_5sdp"/>
+                        android:textSize="@dimen/_9ssp" />
 
                     <TextView
                         android:id="@+id/tvEmail"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="@string/text"
-                        android:visibility="gone"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
                         android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/hint_color"
-                        android:textSize="@dimen/_11ssp"
-                        android:layout_marginHorizontal="@dimen/_5sdp"/>
-
+                        android:textSize="@dimen/_9ssp" />
                 </LinearLayout>
 
                 <ImageView
