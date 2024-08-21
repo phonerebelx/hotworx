@@ -39,11 +39,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/bebasneue_regular"
                         android:layout_gravity="center_vertical"
                         android:text="@string/registered_member"
                         android:textColor="@color/mirage"
-                        android:textSize="@dimen/_14ssp" />
+                        android:textSize="@dimen/_15ssp" />
 
                     <TextView
                         android:id="@+id/SendInvite"
@@ -52,9 +52,10 @@
                         android:fontFamily="@font/montserrat_bold"
                         android:gravity="end"
                         android:text="@string/send_invite"
+                        android:visibility="gone"
                         android:layout_weight="1"
                         android:textColor="@color/sunset_orange"
-                        android:textSize="@dimen/_14ssp" />
+                        android:textSize="@dimen/_13ssp" />
 
                 </LinearLayout>
 
@@ -99,7 +100,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/login_texture_color"
+                android:background="@color/colorLocationGrey"
                 android:layout_marginTop="@dimen/_10sdp"/>
 
             <LinearLayout
@@ -111,11 +112,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/bebasneue_regular"
                     android:layout_gravity="center_vertical"
                     android:text="@string/your_contacts"
                     android:textColor="@color/mirage"
-                    android:textSize="@dimen/_14ssp" />
+                    android:textSize="@dimen/_15ssp" />
 
                 <TextView
                     android:id="@+id/referralInvite"
@@ -126,7 +127,7 @@
                     android:text="@string/referral_invite"
                     android:layout_weight="1"
                     android:textColor="@color/sunset_orange"
-                    android:textSize="@dimen/_14ssp" />
+                    android:textSize="@dimen/_13ssp" />
 
             </LinearLayout>
 

@@ -84,8 +84,10 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
             binding.tvNoListFound.visibility = View.GONE
             setAdapter(hotsquadListModel.data)
         } else {
-            binding.tvNoListFound.visibility = View.VISIBLE
-            binding.tvNoListFound.text = "No Squad List Found"
+            val createHotsquadFragment = CreateHotsquadFragment()
+            dockActivity.replaceDockableFragment(createHotsquadFragment)
+//            binding.tvNoListFound.visibility = View.VISIBLE
+//            binding.tvNoListFound.text = "No Squad List Found"
         }
     }
 

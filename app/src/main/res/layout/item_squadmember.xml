@@ -20,13 +20,13 @@
             android:id="@+id/detailLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_4sdp"
             android:orientation="horizontal">
 
             <io.github.florent37.shapeofview.shapes.CircleView
                 android:id="@+id/imgCircle"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:layout_gravity="center"
                 tools:ignore="MissingConstraints">
@@ -40,8 +40,8 @@
 
                 <ImageView
                     android:id="@+id/imgIcon"
-                    android:layout_width="@dimen/_45sdp"
-                    android:layout_height="@dimen/_45sdp"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
                     android:contentDescription="@string/no"
                     android:layout_gravity="center"
                     tools:src="@drawable/listicon"
@@ -62,10 +62,9 @@
                     tools:text="@string/text"
                     android:maxLines="2"
                     android:layout_weight="1"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/bebasneue_regular"
                     android:textColor="@color/hint_color"
-                    android:textSize="@dimen/_13ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:layout_marginHorizontal="@dimen/_5sdp"/>
 
             </LinearLayout>

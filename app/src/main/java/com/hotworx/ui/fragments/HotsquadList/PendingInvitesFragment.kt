@@ -23,6 +23,8 @@ import com.hotworx.models.HotsquadList.HotsquadListModel
 import com.hotworx.models.HotsquadList.PendingInvitationResponse
 import com.hotworx.models.HotsquadList.SearchListRequest
 import com.hotworx.models.HotsquadList.SearchUserModel
+import com.hotworx.models.HotsquadList.SquadMemberDetailsResponse
+import com.hotworx.models.HotsquadList.UserModel
 import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.PendingRequestAdapter
@@ -38,6 +40,7 @@ class PendingInvitesFragment : BaseFragment(){
     private val binding get() = _binding!!
     private lateinit var pendingRequestModel: PendingInvitationResponse
     private var adapter: PendingRequestAdapter? = null
+    private val pendingList = mutableListOf<PendingInvitationResponse.SquadData>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,11 +53,13 @@ class PendingInvitesFragment : BaseFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getPendingRequestList()
-
         // Ensure PendingListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
         pendingRequestModel = PendingInvitationResponse(status =false,message = "",data = mutableListOf())
-        setAdapter(pendingRequestModel.data)
+
+        setAdapter(pendingList)
+
+        // Fetch the pending request list
+        getPendingRequestList()
     }
 
     override fun setTitleBar(titleBar: TitleBar) {
@@ -77,7 +82,7 @@ class PendingInvitesFragment : BaseFragment(){
 
         if (!pendingRequestModel.data.isNullOrEmpty()) {
             binding.tvNoListFound.visibility = View.GONE
-            setAdapter(pendingRequestModel.data!!)
+            updateAdapterList(pendingRequestModel.data!!)
         } else {
             binding.tvNoListFound.visibility = View.VISIBLE
             binding.tvNoListFound.text = "No Squad List Found"
@@ -98,7 +103,7 @@ class PendingInvitesFragment : BaseFragment(){
                             dockActivity?.showSuccessMessage(response.message)
 
                         } else {
-                            dockActivity?.showErrorMessage("Something Went Wrong")
+                            dockActivity?.showErrorMessage(response.message)
                         }
                     } catch (e: Exception) {
                         val genericMsgResponse = GsonFactory.getConfiguredGson()
@@ -114,53 +119,53 @@ class PendingInvitesFragment : BaseFragment(){
         }
     }
 
-    private fun setAdapter(pendingList: MutableList<PendingInvitationResponse.SquadData>) {
-        val adapter = PendingRequestAdapter(pendingList, requireContext(), object : PendingRequestAdapter.OnItemClickListener {
+    private fun setAdapter(pendingList: MutableList<PendingInvitationResponse.SquadData>)  {
+        adapter = PendingRequestAdapter(mutableListOf(), requireContext(), object : PendingRequestAdapter.OnItemClickListener {
             override fun onItemClick(item: PendingInvitationResponse.SquadData, position: Int) {
-                item?.let {
-                    val request = pendingListAcceptRejectRequest(
-                        item.squad_id.toString(),
-                        item.invitation_id.toString(),
-                        true
-                    )
-                    getServiceHelper().enqueueCallExtended(
-                        getWebService().PendingRequestAccept(
-                            ApiHeaderSingleton.apiHeader(requireContext()),
-                            request
-                        ), Constants.PENDING_ACCEPT_REJECT, true
-                    )
-
-                    // Pass the position to the success handler
-                    onItemActionSuccess(position)
-                }
+                val request = pendingListAcceptRejectRequest(
+                    item.squad_id.toString(),
+                    item.invitation_id.toString(),
+                    true
+                )
+                getServiceHelper().enqueueCallExtended(
+                    getWebService().PendingRequestAccept(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        request
+                    ), Constants.PENDING_ACCEPT_REJECT, true
+                )
+                onItemActionSuccess(position)
             }
 
-            override fun onItemClickDecline(item: PendingInvitationResponse.SquadData,position: Int) {
-                item?.let {
-                    val request = pendingListAcceptRejectRequest(
-                        item.squad_id.toString(),
-                        item.invitation_id.toString(),
-                        false
-                    )
-                    getServiceHelper().enqueueCallExtended(
-                        getWebService().PendingRequestAccept(
-                            ApiHeaderSingleton.apiHeader(requireContext()),
-                            request
-                        ), Constants.PENDING_ACCEPT_REJECT, true
-                    )
-                    onItemActionSuccess(position)
-                }
+            override fun onItemClickDecline(item: PendingInvitationResponse.SquadData, position: Int) {
+                val request = pendingListAcceptRejectRequest(
+                    item.squad_id.toString(),
+                    item.invitation_id.toString(),
+                    false
+                )
+                getServiceHelper().enqueueCallExtended(
+                    getWebService().PendingRequestAccept(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        request
+                    ), Constants.PENDING_ACCEPT_REJECT, true
+                )
+                onItemActionSuccess(position)
             }
         })
 
+        // Set adapter to RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
 
+    private fun updateAdapterList(newList: MutableList<PendingInvitationResponse.SquadData>) {
+        adapter?.updateData(newList)
+    }
+
     private fun onItemActionSuccess(position: Int) {
         adapter?.let {
-            it.items.removeAt(position)
-            it.notifyItemRemoved(position)
+            if (position >= 0 && position < it.itemCount) {
+                it.removeItem(position)
+            }
         }
     }
 

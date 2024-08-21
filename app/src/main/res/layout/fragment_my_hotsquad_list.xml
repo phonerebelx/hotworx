@@ -28,12 +28,11 @@
 
             <TextView
                 android:id="@+id/createSquad"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/create_squad"
                 android:fontFamily="@font/montserrat_bold"
                 android:textSize="@dimen/_13ssp"
-                android:layout_weight="1"
                 android:gravity="end"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"

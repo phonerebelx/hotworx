@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.hotworx.R
 import com.hotworx.activities.DockActivity
 import com.hotworx.models.HotsquadList.FoundUser
@@ -35,7 +36,12 @@ class SearchRegisteredAdapter(
             nameTextView.text = item.name
             emailTextView.text = item.email
             phoneTextView.text = item.phone
-//            iconImageView.setImageResource(item.profile_image_url)
+
+            // Use itemView.context to get the context
+            Glide.with(itemView.context)
+                .load(item.profile_image_url)
+                .placeholder(R.drawable.placeholder) // Optional placeholder
+                .into(iconImageView)
 
             // Set the visibility based on the selected state
             imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE

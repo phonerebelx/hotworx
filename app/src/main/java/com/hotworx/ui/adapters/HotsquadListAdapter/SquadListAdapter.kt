@@ -9,6 +9,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.hotworx.R
 import com.hotworx.activities.DockActivity
 import com.hotworx.models.HotsquadList.Hotsquad
@@ -38,6 +39,12 @@ class SquadListAdapter(
         fun bind(item: Hotsquad) {
             titleTextView.text = item.name
             countTextView.text = item.total_members.toString()
+
+            // Use itemView.context to get the context
+            Glide.with(itemView.context)
+                .load(item.icon_url)
+                .placeholder(R.drawable.placeholder) // Optional placeholder
+                .into(iconImageView)
 
             addButton.setOnClickListener {
                 val hotsquadSearchFragment = HotsquadSearchFragment().apply {

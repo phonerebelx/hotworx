@@ -17,16 +17,28 @@ import com.hotworx.models.HotsquadList.PendingInvitationResponse.SquadData
 import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter.OnItemClickListener
 
 class PendingRequestAdapter(
-    val items: MutableList<SquadData>,
+    var items: MutableList<SquadData>,
     private val context: Context,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<PendingRequestAdapter.ViewHolder>() {
 
-    var id = ""
-
     interface OnItemClickListener {
         fun onItemClick(item: SquadData,position:Int)
         fun onItemClickDecline(item: SquadData,position:Int)
+    }
+
+    fun updateData(newList: MutableList<SquadData>) {
+        items.clear()
+        items.addAll(newList)
+        notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int) {
+        if (position >= 0 && position < items.size) {
+            items.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, items.size)
+        }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -74,11 +86,6 @@ class PendingRequestAdapter(
             }
         }
         return -1
-    }
-
-    fun removeItem(position: Int) {
-        items.removeAt(position)
-        notifyItemRemoved(position)
     }
 
     override fun getItemCount(): Int = items.size
