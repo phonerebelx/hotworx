@@ -34,6 +34,7 @@ class SearchRegisteredAdapter(
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
         private val imgcheck: ImageView = itemView.findViewById(R.id.imgCheck)
+        private val imgCheckBox: ImageView = itemView.findViewById(R.id.imgCheckBox)
 
         fun bind(item: FoundUser) {
             nameTextView.text = item.name
@@ -58,6 +59,7 @@ class SearchRegisteredAdapter(
                     listener.onItemClick(item)
                 }
             }else{
+                imgCheckBox.visibility = View.GONE
                 val color = ContextCompat.getColor(context, R.color.colorLine)
                 cardView.backgroundTintList = ColorStateList.valueOf(color)
             }

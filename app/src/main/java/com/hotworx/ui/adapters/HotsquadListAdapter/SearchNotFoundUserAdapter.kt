@@ -28,6 +28,7 @@ class SearchNotFoundUserAdapter(
         private val statusTextView: TextView = itemView.findViewById(R.id.tvStatus)
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
         private val imgcheck: ImageView = itemView.findViewById(R.id.imgCheck)
+        private val imgCheckBox: ImageView = itemView.findViewById(R.id.imgCheckBox)
 
         fun bind(item: NotFoundUser) {
             titleTextView.text = item.searchBy
@@ -36,7 +37,7 @@ class SearchNotFoundUserAdapter(
             // Set the visibility based on the selected state
             imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
 
-            cardView.setOnClickListener {
+            imgCheckBox.setOnClickListener {
                 item.selected = !item.selected
                 imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
                 listener.onItemClick(item)
