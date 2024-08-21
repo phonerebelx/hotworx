@@ -164,6 +164,13 @@
                     android:layout_weight="1"
                     android:src="@drawable/action_delete_session" />
 
+                <ImageView
+                    android:id="@+id/ivShareIcon"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_weight="1"
+                    android:src="@drawable/shareicon" />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>

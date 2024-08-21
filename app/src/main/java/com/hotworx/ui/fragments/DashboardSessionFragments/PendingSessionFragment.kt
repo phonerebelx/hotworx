@@ -20,6 +20,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
+import com.hotworx.activities.DockActivity
 import com.hotworx.global.Constants
 import com.hotworx.global.Constants.WORKOUT_AFTER_BURN_DURATION
 import com.hotworx.helpers.InternetHelper
@@ -73,7 +74,7 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
     private fun setPendingSessionAdapter() {
         val dataSource = sessionTypesList ?: ArrayList()
         tvNoRecordFound.isVisible = dataSource.isEmpty()
-        pendingSessionAdapter = DashboardPendingSessionAdapter(requireContext(), this)
+        pendingSessionAdapter = DashboardPendingSessionAdapter(requireContext(), this,activity as? DockActivity)
         pendingSessionAdapter.setList(dataSource)
         rvPendingSessions.adapter = pendingSessionAdapter
         //ApplicationManager.getInstance(myDockActivity).listSize = dataSource.size

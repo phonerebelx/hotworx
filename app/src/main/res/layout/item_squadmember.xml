@@ -62,27 +62,36 @@
 
                     <TextView
                         android:id="@+id/tvName"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_5sdp"
                         android:fontFamily="@font/montserrat_bold"
                         android:maxLines="2"
-                        android:layout_weight="1"
                         android:textColor="@color/hint_color"
                         android:textSize="@dimen/_11ssp"
                         tools:text="@string/text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="("
+                        android:textColor="@color/sunset_orange"/>
 
                     <TextView
                         android:id="@+id/tvStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="@string/text"
-                        android:gravity="end"
-                        android:layout_gravity="end"
                         android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/colorStart"
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginHorizontal="@dimen/_3sdp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=")"
+                        android:textColor="@color/sunset_orange"/>
 
                 </LinearLayout>
 

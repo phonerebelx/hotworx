@@ -1,6 +1,7 @@
 package com.hotworx.ui.adapters.HotsquadListAdapter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,8 @@ import com.hotworx.ui.fragments.HotsquadList.SquadMemberDetailFragment
 class SquadListAdapter(
     private val items: List<Hotsquad>,
     private val listener: OnItemClickListener,
-    private val dockActivity: DockActivity? = null
+    private val dockActivity: DockActivity? = null,
+    private val dashboardShare: String // Add this parameter
 ) : RecyclerView.Adapter<SquadListAdapter.ViewHolder>() {
 
     var id = ""
@@ -40,20 +42,24 @@ class SquadListAdapter(
             titleTextView.text = item.name
             countTextView.text = item.total_members.toString()
 
+            if (dashboardShare == "dashboardShare") {
+                // If it's from the dashboardShare, hide the iconLayout regardless of has_squad_access
+                Log.d("squadAccessssss", dashboardShare)
+                iconLayout.visibility = View.GONE
+            } else {
+                // If it's not from the dashboardShare, check the has_squad_access property
+                if (item.has_squad_access) {
+                    iconLayout.visibility = View.VISIBLE
+                } else {
+                    iconLayout.visibility = View.GONE
+                }
+            }
+
             // Use itemView.context to get the context
             Glide.with(itemView.context)
                 .load(item.icon_url)
                 .placeholder(R.drawable.placeholder) // Optional placeholder
                 .into(iconImageView)
-
-            addButton.setOnClickListener {
-                val hotsquadSearchFragment = HotsquadSearchFragment().apply {
-                    arguments = Bundle().apply {
-                        putString("squad_id", item.squad_id)
-                    }
-                }
-                dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
-            }
 
             cvMainView.setOnClickListener {
                 val squadMemberDetailBinding = SquadMemberDetailFragment().apply {
@@ -65,12 +71,14 @@ class SquadListAdapter(
                 dockActivity?.replaceDockableFragment(squadMemberDetailBinding)
             }
 
-            if(item.has_squad_access){
-                iconLayout.visibility = View.VISIBLE
-            }else{
-                iconLayout.visibility = View.GONE
+            addButton.setOnClickListener {
+                val hotsquadSearchFragment = HotsquadSearchFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("squad_id", item.squad_id)
+                    }
+                }
+                dockActivity?.replaceDockableFragment(hotsquadSearchFragment)
             }
-
         }
     }
 

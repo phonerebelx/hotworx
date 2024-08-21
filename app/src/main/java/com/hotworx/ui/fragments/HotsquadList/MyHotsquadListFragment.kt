@@ -26,6 +26,7 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     private val binding get() = _binding!!
     private lateinit var hotsquadListModel: HotsquadListModel
     private var adapter: SquadListAdapter? = null
+    private var dashboardShare: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,20 +39,31 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Retrieve the squad ID from the fragment arguments
+        arguments?.let {
+            dashboardShare = it.getString("Dashboard_share") ?: ""
+            Log.d("squadAccess",dashboardShare.toString())
+        }
+
+        if(dashboardShare == "dashboardShare"){
+            binding.createSquad.visibility = View.GONE
+        }else{
+            binding.createSquad.visibility = View.VISIBLE
+            binding.createSquad.setOnClickListener{
+                val addListFragment = AddListFragment()
+                dockActivity.replaceDockableFragment(addListFragment)
+                val transaction = fragmentManager?.beginTransaction()
+                // Optionally add to back stack
+                transaction?.addToBackStack(null)
+            }
+        }
+
         getSquadList()
 
         // Ensure hotsquadListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
         hotsquadListModel = HotsquadListModel(data = emptyList(),status =false,message = "")
 
         setAdapter(squadList = hotsquadListModel.data)
-
-        binding.createSquad.setOnClickListener{
-            val addListFragment = AddListFragment()
-            dockActivity.replaceDockableFragment(addListFragment)
-            val transaction = fragmentManager?.beginTransaction()
-            // Optionally add to back stack
-            transaction?.addToBackStack(null)
-        }
     }
 
     override fun onItemClick(item: Hotsquad) {
@@ -75,9 +87,15 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     }
 
     private fun setAdapter(squadList: List<Hotsquad>) {
-        adapter = SquadListAdapter(squadList, this, activity as? DockActivity)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = adapter
+        if(dashboardShare == "dashboardShare"){
+            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,dashboardShare)
+            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.recyclerView.adapter = adapter
+        }else{
+            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,"")
+            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.recyclerView.adapter = adapter
+        }
     }
 
     override fun ResponseSuccess(result: String?, Tag: String?) {

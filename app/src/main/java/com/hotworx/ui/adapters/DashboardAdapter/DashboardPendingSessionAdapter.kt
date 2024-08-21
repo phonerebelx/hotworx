@@ -2,6 +2,7 @@ package com.hotworx.ui.adapters.DashboardAdapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
+import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentActivityByTimelineAdapterBinding
 import com.hotworx.databinding.FragmentDashboardSessionAdapterBinding
 import com.hotworx.interfaces.OnClickPendingModelInterface
@@ -17,11 +19,15 @@ import com.hotworx.interfaces.OnClickTypeListener
 import com.hotworx.interfaces.OnItemClickInterface
 import com.hotworx.models.DashboardData.TodaysPendingSession
 import com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.GetShowSlotDataModelItem
+import com.hotworx.ui.fragments.HotsquadList.MyHotsquadListFragment
+import com.hotworx.ui.fragments.HotsquadList.SquadMemberDetailFragment
+
 //import kotlinx.android.synthetic.main.fragment_dashboard_session_adapter.view.*
 
 class DashboardPendingSessionAdapter(
     val context: Context,
-    val onItemClickInterface: OnClickPendingModelInterface
+    val onItemClickInterface: OnClickPendingModelInterface,
+    val dockActivity: DockActivity? = null
 ) : RecyclerView.Adapter<DashboardPendingSessionAdapter.ViewHolder>() {
     lateinit var binding: FragmentDashboardSessionAdapterBinding
     private lateinit var tvDate: TextView
@@ -32,6 +38,7 @@ class DashboardPendingSessionAdapter(
     private lateinit var tvEndTime: TextView
     private lateinit var ivImg1: ImageView
     private lateinit var ivImg2: ImageView
+    private lateinit var ivShareIcon: ImageView
     private lateinit var cvSession: CardView
     private lateinit var getTodaysPendingSessionArrayList: ArrayList<TodaysPendingSession>
 
@@ -65,6 +72,7 @@ class DashboardPendingSessionAdapter(
         tvEndTime = view.findViewById(R.id.tvEndTime)
         ivImg1 = view.findViewById(R.id.ivImg1)
         ivImg2 = view.findViewById(R.id.ivImg2)
+        ivShareIcon = view.findViewById(R.id.ivShareIcon)
         cvSession = view.findViewById(R.id.cvSession)
 
         return ViewHolder(view)
@@ -81,6 +89,15 @@ class DashboardPendingSessionAdapter(
         }
         binding.cvSession.setOnClickListener {
             onItemClickInterface.onItemClick(item, "COME_FROM_TAB_VIEW")
+        }
+
+        binding.ivShareIcon.setOnClickListener {
+            val myhotsquadlistBinding = MyHotsquadListFragment().apply {
+                arguments = Bundle().apply {
+                    putString("Dashboard_share", "dashboardShare")
+                }
+            }
+            dockActivity?.replaceDockableFragment(myhotsquadlistBinding)
         }
 
     }
