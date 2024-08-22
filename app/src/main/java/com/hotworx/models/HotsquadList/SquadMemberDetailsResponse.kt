@@ -10,7 +10,7 @@ data class SquadMemberDetailsResponse(
         val name: String,
         val desc: String,
         val total_members: Int,
-        val members: List<Member>
+        val members: MutableList<Member>
     ) {
         data class Member(
             val member_id: String,

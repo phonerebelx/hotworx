@@ -13,8 +13,6 @@ import com.hotworx.databinding.FragmentMyHotsquadListBinding
 import com.hotworx.global.WebServiceConstants
 import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.models.HotsquadList.HotsquadListModel
-import com.hotworx.models.NotificationHistory.NotificationHistoryModel
-import com.hotworx.models.NotificationHistory.NotificationRead.NotificationReadModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
 import com.hotworx.ui.adapters.NotificationListAdapter
@@ -91,11 +89,11 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
     private fun setAdapter(squadList: List<Hotsquad>) {
         if(dashboardShare == "dashboardShare"){
-            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,dashboardShare,recordId)
+            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,requireContext(),dashboardShare,recordId)
             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerView.adapter = adapter
         }else{
-            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,"","")
+            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,requireContext(),"","")
             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerView.adapter = adapter
         }

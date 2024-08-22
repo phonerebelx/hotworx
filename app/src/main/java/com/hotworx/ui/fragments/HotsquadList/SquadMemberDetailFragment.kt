@@ -1,6 +1,6 @@
 package com.hotworx.ui.fragments.HotsquadList
 
-import android.content.DialogInterface
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,28 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hotsquad.hotsquadlist.extensions.showMaterialAlertDialog
-import com.hotsquad.hotsquadlist.listener.DialogListeners
+import com.google.gson.GsonBuilder
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
-import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentSquadMemberDetailBinding
 import com.hotworx.global.Constants
-import com.hotworx.global.WebServiceConstants
 import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.HotsquadList.NotFoundUser
 import com.hotworx.models.HotsquadList.RemoveMemberResponse
-import com.hotworx.models.HotsquadList.SearchListRequest
 import com.hotworx.models.HotsquadList.SquadMemberDetailsResponse
 import com.hotworx.models.HotsquadList.removeSquadMemberRequest
 import com.hotworx.models.HotsquadList.squadMemberDetailRequest
 import com.hotworx.retrofit.GsonFactory
-import com.hotworx.ui.adapters.HotsquadListAdapter.SearchNotFoundUserAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadMemberListAdapter
 import com.hotworx.ui.fragments.BaseFragment
-import com.hotworx.ui.fragments.HotsquadList.Bottomsheet.SearchUserBottomSheet.Companion.TAG
 import com.hotworx.ui.views.TitleBar
+import java.net.URLDecoder
+
 
 class SquadMemberDetailFragment : BaseFragment(), SquadMemberListAdapter.OnItemClickListener {
 
@@ -62,9 +57,9 @@ class SquadMemberDetailFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
 
         callInvitationApi(Constants.GET_SQUAD_MEMBER_LIST, "")
 
-        binding.tvRemove.setOnClickListener{
-            callInvitationApi(Constants.REMOVE_SQUAD_MEMBER, "")
-        }
+//        binding.tvRemove.setOnClickListener{
+//            callInvitationApi(Constants.REMOVE_SQUAD_MEMBER, "")
+//        }
     }
 
     override fun onItemClick(item: SquadMemberDetailsResponse.SquadData.Member) {
@@ -85,28 +80,26 @@ class SquadMemberDetailFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
             }
 
             Constants.REMOVE_SQUAD_MEMBER -> {
+                val gson = GsonBuilder()
+                    .disableHtmlEscaping() // Ensures special characters like `=` are not escaped
+                    .create()
 
-                dockActivity?.showMaterialAlertDialog("Are you sure You want to remove!",object :
-                    DialogListeners {
-                    override fun onNegativeButtonTap(dialog: DialogInterface?) {
-                        dialog?.dismiss()
-                    }
+                val decodedMemberList = userListForServer.map { encodedMemberId ->
+                    URLDecoder.decode(encodedMemberId, "UTF-8")
+                }
+                Log.d("DecodedMemberList", decodedMemberList.toString())
 
-                    override fun onPositionButtonTap(dialog: DialogInterface?) {
-                        dialog?.dismiss()
-                        val request = removeSquadMemberRequest(
-                            squadId,       // Your squad ID
-                            userListForServer
-                        )
+                val request = removeSquadMemberRequest(squadId, decodedMemberList)
+                val jsonRequest = gson.toJson(request)
+                Log.d("SerializedRequest", jsonRequest)
 
-                        getServiceHelper()?.enqueueCallExtended(
-                            getWebService()?.removeSquadMember(
-                                ApiHeaderSingleton.apiHeader(requireContext()),
-                                request
-                            ), Constants.REMOVE_SQUAD_MEMBER, true
-                        )
-                    }
-                })
+                // Now send the request
+                getServiceHelper()?.enqueueCallExtended(
+                    getWebService()?.removeSquadMember(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        request
+                    ), Constants.REMOVE_SQUAD_MEMBER, true
+                )
             }
         }
     }
@@ -165,22 +158,32 @@ class SquadMemberDetailFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
         }
     }
 
-    private fun setAdapter(members: List<SquadMemberDetailsResponse.SquadData.Member>) {
+    private fun setAdapter(members: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
         adapter = SquadMemberListAdapter(members, requireContext(),object : SquadMemberListAdapter.OnItemClickListener {
             override fun onItemClick(item: SquadMemberDetailsResponse.SquadData.Member) {
                 item?.let {
-
                     if (item.selected) {
                         userListForServer.add(it.member_id)
                     } else {
                         userListForServer.remove(it.member_id)
                     }
-                    Log.d(TAG, "userListForServer ${userListForServer.toString()}")
                 }
             }
         })
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+    }
+
+    private fun updateAdapterList(newList: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
+        adapter?.updateData(newList)
+    }
+
+    private fun onItemActionSuccess(position: Int) {
+        adapter?.let {
+            if (position >= 0 && position < it.itemCount) {
+                it.removeItem(position)
+            }
+        }
     }
 
     override fun ResponseFailure(message: String?, tag: String?) {

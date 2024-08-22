@@ -46,6 +46,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme,android:allowBackup,android:name">
+        <activity
+            android:name=".ui.fragments.HotsquadList.activity.SquadMemberListActivity"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -62,19 +65,15 @@
         <activity
             android:name=".activities.BrivoActivity.SitesActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.BrivoActivity.AccessPointsActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.BrivoActivity.UnlockAccessPointActivity"
             android:exported="false" />
         <activity
             android:name=".activities.ProfileActivity"
             android:exported="false" />
-
-
         <activity
             android:name=".activities.ResetPasswordActivity"
             android:screenOrientation="portrait"
@@ -95,7 +94,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            tools:ignore="LockedOrientationActivity" >
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -111,9 +110,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            tools:ignore="LockedOrientationActivity">
-
-        </activity>
+            tools:ignore="LockedOrientationActivity"></activity>
         <activity
             android:name=".activities.OtpActivity"
             android:screenOrientation="portrait"
@@ -158,7 +155,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>
