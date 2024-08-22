@@ -15,7 +15,7 @@ data class SessionMemberResponse(
         val members: List<Member>
     ) {
         data class Member(
-            val member_invite_id: String? = null,
+            val member_id: String? = null,
             val profile_image_url: String,
             val name: String,
             val email: String,

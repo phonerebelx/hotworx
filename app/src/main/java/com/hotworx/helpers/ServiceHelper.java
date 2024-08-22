@@ -77,6 +77,7 @@ public class ServiceHelper {
                                     || tag.equals(WebServiceConstants.GET_EXERCISE_DATA)
                                     || tag.equals(WebServiceConstants.MARK_NOTIFICATION_READ)
                                     || tag.equals(WebServiceConstants.GET_SQUAD_LIST)
+                                    || tag.equals(WebServiceConstants.GET_APP_INFO)
                                     || tag.equals(WebServiceConstants.GET_NOTIFICATION_HISTORY)){
                                 serviceResponseLisener.ResponseSuccess(responseBody, tag);
                             } else {

@@ -167,9 +167,9 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
                 item?.let {
 
                     if (item.selected) {
-                        userListForServer.add(it.member_invite_id?:"")
+                        userListForServer.add(it.member_id?:"")
                     } else {
-                        userListForServer.remove(it.member_invite_id?:"")
+                        userListForServer.remove(it.member_id?:"")
                     }
                     Log.d(TAG, "userListForServer ${userListForServer.toString()}")
                 }

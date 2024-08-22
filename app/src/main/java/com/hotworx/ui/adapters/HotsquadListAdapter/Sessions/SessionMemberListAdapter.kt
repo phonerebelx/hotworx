@@ -58,8 +58,8 @@ class SessionMemberListAdapter(
             // Set the visibility based on the selected state
             imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
 
-            Log.d("MemberCheck", "Member ID: ${item.member_invite_id}")
-            if (item.member_invite_id == null) {
+            Log.d("MemberCheck", "Member ID: ${item.member_id}")
+            if (item.member_id == null) {
                 Log.d("MemberCheck", "Handling null member_id")
                 imgCheckBox.visibility = View.GONE
                 val color = ContextCompat.getColor(context, R.color.colorLine)

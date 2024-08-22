@@ -67,6 +67,7 @@ public class WebServiceConstants {
     public static final String ADD_USER_NOTIFICATION_ACTION = "ADD_USER_NOTIFICATION_ACTION" ;
     public static final String GET_NOTIFICATION_HISTORY = "GET_NOTIFICATION_HISTORY" ;
     public static final String GET_SQUAD_LIST = "GET_SQUAD_LIST" ;
+    public static final String GET_APP_INFO= "GET_SQUAD_LIST" ;
     public static final String GET_SQUAD_MEMBER_LIST = "GET_SQUAD_MEMBER_LIST" ;
     public static final String GET_PENDING_REQUEST_LIST = "GET_PENDING_REQUEST_LIST" ;
     public static final String MARK_NOTIFICATION_READ = "MARK_NOTIFICATION_READ" ;

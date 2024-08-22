@@ -11,12 +11,16 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentHotsquadSearchBinding
 import com.hotworx.global.Constants
+import com.hotworx.global.WebServiceConstants
 import com.hotworx.helpers.Utils
 import com.hotworx.interfaces.LoadingListener
+import com.hotworx.models.AppInfo.AppInfoResponse
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.CreateHotsquadModel
+import com.hotworx.models.HotsquadList.HotsquadListModel
 import com.hotworx.models.HotsquadList.SearchListRequest
 import com.hotworx.models.HotsquadList.SearchUserModel
 import com.hotworx.models.HotsquadList.UserModel
@@ -40,6 +44,7 @@ class HotsquadSearchFragment : BaseFragment(){
     private var isLoading = false
     var resultString = ""
     var squadId = ""
+    var searchLimit:Int = 0
     var jsonArray: List<String> = mutableListOf()
 
     /**
@@ -83,6 +88,11 @@ class HotsquadSearchFragment : BaseFragment(){
         }
 
         binding.addUSer.setOnClickListener {
+            if (userList.size >= searchLimit) {
+                dockActivity?.showErrorMessage("You can only add up to $searchLimit members.")
+                return@setOnClickListener
+            }
+
             val inputText = binding.titleEt.text.toString()
             if (TextUtils.isEmpty(inputText)) {
                 binding.titleEt.error = "Field Required!!"
@@ -99,18 +109,22 @@ class HotsquadSearchFragment : BaseFragment(){
 
                 jsonArray = convertListToJsonArray(userList)
 
-                Log.d("sjkhakjhdks",jsonArray.toString())
+                Log.d("sjkhakjhdks", jsonArray.toString())
             }
         }
 
         //Bottom Sheet
         searchUserBottomSheet = SearchUserBottomSheet()
 
+        callApi(WebServiceConstants.GET_APP_INFO,"")
+
+        getAppInfo()
+
         binding.btnSearchUser.setOnClickListener{
             // Call the function to get the JSON array and store it in a variable
             callApi(Constants.SEARCH_SQUADLIST,"")
-
         }
+
         updateSearchButtonVisibility()
     }
 
@@ -159,6 +173,16 @@ class HotsquadSearchFragment : BaseFragment(){
             }
         }
     }
+//
+    private fun getAppInfo() {
+        getServiceHelper().enqueueCall(
+            getWebService().getAppSetting(
+                apiHeader(
+                    requireContext()
+                )
+            ), WebServiceConstants.GET_APP_INFO, true
+        )
+    }
 
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
         super.onSuccess(liveData, tag)
@@ -192,6 +216,25 @@ class HotsquadSearchFragment : BaseFragment(){
                     Log.e("Error", "LiveData value is null")
                     dockActivity?.showErrorMessage("No response from server")
                 }
+            }
+        }
+    }
+
+    override fun ResponseSuccess(result: String?, Tag: String?) {
+        when (Tag) {
+            WebServiceConstants.GET_APP_INFO -> {
+                Log.d("ResponseSuccess", "ResponseSuccess called with result: $result")
+                val response = GsonFactory.getConfiguredGson()?.fromJson(result, AppInfoResponse::class.java)!!
+                if (response.status) {
+                    searchLimit = response.data.hotsquad.search_squad_member_limit.toInt()
+                    Log.d("ResponseIDDDD", "LiveData value: $searchLimit")
+                } else {
+                    dockActivity?.showErrorMessage("Something Went Wrong")
+                }
+            }
+            else -> {
+                // Handle other cases if necessary
+                Log.d("ResponseSuccessss", "Unhandled Tag: $Tag")
             }
         }
     }
