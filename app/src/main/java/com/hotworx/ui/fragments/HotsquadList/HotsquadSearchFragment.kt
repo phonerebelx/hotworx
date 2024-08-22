@@ -64,7 +64,19 @@ class HotsquadSearchFragment : BaseFragment(){
             Log.d("squadIDDDDD",squadId)
         }
 
+        // Initialize bottom sheet
+        searchUserBottomSheet = SearchUserBottomSheet()
+
+        // Set the dismiss listener
+        searchUserBottomSheet.dismissListener = object : SearchUserBottomSheet.OnDismissListener {
+            override fun onBottomSheetDismissed() {
+                userListAdapter.clear()
+                Log.d("BottomSheettttt","Testing Bottom sheet")
+            }
+        }
+
         userListAdapter = UserListAdapter(userList, ::onDeleteItemClicked)
+
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = userListAdapter
@@ -167,8 +179,6 @@ class HotsquadSearchFragment : BaseFragment(){
                             // Pass the Bundle to the Bottom Sheet
                             searchUserBottomSheet.arguments = bundle
                             searchUserBottomSheet.show(parentFragmentManager, "TAG")
-
-                            userListAdapter?.clear()
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }

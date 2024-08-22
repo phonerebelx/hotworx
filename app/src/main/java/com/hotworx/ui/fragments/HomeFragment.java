@@ -482,7 +482,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     private void callApi(String type) {
 
-
         switch (type) {
             case Constants.DASHBOARDCALLING:
                 getServiceHelper().enqueueCallExtended(

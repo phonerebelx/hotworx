@@ -536,6 +536,7 @@
     <string name="avg_cal">Avg. cal deficit/\noverage</string>
     <string name="enter_weight">Enter Your Weight in lbs</string>
     <string name="no_squad_members_found">No Squad Members Found</string>
+    <string name="no_squad_found">No Squad Found</string>
     <string name="squad_members">My Friend List</string>
     <string name="otp_message_success">OTP has been sent to your email address</string>
 

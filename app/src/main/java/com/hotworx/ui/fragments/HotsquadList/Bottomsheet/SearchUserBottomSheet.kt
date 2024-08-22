@@ -1,6 +1,7 @@
 package com.hotworx.ui.fragments.HotsquadList.Bottomsheet
 
 import android.app.Dialog
+import android.content.DialogInterface
 
 import android.os.Bundle
 import android.util.Log
@@ -39,6 +40,18 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     var referralUrl = ""
     lateinit var  referSquadInviteDialogFragment: ReferSquadInviteDialogFragment
 
+    // Callback interface to communicate with the fragment
+    interface OnDismissListener {
+        fun onBottomSheetDismissed()
+    }
+
+    var dismissListener: OnDismissListener? = null
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        dismissListener?.onBottomSheetDismissed()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -67,9 +80,9 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
             Log.d("ParsedResponse", "Parsed Response: $response")
 
             if (response?.status == true) {
-                val foundUserList = response.data?.foundUser ?: emptyList()
+                val foundUserList = response.data?.foundUser?.toMutableList() ?: mutableListOf()
                 val notFoundUserList = response.data?.notFoundUser ?: emptyList()
-                referralUrl = response.data?.referralUrl?: ""
+                referralUrl = response.data?.referralUrl ?: ""
                 setFoundUserAdapter(foundUserList)
                 setNotFoundUserAdapter(notFoundUserList)
             } else {
@@ -112,7 +125,7 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         binding.recyclerViewContact.adapter = adapter
     }
 
-    private fun setFoundUserAdapter(foundUserList: List<FoundUser>) {
+    private fun setFoundUserAdapter(foundUserList: MutableList<FoundUser>) {
         val adapter = SearchRegisteredAdapter(foundUserList, requireContext(), object : SearchRegisteredAdapter.OnItemClickListener {
             override fun onItemClick(item: FoundUser) {
                 item?.let {

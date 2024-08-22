@@ -127,15 +127,9 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     }
 
     override fun ResponseFailure(message: String?, tag: String?) {
-       if(hotsquadListModel.data.isNullOrEmpty()){
-           Log.d("EmptyListttt", "List is empty, redirecting to CreateHotsquadFragment")
-           val createHotsquadFragment = CreateHotsquadFragment()
-           dockActivity.replaceDockableFragment(createHotsquadFragment)
-           val transaction = fragmentManager?.beginTransaction()
-           transaction?.remove(this)
-//           binding.tvNoListFound.text = "No Squad List Found"
-//           binding.tvNoListFound.visibility = View.VISIBLE
-       }else{}
+        Log.e("ResponseFailure", "Failed to load squad: $message")
+        binding.tvNoListFound.text = getString(R.string.no_squad_found)
+        binding.tvNoListFound.visibility = View.VISIBLE
     }
 
     private fun scrollToNotification(listId: String) {

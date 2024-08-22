@@ -17,13 +17,18 @@ import com.hotworx.activities.DockActivity
 import com.hotworx.models.HotsquadList.FoundUser
 
 class SearchRegisteredAdapter(
-    private val items: List<FoundUser>,
+    private val items: MutableList<FoundUser>,
     private val context: Context,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<SearchRegisteredAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
         fun onItemClick(item: FoundUser)
+    }
+
+    fun removeItem(position: Int) {
+        items.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

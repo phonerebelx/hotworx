@@ -78,6 +78,7 @@
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/regular"
                     android:visibility="gone"
+                    android:layout_marginTop="@dimen/_90sdp"
                     android:text="Invite Sent Successfully"
                     android:textColor="@color/colorBurned"
                     android:textSize="@dimen/_12sdp" />
