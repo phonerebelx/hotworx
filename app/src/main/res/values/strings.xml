@@ -280,6 +280,7 @@
     <string name="terms"><![CDATA[Terms & Conditions]]></string>
     <string name="SV_ST">SAVE START READING</string>
     <string name="Text">Text</string>
+    <string name="clear_all">Clear all</string>
     <string name="hotsquad_list">My HOTSQUAD List</string>
     <string name="friend_list">My Friend List</string>
     <string name="remove">Remove</string>

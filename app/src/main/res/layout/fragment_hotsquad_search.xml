@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/_10sdp"
         android:padding="@dimen/_10sdp">
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="@string/hotsquad_list"
             android:fontFamily="@font/montserrat_bold"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_13ssp"
             android:textColor="@color/text_color"/>
 
         <LinearLayout
@@ -60,6 +60,17 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tvClearAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_all"
+            android:gravity="end"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/colorWorkOutHead"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -67,7 +78,6 @@
             android:orientation="vertical"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            tools:itemCount="5"
             tools:listitem="@layout/item_user_form"/>
 
         <androidx.appcompat.widget.AppCompatButton

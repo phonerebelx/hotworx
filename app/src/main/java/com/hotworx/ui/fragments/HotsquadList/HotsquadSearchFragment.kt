@@ -69,15 +69,8 @@ class HotsquadSearchFragment : BaseFragment(){
             Log.d("squadIDDDDD",squadId)
         }
 
-        // Initialize bottom sheet
-        searchUserBottomSheet = SearchUserBottomSheet()
-
-        // Set the dismiss listener
-        searchUserBottomSheet.dismissListener = object : SearchUserBottomSheet.OnDismissListener {
-            override fun onBottomSheetDismissed() {
-                userListAdapter.clear()
-                Log.d("BottomSheettttt","Testing Bottom sheet")
-            }
+        binding.tvClearAll.setOnClickListener{
+            userListAdapter.clear()
         }
 
         userListAdapter = UserListAdapter(userList, ::onDeleteItemClicked)
