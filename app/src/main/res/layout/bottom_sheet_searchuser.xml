@@ -70,7 +70,6 @@
 
                     </LinearLayout>
 
-
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
@@ -115,57 +114,64 @@
                     android:background="@color/colorLocationGrey"
                     android:layout_marginTop="@dimen/_10sdp"/>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/notFounHead"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/bebasneue_regular"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/your_contacts"
+                            android:textColor="@color/mirage"
+                            android:textSize="@dimen/_15ssp" />
+
+                        <TextView
+                            android:id="@+id/referralInvite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:gravity="end"
+                            android:text="@string/referral_invite"
+                            android:layout_weight="1"
+                            android:textColor="@color/sunset_orange"
+                            android:textSize="@dimen/_13ssp" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_210sdp"
+                        android:clipToPadding="false"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:spanCount="2"
+                        android:layout_below="@id/notFounHead"
+                        tools:itemCount="10"
+                        tools:listitem="@layout/item_notfounduserlist"/>
 
                     <TextView
+                        android:id="@+id/tvSuccess"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/bebasneue_regular"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/your_contacts"
-                        android:textColor="@color/mirage"
-                        android:textSize="@dimen/_15ssp" />
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/regular"
+                        android:visibility="gone"
+                        android:layout_marginTop="@dimen/_90sdp"
+                        android:text="Referral Sent Successfully"
+                        android:textColor="@color/colorBurned"
+                        android:textSize="@dimen/_12sdp" />
 
-                    <TextView
-                        android:id="@+id/referralInvite"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:gravity="end"
-                        android:text="@string/referral_invite"
-                        android:layout_weight="1"
-                        android:textColor="@color/sunset_orange"
-                        android:textSize="@dimen/_13ssp" />
-
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewContact"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_210sdp"
-                    android:clipToPadding="false"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    app:spanCount="2"
-                    tools:itemCount="10"
-                    tools:listitem="@layout/item_notfounduserlist"/>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnSendRequest"
-                    android:layout_width="@dimen/_120sdp"
-                    android:layout_height="@dimen/_45sdp"
-                    android:background="@drawable/multicolor_background"
-                    android:layout_gravity="center"
-                    android:text="@string/referral_invite"
-                    android:visibility="gone"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_16sdp"
-                    android:fontFamily="@font/bebasneue_regular" />
-
+                </RelativeLayout>
 
             </LinearLayout>
 

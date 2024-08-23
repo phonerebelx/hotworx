@@ -93,8 +93,10 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         })
 
         binding.referralInvite.setOnClickListener(View.OnClickListener {
-            binding.loadingSpin.visibility = View.VISIBLE
-            callInvitationApi(Constants.SEND_REFERRAL_INVITATION,"")
+            if (notFoundUserList.isNotEmpty()) {
+                binding.loadingSpin.visibility = View.VISIBLE
+                callInvitationApi(Constants.SEND_REFERRAL_INVITATION,"")
+            }
         })
 
         binding.crossIcon.setOnClickListener{
@@ -116,12 +118,15 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                         notfoundUserListForServer.remove(it.referralInviteId)
                     }
                     Log.d(TAG, "notfoundUserList ${notfoundUserListForServer.toString()}")
+                    updateSendReferralButtonState()
                 }
             }
         })
 
         binding.recyclerViewContact.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewContact.adapter = adapter
+
+        updateSendReferralButtonState()
     }
 
     private fun setFoundUserAdapter(foundUserList: MutableList<FoundUser>) {
@@ -192,7 +197,6 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
             }
 
             Constants.SEND_REFERRAL_INVITATION -> {
-                // Show the spinner when the API call is made
                 binding.loadingSpin.visibility = View.VISIBLE
 
                 val responseJson = liveData.value
@@ -202,20 +206,34 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                     try {
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, ReferralInviteModel::class.java)!!
                         if (response.status) {
-                            // Hide the spinner in case of an error
+                            // Remove selected items from notFoundUserList
+                            val iterator = notFoundUserList.iterator()
+                            while (iterator.hasNext()) {
+                                val user = iterator.next()
+                                if (user.referralInviteId in notfoundUserListForServer) {
+                                    iterator.remove()
+                                }
+                            }
+
+                            // Clear the selection list after updating the main list
+                            notfoundUserListForServer.clear()
+
+                            if (notFoundUserList.isEmpty()) {
+                                // If the list is empty, hide the RecyclerView and show the success message
+                                binding.recyclerViewContact.visibility = View.GONE
+                                binding.tvSuccess.visibility = View.VISIBLE
+                            } else {
+                                // If the list is not empty, update the adapter
+                                setNotFoundUserAdapter(notFoundUserList)
+                            }
+
                             binding.loadingSpin.visibility = View.GONE
-//                            val referSquadInviteFragment = ReferSquadInviteFragment()
-//                            dockActivity?.replaceDockableFragment(referSquadInviteFragment)
-//                            initRedeemInfo()
                         } else {
-                            // Hide the spinner in case of an error
                             binding.loadingSpin.visibility = View.GONE
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }
                     } catch (e: Exception) {
-                        // Hide the spinner in case of an error
                         binding.loadingSpin.visibility = View.GONE
-
                         val genericMsgResponse = GsonFactory.getConfiguredGson()
                             ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
                         dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
@@ -263,6 +281,10 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     }
 
     private fun updateSendInviteButtonState() {
+        binding.SendInvite.isEnabled = foundUserListForServer.isNotEmpty()
+    }
+
+    private fun updateSendReferralButtonState() {
         binding.SendInvite.isEnabled = foundUserListForServer.isNotEmpty()
     }
 
