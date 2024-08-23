@@ -34,6 +34,7 @@
                 android:layout_height="@dimen/_29sdp"
                 android:backgroundTint="@color/text_color"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 android:elevation="@dimen/_20sdp"
                 app:cardCornerRadius="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -63,9 +64,48 @@
             android:clipToPadding="false"
             android:paddingBottom="@dimen/_10sdp"
             app:spanCount="2"
+            android:visibility="gone"
             tools:listitem="@layout/item_myhotsquadlist"/>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/newUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/squadText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hotsquad_list_detail"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/_13ssp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/text_color_black"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCreateHotsquad"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_weight="1"
+            android:layout_below="@id/squadText"
+            android:padding="@dimen/_14sdp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/multicolor_background"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/create_hotsquad"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_9sdp"
+            android:fontFamily="@font/montserrat_bold" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvNoListFound"

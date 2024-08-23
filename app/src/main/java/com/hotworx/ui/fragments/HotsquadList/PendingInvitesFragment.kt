@@ -35,7 +35,7 @@ import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.HotsquadList.Bottomsheet.SearchUserBottomSheet.Companion.TAG
 import com.hotworx.ui.views.TitleBar
 
-class PendingInvitesFragment : BaseFragment(){
+class PendingInvitesFragment : BaseFragment() {
 
     private var _binding: FragmentPendingInvitesBinding? = null
     private val binding get() = _binding!!
@@ -55,7 +55,7 @@ class PendingInvitesFragment : BaseFragment(){
         super.onViewCreated(view, savedInstanceState)
 
         // Ensure PendingListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
-        pendingRequestModel = PendingInvitationResponse(status =false,message = "",data = mutableListOf())
+        pendingRequestModel = PendingInvitationResponse(status = false, message = "", data = mutableListOf())
 
         setAdapter(pendingList)
 
@@ -71,14 +71,14 @@ class PendingInvitesFragment : BaseFragment(){
     private fun getPendingRequestList() {
         getServiceHelper().enqueueCall(
             getWebService().getPendingRequestList(
-                apiHeader(
-                    requireContext()
-                )
+                apiHeader(requireContext())
             ), WebServiceConstants.GET_PENDING_REQUEST_LIST, true
         )
     }
 
-    override fun ResponseSuccess(result: String?, Tag: String?) {
+    override fun ResponseSuccess(result: String?, tag: String?) {
+        if (!isAdded) return // Safeguard to prevent updates if fragment is not added
+
         pendingRequestModel = GsonFactory.getConfiguredGson().fromJson(result, PendingInvitationResponse::class.java)
 
         if (!pendingRequestModel.data.isNullOrEmpty()) {
@@ -92,6 +92,8 @@ class PendingInvitesFragment : BaseFragment(){
 
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
         super.onSuccess(liveData, tag)
+        if (!isAdded) return // Safeguard to prevent updates if fragment is not added
+
         when (tag) {
             Constants.PENDING_ACCEPT_REJECT -> {
                 val responseJson = liveData.value
@@ -102,7 +104,6 @@ class PendingInvitesFragment : BaseFragment(){
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, PendingInvitationResponse::class.java)!!
                         if (response.status) {
                             dockActivity?.showSuccessMessage(response.message)
-
                         } else {
                             dockActivity?.showErrorMessage(response.message)
                         }
@@ -160,7 +161,9 @@ class PendingInvitesFragment : BaseFragment(){
     }
 
     private fun updateAdapterList(newList: MutableList<PendingInvitationResponse.SquadData>) {
-        adapter?.updateData(newList)
+        if (isAdded) { // Check if fragment is added
+            adapter?.updateData(newList)
+        }
     }
 
     private fun onItemActionSuccess(position: Int) {
@@ -172,8 +175,10 @@ class PendingInvitesFragment : BaseFragment(){
     }
 
     override fun ResponseFailure(message: String?, tag: String?) {
-        binding.tvNoListFound.text = "No Squad List Found"
-        binding.tvNoListFound.visibility = View.VISIBLE
+        if (isAdded) { // Check if fragment is added
+            binding.tvNoListFound.text = "No Squad List Found"
+            binding.tvNoListFound.visibility = View.VISIBLE
+        }
     }
 
     private fun scrollToNotification(listId: String) {

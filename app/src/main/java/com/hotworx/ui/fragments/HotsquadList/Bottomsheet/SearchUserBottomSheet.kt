@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotsquad.hotsquadlist.extensions.showMaterialAlertDialog
+import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.BottomSheetSearchuserBinding
@@ -105,7 +106,9 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     }
 
     override fun onFailureWithResponseCode(code: Int, message: String, tag: String) {
-        TODO("Not yet implemented")
+        Log.e("ResponseFailure", "Failed to load squad: $message")
+        binding.tvNoListFound.text = getString(R.string.no_squad_members_found)
+        binding.tvNoListFound.visibility = View.VISIBLE
     }
 
     private fun setNotFoundUserAdapter(notFoundUserList: List<NotFoundUser>) {
