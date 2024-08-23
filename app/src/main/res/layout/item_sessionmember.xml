@@ -7,7 +7,7 @@
         android:id="@+id/listMainView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_6sdp"
+        app:cardCornerRadius="@dimen/_8sdp"
         android:background="@color/white"
         android:elevation="@dimen/_25sdp"
         android:layout_marginStart="@dimen/_10sdp"
@@ -23,16 +23,16 @@
             tools:text="@string/text"
             android:layout_gravity="end"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:fontFamily="@font/montserrat_regular"
-            android:textColor="@color/colorStart"
-            android:textSize="@dimen/_9ssp"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
             android:layout_marginHorizontal="@dimen/_3sdp"/>
 
         <LinearLayout
-            android:id="@+id/detailLayout"
+            android:id="@+id/detailLayoutt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_4sdp"
+            android:padding="@dimen/_10sdp"
             android:orientation="horizontal">
 
             <io.github.florent37.shapeofview.shapes.CircleView

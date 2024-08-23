@@ -8,9 +8,12 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.hotsquad.hotsquadlist.listener.DialogListeners
 import com.hotworx.R
 import com.hotworx.activities.DockActivity
 import com.hotworx.activities.MainActivity
@@ -189,6 +192,19 @@ abstract class BaseBottomsheetFragment : BottomSheetDialogFragment(), webService
         } else {
             return true
         }
+    }
+
+    fun Fragment.showMaterialAlertDialog(message: String, listener: DialogListeners? = null) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setMessage(message)
+            .setCancelable(false)
+            .setPositiveButton(resources.getString(com.hotsquad.hotsquadlist.R.string.ok)) { dialog, which ->
+                listener?.onPositionButtonTap(dialog)
+            }
+            .setNegativeButton(resources.getString(com.hotsquad.hotsquadlist.R.string.cancel)) { dialog, which ->
+                listener?.onNegativeButtonTap(dialog)
+            }
+            .show()
     }
 
     protected val isNotLoading: Boolean

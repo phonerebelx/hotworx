@@ -539,6 +539,8 @@
     <string name="no_squad_members_found">No Squad Members Found</string>
     <string name="no_squad_found">No Squad Found</string>
     <string name="squad_members">My Friend List</string>
+    <string name="squad_request">Squad Request</string>
+    <string name="session_request">Session Request</string>
     <string name="otp_message_success">OTP has been sent to your email address</string>
 
     <string name="about_hotworx" translatable="false">

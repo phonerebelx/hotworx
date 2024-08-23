@@ -12,6 +12,7 @@ import android.view.Window
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hotsquad.hotsquadlist.extensions.showMaterialAlertDialog
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.BottomSheetSearchuserBinding
@@ -144,6 +145,87 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         binding.recyclerView.adapter = adapter
     }
 
+    override fun onSuccess(liveData: LiveData<String>, tag: String) {
+        super.onSuccess(liveData, tag)
+        when (tag) {
+            Constants.SEND_MEMBER_INVITATION -> {
+                // Show the spinner when the API call is made
+                binding.loadingSpin.visibility = View.VISIBLE
+
+                val responseJson = liveData.value
+                Log.d("Response", "LiveData value: $responseJson")
+
+                if (responseJson != null) {
+                    try {
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SendMemberInviteModel::class.java)!!
+                        if (response.status) {
+                            // Hide the spinner after processing the response successfully
+                            binding.loadingSpin.visibility = View.GONE
+
+                            // Show the "No List Found" message
+                            binding.tvNoListFound.visibility = View.VISIBLE
+                            binding.recyclerView.visibility = View.GONE
+                        } else {
+                            // Hide the spinner if the response indicates a failure
+                            binding.loadingSpin.visibility = View.GONE
+                            dockActivity?.showErrorMessage("Something Went Wrong")
+                        }
+                    } catch (e: Exception) {
+                        // Hide the spinner in case of an error
+                        binding.loadingSpin.visibility = View.GONE
+
+                        val genericMsgResponse = GsonFactory.getConfiguredGson()
+                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
+                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                        Log.i("Error", e.message.toString())
+                    }
+                } else {
+                    // Hide the spinner if no response is received
+                    binding.loadingSpin.visibility = View.GONE
+                    Log.e("Error", "LiveData value is null")
+                    dockActivity?.showErrorMessage("No response from server")
+                }
+            }
+
+            Constants.SEND_REFERRAL_INVITATION -> {
+                // Show the spinner when the API call is made
+                binding.loadingSpin.visibility = View.VISIBLE
+
+                val responseJson = liveData.value
+                Log.d("Response", "LiveData value: $responseJson")
+
+                if (responseJson != null) {
+                    try {
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, ReferralInviteModel::class.java)!!
+                        if (response.status) {
+                            // Hide the spinner in case of an error
+                            binding.loadingSpin.visibility = View.GONE
+//                            val referSquadInviteFragment = ReferSquadInviteFragment()
+//                            dockActivity?.replaceDockableFragment(referSquadInviteFragment)
+//                            initRedeemInfo()
+                        } else {
+                            // Hide the spinner in case of an error
+                            binding.loadingSpin.visibility = View.GONE
+                            dockActivity?.showErrorMessage("Something Went Wrong")
+                        }
+                    } catch (e: Exception) {
+                        // Hide the spinner in case of an error
+                        binding.loadingSpin.visibility = View.GONE
+
+                        val genericMsgResponse = GsonFactory.getConfiguredGson()
+                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
+                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                        Log.i("Error", e.message.toString())
+                    }
+                } else {
+                    binding.loadingSpin.visibility = View.GONE
+                    Log.e("Error", "LiveData value is null")
+                    dockActivity?.showErrorMessage("No response from server")
+                }
+            }
+        }
+    }
+
     private fun callInvitationApi(type: String, data: String) {
         when (type) {
             Constants.SEND_MEMBER_INVITATION -> {
@@ -172,62 +254,6 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                         request
                     ), Constants.SEND_REFERRAL_INVITATION, true
                 )
-            }
-        }
-    }
-
-    override fun onSuccess(liveData: LiveData<String>, tag: String) {
-        super.onSuccess(liveData, tag)
-        when (tag) {
-            Constants.SEND_MEMBER_INVITATION -> {
-                val responseJson = liveData.value
-                Log.d("Response", "LiveData value: $responseJson")
-
-                if (responseJson != null) {
-                    try {
-                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SendMemberInviteModel::class.java)!!
-                        if (response.status) {
-                            binding.tvNoListFound.visibility = View.VISIBLE
-                            binding.recyclerView.visibility = View.GONE
-                        } else {
-                            dockActivity?.showErrorMessage("Something Went Wrong")
-                        }
-                    } catch (e: Exception) {
-                        val genericMsgResponse = GsonFactory.getConfiguredGson()
-                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
-                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
-                        Log.i("Error", e.message.toString())
-                    }
-                } else {
-                    Log.e("Error", "LiveData value is null")
-                    dockActivity?.showErrorMessage("No response from server")
-                }
-            }
-
-            Constants.SEND_REFERRAL_INVITATION -> {
-                val responseJson = liveData.value
-                Log.d("Response", "LiveData value: $responseJson")
-
-                if (responseJson != null) {
-                    try {
-                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, ReferralInviteModel::class.java)!!
-                        if (response.status) {
-//                            val referSquadInviteFragment = ReferSquadInviteFragment()
-//                            dockActivity?.replaceDockableFragment(referSquadInviteFragment)
-                            initRedeemInfo()
-                        } else {
-                            dockActivity?.showErrorMessage("Something Went Wrong")
-                        }
-                    } catch (e: Exception) {
-                        val genericMsgResponse = GsonFactory.getConfiguredGson()
-                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
-                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
-                        Log.i("Error", e.message.toString())
-                    }
-                } else {
-                    Log.e("Error", "LiveData value is null")
-                    dockActivity?.showErrorMessage("No response from server")
-                }
             }
         }
     }

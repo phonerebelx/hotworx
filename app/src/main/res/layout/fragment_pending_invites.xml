@@ -11,16 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/pending_req"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="@dimen/_14ssp"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="@color/text_color"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -39,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:fontFamily="@font/regular"
-        android:text="@string/text"
+        tools:text="@string/text"
         android:textColor="@color/colorBurned"
         android:textSize="@dimen/_12sdp" />
 

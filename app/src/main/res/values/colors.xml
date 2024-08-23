@@ -32,6 +32,7 @@
     <color name="colorStart">#e10100</color>
     <color name="colorLine">#d6d6d6</color>
     <color name="colorListHeader">#f28435</color>
+    <color name="trans_card">#BCFDEADC</color>
     <color name="radio_button_selected_color">#f15e28</color>
     <color name="radio_button_unselected_color">#e0e0e0</color>
     <color name="colorStatusBar">#E45C26</color>

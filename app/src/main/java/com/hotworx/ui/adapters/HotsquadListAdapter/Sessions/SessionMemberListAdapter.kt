@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -42,6 +43,7 @@ class SessionMemberListAdapter(
         private val imgcheck: ImageView = itemView.findViewById(R.id.imgCheck)
         private val imgCheckBox: ImageView = itemView.findViewById(R.id.imgCheckBox)
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
+        private val detailLayout: LinearLayout = itemView.findViewById(R.id.detailLayoutt)
 
         fun bind(item: SessionMemberResponse.SquadData.Member) {
             nameTextView.text = item.name
@@ -62,15 +64,16 @@ class SessionMemberListAdapter(
             if (item.member_id == null) {
                 Log.d("MemberCheck", "Handling null member_id")
                 imgCheckBox.visibility = View.GONE
-                val color = ContextCompat.getColor(context, R.color.colorLine)
-                cardView.backgroundTintList = ColorStateList.valueOf(color)
+                val color = ContextCompat.getColor(context, R.color.trans_card)
+                detailLayout.setBackgroundColor(color) // Using setBackgroundColor
+
             } else {
                 Log.d("MemberCheckkk", "Handling non-null member_id")
                 imgCheckBox.visibility = View.VISIBLE
                 imgCheckBox.setOnClickListener {
                     item.selected = !item.selected
                     val color = ContextCompat.getColor(context, R.color.white)
-                    cardView.backgroundTintList = ColorStateList.valueOf(color)
+                    detailLayout.setBackgroundColor(color) // Using setBackgroundColor
                     imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
                     notifyItemChanged(adapterPosition)
                     listener.onItemClick(item)

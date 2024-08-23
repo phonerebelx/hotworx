@@ -29,7 +29,7 @@
             android:paddingBottom="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_10sdp"
             app:spanCount="2"
-            tools:listitem="@layout/item_squadmember"/>
+            tools:listitem="@layout/item_sessionmember"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSentList"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:fontFamily="@font/regular"
-        android:text="@string/text"
+        tools:text="@string/text"
         android:textColor="@color/colorBurned"
         android:textSize="@dimen/_12sdp" />
 

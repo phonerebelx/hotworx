@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:visibility="gone"
-            app:SpinKit_Color="@color/black" />
+            app:SpinKit_Color="@color/sunset_orange" />
 
         <LinearLayout
             android:layout_width="match_parent"
