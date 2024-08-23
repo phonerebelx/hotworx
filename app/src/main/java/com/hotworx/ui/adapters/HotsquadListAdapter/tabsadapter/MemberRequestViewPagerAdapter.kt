@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.hotworx.ui.fragments.HotsquadList.SquadMemberDetailFragment
+import com.hotworx.ui.fragments.HotsquadList.fragments.squadAcceptedMemberFragment
+import com.hotworx.ui.fragments.HotsquadList.fragments.squadPendingMemberFragment
 
 class MemberRequestViewPagerAdapter(
     fm: FragmentManager,
@@ -17,8 +18,8 @@ class MemberRequestViewPagerAdapter(
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> createFragment(SquadMemberDetailFragment())
-            else -> createFragment(SquadMemberDetailFragment())
+            0 -> createFragment(squadPendingMemberFragment())
+            else -> createFragment(squadAcceptedMemberFragment())
         }
     }
 

@@ -16,7 +16,6 @@ import com.hotworx.activities.DockActivity
 import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.ui.fragments.HotsquadList.HotsquadSearchFragment
 import com.hotworx.ui.fragments.HotsquadList.SessionMemberListFragment
-import com.hotworx.ui.fragments.HotsquadList.SquadMemberDetailFragment
 import com.hotworx.ui.fragments.HotsquadList.SquadMemberListFragment
 
 class SquadListAdapter(

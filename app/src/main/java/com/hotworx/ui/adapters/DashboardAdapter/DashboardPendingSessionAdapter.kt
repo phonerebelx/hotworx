@@ -12,15 +12,10 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
 import com.hotworx.activities.DockActivity
-import com.hotworx.databinding.FragmentActivityByTimelineAdapterBinding
 import com.hotworx.databinding.FragmentDashboardSessionAdapterBinding
 import com.hotworx.interfaces.OnClickPendingModelInterface
-import com.hotworx.interfaces.OnClickTypeListener
-import com.hotworx.interfaces.OnItemClickInterface
 import com.hotworx.models.DashboardData.TodaysPendingSession
-import com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.GetShowSlotDataModelItem
 import com.hotworx.ui.fragments.HotsquadList.MyHotsquadListFragment
-import com.hotworx.ui.fragments.HotsquadList.SquadMemberDetailFragment
 
 //import kotlinx.android.synthetic.main.fragment_dashboard_session_adapter.view.*
 

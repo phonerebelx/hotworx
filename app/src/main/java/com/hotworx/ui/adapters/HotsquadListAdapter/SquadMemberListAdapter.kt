@@ -43,6 +43,7 @@ class SquadMemberListAdapter(
             notifyItemRangeChanged(position, items.size)
         }
     }
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
