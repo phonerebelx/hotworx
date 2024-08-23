@@ -9,18 +9,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/layoutProgressIndicator"
-            layout="@layout/layout_loading"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:text="@string/friend_list"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/text_color"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginHorizontal="@dimen/_2sdp"
             app:tabIndicatorHeight="@dimen/_2sdp"
             app:tabIndicatorFullWidth="true"

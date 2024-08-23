@@ -36,6 +36,7 @@
     <color name="radio_button_unselected_color">#e0e0e0</color>
     <color name="colorStatusBar">#E45C26</color>
     <color name="colorBodyFat">#EE2232</color>
+    <color name="colorBtn">#F5FF5722</color>
     <color name="fieldColor">#BEBDBE</color>
     <color name="light_blue">#0000FF</color>
     <color name="shaded_blue">#009DD0</color>
@@ -52,6 +53,7 @@
 
     <string name="hot_yoga">#EA631B</string>
     <string name="hot_cycle">#E13E2A</string>
+    <string name="btnColor">#E13E2A</string>
     <string name="hot_row">#009DD0</string>
 
     <color name="colorLightWhite">#EFB299</color>
