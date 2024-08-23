@@ -164,18 +164,24 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                     try {
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SendMemberInviteModel::class.java)!!
                         if (response.status) {
-                            // Remove selected users from the list
-                            val updatedList = foundUserListForServer.mapNotNull { id ->
-                                foundUserList.find { it.squadInviteId != id }
-                            }.toMutableList()
-                            setFoundUserAdapter(updatedList)
+                            val iterator = foundUserList.iterator()
+                            while (iterator.hasNext()) {
+                                val user = iterator.next()
+                                if (user.squadInviteId in foundUserListForServer) {
+                                    iterator.remove()
+                                }
+                            }
 
-                            // Clear the selection after updating the list
                             foundUserListForServer.clear()
 
+                            if (foundUserList.isEmpty()) {
+                                binding.recyclerView.visibility = View.GONE
+                                binding.tvNoListFound.visibility = View.VISIBLE
+                            } else {
+                                setFoundUserAdapter(foundUserList)
+                            }
+
                             binding.loadingSpin.visibility = View.GONE
-                            binding.tvNoListFound.visibility = if (updatedList.isEmpty()) View.VISIBLE else View.GONE
-                            binding.recyclerView.visibility = if (updatedList.isEmpty()) View.GONE else View.VISIBLE
                         } else {
                             binding.loadingSpin.visibility = View.GONE
                             dockActivity?.showErrorMessage("Something Went Wrong")
@@ -189,12 +195,12 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                         Log.i("Error", e.message.toString())
                     }
                 } else {
-                    // Hide the spinner if no response is received
                     binding.loadingSpin.visibility = View.GONE
                     Log.e("Error", "LiveData value is null")
                     dockActivity?.showErrorMessage("No response from server")
                 }
             }
+
 
             Constants.SEND_REFERRAL_INVITATION -> {
                 binding.loadingSpin.visibility = View.VISIBLE
@@ -206,7 +212,6 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                     try {
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, ReferralInviteModel::class.java)!!
                         if (response.status) {
-                            // Remove selected items from notFoundUserList
                             val iterator = notFoundUserList.iterator()
                             while (iterator.hasNext()) {
                                 val user = iterator.next()
@@ -215,15 +220,12 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                                 }
                             }
 
-                            // Clear the selection list after updating the main list
                             notfoundUserListForServer.clear()
 
                             if (notFoundUserList.isEmpty()) {
-                                // If the list is empty, hide the RecyclerView and show the success message
                                 binding.recyclerViewContact.visibility = View.GONE
                                 binding.tvSuccess.visibility = View.VISIBLE
                             } else {
-                                // If the list is not empty, update the adapter
                                 setNotFoundUserAdapter(notFoundUserList)
                             }
 
