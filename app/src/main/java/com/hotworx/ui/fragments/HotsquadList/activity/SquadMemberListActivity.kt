@@ -13,7 +13,7 @@ import com.hotworx.ui.adapters.HotsquadListAdapter.tabsadapter.MemberRequestView
 import com.hotworx.ui.views.TitleBar
 
 
-class SquadMemberListActivity: DockActivity(),TabLayout.OnTabSelectedListener{
+class SquadMemberListActivity: DockActivity(){
 
     private var _binding: ActivitySquadMemberListBinding? = null
     private val binding get() = _binding!!
@@ -45,7 +45,7 @@ class SquadMemberListActivity: DockActivity(),TabLayout.OnTabSelectedListener{
             Log.e("SquadMemberListActivity", "packageManager is null")
         }
 
-        setupAdapter()
+//        setupAdapter()
     }
 
 //    override fun setTitleBar(titleBar: TitleBar) {
@@ -53,33 +53,33 @@ class SquadMemberListActivity: DockActivity(),TabLayout.OnTabSelectedListener{
 //        titleBar.subHeading = getString(R.string.hotsquad_list)
 //    }
 
-    private fun setupAdapter() {
-        pagerAdapter = MemberRequestViewPagerAdapter(supportFragmentManager, binding.tabLayout.tabCount)
-        binding.viewPager.adapter = pagerAdapter
-        binding.viewPager.offscreenPageLimit = binding.tabLayout.tabCount
-        binding.tabLayout.addOnTabSelectedListener(this)
-        binding.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
+//    private fun setupAdapter() {
+//        pagerAdapter = MemberRequestViewPagerAdapter(supportFragmentManager, binding.tabLayout.tabCount,sq)
+//        binding.viewPager.adapter = pagerAdapter
+//        binding.viewPager.offscreenPageLimit = binding.tabLayout.tabCount
+//        binding.tabLayout.addOnTabSelectedListener(this)
+//        binding.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
+//
+//        // Disabling swipe gesture of viewpager
+//        binding.viewPager.setOnTouchListener { _, _ -> false }
+//    }
 
-        // Disabling swipe gesture of viewpager
-        binding.viewPager.setOnTouchListener { _, _ -> false }
-    }
-
-    override fun onTabSelected(tab: TabLayout.Tab?) {
-        tab?.let {
-            binding.viewPager.currentItem = it.position
-        }
-    }
-
-    override fun onTabUnselected(tab: TabLayout.Tab?) {}
-
-    override fun onTabReselected(tab: TabLayout.Tab?) {
-        tab?.let {
-            binding.viewPager.offsetLeftAndRight(1)
-        }
-    }
-
-    fun selectPage(page: Int) {
-        binding.viewPager.currentItem = page
-        binding.tabLayout.getTabAt(page)?.select()
-    }
+//    override fun onTabSelected(tab: TabLayout.Tab?) {
+//        tab?.let {
+//            binding.viewPager.currentItem = it.position
+//        }
+//    }
+//
+//    override fun onTabUnselected(tab: TabLayout.Tab?) {}
+//
+//    override fun onTabReselected(tab: TabLayout.Tab?) {
+//        tab?.let {
+//            binding.viewPager.offsetLeftAndRight(1)
+//        }
+//    }
+//
+//    fun selectPage(page: Int) {
+//        binding.viewPager.currentItem = page
+//        binding.tabLayout.getTabAt(page)?.select()
+//    }
 }

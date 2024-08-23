@@ -89,11 +89,11 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
     private fun setAdapter(squadList: List<Hotsquad>) {
         if(dashboardShare == "dashboardShare"){
-            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,requireContext(),dashboardShare,recordId)
+            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,dashboardShare,recordId)
             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerView.adapter = adapter
         }else{
-            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,requireContext(),"","")
+            adapter = SquadListAdapter(squadList, this, activity as? DockActivity,"","")
             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerView.adapter = adapter
         }
