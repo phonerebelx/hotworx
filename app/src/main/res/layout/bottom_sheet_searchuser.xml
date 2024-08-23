@@ -14,15 +14,6 @@
             android:padding="@dimen/_10sdp"
             android:background="@drawable/shape_top_round_fill_white">
 
-            <com.github.ybq.android.spinkit.SpinKitView
-                android:id="@+id/loadingSpin"
-                style="@style/SpinKitView.Large.MultiplePulse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:visibility="gone"
-                app:SpinKit_Color="@color/sunset_orange" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -174,6 +165,16 @@
                 </RelativeLayout>
 
             </LinearLayout>
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/loadingSpin"
+                style="@style/SpinKitView.Large.MultiplePulse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                bind:SpinKit_Style="MultiplePulseRing"
+                app:SpinKit_Color="@color/sunset_orange" />
 
         </RelativeLayout>
 

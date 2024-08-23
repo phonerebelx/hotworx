@@ -9,17 +9,24 @@ import com.hotworx.ui.fragments.HotsquadList.squadPendingMemberFragment
 
 class MemberRequestViewPagerAdapter(
     fm: FragmentManager,
-    private val tabCount: Int,
     private val squadId: String?,
     private val hasSquadAccess: Boolean
 ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    override fun getCount() = tabCount
+    // Adjust tab count based on hasSquadAccess
+    override fun getCount(): Int {
+        return if (hasSquadAccess) {
+            2 // Show both tabs
+        } else {
+            1 // Show only the accepted tab
+        }
+    }
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> createFragment(squadPendingMemberFragment())
-            else -> createFragment(squadAcceptedMemberFragment())
+            0 -> createFragment(squadAcceptedMemberFragment())
+            1 -> createFragment(squadPendingMemberFragment())
+            else -> throw IllegalArgumentException("Invalid position $position")
         }
     }
 

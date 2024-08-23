@@ -15,7 +15,6 @@ import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.models.HotsquadList.HotsquadListModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
-import com.hotworx.ui.adapters.NotificationListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
 
@@ -48,6 +47,7 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
         if(dashboardShare == "dashboardShare"){
             binding.btnCreateSquad.visibility = View.GONE
+            binding.newUser.visibility = View.GONE
         }else{
             binding.btnCreateSquad.visibility = View.VISIBLE
             binding.btnCreateSquad.setOnClickListener{
@@ -63,6 +63,13 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
         // Ensure hotsquadListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
         hotsquadListModel = HotsquadListModel(data = emptyList(),status =false,message = "")
+
+        binding.btnCreateHotsquad.setOnClickListener{
+            val addListFragment = AddListFragment()
+            dockActivity.replaceDockableFragment(addListFragment)
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.remove(this)
+        }
 
         setAdapter(squadList = hotsquadListModel.data)
     }
@@ -106,14 +113,17 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
                 hotsquadListModel = GsonFactory.getConfiguredGson().fromJson(result, HotsquadListModel::class.java)
 
                 if (hotsquadListModel.data.isNullOrEmpty()) {
-                    Log.d("EmptyList", "List is empty, redirecting to CreateHotsquadFragment")
-                    val createHotsquadFragment = CreateHotsquadFragment()
-                    dockActivity.replaceDockableFragment(createHotsquadFragment)
-                    val transaction = fragmentManager?.beginTransaction()
-                    transaction?.remove(this)
+                    binding.btnCreateSquad.visibility = View.GONE
+                    if(dashboardShare == "dashboardShare"){
+                        binding.newUser.visibility = View.GONE
+                        binding.tvNoListFound.visibility = View.VISIBLE
+                    }else{
+                        binding.newUser.visibility = View.VISIBLE
+                    }
                 } else {
                     Log.d("NonEmptyList", "List is not empty, showing items")
                     binding.tvNoListFound.visibility = View.GONE
+                    binding.newUser.visibility = View.GONE
                     setAdapter(hotsquadListModel.data)
                 }
             }
@@ -140,8 +150,8 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onDestroy() {
+        super.onDestroy()
+        // unbinder.unbind();
     }
 }

@@ -3,7 +3,6 @@ package com.hotworx.ui.fragments.HotsquadList
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,22 +12,11 @@ import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentAddListBinding
 import com.hotworx.global.Constants
 import com.hotworx.helpers.Utils
-import com.hotworx.interfaces.LoadingListener
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.CreateHotsquadModel
-import com.hotworx.models.HotsquadList.HotsquadListModel
-import com.hotworx.models.HotsquadList.UserModel
-import com.hotworx.models.UserData.GetUserGoalData
-import com.hotworx.models.UserData.ResponseUserGoalModel
-import com.hotworx.models.UserData.ResponseUserProfileModel
-import com.hotworx.models.UserData.getUserData
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AddListFragment : BaseFragment(){
     private var _binding: FragmentAddListBinding? = null
@@ -133,8 +121,8 @@ class AddListFragment : BaseFragment(){
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onDestroy() {
+        super.onDestroy()
+        // unbinder.unbind();
     }
 }

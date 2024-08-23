@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -32,22 +31,7 @@
             app:tabIndicatorColor="@color/sunset_orange"
             app:tabBackground="@drawable/requestmember_tab_selector"
             app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/silverChalice"
-            bind:tabRippleColor="@android:color/transparent">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/paymentTab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Pending" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/salesTab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/accepted" />
-
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextColor="@color/silverChalice" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
