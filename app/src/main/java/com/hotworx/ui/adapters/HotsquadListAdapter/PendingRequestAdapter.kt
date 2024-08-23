@@ -45,6 +45,7 @@ class PendingRequestAdapter(
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
         private val emailTextView: TextView = itemView.findViewById(R.id.tvEmail)
         private val sentTextView: TextView = itemView.findViewById(R.id.tvSentAt)
+        private val squadTextView: TextView = itemView.findViewById(R.id.tvSquad)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
         private val declineButton: AppCompatButton = itemView.findViewById(R.id.declineBtn)
         private val acceptButton: AppCompatButton = itemView.findViewById(R.id.AcceptBtn)
@@ -53,6 +54,7 @@ class PendingRequestAdapter(
             nameTextView.text = item.request_from?.name
             emailTextView.text = item.request_from?.email
             sentTextView.text = item.request_from?.sent_at
+            squadTextView.text = item.name
 
             // Use itemView.context to get the context
             Glide.with(itemView.context)

@@ -34,13 +34,6 @@
             android:textSize="@dimen/_11ssp" />
 
         <ImageView
-            android:layout_width="@dimen/_17sdp"
-            android:layout_height="@dimen/_17sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:src="@drawable/editicon"
-            android:contentDescription="@string/no" />
-
-        <ImageView
             android:id="@+id/ivDelete"
             android:layout_width="@dimen/_17sdp"
             android:layout_height="@dimen/_17sdp"

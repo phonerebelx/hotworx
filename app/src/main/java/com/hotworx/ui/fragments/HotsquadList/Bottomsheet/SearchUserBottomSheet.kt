@@ -36,22 +36,12 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     private lateinit var binding: BottomSheetSearchuserBinding
     private var foundUserListForServer = mutableListOf<String>()
     private var notfoundUserListForServer = mutableListOf<String>()
+    private lateinit var foundUserList: MutableList<FoundUser>
+    private lateinit var notFoundUserList: MutableList<NotFoundUser>
     protected var myDockActivity: DockActivity? = null
     var squadID = ""
     var referralUrl = ""
     lateinit var  referSquadInviteDialogFragment: ReferSquadInviteDialogFragment
-
-    // Callback interface to communicate with the fragment
-    interface OnDismissListener {
-        fun onBottomSheetDismissed()
-    }
-
-    var dismissListener: OnDismissListener? = null
-
-    override fun onDismiss(dialog: DialogInterface) {
-        super.onDismiss(dialog)
-        dismissListener?.onBottomSheetDismissed()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,8 +71,8 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
             Log.d("ParsedResponse", "Parsed Response: $response")
 
             if (response?.status == true) {
-                val foundUserList = response.data?.foundUser?.toMutableList() ?: mutableListOf()
-                val notFoundUserList = response.data?.notFoundUser ?: emptyList()
+                foundUserList = response.data?.foundUser?.toMutableList() ?: mutableListOf()
+                notFoundUserList = response.data?.notFoundUser?.toMutableList() ?: mutableListOf()
                 referralUrl = response.data?.referralUrl ?: ""
                 setFoundUserAdapter(foundUserList)
                 setNotFoundUserAdapter(notFoundUserList)
@@ -96,12 +86,20 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         referSquadInviteDialogFragment = ReferSquadInviteDialogFragment.newInstance(referralUrl)
 
         binding.SendInvite.setOnClickListener(View.OnClickListener {
-            callInvitationApi(Constants.SEND_MEMBER_INVITATION,"")
+            if (foundUserListForServer.isNotEmpty()) {
+                binding.loadingSpin.visibility = View.VISIBLE
+                callInvitationApi(Constants.SEND_MEMBER_INVITATION, "")
+            }
         })
 
         binding.referralInvite.setOnClickListener(View.OnClickListener {
+            binding.loadingSpin.visibility = View.VISIBLE
             callInvitationApi(Constants.SEND_REFERRAL_INVITATION,"")
         })
+
+        binding.crossIcon.setOnClickListener{
+            dismiss()
+        }
     }
 
     override fun onFailureWithResponseCode(code: Int, message: String, tag: String) {
@@ -137,19 +135,21 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                         foundUserListForServer.remove(it.squadInviteId)
                     }
                     Log.d(TAG, "foundUserList ${foundUserListForServer.toString()}")
+                    updateSendInviteButtonState()
                 }
             }
         })
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+
+        updateSendInviteButtonState()
     }
 
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
         super.onSuccess(liveData, tag)
         when (tag) {
             Constants.SEND_MEMBER_INVITATION -> {
-                // Show the spinner when the API call is made
                 binding.loadingSpin.visibility = View.VISIBLE
 
                 val responseJson = liveData.value
@@ -159,19 +159,23 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                     try {
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SendMemberInviteModel::class.java)!!
                         if (response.status) {
-                            // Hide the spinner after processing the response successfully
-                            binding.loadingSpin.visibility = View.GONE
+                            // Remove selected users from the list
+                            val updatedList = foundUserListForServer.mapNotNull { id ->
+                                foundUserList.find { it.squadInviteId != id }
+                            }.toMutableList()
+                            setFoundUserAdapter(updatedList)
 
-                            // Show the "No List Found" message
-                            binding.tvNoListFound.visibility = View.VISIBLE
-                            binding.recyclerView.visibility = View.GONE
+                            // Clear the selection after updating the list
+                            foundUserListForServer.clear()
+
+                            binding.loadingSpin.visibility = View.GONE
+                            binding.tvNoListFound.visibility = if (updatedList.isEmpty()) View.VISIBLE else View.GONE
+                            binding.recyclerView.visibility = if (updatedList.isEmpty()) View.GONE else View.VISIBLE
                         } else {
-                            // Hide the spinner if the response indicates a failure
                             binding.loadingSpin.visibility = View.GONE
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }
                     } catch (e: Exception) {
-                        // Hide the spinner in case of an error
                         binding.loadingSpin.visibility = View.GONE
 
                         val genericMsgResponse = GsonFactory.getConfiguredGson()
@@ -258,11 +262,8 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
         }
     }
 
-    private fun initRedeemInfo(){
-        referSquadInviteDialogFragment.show(
-            childFragmentManager,
-            Constants.REFERRAL_INVITATION
-        )
+    private fun updateSendInviteButtonState() {
+        binding.SendInvite.isEnabled = foundUserListForServer.isNotEmpty()
     }
 
     interface OnItemClickListener {
