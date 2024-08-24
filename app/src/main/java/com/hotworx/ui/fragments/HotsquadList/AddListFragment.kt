@@ -78,7 +78,7 @@ class AddListFragment : BaseFragment(){
                     val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, CreateHotsquadModel::class.java)!!
                     if (response.status){
                         val myHotsquadListFragment = MyHotsquadListFragment()
-                        dockActivity.replaceDockableFragment(myHotsquadListFragment)
+                        dockActivity.removeDockableFragment(myHotsquadListFragment)
                     }else{
                         dockActivity?.showErrorMessage("Something Went Wrong")
                     }
@@ -96,20 +96,6 @@ class AddListFragment : BaseFragment(){
         myDockActivity?.showErrorMessage(message)
         Log.i("xxError", "Error")
     }
-
-//    override fun onLoadingStarted() {
-//        isLoading = true
-//        binding.progressBar.visibility = View.VISIBLE
-//    }
-//
-//    override fun onLoadingFinished() {
-//        isLoading = false
-//        binding.progressBar.visibility = View.GONE
-//    }
-//
-//    override fun onProgressUpdated(percentLoaded: Int) {
-//
-//    }
 
     override fun onBackPressed() {
         super.onBackPressed() // If not loading, proceed with the default back button action

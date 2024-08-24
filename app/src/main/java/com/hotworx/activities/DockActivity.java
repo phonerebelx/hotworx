@@ -101,7 +101,6 @@ public abstract class DockActivity extends AppCompatActivity
                                 : null).commit();
     }
 
-
     public void replaceDockableFragment(BaseFragment frag, String Tag) {
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction();
@@ -109,6 +108,20 @@ public abstract class DockActivity extends AppCompatActivity
         transaction.replace(getDockFrameLayoutId(), frag);
         transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : null).commit();
     }
+
+    public void removeDockableFragment(BaseFragment frag) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // Clear the backstack
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(getDockFrameLayoutId(), frag);
+        transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : null);
+        transaction.commit();
+    }
+
 
     public void replaceDockableFragment2(Fragment frag, String Tag) {
         FragmentTransaction transaction = getSupportFragmentManager()
@@ -143,6 +156,14 @@ public abstract class DockActivity extends AppCompatActivity
                 .addToBackStack(
                         getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST
                                 : null).commit();
+    }
+
+    public void removeDockableFragment(BaseFragment frag, String tag) {
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction();
+
+        transaction.replace(getDockFrameLayoutId(), frag); // Replace the current fragment
+        transaction.commit(); // Commit without adding to back stack
     }
 
     public DrawerLayout getDrawerLayout() {

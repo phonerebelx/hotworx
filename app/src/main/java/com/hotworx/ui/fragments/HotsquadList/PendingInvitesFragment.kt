@@ -63,13 +63,8 @@ class PendingInvitesFragment : BaseFragment() {
         getPendingRequestList()
     }
 
-    override fun setTitleBar(titleBar: TitleBar) {
-        titleBar.showBackButton()
-        titleBar.subHeading = getString(R.string.pending_invite)
-    }
-
     private fun getPendingRequestList() {
-        getServiceHelper().enqueueCall(
+        getServiceHelper().enqueueCallExtended(
             getWebService().getPendingRequestList(
                 apiHeader(requireContext())
             ), WebServiceConstants.GET_PENDING_REQUEST_LIST, true
