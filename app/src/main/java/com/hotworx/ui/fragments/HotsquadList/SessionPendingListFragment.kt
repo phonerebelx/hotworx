@@ -96,7 +96,6 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
         adapter = SessionPendingListAdapter(mutableListOf(), requireContext(), object : SessionPendingListAdapter.OnItemClickListener {
             override fun onItemClick(item:PendingSessionResponse.SquadInvitation, position: Int) {
                 setSessionDialog(item)
-                Log.d("dgaiugia","eftfxtc")
             }
         })
 

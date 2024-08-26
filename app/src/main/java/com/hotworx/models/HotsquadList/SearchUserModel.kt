@@ -21,12 +21,12 @@ data class FoundUser(
     val email: String,
     val phone: String,
     val profile_image_url: String,
-    var selected: Boolean = false
+    var selected: Boolean = true
 )
 
 data class NotFoundUser(
     @SerializedName("referral_inviteId") val referralInviteId: String,
     @SerializedName("search_by") val searchBy: String,
     @SerializedName("record_status") val recordStatus: String,
-    var selected: Boolean = false
+    var selected: Boolean = true
 )

@@ -9,9 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.hotsquad.hotsquadlist.extensions.showMaterialAlertDialog
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
@@ -59,6 +62,19 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setOnShowListener {
+            val bottomSheetDialog = it as BottomSheetDialog
+            val parentLayout = bottomSheetDialog.findViewById<View>(
+                com.google.android.material.R.id.design_bottom_sheet
+            )
+            parentLayout?.let { bottomSheet ->
+                val behaviour = BottomSheetBehavior.from(bottomSheet)
+                val layoutParams = bottomSheet.layoutParams
+                layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
+                bottomSheet.layoutParams = layoutParams
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+        }
         return dialog
     }
 
@@ -112,7 +128,18 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     }
 
     private fun setNotFoundUserAdapter(notFoundUserList: List<NotFoundUser>) {
-        val adapter = SearchNotFoundUserAdapter(notFoundUserList, requireContext(), object : SearchNotFoundUserAdapter.OnItemClickListener {
+        val updatedList = notFoundUserList.map { it.copy(selected = true) }
+
+        // Add selected items to the list
+        notfoundUserListForServer.clear()
+        updatedList.forEach { item ->
+            if (item.selected) {
+                notfoundUserListForServer.add(item.referralInviteId)
+            }
+        }
+        Log.d(TAG, "notfoundUserList ${notfoundUserListForServer.toString()}")
+
+        val adapter = SearchNotFoundUserAdapter(updatedList, requireContext(), object : SearchNotFoundUserAdapter.OnItemClickListener {
             override fun onItemClick(item: NotFoundUser) {
                 item?.let {
                     if (item.selected) {

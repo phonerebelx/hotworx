@@ -34,6 +34,9 @@ class SearchNotFoundUserAdapter(
             titleTextView.text = item.searchBy
             statusTextView.text = item.recordStatus
 
+            // Log the selected state
+            println("Item: ${item.searchBy}, Selected: ${item.selected}")
+
             // Set the visibility based on the selected state
             imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
 
