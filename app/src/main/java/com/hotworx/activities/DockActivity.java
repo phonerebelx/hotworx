@@ -244,7 +244,6 @@ public abstract class DockActivity extends AppCompatActivity
         dialog.show();
     }
 
-
     public void onBackPressedInFragment() {
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
         for (Fragment f : fragments) {

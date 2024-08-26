@@ -6,53 +6,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/friend_list"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="@dimen/_14ssp"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="@color/text_color"/>
+            android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_440sdp"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:spanCount="2"
-            tools:listitem="@layout/item_sessionmember"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSentList"
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_45sdp"
-            android:background="@drawable/multicolor_background"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:text="@string/add_list"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_16sdp"
-            android:fontFamily="@font/bebasneue_regular" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/friend_list"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/text_color"/>
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textLayoutTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/event_name"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:textColorHint="@color/textColorSecondary"
+                    app:hintTextColor="@color/textColorSecondary">
 
-    <TextView
-        android:id="@+id/tvNoListFound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:fontFamily="@font/regular"
-        tools:text="@string/text"
-        android:textColor="@color/colorBurned"
-        android:textSize="@dimen/_12sdp" />
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/titleEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:imeOptions="actionNext"
+                        android:backgroundTint="@color/hint_color"
+                        android:textColorHint="@color/textColorSecondary"
+                        android:inputType="text"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColor="@color/hint_color" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_440sdp"
+                    android:clipToPadding="false"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:spanCount="2"
+                    tools:listitem="@layout/item_sessionmember"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSentList"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:background="@drawable/multicolor_background"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/add_list"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_16sdp"
+                    android:fontFamily="@font/bebasneue_regular" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvNoListFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/regular"
+                tools:text="@string/text"
+                android:textColor="@color/colorBurned"
+                android:textSize="@dimen/_12sdp" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

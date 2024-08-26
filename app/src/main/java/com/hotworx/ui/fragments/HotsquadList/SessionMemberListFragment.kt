@@ -1,12 +1,13 @@
 package com.hotworx.ui.fragments.HotsquadList
 
-import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
@@ -24,6 +25,7 @@ import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionMemberListAda
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadMemberListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.HotsquadList.Bottomsheet.SearchUserBottomSheet.Companion.TAG
+import com.hotworx.ui.fragments.HotsquadList.activity.CongratulationsActivity
 import com.hotworx.ui.views.TitleBar
 
 class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemClickListener {
@@ -63,7 +65,15 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
         callInvitationApi(Constants.SESSION_MEMBER, "")
 
         binding.btnSentList.setOnClickListener{
-            callInvitationApi(Constants.SEND_SESSION_MEMBER, "")
+            val inputTitle = binding.titleEt.text.toString()
+            if (TextUtils.isEmpty(inputTitle)) {
+                binding.titleEt.error = "Field Required!!"
+                binding.titleEt.requestFocus()
+            }else if(userListForServer.isEmpty()){
+                Toast.makeText(requireContext(),"Please select members",Toast.LENGTH_SHORT).show()
+            } else {
+                callInvitationApi(Constants.SEND_SESSION_MEMBER, "")
+            }
         }
 
     }
@@ -92,7 +102,7 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
 
                 val request = sendSquadSessionMemberRequest(
                     squadId,       // Your squad ID
-                    squadName,
+                    binding.titleEt.text.toString(),
                     memberId,
                     userListForServer
                 )
@@ -143,9 +153,11 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
                     try {
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SquadSessionInvitationResponse::class.java)!!
                         if (response.status) {
-                            dockActivity.showSuccessMessage(response.message)
+                            val intent = Intent(requireActivity(), CongratulationsActivity::class.java)
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            startActivity(intent)
                         } else {
-
+                            dockActivity.showErrorMessage(response.message)
                         }
                     } catch (e: Exception) {
                         val genericMsgResponse = GsonFactory.getConfiguredGson()

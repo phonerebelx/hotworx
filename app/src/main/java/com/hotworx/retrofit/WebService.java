@@ -729,6 +729,11 @@ public interface WebService {
             @Body sendSquadSessionMemberRequest request // Accepting the custom request body
     );
 
+    @GET("hotsquad/getPendingSquadSessionInvitationList")
+    Call<ResponseBody> getPendingSessionList(
+            @HeaderMap Map<String, String> headers
+    );
+
     // Vi Management
     @POST("vi/list_location_suana")
     Call<ResponseBody> getListLocationSuana(

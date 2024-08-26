@@ -69,6 +69,7 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
             dockActivity.replaceDockableFragment(addListFragment)
             val transaction = fragmentManager?.beginTransaction()
             transaction?.remove(this)
+            fragmentManager?.popBackStack()
         }
 
         setAdapter(squadList = hotsquadListModel.data)

@@ -15,4 +15,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         prefHelper = new BasePreferenceHelper(this);
     }
+
 }

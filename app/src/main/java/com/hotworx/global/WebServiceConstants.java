@@ -70,6 +70,7 @@ public class WebServiceConstants {
     public static final String GET_APP_INFO= "GET_SQUAD_LIST" ;
     public static final String GET_SQUAD_MEMBER_LIST = "GET_SQUAD_MEMBER_LIST" ;
     public static final String GET_PENDING_REQUEST_LIST = "GET_PENDING_REQUEST_LIST" ;
+    public static final String GET_PENDING_SESSION_LIST = "GET_PENDING_SESSION_LIST" ;
     public static final String MARK_NOTIFICATION_READ = "MARK_NOTIFICATION_READ" ;
     public static final String MARK_ATTACHMENT_READ = "MARK_ATTACHMENT_READ" ;
 }
