@@ -23,6 +23,7 @@ public class Constants {
 
     public static final String BookingSelectionFragment = "BookingSelectionFragment";
     public static final String SessionBookingDialogFragment = "SessionBookingDialogFragment";
+    public static final String PendingSessionDialogFragment = "PendingSessionDialogFragment";
     public static final String notificationDialogHomeFragment = "NotificationDialogHomeFragment";
     public static final String BarGraphDialogFragment = "BarGraphDialogFragment";
     public static final String SessionViewAppointmentDialogFragment = "SessionViewAppointmentDialogFragment";

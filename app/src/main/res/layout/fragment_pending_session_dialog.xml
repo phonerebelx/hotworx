@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.dialog.SessionDialog.StartSessionDialogFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvSession"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:backgroundTint="@color/colorWhite"
+        android:elevation="@dimen/_3sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_6sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="26dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvDateDialog"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:backgroundTint="@color/colorWhite"
+                    android:elevation="@dimen/_6sdp"
+                    android:minHeight="?android:attr/actionBarSize"
+                    app:cardCornerRadius="@dimen/_5sdp"
+                    app:cardElevation="@dimen/_1sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/multicolor_background_without_radius"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:id="@+id/tvTimeSlot"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:gravity="center"
+                        android:text="@string/full_time"
+                        android:textSize="@dimen/_8sdp"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_20sdp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/squad_event_name"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/tvSessionName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_italic"
+                        android:gravity="center_vertical"
+                        android:text="@string/text"
+                        android:textColor="@color/colorBlack"
+                        android:maxLines="2"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="italic" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/session_typee"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/tvSessionType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_italic"
+                        android:gravity="center_vertical"
+                        android:text="@string/text"
+                        android:textColor="@color/colorBlack"
+                        android:maxLines="2"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="italic" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/osauna"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/tvSauna"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_italic"
+                        android:gravity="center_vertical"
+                        android:text="@string/sauna_no"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="italic" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/location"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/tvLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:background="@color/colorWhite"
+                        android:fontFamily="@font/montserrat_italic"
+                        android:gravity="center_vertical"
+                        android:text="@string/location"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="italic" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:gravity="center_horizontal"
+                android:paddingBottom="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/declineBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:text="@string/decline"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/bebasneue_regular"
+                    android:textColor="@color/white"
+                    android:background="@drawable/multicolor_background"
+                    android:backgroundTint="@color/colorDarkRed" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/AcceptBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:backgroundTint="@color/green"
+                    android:text="@string/accept"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/bebasneue_regular"
+                    android:textColor="@color/white"
+                    android:background="@drawable/multicolor_background" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

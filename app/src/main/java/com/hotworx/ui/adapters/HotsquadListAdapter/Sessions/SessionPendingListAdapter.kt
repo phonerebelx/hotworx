@@ -52,28 +52,28 @@ class SessionPendingListAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
+        private val emailTextView: TextView = itemView.findViewById(R.id.tvEmail)
+        private val sentTextView: TextView = itemView.findViewById(R.id.tvSentAt)
+        private val listMainView: CardView = itemView.findViewById(R.id.listMainView)
+        private val eventNameTextView: TextView = itemView.findViewById(R.id.tvSquadEventName)
+        private val image: ImageView = itemView.findViewById(R.id.imgIcon)
 
         fun bind(item: PendingSessionResponse.SquadInvitation) {
-            nameTextView.text = item.name
-//            statusTextView.text = item.invite_message
-//            emailTextView.text = item.email
-//            phoneTextView.text = item.phone
-//
-//            // Use itemView.context to get the context
-//            Glide.with(itemView.context)
-//                .load(item.profile_image_url)
-//                .placeholder(R.drawable.placeholder) // Optional placeholder
-//                .into(iconImageView)
-//
+            nameTextView.text = item.sender_info.name
+            emailTextView.text = item.sender_info.email
+            sentTextView.text = item.sender_info.sent_at
+            eventNameTextView.text = item.squad_event_name
+            // Display other information as needed, such as sender name, email, etc.
 
-//            cardView.setOnClickListener {
-//                listener.onItemClick(item)
-//            }
+            listMainView.setOnClickListener{
+                listener.onItemClick(item,position)
+            }
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_sessionmember, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_sessionpendingrequest, parent, false)
         return ViewHolder(view)
     }
 

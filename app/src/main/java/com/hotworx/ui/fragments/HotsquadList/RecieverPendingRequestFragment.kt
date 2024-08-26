@@ -30,23 +30,17 @@ class RecieverPendingRequestFragment : BaseFragment(), TabLayout.OnTabSelectedLi
 
         setupAdapter()
 
-        // Restore selected tab position
-        savedInstanceState?.let {
-            val savedTabPosition = it.getInt("current_tab", 0)
-            binding.viewPager.currentItem = savedTabPosition
-        }
+//        // Restore selected tab position
+//        savedInstanceState?.let {
+//            val savedTabPosition = it.getInt("current_tab", 0)
+//            binding.viewPager.currentItem = savedTabPosition
+//        }
     }
 
     override fun setTitleBar(titleBar: TitleBar) {
         super.setTitleBar(titleBar)
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.Pending_request)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        // Save current tab position
-        outState.putInt("current_tab", binding.tabLayout.selectedTabPosition)
     }
 
     private fun setupAdapter() {

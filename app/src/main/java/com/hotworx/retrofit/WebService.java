@@ -9,6 +9,7 @@ import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
 import com.hotworx.models.HotsquadList.SearchListRequest;
 import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest;
+import com.hotworx.models.HotsquadList.Session.sendSessionInvitationRequest;
 import com.hotworx.models.HotsquadList.Session.sendSquadSessionMemberRequest;
 import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest;
 import com.hotworx.models.HotsquadList.removeSquadMemberRequest;
@@ -732,6 +733,12 @@ public interface WebService {
     @GET("hotsquad/getPendingSquadSessionInvitationList")
     Call<ResponseBody> getPendingSessionList(
             @HeaderMap Map<String, String> headers
+    );
+
+    @POST("hotsquad/sessionInvitationResponse")
+    Call<ResponseBody> responseSessionInvitationRequest(
+            @HeaderMap Map<String, String> headers,
+            @Body sendSessionInvitationRequest request // Accepting the custom request body
     );
 
     // Vi Management

@@ -64,7 +64,7 @@ class PendingInvitesFragment : BaseFragment() {
     }
 
     private fun getPendingRequestList() {
-        getServiceHelper().enqueueCallExtended(
+        getServiceHelper().enqueueCall(
             getWebService().getPendingRequestList(
                 apiHeader(requireContext())
             ), WebServiceConstants.GET_PENDING_REQUEST_LIST, true
@@ -73,8 +73,10 @@ class PendingInvitesFragment : BaseFragment() {
 
     override fun ResponseSuccess(result: String?, tag: String?) {
         if (!isAdded) return // Safeguard to prevent updates if fragment is not added
-
+        Log.d("Response", "Raw JSON response: $result")
         pendingRequestModel = GsonFactory.getConfiguredGson().fromJson(result, PendingInvitationResponse::class.java)
+
+        Log.d("Response", "Deserialized data: ${pendingRequestModel.data}")
 
         if (!pendingRequestModel.data.isNullOrEmpty()) {
             binding.tvNoListFound.visibility = View.GONE

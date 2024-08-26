@@ -19,7 +19,7 @@
             android:paddingBottom="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             app:spanCount="2"
-            tools:listitem="@layout/item_squadpendingrequest"/>
+            tools:listitem="@layout/item_sessionpendingrequest"/>
 
     </LinearLayout>
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:fontFamily="@font/regular"
-        tools:text="@string/text"
+        android:text="@string/text"
         android:textColor="@color/colorBurned"
         android:textSize="@dimen/_12sdp" />
 

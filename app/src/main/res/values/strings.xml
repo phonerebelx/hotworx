@@ -122,6 +122,8 @@
     <string name="webview_description">Please enter your payment information to schedule your appointment. Your card will not be charged until you schedule your appointment.</string>
     <string name="session_name">Session</string>
     <string name="session_name2">Session Name: </string>
+    <string name="squad_event_name">Squad Event Name: </string>
+    <string name="session_typee">Session Type: </string>
     <string name="session_name3">Session Name</string>
     <string name="by_session_type">By Session Type</string>
     <string name="unlock">Unlock</string>

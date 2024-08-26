@@ -65,7 +65,6 @@ class AddListFragment : BaseFragment(){
                         binding.descriptionEt.text.toString(),
                     ), Constants.CREATE_SQUADLIST, true
                 )
-
             }
         }
     }
