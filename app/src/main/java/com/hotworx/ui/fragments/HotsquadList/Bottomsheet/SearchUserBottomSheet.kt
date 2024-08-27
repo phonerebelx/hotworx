@@ -160,6 +160,19 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     }
 
     private fun setFoundUserAdapter(foundUserList: MutableList<FoundUser>) {
+//        val updatedList = foundUserList.map {
+//            it.copy(selected = true)
+//        }.toMutableList()
+//
+//        // Clear previous list and add new selected items
+//        foundUserListForServer.clear()
+//        updatedList.forEach { item ->
+//            if (item.selected) {
+//                foundUserListForServer.add(item.squadInviteId)
+//            }
+//        }
+//        Log.d(TAG, "foundUserList ${foundUserListForServer.toString()}")
+
         val adapter = SearchRegisteredAdapter(foundUserList, requireContext(), object : SearchRegisteredAdapter.OnItemClickListener {
             override fun onItemClick(item: FoundUser) {
                 item?.let {

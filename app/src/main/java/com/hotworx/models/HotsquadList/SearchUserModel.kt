@@ -16,12 +16,12 @@ data class SearchUserData(
 
 data class FoundUser(
     @SerializedName("squad_invite_id") val squadInviteId: String,
-    val squad_invite_status: String,
+    val squad_invite_status: String? = null,
     val name: String,
     val email: String,
     val phone: String,
     val profile_image_url: String,
-    var selected: Boolean = true
+    var selected: Boolean = false
 )
 
 data class NotFoundUser(
