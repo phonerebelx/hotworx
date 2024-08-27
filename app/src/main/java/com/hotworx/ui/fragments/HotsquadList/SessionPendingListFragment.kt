@@ -151,7 +151,6 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
         super.onSuccess(liveData, tag)
         if (!isAdded) return // Safeguard to prevent updates if fragment is not added
-
         when (tag) {
             Constants.PENDING_ACCEPT_REJECT -> {
                 val responseJson = liveData.value
@@ -166,15 +165,22 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
                             dockActivity?.showErrorMessage(response.message)
                         }
                     } catch (e: Exception) {
-                        val genericMsgResponse = GsonFactory.getConfiguredGson()
-                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
-                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
-                        Log.i("Error", e.message.toString())
+                        dockActivity?.showErrorMessage(e.message.toString())
                     }
                 } else {
                     Log.e("Error", "LiveData value is null")
                     dockActivity?.showErrorMessage("No response from server")
                 }
+            }
+        }
+    }
+
+    override fun onFailure(message: String, tag: String) {
+
+        when (tag) {
+            Constants.PENDING_ACCEPT_REJECT -> {
+                myDockActivity?.showErrorMessage(message)
+                Log.i("xxError", "Error")
             }
         }
     }

@@ -24,6 +24,7 @@ class PendingSessionDialogFragment(val onClickSessionPendingInterface: OnClickSe
     DialogFragment(), LoadingListener {
 
     private lateinit var tvTime: TextView
+    private lateinit var tvDate: TextView
     private lateinit var tvSessionName: TextView
     private lateinit var tvSauna: TextView
     private lateinit var tvLocation: TextView
@@ -41,6 +42,7 @@ class PendingSessionDialogFragment(val onClickSessionPendingInterface: OnClickSe
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_pending_session_dialog, container, false)
         tvTime = root.findViewById(R.id.tvTimeSlot)
+        tvDate = root.findViewById(R.id.tvDateSlot)
         tvSessionName = root.findViewById(R.id.tvSessionName)
         tvSessionType = root.findViewById(R.id.tvSessionType)
         cvSession = root.findViewById(R.id.cvSession)
@@ -57,7 +59,9 @@ class PendingSessionDialogFragment(val onClickSessionPendingInterface: OnClickSe
 
     private fun setDialogData() {
         tvTime.text = " ".plus(todaysPendingSession.session_info.time_slot)
+        tvDate.text = " ".plus(todaysPendingSession.session_info.booking_date)
         tvSessionName.text = " ".plus(todaysPendingSession.squad_event_name)
+        tvSessionType.text = " ".plus(todaysPendingSession.session_info.session_type)
         tvSauna.text = " ".plus(todaysPendingSession.session_info.sauna_no)
         tvLocation.text = " ".plus(todaysPendingSession.session_info.location_name)
     }

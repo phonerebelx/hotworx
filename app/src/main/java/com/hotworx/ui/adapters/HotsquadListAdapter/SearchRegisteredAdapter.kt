@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hotworx.R
-import com.hotworx.activities.DockActivity
 import com.hotworx.models.HotsquadList.FoundUser
 
 class SearchRegisteredAdapter(
@@ -38,7 +36,7 @@ class SearchRegisteredAdapter(
         private val phoneTextView: TextView = itemView.findViewById(R.id.tvPhone)
         private val iconImageView: ImageView = itemView.findViewById(R.id.imgIcon)
         private val cardView: CardView = itemView.findViewById(R.id.listMainView)
-        private val imgcheck: ImageView = itemView.findViewById(R.id.imgCheck)
+        private val imgCheck: ImageView = itemView.findViewById(R.id.imgCheck)
         private val imgCheckBox: ImageView = itemView.findViewById(R.id.imgCheckBox)
 
         fun bind(item: FoundUser) {
@@ -47,26 +45,30 @@ class SearchRegisteredAdapter(
             emailTextView.text = item.email
             phoneTextView.text = item.phone
 
-            // Use itemView.context to get the context
+            // Load the profile image using Glide
             Glide.with(itemView.context)
                 .load(item.profile_image_url)
                 .placeholder(R.drawable.placeholder) // Optional placeholder
                 .into(iconImageView)
 
-            // Set the visibility based on the selected state
-            imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+            // Make the checkbox visible by default
+            imgCheckBox.visibility = View.VISIBLE
 
-            if(item.squad_invite_status == null){
+            // Set the visibility based on the selected state
+            imgCheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+
+            // Determine card color based on invite status
+            if (item.squad_invite_status == null) {
                 cardView.setOnClickListener {
                     item.selected = !item.selected
-                    imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+                    imgCheck.visibility = if (item.selected) View.VISIBLE else View.GONE
                     notifyItemChanged(adapterPosition)
                     listener.onItemClick(item)
                 }
-            }else{
+                cardView.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.white))
+            } else {
                 imgCheckBox.visibility = View.GONE
-                val color = ContextCompat.getColor(context, R.color.colorLine)
-                cardView.backgroundTintList = ColorStateList.valueOf(color)
+                cardView.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.colorLine))
             }
         }
     }

@@ -53,9 +53,6 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
             binding.btnCreateSquad.setOnClickListener{
                 val addListFragment = AddListFragment()
                 dockActivity.replaceDockableFragment(addListFragment)
-                val transaction = fragmentManager?.beginTransaction()
-                // Optionally add to back stack
-                transaction?.addToBackStack(null)
             }
         }
 
@@ -67,9 +64,6 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         binding.btnCreateHotsquad.setOnClickListener{
             val addListFragment = AddListFragment()
             dockActivity.replaceDockableFragment(addListFragment)
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.remove(this)
-            fragmentManager?.popBackStack()
         }
 
         setAdapter(squadList = hotsquadListModel.data)

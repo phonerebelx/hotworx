@@ -46,6 +46,7 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
     var squadID = ""
     var referralUrl = ""
     lateinit var  referSquadInviteDialogFragment: ReferSquadInviteDialogFragment
+    private var bottomSheetBehavior: BottomSheetBehavior<View>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,11 +69,13 @@ class SearchUserBottomSheet(): BaseBottomsheetFragment(){
                 com.google.android.material.R.id.design_bottom_sheet
             )
             parentLayout?.let { bottomSheet ->
-                val behaviour = BottomSheetBehavior.from(bottomSheet)
+                bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet).apply {
+                    state = BottomSheetBehavior.STATE_EXPANDED
+                    isDraggable = false // Disable dragging
+                }
                 val layoutParams = bottomSheet.layoutParams
                 layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
                 bottomSheet.layoutParams = layoutParams
-                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
             }
         }
         return dialog
