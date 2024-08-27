@@ -87,13 +87,13 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
             updateAdapterList(pendingList) // Update adapter with the new list
         } else {
             binding.tvNoListFound.visibility = View.VISIBLE
-            binding.tvNoListFound.text = "No Squad List Found"
+            binding.tvNoListFound.text = "No Session List Found"
         }
     }
 
 
     private fun setAdapter(pendingList: MutableList<PendingSessionResponse.SquadInvitation>)  {
-        adapter = SessionPendingListAdapter(mutableListOf(), requireContext(), object : SessionPendingListAdapter.OnItemClickListener {
+        adapter = SessionPendingListAdapter(pendingList, requireContext(), object : SessionPendingListAdapter.OnItemClickListener {
             override fun onItemClick(item:PendingSessionResponse.SquadInvitation, position: Int) {
                 setSessionDialog(item)
             }
@@ -120,7 +120,7 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
 
     override fun ResponseFailure(message: String?, tag: String?) {
         if (isAdded) { // Check if fragment is added
-            binding.tvNoListFound.text = "No Squad List Found"
+            binding.tvNoListFound.text = "No Session List Found"
             binding.tvNoListFound.visibility = View.VISIBLE
         }
     }
@@ -161,6 +161,7 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson,  PendingSessionResponse::class.java)!!
                         if (response.status) {
                             dockActivity?.showSuccessMessage(response.message)
+                            getPendingRequestList()
                         } else {
                             dockActivity?.showErrorMessage(response.message)
                         }

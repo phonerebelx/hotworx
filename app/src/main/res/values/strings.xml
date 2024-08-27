@@ -46,7 +46,7 @@
     <string name="settings_label">Settings</string>
 
     <string name="leaderboard">Leaderboard</string>
-    <string name="hotsquadlist">HOTSQUAD List</string>
+    <string name="hotsquadlist">HOTSQUAD</string>
     <string name="pending_invite">Pending Invites</string>
     <string name="vi_management">Vi Management</string>
     <string name="Title">Add your title</string>
@@ -298,7 +298,7 @@
     <string name="hotsquad_list_detail">If You don’t have any member in your hotsquad list, click icon to create one</string>
     <string name="SV_CB">SAVE CALORIES BURNED</string>
     <string name="Congratulations">Congratulations</string>
-    <string name="congrats_text">Your session has been confirmed!</string>
+    <string name="congrats_text">Your session Invitation Request to Squad Members has been sent!</string>
     <string name="one_hour">01:00:00</string>
     <string name="done_">DONE</string>
     <string name="please_enter_date_of_birth">Please enter date of birth</string>

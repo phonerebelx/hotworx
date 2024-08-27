@@ -1,7 +1,9 @@
 package com.hotworx.ui.fragments.HotsquadList
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayout
@@ -10,6 +12,7 @@ import com.hotworx.databinding.FragmentRecieverPendingRequestBinding
 import com.hotworx.ui.adapters.HotsquadListAdapter.tabsadapter.MemberPendingRequestViewPagerAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
+
 
 class RecieverPendingRequestFragment : BaseFragment(), TabLayout.OnTabSelectedListener {
 
@@ -25,16 +28,17 @@ class RecieverPendingRequestFragment : BaseFragment(), TabLayout.OnTabSelectedLi
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
 
-//        // Restore selected tab position
-//        savedInstanceState?.let {
-//            val savedTabPosition = it.getInt("current_tab", 0)
-//            binding.viewPager.currentItem = savedTabPosition
-//        }
+        // Disable swipe gestures on the ViewPager
+        binding.viewPager.setOnTouchListener { _, event ->
+            event.action == MotionEvent.ACTION_MOVE
+        }
+
     }
 
     override fun setTitleBar(titleBar: TitleBar) {

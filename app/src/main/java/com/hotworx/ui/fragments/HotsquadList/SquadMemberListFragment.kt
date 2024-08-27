@@ -1,7 +1,9 @@
 package com.hotworx.ui.fragments.HotsquadList
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -28,6 +30,7 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,6 +41,11 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
 
         setupAdapter()
         setupTabs()
+
+        // Disable swipe gestures on the ViewPager
+        binding.viewPager.setOnTouchListener { _, event ->
+            event.action == MotionEvent.ACTION_MOVE
+        }
     }
 
     private fun setupAdapter() {

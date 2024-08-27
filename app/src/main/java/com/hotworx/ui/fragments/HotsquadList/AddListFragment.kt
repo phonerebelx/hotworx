@@ -77,7 +77,7 @@ class AddListFragment : BaseFragment(){
                     val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, CreateHotsquadModel::class.java)!!
                     if (response.status){
                         val myHotsquadListFragment = MyHotsquadListFragment()
-                        dockActivity.removeDockableFragment(myHotsquadListFragment)
+                        dockActivity.replaceDockableFragment(myHotsquadListFragment)
                     }else{
                         dockActivity?.showErrorMessage("Something Went Wrong")
                     }
