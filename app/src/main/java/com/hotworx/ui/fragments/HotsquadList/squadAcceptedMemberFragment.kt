@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
@@ -54,6 +56,7 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
         }
 
         callInvitationApi(Constants.GET_SQUAD_MEMBER_LIST, "")
+
 
 //        binding.tvRemove.setOnClickListener{
 //            callInvitationApi(Constants.REMOVE_SQUAD_MEMBER, "")
@@ -181,8 +184,14 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
                 }
             }
         })
+        // Set up the RecyclerView
+
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+
+        // Attach ItemTouchHelper to RecyclerView
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
     }
 
     private fun updateAdapterList(newList: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
@@ -206,6 +215,34 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
     override fun setTitleBar(titleBar: TitleBar) {
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.squad_members)
+    }
+
+    // Create the ItemTouchHelper.Callback
+    private val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.adapterPosition
+
+            // Get the member ID of the swiped item
+            val member = adapter?.items?.get(position)
+            member?.let {
+                // Add the member ID to the list for removal
+                userListForServer.add(it.member_id)
+
+                // Remove the item from the adapter
+                adapter?.removeItem(position)
+
+                // Call the API to remove the member
+                callInvitationApi(Constants.REMOVE_SQUAD_MEMBER, "")
+            }
+        }
     }
 
     override fun onDestroyView() {

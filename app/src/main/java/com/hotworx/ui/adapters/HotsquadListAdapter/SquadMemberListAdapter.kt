@@ -21,7 +21,7 @@ import com.hotworx.ui.adapters.HotsquadListAdapter.SearchNotFoundUserAdapter.OnI
 import com.hotworx.ui.fragments.HotsquadList.HotsquadSearchFragment
 
 class SquadMemberListAdapter(
-    private val items: MutableList<SquadMemberDetailsResponse.SquadData.Member>,
+    val items: MutableList<SquadMemberDetailsResponse.SquadData.Member>,
     private val context: Context,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<SquadMemberListAdapter.ViewHolder>() {
@@ -63,21 +63,6 @@ class SquadMemberListAdapter(
                 .load(item.profile_image_url)
                 .placeholder(R.drawable.placeholder) // Optional placeholder
                 .into(iconImageView)
-
-//            // Set the visibility based on the selected state
-//            imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
-//
-//            if(item.has_squad_access){
-//                imgCheckBox.setOnClickListener {
-//                    item.selected = !item.selected
-//                    imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
-//                    notifyItemChanged(adapterPosition)
-//                    listener.onItemClick(item)
-//                }
-//            }else{ }
-//            cardView.setOnClickListener {
-//                listener.onItemClick(item)
-//            }
         }
     }
 
