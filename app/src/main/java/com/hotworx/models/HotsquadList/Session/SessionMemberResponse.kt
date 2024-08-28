@@ -21,6 +21,7 @@ data class SessionMemberResponse(
             val email: String,
             val phone: String,
             val invite_message: String?,
+            val has_owner: Boolean,
             var selected: Boolean
         )
 

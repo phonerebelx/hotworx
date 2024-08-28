@@ -2,12 +2,14 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
@@ -130,6 +132,9 @@ class SessionMemberListFragment : BaseFragment(), SquadMemberListAdapter.OnItemC
                         if (response.status) {
                             binding.tvNoListFound.visibility = View.GONE
                             setAdapter(response.data.members)
+
+                            val titleEt = requireView().findViewById<AppCompatAutoCompleteTextView>(R.id.titleEt)
+                            titleEt.setText(response.data.squad_event_name)
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }

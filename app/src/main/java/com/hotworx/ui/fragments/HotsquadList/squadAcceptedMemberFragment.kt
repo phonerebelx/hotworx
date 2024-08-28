@@ -66,11 +66,6 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
         }
 
         callInvitationApi(Constants.GET_SQUAD_MEMBER_LIST, "")
-
-
-//        binding.tvRemove.setOnClickListener{
-//            callInvitationApi(Constants.REMOVE_SQUAD_MEMBER, "")
-//        }
     }
 
     override fun onItemClick(item: SquadMemberDetailsResponse.SquadData.Member) {
@@ -199,9 +194,12 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
-        // Attach ItemTouchHelper to RecyclerView
-        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
+        if(squadAccess){
+            // Attach ItemTouchHelper to RecyclerView
+            val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+            itemTouchHelper.attachToRecyclerView(binding.recyclerView)
+        }else{
+        }
     }
 
     private fun updateAdapterList(newList: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
@@ -262,11 +260,7 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
 
             // Initialize drawable and background color if null
             if (deleteIcon == null || background == null) {
-                deleteIcon = ContextCompat.getDrawable(context, R.drawable.ic_delete_black_24dp)?.apply {
-                    // Apply red tint to the drawable
-                    val redColor = ContextCompat.getColor(context, R.color.textColorSecondary)
-                    setTint(redColor)
-                }
+                deleteIcon = ContextCompat.getDrawable(context, R.drawable.deleteicon)
                 backgroundColor = ContextCompat.getColor(context, R.color.red)
                 background = ColorDrawable(backgroundColor)
             }

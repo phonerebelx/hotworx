@@ -1,12 +1,20 @@
 package com.hotworx.ui.fragments.HotsquadList
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.graphics.Canvas
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
@@ -54,9 +62,6 @@ class squadPendingMemberFragment : BaseFragment(), SquadMemberListAdapter.OnItem
 
         callInvitationApi(Constants.GET_SQUAD_MEMBER_LIST, "")
 
-//        binding.tvRemove.setOnClickListener{
-//            callInvitationApi(Constants.REMOVE_SQUAD_MEMBER, "")
-//        }
     }
 
     override fun onItemClick(item: SquadMemberDetailsResponse.SquadData.Member) {
@@ -182,6 +187,13 @@ class squadPendingMemberFragment : BaseFragment(), SquadMemberListAdapter.OnItem
         })
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+
+        if(squadAccess){
+            // Attach ItemTouchHelper to RecyclerView
+            val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+            itemTouchHelper.attachToRecyclerView(binding.recyclerView)
+        }else{
+        }
     }
 
     private fun updateAdapterList(newList: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
@@ -205,6 +217,112 @@ class squadPendingMemberFragment : BaseFragment(), SquadMemberListAdapter.OnItem
     override fun setTitleBar(titleBar: TitleBar) {
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.squad_members)
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+
+        private var deleteIcon: Drawable? = null
+        private var background: ColorDrawable? = null
+        private var backgroundColor: Int = R.color.red
+        private val swipeThreshold: Float = 0.1f // Swipe threshold to trigger background drawing
+
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val position = viewHolder.adapterPosition
+            showConfirmationDialog(position)
+        }
+
+        override fun onChildDraw(
+            c: Canvas,
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            dX: Float,
+            dY: Float,
+            actionState: Int,
+            isCurrentlyActive: Boolean
+        ) {
+            val itemView = viewHolder.itemView
+            val context = viewHolder.itemView.context // Safe context access
+
+            // Initialize drawable and background color if null
+            if (deleteIcon == null || background == null) {
+                deleteIcon = ContextCompat.getDrawable(context, R.drawable.deleteicon)
+                backgroundColor = ContextCompat.getColor(context, R.color.red)
+                background = ColorDrawable(backgroundColor)
+            }
+
+            // Check if swipe distance exceeds threshold
+            val isSwipeBeyondThreshold = Math.abs(dX) > itemView.width * swipeThreshold
+
+            // Draw red background only if swiped beyond threshold
+            if (dX < 0 && isSwipeBeyondThreshold) { // Swiping left and beyond threshold
+                background?.setBounds(
+                    itemView.right + dX.toInt(),
+                    itemView.top,
+                    itemView.right,
+                    itemView.bottom
+                )
+                background?.draw(c)
+
+                // Draw delete icon
+                deleteIcon?.let { icon ->
+                    val iconMargin = (itemView.height - icon.intrinsicHeight) / 2
+                    val iconTop = itemView.top + iconMargin
+                    val iconBottom = iconTop + icon.intrinsicHeight
+
+                    icon.setBounds(
+                        itemView.right - iconMargin - icon.intrinsicWidth,
+                        iconTop,
+                        itemView.right - iconMargin,
+                        iconBottom
+                    )
+                    icon.draw(c)
+                }
+            }
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+        }
+
+        private fun showConfirmationDialog(position: Int) {
+            context?.let {
+                AlertDialog.Builder(it)
+                    .setTitle("Confirm Delete")
+                    .setMessage("Are you sure you want to delete this item?")
+                    .setPositiveButton("Yes") { _, _ ->
+                        // Proceed with deletion
+                        handleDelete(position)
+                    }
+                    .setNegativeButton("No") { dialog, _ ->
+                        // Undo the swipe
+                        adapter?.notifyItemChanged(position)
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
+            }
+        }
+
+        private fun handleDelete(position: Int) {
+            val member = adapter?.items?.get(position)
+            member?.let {
+                // Add the member ID to the list for removal
+                userListForServer.add(it.member_id)
+
+                // Remove the item from the adapter
+                adapter?.removeItem(position)
+
+                // Call the API to remove the member
+                callInvitationApi(Constants.REMOVE_SQUAD_MEMBER, "")
+            }
+        }
     }
 
     override fun onDestroyView() {

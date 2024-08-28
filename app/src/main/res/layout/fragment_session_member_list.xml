@@ -39,7 +39,7 @@
                     android:textColorHint="@color/textColorSecondary"
                     app:hintTextColor="@color/textColorSecondary">
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                         android:id="@+id/titleEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

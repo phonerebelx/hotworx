@@ -62,26 +62,21 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         // Clear any existing tabs
         binding.tabLayout.removeAllTabs()
 
-        // Add Accepted tab first
         val acceptedTab = binding.tabLayout.newTab().setText(R.string.accepted)
         binding.tabLayout.addTab(acceptedTab)
 
-        // Add Pending tab second
         val pendingTab = binding.tabLayout.newTab().setText(R.string.Pending)
         binding.tabLayout.addTab(pendingTab)
 
-        // Set clickability of the Pending tab based on hasSquadAccess
         pendingTab.view.isClickable = hasSquadAccess
         pendingTab.view.isEnabled = hasSquadAccess
 
-        // Optional: Set a custom appearance for the disabled tab
         if (!hasSquadAccess) {
             pendingTab.view.alpha = 0.5f // Makes the tab appear disabled
         } else {
             pendingTab.view.alpha = 1.0f // Ensure normal appearance for enabled tab
         }
 
-        // Set the ViewPager to display the Accepted tab first
         binding.viewPager.currentItem = 0
     }
 

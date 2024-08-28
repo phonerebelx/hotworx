@@ -61,6 +61,27 @@ class SessionMemberListAdapter(
             imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
 
             Log.d("MemberCheck", "Member ID: ${item.member_id}")
+
+//            val isMemberValid = item.member_id != null && item.has_owner
+//
+//            if (isMemberValid) {
+//                Log.d("MemberCheck", "Handling valid member_id and owner")
+//                imgCheckBox.visibility = View.VISIBLE
+//                imgCheckBox.setOnClickListener {
+//                    item.selected = !item.selected
+//                    val color = ContextCompat.getColor(context, R.color.white)
+//                    detailLayout.setBackgroundColor(color)
+//                    imgcheck.visibility = if (item.selected) View.VISIBLE else View.GONE
+//                    notifyItemChanged(adapterPosition)
+//                    listener.onItemClick(item)
+//                }
+//            } else {
+//                Log.d("MemberCheck", "Handling invalid member_id or owner")
+//                imgCheckBox.visibility = View.GONE
+//                val color = ContextCompat.getColor(context, R.color.trans_card)
+//                detailLayout.setBackgroundColor(color)
+//            }
+
             if (item.member_id == null) {
                 Log.d("MemberCheck", "Handling null member_id")
                 imgCheckBox.visibility = View.GONE
@@ -79,9 +100,10 @@ class SessionMemberListAdapter(
                     listener.onItemClick(item)
                 }
             }
-//            cardView.setOnClickListener {
-//                listener.onItemClick(item)
-//            }
+
+            cardView.setOnClickListener {
+                listener.onItemClick(item)
+            }
         }
     }
 

@@ -40,6 +40,8 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
     private lateinit var pendingSessionResponse: PendingSessionResponse
     private var adapter: SessionPendingListAdapter? = null
     private val pendingList = mutableListOf<PendingSessionResponse.SquadInvitation>()
+    private var lastAcceptedPosition: Int = -1
+    private var lastDeclinedPosition: Int = -1
 
     var squadId = ""
     var squad_event_id = ""
@@ -57,7 +59,8 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
         super.onViewCreated(view, savedInstanceState)
 
         // Ensure PendingListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
-        pendingSessionResponse = PendingSessionResponse(status = false, message = "", data = mutableListOf())
+        pendingSessionResponse =
+            PendingSessionResponse(status = false, message = "", data = mutableListOf())
 
         setAdapter(pendingList)
 
@@ -76,7 +79,8 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
     override fun ResponseSuccess(result: String?, tag: String?) {
         if (!isAdded) return // Safeguard to prevent updates if fragment is not added
 
-        pendingSessionResponse = GsonFactory.getConfiguredGson().fromJson(result, PendingSessionResponse::class.java)
+        pendingSessionResponse =
+            GsonFactory.getConfiguredGson().fromJson(result, PendingSessionResponse::class.java)
 
         if (!pendingSessionResponse.data.isNullOrEmpty()) {
             binding.tvNoListFound.visibility = View.GONE
@@ -92,12 +96,18 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
     }
 
 
-    private fun setAdapter(pendingList: MutableList<PendingSessionResponse.SquadInvitation>)  {
-        adapter = SessionPendingListAdapter(pendingList, requireContext(), object : SessionPendingListAdapter.OnItemClickListener {
-            override fun onItemClick(item:PendingSessionResponse.SquadInvitation, position: Int) {
-                setSessionDialog(item)
-            }
-        })
+    private fun setAdapter(pendingList: MutableList<PendingSessionResponse.SquadInvitation>) {
+        adapter = SessionPendingListAdapter(
+            mutableListOf(),
+            requireContext(),
+            object : SessionPendingListAdapter.OnItemClickListener {
+                override fun onItemClick(
+                    item: PendingSessionResponse.SquadInvitation,
+                    position: Int
+                ) {
+                    setSessionDialog(item)
+                }
+            })
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.itemAnimator = DefaultItemAnimator()
@@ -158,10 +168,11 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
 
                 if (responseJson != null) {
                     try {
-                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson,  PendingSessionResponse::class.java)!!
+                        val response = GsonFactory.getConfiguredGson()
+                            ?.fromJson(responseJson, PendingSessionResponse::class.java)!!
                         if (response.status) {
                             dockActivity?.showSuccessMessage(response.message)
-                            getPendingRequestList()
+                            onItemActionSuccess(position = lastAcceptedPosition)
                         } else {
                             dockActivity?.showErrorMessage(response.message)
                         }
@@ -189,19 +200,28 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
     override fun onItemClick(value: PendingSessionResponse.SquadInvitation, type: String) {
         when (type) {
             "COME_FROM_ACCEPT" -> {
-                Log.d("bdskjbkjbsdjk",value.invitation_id)
+                Log.d("bdskjbkjbsdjk", value.invitation_id)
                 val request = sendSessionInvitationRequest(
                     value.squad_id,
                     value.squad_event_id,
                     value.invitation_id,
                     true
                 )
-                getServiceHelper().enqueueCallExtended(
-                    getWebService().responseSessionInvitationRequest(
-                        ApiHeaderSingleton.apiHeader(requireContext()),
-                        request
-                    ), Constants.PENDING_ACCEPT_REJECT, true
-                )
+                val position = pendingList.indexOf(value)
+
+                lastAcceptedPosition = position
+
+                // Check if the item is actually in the list
+                if (position != -1) {
+                    getServiceHelper().enqueueCallExtended(
+                        getWebService().responseSessionInvitationRequest(
+                            ApiHeaderSingleton.apiHeader(requireContext()),
+                            request
+                        ), Constants.PENDING_ACCEPT_REJECT, true
+                    )
+
+                    onItemActionSuccess(position = position)
+                }
             }
         }
     }
@@ -215,15 +235,23 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
                     value.invitation_id,
                     false
                 )
-                getServiceHelper().enqueueCallExtended(
-                    getWebService().responseSessionInvitationRequest(
-                        ApiHeaderSingleton.apiHeader(requireContext()),
-                        request
-                    ), Constants.PENDING_ACCEPT_REJECT, true
-                )
+                val position = pendingList.indexOf(value)
+                lastDeclinedPosition = position // Store the position for further reference
+
+                // Check if the item is actually in the list
+                if (position != -1) {
+                    // Send the decline request
+                    getServiceHelper().enqueueCallExtended(
+                        getWebService().responseSessionInvitationRequest(
+                            ApiHeaderSingleton.apiHeader(requireContext()),
+                            request
+                        ), Constants.PENDING_ACCEPT_REJECT, true
+                    )
+
+                    onItemActionSuccess(position = position)
+                }
             }
+
         }
-
     }
-
 }
