@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_update_failed">SDK didn\'t download models successfully</string>
+    <string name="download_finished_license_missing">Download finished, license not obtained</string>
+    <string name="key_not_valid">Key not valid</string>
+    <string name="key_not_valid_message">Your key is not valid. Please contact support@passiolife.com to renew your key</string>
+    <string name="license_decoding_error">License decoding error</string>
+    <string name="license_expired">License key has expired</string>
+    <string name="metadata_error">Error with Passio metadata file</string>
+    <string name="min_sdk_version">Minimum supported version of Android API is 26</string>
+    <string name="missing_dependency">Passio library is missing a dependency, check debugMessage</string>
+    <string name="models_not_valid">Models or Database not valid</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_models_files_found">Passio files could not be found</string>
+    <string name="not_licensed_for_this_project">License is not valid for this product</string>
+</resources>

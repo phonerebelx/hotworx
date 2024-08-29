@@ -116,6 +116,10 @@ dependencies {
     //hotsquad
     implementation project(path: ':hotsquadlist')
 
+    //passio
+    implementation project(path: ':passiomodule')
+//    implementation files('../library/passio-ui-module-release.aar')
+
     //brivo
 
     implementation files('../library/brivoaccess-release.aar')
@@ -197,9 +201,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
-
-//    implementation 'androidx.activity:activity:1.7.0'
-//    implementation 'androidx.fragment:fragment:1.5.6'
 
     implementation 'com.github.tsuryo:Swipeable-RecyclerView:1.1'
     implementation 'com.github.ranaparamveer:customSeekbarAndroid:1.0.1'
