@@ -1,6 +1,9 @@
 package com.hotworx.models;
 
 
+import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.hotworx.ui.fragments.BaseFragment;
@@ -14,15 +17,17 @@ public class NavigationItem {
     private int mText;
     private int mDrawable;
     private BaseFragment fragment;
+    private Intent activity;
     private String url;
     private String action;
     private List<NavigationItem> subItems; // Add this field
 
 
-    public NavigationItem(int text, int drawable,BaseFragment fragment,String url,String action) {
+    public NavigationItem(int text, int drawable, BaseFragment fragment,Intent activity, String url, String action) {
         mText = text;
         mDrawable = drawable;
         this.fragment = fragment;
+        this.activity = activity;
         this.url = url;
         this.action = action;
         this.subItems = new ArrayList<>(); // Initialize subItems
@@ -38,6 +43,14 @@ public class NavigationItem {
 
     public int getDrawable() {
         return mDrawable;
+    }
+
+    public Intent getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Intent activity) {
+        this.activity = activity;
     }
 
     public void setDrawable(int drawable) {

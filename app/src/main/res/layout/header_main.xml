@@ -39,7 +39,6 @@
         android:gravity="center"
         />
 
-
     <ImageView
         android:id="@+id/ivBrivo"
         android:layout_width="@dimen/_17sdp"
@@ -65,13 +64,26 @@
         android:gravity="right"
         android:scaleType="fitXY" />
 
+    <ImageView
+        android:id="@+id/ivPassio"
+        android:layout_width="@dimen/_17sdp"
+        android:layout_height="@dimen/_17sdp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/_70sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/icon_foods"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="right"
+        android:scaleType="fitXY" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/_20sdp"
         android:layout_centerVertical="true">
-
 
         <ImageView
             android:id="@+id/ivNotification"
@@ -106,7 +118,9 @@
                 android:layout_marginStart="1dp"
                 android:textColor="@color/colorWhite"
                 android:text="100"/>
+
         </FrameLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

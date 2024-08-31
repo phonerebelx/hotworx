@@ -53,6 +53,7 @@ import java.util.List;
 public abstract class DockActivity extends AppCompatActivity
         implements LoadingListener {
     public static final String KEY_FRAG_FIRST = "firstFrag";
+    protected DockActivity myDockActivity;
 
     public abstract int getDockFrameLayoutId();
 
@@ -67,6 +68,9 @@ public abstract class DockActivity extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         prefHelper = new BasePreferenceHelper(this);
+
+        // Initialize your DockActivity here
+        myDockActivity = this;
     }
 
     private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
@@ -99,6 +103,12 @@ public abstract class DockActivity extends AppCompatActivity
         transaction.replace(getDockFrameLayoutId(), frag);
         transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST
                                 : null).commit();
+    }
+
+    public void replaceFragment(Fragment frag) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(getDockFrameLayoutId(), frag);
+        transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : null).commit();
     }
 
     public void replaceDockableFragment(BaseFragment frag, String Tag) {
@@ -180,6 +190,10 @@ public abstract class DockActivity extends AppCompatActivity
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected DockActivity getDockActivity() {
+        return myDockActivity;
     }
 
     public void releaseDrawer() {

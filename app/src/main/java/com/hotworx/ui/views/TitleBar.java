@@ -18,6 +18,7 @@ public class TitleBar extends RelativeLayout {
     private TextView txtTitle2;
     private ImageView btnLeft;
     private ImageView ivSync;
+    private ImageView ivPassio;
     private ImageView ivBrivo;
     private ImageView ivNotification;
     private TextView tvNotificationNo;
@@ -27,6 +28,7 @@ public class TitleBar extends RelativeLayout {
     private OnClickListener syncButtonListener;
     private OnClickListener brivoButtonListener;
     private OnClickListener notificationButtonListener;
+    private OnClickListener passioButtonListener;
 
 
     private Context context;
@@ -63,6 +65,7 @@ public class TitleBar extends RelativeLayout {
 
         btnLeft = this.findViewById(R.id.btnLeft);
         ivSync = this.findViewById(R.id.ivSync);
+        ivPassio = this.findViewById(R.id.ivPassio);
         ivBrivo = this.findViewById(R.id.ivBrivo);
     }
 
@@ -95,6 +98,12 @@ public class TitleBar extends RelativeLayout {
         ivSync.setImageResource(R.drawable.sync_btn_img_removebg);
         ivSync.setVisibility(View.VISIBLE);
         ivSync.setOnClickListener(brivoButtonListener);
+    }
+
+    public void showPassioBtn() {
+//        ivSync.setImageResource(R.drawable.sync_btn_img_removebg);
+        ivPassio.setVisibility(View.VISIBLE);
+        ivPassio.setOnClickListener(passioButtonListener);
     }
 
     public void hideSyncBtn(){
@@ -166,6 +175,9 @@ public class TitleBar extends RelativeLayout {
         syncButtonListener = listener;
     }
     public void setBrivoButtonListener(OnClickListener listener) { brivoButtonListener = listener; }
+    public void setPassioButtonListener(OnClickListener listener) {
+        passioButtonListener = listener;
+    }
 
   public void setNotificationButtonListener(OnClickListener listener) {
       notificationButtonListener = listener;

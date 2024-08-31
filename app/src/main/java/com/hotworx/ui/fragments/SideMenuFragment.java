@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
 import com.hotworx.R;
@@ -26,7 +24,6 @@ import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.UIHelper;
 import com.hotworx.helpers.Utils;
-import com.hotworx.models.HotsquadList.HotsquadListModel;
 import com.hotworx.models.NavigationItem;
 import com.hotworx.models.UserData.getUserData;
 import com.hotworx.retrofit.GsonFactory;
@@ -49,9 +46,9 @@ import com.hotworx.ui.fragments.VIDeviceManagement.RegistrationFragment;
 import com.hotworx.ui.fragments.VPT.VPTFragment;
 import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
 import com.hotworx.ui.views.TitleBar;
+import com.passio.passiomodule.ui.activity.PassioUiModuleActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -145,37 +142,46 @@ public class SideMenuFragment extends BaseFragment {
         drawerList.clear();
 
         if (prefHelper.getLoginData() != null && (prefHelper.getLoginData().getIsAmbassadorAllowed() != null && String.valueOf(prefHelper.getLoginData().getIsAmbassadorAllowed()).equals("yes"))){
-            drawerList.add(new NavigationItem(R.string.invite, R.drawable.invite_friend,  new ReferralDetailFragment(), null, Constants.INVITE_FRIEND));
+            drawerList.add(new NavigationItem(R.string.invite, R.drawable.invite_friend,  new ReferralDetailFragment(), null,null, Constants.INVITE_FRIEND));
         }
         if (prefHelper.getLoginData() != null && (prefHelper.getLoginData().getIsEmployeeAllowed() != null && String.valueOf(prefHelper.getLoginData().getIsEmployeeAllowed()).equals("yes"))){
-            drawerList.add(new NavigationItem(R.string.business,0,  new BusinessCardFragment(), null, Constants.BUSINESS_CARD));
+            drawerList.add(new NavigationItem(R.string.business,0,  new BusinessCardFragment(), null,null, Constants.BUSINESS_CARD));
           }
-        drawerList.add(new NavigationItem(R.string.home, R.drawable.icon_menu_home, null, null, Constants.ACTION_HOME));
-        drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null, null));
-        drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null, Constants.ACTION_GETTING_STARTED));
-        drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null, null));
-        drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null, null));
-        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad,new MyHotsquadListFragment(), null, null));
-        drawerList.add(new NavigationItem(R.string.pending_invite, R.drawable.icon_menu_hotsquad,new RecieverPendingRequestFragment(), null, null));
+        drawerList.add(new NavigationItem(R.string.home, R.drawable.icon_menu_home, null, null,null, Constants.ACTION_HOME));
+        drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null,null, null));
 
-        drawerList.add(new NavigationItem(R.string.rewards, R.drawable.icon_menu_rewards, new LatestRewardFragment(), null, null));
+
+//        drawerList.add(new NavigationItem(R.string.passio, R.drawable.hotworx_icons, null,new Intent(getActivity(), PassioUiModuleActivity.class), null, null));
+//        Intent intent = new Intent(getActivity(), PassioUiModuleActivity.class);
+//        if (intent != null) {
+//            startActivity(intent);
+//            drawerList.add(new NavigationItem(R.string.passio, R.drawable.hotworx_icons, null, new Intent(getActivity(), PassioUiModuleActivity.class), null, null));
+//        }
+
+        drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null,null, Constants.ACTION_GETTING_STARTED));
+        drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null,null, null));
+        drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null,null, null));
+        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad,new MyHotsquadListFragment(), null,null, null));
+        drawerList.add(new NavigationItem(R.string.pending_invite, R.drawable.icon_menu_hotsquad,new RecieverPendingRequestFragment(), null,null, null));
+
+        drawerList.add(new NavigationItem(R.string.rewards, R.drawable.icon_menu_rewards, new LatestRewardFragment(), null,null, null));
 
         if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
-            drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null, null));
-            drawerList.add(new NavigationItem(R.string.intermittent_fasting, R.drawable.icon_menu_intermitent, new IntermittentFastingFragment(), null, null));
+            drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null,null, null));
+            drawerList.add(new NavigationItem(R.string.intermittent_fasting, R.drawable.icon_menu_intermitent, new IntermittentFastingFragment(), null,null, null));
         }
 
         if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getShowpvt() != null && (prefHelper.getLoginData().getShowpvt().toLowerCase().equals("yes") || prefHelper.getLoginData().getShowpvt().toLowerCase().contains("yes"))) {
-            drawerList.add(new NavigationItem(R.string.vpt, R.drawable.icon_menu_trainer, VPTFragment.newInstance(false), null, null));
-            drawerList.add(new NavigationItem(R.string.hotworx_at_home, R.drawable.icon_menu_hotworx, GetStartedFragment.Companion.newInstance(true), null, null));
+            drawerList.add(new NavigationItem(R.string.vpt, R.drawable.icon_menu_trainer, VPTFragment.newInstance(false), null,null, null));
+            drawerList.add(new NavigationItem(R.string.hotworx_at_home, R.drawable.icon_menu_hotworx, GetStartedFragment.Companion.newInstance(true), null,null, null));
         }
 
-        drawerList.add(new NavigationItem(R.string.fitness_goal, R.drawable.icon_menu_goals, new GoalFragment(), null, null));
-        drawerList.add(new NavigationItem(R.string.frincies_info, R.drawable.icon_menu_franchise, null, "https://hotworx.net/franchising/", null));
-        drawerList.add(new NavigationItem(R.string.blog, R.drawable.mdi_blog_outline, null, "https://hotworx.net/blog/", null));
-        drawerList.add(new NavigationItem(R.string.settings, R.drawable.icon_menu_settings, new SettingsFragment(), null, null));
+        drawerList.add(new NavigationItem(R.string.fitness_goal, R.drawable.icon_menu_goals, new GoalFragment(), null,null, null));
+        drawerList.add(new NavigationItem(R.string.frincies_info, R.drawable.icon_menu_franchise, null, null,"https://hotworx.net/franchising/", null));
+        drawerList.add(new NavigationItem(R.string.blog, R.drawable.mdi_blog_outline, null, null,"https://hotworx.net/blog/", null));
+        drawerList.add(new NavigationItem(R.string.settings, R.drawable.icon_menu_settings, new SettingsFragment(), null,null, null));
 //        drawerList.add(new NavigationItem(R.string.notifications, R.drawable.menu_profile, new NotificationFragment(), null, null));
-        drawerList.add(new NavigationItem(R.string.log_out, R.drawable.material_symbols_logout, null, null, Constants.ACTION_LOGOUT));
+        drawerList.add(new NavigationItem(R.string.log_out, R.drawable.material_symbols_logout, null, null,null, Constants.ACTION_LOGOUT));
 
 //        drawerList.add(new NavigationItem(R.string.compose, R.drawable.hotworx_icon, new ComposeFragment(), null, Constants.COMPOSE));
 
@@ -195,7 +201,7 @@ public class SideMenuFragment extends BaseFragment {
                 if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
                     if (position == index) {
                         //drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new InterNutritionistFragment(), null, null));
-                        drawerList.set(index, new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null, null));
+                        drawerList.set(index, new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null,null, null));
 
                         adapter.notifyDataSetChanged();
                     }
@@ -206,7 +212,11 @@ public class SideMenuFragment extends BaseFragment {
 
                 if (navigationItem.getFragment() != null) {
                     myDockActivity.replaceDockableFragment(navigationItem.getFragment());
-                } else if (navigationItem.getUrl() != null) {
+                }else if (navigationItem.getActivity() != null) {
+                  var intent = new Intent(getActivity(), PassioUiModuleActivity.class);
+                  startActivity(intent);
+                }
+                else if (navigationItem.getUrl() != null) {
                     openUrl(navigationItem.getUrl());
                 } else if (navigationItem.getAction() != null) {
                     if (navigationItem.getAction().equals(Constants.ACTION_LOGOUT)) {

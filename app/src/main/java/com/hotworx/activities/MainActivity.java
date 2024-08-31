@@ -3,62 +3,37 @@ package com.hotworx.activities;
 import static android.Manifest.permission.POST_NOTIFICATIONS;
 
 import android.annotation.SuppressLint;
-import android.app.usage.UsageEvents;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.hotworx.R;
+import com.hotworx.activities.BrivoActivity.SitesActivity;
 import com.hotworx.global.Constants;
 import com.hotworx.global.SideMenuDirection;
 import com.hotworx.global.SideMenuChooser;
 import com.hotworx.helpers.CustomEvents;
 import com.hotworx.helpers.UIHelper;
 import com.hotworx.helpers.Utils;
-import com.hotworx.interfaces.OnClickStringTypeListener;
-import com.hotworx.interfaces.OnClickTypeListener;
-
 import com.hotworx.residemenu.ResideMenu;
 import com.hotworx.retrofit.WebService;
-import com.hotworx.ui.dialog.DashboardSession.DashboardSessionDialogFragment;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.fragments.Nutritionist.NutritionistFragment;
 import com.hotworx.ui.fragments.ProfileAndGoal.ProfileAndGoalFragment;
 import com.hotworx.ui.fragments.SessionFlow.BeginSessionFragment;
 import com.hotworx.ui.fragments.HomeFragment;
 import com.hotworx.ui.fragments.SideMenuFragment;
-import com.hotworx.ui.fragments.ViewPagerFragment;
 import com.hotworx.ui.fragments.SessionFlow.WorkoutSummaryFragment;
 import com.hotworx.ui.fragments.SessionFlow.WorkoutTimeFragment;
 import com.hotworx.ui.fragments.notifications.NotificationFragment;
+import com.hotworx.ui.passioactivity.PassioMainActivity;
 import com.hotworx.ui.views.TitleBar;
 
 import org.greenrobot.eventbus.EventBus;
@@ -69,6 +44,9 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import ai.passio.passiosdk.core.config.PassioConfiguration;
+import ai.passio.passiosdk.core.config.PassioStatus;
+import ai.passio.passiosdk.passiofood.PassioSDK;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -195,6 +173,20 @@ public class MainActivity extends DockActivity {
                 }
             }
 
+        });
+
+        titleBar.setPassioButtonListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (loading) {
+                    UIHelper.showLongToastInCenter(getApplicationContext(),
+                            R.string.message_wait);
+                } else {
+                    startActivity(new Intent(getDockActivity(), PassioMainActivity.class));
+                    myDockActivity.finish();
+                }
+            }
         });
 
         titleBar.setBrivoButtonListener(new View.OnClickListener() {
