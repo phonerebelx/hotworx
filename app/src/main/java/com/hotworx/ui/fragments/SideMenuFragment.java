@@ -45,6 +45,7 @@ import com.hotworx.ui.fragments.Settings.SettingsFragment;
 import com.hotworx.ui.fragments.VIDeviceManagement.RegistrationFragment;
 import com.hotworx.ui.fragments.VPT.VPTFragment;
 import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
+import com.hotworx.ui.passioactivity.PassioMainActivity;
 import com.hotworx.ui.views.TitleBar;
 import com.passio.passiomodule.ui.activity.PassioUiModuleActivity;
 
@@ -150,14 +151,20 @@ public class SideMenuFragment extends BaseFragment {
         drawerList.add(new NavigationItem(R.string.home, R.drawable.icon_menu_home, null, null,null, Constants.ACTION_HOME));
         drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null,null, null));
 
+//        drawerList.add(new NavigationItem(R.string.passio, R.drawable.hotworx_icons, null,new Intent(getDockActivity(), PassioMainActivity.class), null, null));
 
-//        drawerList.add(new NavigationItem(R.string.passio, R.drawable.hotworx_icons, null,new Intent(getActivity(), PassioUiModuleActivity.class), null, null));
-//        Intent intent = new Intent(getActivity(), PassioUiModuleActivity.class);
-//        if (intent != null) {
-//            startActivity(intent);
-//            drawerList.add(new NavigationItem(R.string.passio, R.drawable.hotworx_icons, null, new Intent(getActivity(), PassioUiModuleActivity.class), null, null));
-//        }
+        // Passio Sdk activity
+        Intent passioIntent = new Intent(getDockActivity(), PassioMainActivity.class);
+        passioIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Optional, based on your needs.
 
+        drawerList.add(new NavigationItem(
+                R.string.passio,
+                R.drawable.hotworx_icons,
+                null,
+                passioIntent,
+                null,
+                null
+        ));
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null,null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null,null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null,null, null));
@@ -287,7 +294,7 @@ public class SideMenuFragment extends BaseFragment {
     public void showVideoPlayer(String videoUrl) {
         Intent intent = new Intent(myDockActivity, VideoPlayerActivty.class);
         if (videoUrl != null && !videoUrl.equals("")) {
-            intent.putExtra("url", videoUrl);
+            intent.putExtra("url", videoUrl) ;
             startActivity(intent);
         } else {
             Utils.customToast(myDockActivity, "No Video Available");

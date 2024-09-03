@@ -101,7 +101,7 @@ public class TitleBar extends RelativeLayout {
     }
 
     public void showPassioBtn() {
-//        ivSync.setImageResource(R.drawable.sync_btn_img_removebg);
+//        ivPassio.setImageResource(R.drawable.ic_food_scanner);
         ivPassio.setVisibility(View.VISIBLE);
         ivPassio.setOnClickListener(passioButtonListener);
     }
@@ -122,8 +122,6 @@ public class TitleBar extends RelativeLayout {
     public void hideNotificationText(){
         tvNotificationNo.setVisibility(View.INVISIBLE);
     }
-
-
 
     public void hideNotificationBtn(){
         tvNotificationNo.setVisibility(View.INVISIBLE);

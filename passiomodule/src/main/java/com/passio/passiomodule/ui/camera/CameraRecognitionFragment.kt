@@ -66,7 +66,7 @@ class CameraRecognitionFragment : BaseFragment<CameraRecognitionViewModel>(),
                 ProgressDialog.hide()
             }
         }
-        setupToolbar()
+//        setupToolbar()
         initOnClickCallback()
 
         binding.recognitionResult.layoutParams.height =

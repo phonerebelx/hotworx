@@ -364,7 +364,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 if (unreadNotifications.equals("0")) {
                     titleBar.hideNotificationText();
                 }
-
             }
         });
         titleBar.showBrivoBtn();
