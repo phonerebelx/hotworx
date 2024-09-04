@@ -80,13 +80,21 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     }
 
     private fun getSquadList() {
-        getServiceHelper().enqueueCall(
-            getWebService().getHotsquadList(
-                apiHeader(
-                    requireContext()
-                )
-            ), WebServiceConstants.GET_SQUAD_LIST, true
-        )
+        if(dashboardShare == "dashboardShare"){
+            getServiceHelper().enqueueCall(
+                getWebService().getHotsquadList(
+                    apiHeader(requireContext()),
+                    recordId
+                ), WebServiceConstants.GET_SQUAD_LIST, true
+            )
+        }else{
+            getServiceHelper().enqueueCall(
+                getWebService().getHotsquadList(
+                    apiHeader(requireContext()),
+                    ""
+                ), WebServiceConstants.GET_SQUAD_LIST, true
+            )
+        }
     }
 
     private fun setAdapter(squadList: List<Hotsquad>) {

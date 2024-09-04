@@ -205,8 +205,6 @@ public interface WebService {
             @Field("selected_location_id") String selected_location_id
     );
 
-
-
     //Home
     @FormUrlEncoded
     @POST("general/get_summary")
@@ -665,7 +663,8 @@ public interface WebService {
 
     @GET("hotsquad/getSquadList")
     Call<ResponseBody> getHotsquadList(
-            @HeaderMap Map<String, String> headers
+            @HeaderMap Map<String, String> headers,
+            @Query("session_id") String session_id
     );
 
 
