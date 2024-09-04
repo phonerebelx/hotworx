@@ -62,10 +62,10 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         // Clear any existing tabs
         binding.tabLayout.removeAllTabs()
 
-        val acceptedTab = binding.tabLayout.newTab().setText(R.string.accepted)
+        val acceptedTab = binding.tabLayout.newTab().setText(R.string.friends)
         binding.tabLayout.addTab(acceptedTab)
 
-        val pendingTab = binding.tabLayout.newTab().setText(R.string.Pending)
+        val pendingTab = binding.tabLayout.newTab().setText(R.string.session_summary)
         binding.tabLayout.addTab(pendingTab)
 
         pendingTab.view.isClickable = hasSquadAccess

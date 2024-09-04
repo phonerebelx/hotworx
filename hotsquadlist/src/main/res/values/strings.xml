@@ -21,6 +21,8 @@
     <string name="no">No</string>
     <string name="accept">Accept</string>
     <string name="accepted">Accepted</string>
+    <string name="friends">Friends</string>
+    <string name="session_summary">Session Summary</string>
     <string name="Pending">Pending</string>
     <string name="Pending_request">Pending Request</string>
     <string name="decline">Decline</string>
