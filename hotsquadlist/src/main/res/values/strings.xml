@@ -27,4 +27,6 @@
     <string name="Pending_request">Pending Request</string>
     <string name="decline">Decline</string>
     <string name="text">Text</string>
+    <string name="move">Move</string>
+    <string name="exercise">Exercise</string>
 </resources>

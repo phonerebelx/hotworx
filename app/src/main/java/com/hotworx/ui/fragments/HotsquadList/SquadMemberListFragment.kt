@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.hotworx.R
 import com.hotworx.databinding.FragmentSquadMemberListBinding
+import com.hotworx.databinding.FragmentSquadPendingMemberBinding
 import com.hotworx.ui.adapters.HotsquadListAdapter.tabsadapter.MemberRequestViewPagerAdapter
 import com.hotworx.ui.fragments.BaseFragment
 
@@ -45,6 +46,11 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         // Disable swipe gestures on the ViewPager
         binding.viewPager.setOnTouchListener { _, event ->
             event.action == MotionEvent.ACTION_MOVE
+        }
+
+        binding.userImage.setOnClickListener{
+            val squadPendingMemberFragment = squadPendingMemberFragment()
+            dockActivity.replaceDockableFragment(squadPendingMemberFragment)
         }
     }
 

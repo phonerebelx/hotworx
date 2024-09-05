@@ -286,7 +286,9 @@
     <string name="Text">Text</string>
     <string name="clear_all">Clear all</string>
     <string name="hotsquad_list">HOTSQUAD List</string>
+    <string name="pending_friends">Pending Friends</string>
     <string name="friend_list">My Friend List</string>
+    <string name="highlights">Highlights</string>
     <string name="remove">Remove</string>
     <string name="pending_req">Pending Squad Request</string>
     <string name="add_hotsquad_list">Add more HOTSQUAD Member to List</string>
@@ -494,6 +496,7 @@
     <string name="today">today</string>
     <string name="mtd">mtd</string>
     <string name="member">Member</string>
+    <string name="members">Members</string>
     <string name="franchise">Franchise</string>
     <string name="back">Back</string>
     <string name="record_calories_manually"><u>Record Calories Manually</u></string>

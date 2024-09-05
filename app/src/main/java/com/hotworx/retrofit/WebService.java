@@ -8,6 +8,7 @@ import com.hotworx.models.BrivoRequestModel.SetLeadIdForBrivoToken;
 import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
 import com.hotworx.models.HotsquadList.SearchListRequest;
+import com.hotworx.models.HotsquadList.Session.SessionHighlightsRequest;
 import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest;
 import com.hotworx.models.HotsquadList.Session.sendSessionInvitationRequest;
 import com.hotworx.models.HotsquadList.Session.sendSquadSessionMemberRequest;
@@ -720,13 +721,19 @@ public interface WebService {
     @POST("hotsquad/getSquadMembersForSessionInvite")
     Call<ResponseBody> getSquadMemberForSession(
             @HeaderMap Map<String, String> headers,
-            @Body SquadSessionMemberRequest request // Accepting the custom request body
+            @Body SquadSessionMemberRequest request
+    );
+
+    @POST("hotsquad/getEventsHighlights")
+    Call<ResponseBody> getEventsList(
+            @HeaderMap Map<String, String> headers,
+            @Body SessionHighlightsRequest request
     );
 
     @POST("hotsquad/sendSquadSessionInvitation")
     Call<ResponseBody> sendSquadSessionMemberRequest(
             @HeaderMap Map<String, String> headers,
-            @Body sendSquadSessionMemberRequest request // Accepting the custom request body
+            @Body sendSquadSessionMemberRequest request
     );
 
     @GET("hotsquad/getPendingSquadSessionInvitationList")

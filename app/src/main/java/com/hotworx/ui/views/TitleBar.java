@@ -106,6 +106,11 @@ public class TitleBar extends RelativeLayout {
         ivPassio.setOnClickListener(passioButtonListener);
     }
 
+    public void hidePassioBtn(){
+        ivPassio.setImageResource(0);
+        ivPassio.setVisibility(View.INVISIBLE);
+    }
+
     public void hideSyncBtn(){
         ivSync.setImageResource(0);
         ivSync.setVisibility(View.INVISIBLE);

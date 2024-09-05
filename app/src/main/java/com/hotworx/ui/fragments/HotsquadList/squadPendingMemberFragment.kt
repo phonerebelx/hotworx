@@ -196,17 +196,17 @@ class squadPendingMemberFragment : BaseFragment(), SquadMemberListAdapter.OnItem
         }
     }
 
-    private fun updateAdapterList(newList: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
-        adapter?.updateData(newList)
-    }
-
-    private fun onItemActionSuccess(position: Int) {
-        adapter?.let {
-            if (position >= 0 && position < it.itemCount) {
-                it.removeItem(position)
-            }
-        }
-    }
+//    private fun updateAdapterList(newList: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
+//        adapter?.updateData(newList)
+//    }
+//
+//    private fun onItemActionSuccess(position: Int) {
+//        adapter?.let {
+//            if (position >= 0 && position < it.itemCount) {
+//                it.removeItem(position)
+//            }
+//        }
+//    }
 
     override fun ResponseFailure(message: String?, tag: String?) {
         Log.e("ResponseFailure", "Failed to load squad members: $message")
@@ -217,6 +217,7 @@ class squadPendingMemberFragment : BaseFragment(), SquadMemberListAdapter.OnItem
     override fun setTitleBar(titleBar: TitleBar) {
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.squad_members)
+        titleBar.hidePassioBtn()
     }
 
     @SuppressLint("ResourceAsColor")
