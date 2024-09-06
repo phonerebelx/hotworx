@@ -45,31 +45,15 @@
                 android:textColor="@color/hint_color"
                 android:textSize="@dimen/_9ssp" />
 
-            <RelativeLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHighlightProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/user_image1"
-                    android:layout_width="@dimen/_55sdp"
-                    android:layout_height="@dimen/_55sdp"
-                    android:src="@drawable/icon_one"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    app:civ_border_color="#FFF"
-                    app:civ_border_width="2dp" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/user_image2"
-                    android:layout_width="@dimen/_55sdp"
-                    android:layout_height="@dimen/_55sdp"
-                    android:src="@drawable/icon_one"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginStart="@dimen/_40sdp"
-                    app:civ_border_color="#FFF"
-                    app:civ_border_width="2dp" />
-
-            </RelativeLayout>
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_sessionhighlightprofile"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

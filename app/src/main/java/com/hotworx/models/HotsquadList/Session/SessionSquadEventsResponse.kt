@@ -14,10 +14,10 @@ data class SessionSquadEventsResponse(
         val id: String,
         val name: String,
         val highlights: Highlights,
-        val participants: List<Participant>
+        val participants: MutableList<Participant>
     ){
         data class Participant(
-            @SerializedName("profile_image") val profileImage: String,
+           val profile_image: String,
             val name: String
         )
     }

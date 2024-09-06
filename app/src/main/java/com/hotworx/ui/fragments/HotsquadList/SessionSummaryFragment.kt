@@ -31,6 +31,7 @@ import com.hotworx.models.HotsquadList.removeSquadMemberRequest
 import com.hotworx.models.HotsquadList.squadMemberDetailRequest
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventHighlightAdapter
+import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventHighlightProfileAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventMemberAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadMemberListAdapter
 import com.hotworx.ui.fragments.BaseFragment
@@ -44,6 +45,7 @@ class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClic
     private val binding get() = _binding!!
     private var adapter: EventHighlightAdapter? = null
     private var adapterMember: EventMemberAdapter? = null
+    private var adapterHighlightProfile: EventHighlightProfileAdapter? = null
     private var squadId: String = ""
     private lateinit var memberListModel: SquadMemberDetailsResponse.SquadData
 
@@ -100,8 +102,11 @@ class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClic
                         if (response?.status == true) {
                             val highlight = response.data.squadEvents
                             val members = response.data.members
+                            val profile = response.data.squadEvents[0].participants
+
                             setAdapter(highlight)
                             setMemberAdapter(members)
+                            setMemberProfileAdapter(profile)
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }
@@ -129,14 +134,22 @@ class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClic
         binding.recyclerViewHighlight.adapter = adapter
     }
 
+    private fun setMemberProfileAdapter(members: MutableList<SessionSquadEventsResponse.SquadEvent.Participant>) {
+        adapterHighlightProfile = EventHighlightProfileAdapter(members, requireContext(),object : EventHighlightProfileAdapter.OnItemClickListener {
+            override fun onItemClick(item: SessionSquadEventsResponse.SquadEvent.Participant, position: Int) {
+                Log.d("testing","testing dataaaaaaaa")
+            }
+        })
+        binding.recyclerViewMember.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.recyclerViewMember.adapter = adapterHighlightProfile
+    }
+
     private fun setMemberAdapter(members: MutableList<SessionSquadEventsResponse.Member>) {
         adapterMember = EventMemberAdapter(members, requireContext(),object : EventMemberAdapter.OnItemClickListener {
             override fun onItemClick(item: SessionSquadEventsResponse.Member, position: Int) {
                 Log.d("testing","testing dataaaaaaaa")
             }
         })
-
-        Log.d("testinggggg","testing Member List")
         binding.recyclerViewMember.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerViewMember.adapter = adapterMember
     }

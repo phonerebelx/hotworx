@@ -1,5 +1,6 @@
 package com.hotworx.ui.adapters.HotsquadListAdapter.Sessions
 
+import SessionSquadEventsResponse
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.hotworx.R
-import com.hotworx.models.HotsquadList.Session.PendingSessionResponse
+import com.hotworx.ui.adapters.NutritionistChildItemAdapter
 
 class EventMemberAdapter(
     private val items: MutableList<SessionSquadEventsResponse.Member>,
@@ -46,6 +48,10 @@ class EventMemberAdapter(
             nameTextView.text = item.name
             emailsentTextView.text = item.email
             calTextView.text = item.burnedCal
+
+            Glide.with(context)
+                .load(item.profileImage)
+                .into(profileImage)
 
             // Display other information as needed, such as sender name, email, etc.
             listMainView.setOnClickListener{

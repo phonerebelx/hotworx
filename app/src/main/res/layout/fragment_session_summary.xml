@@ -24,7 +24,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewHighlight"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
+            android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingBottom="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
@@ -40,7 +40,6 @@
             android:fontFamily="@font/montserrat_bold"
             android:textSize="@dimen/_15ssp"
             android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:textColor="@color/black"/>
 
         <androidx.recyclerview.widget.RecyclerView
