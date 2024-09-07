@@ -173,7 +173,6 @@ class QrDialogFragment : BottomSheetDialogFragment() {
                    getContext.shareLink(url)
                     Log.d("vjhvvdschjd",qrModel.url)
                     Log.d("vjhvvdschjd",url)
-
                 }
             }
         }
