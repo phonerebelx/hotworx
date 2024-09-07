@@ -28,7 +28,6 @@ class ReferralLocationAdapter(
             binding.cvProperty.setOnClickListener {
                 clickListener.onItemClick(item, "LOCATION_DETAIL")
             }
-
         }
     }
 

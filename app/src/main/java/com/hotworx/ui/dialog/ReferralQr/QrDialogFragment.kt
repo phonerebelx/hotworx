@@ -42,6 +42,7 @@ class QrDialogFragment : BottomSheetDialogFragment() {
 
     lateinit var binding: FragmentQrDialogBinding
     lateinit var qrModel: ReferralQrDataModel
+    var url =""
     lateinit var dockActivity: DockActivity
     lateinit var generateQrBitmap: Bitmap
     lateinit var getContext: Context
@@ -103,7 +104,7 @@ class QrDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun generateQr(context: Context): Bitmap {
-        val data = QrData.Url(qrModel.url)
+        val data = QrData.Url(url)
         val options = createQrVectorOptions {
             background {
                 drawable = ContextCompat.getDrawable(context, com.hotworx.R.drawable.white_background)
@@ -169,8 +170,9 @@ class QrDialogFragment : BottomSheetDialogFragment() {
             it.btnShare.setOnClickListener {
                 if (::generateQrBitmap.isInitialized) {
 
-                   getContext.shareLink(qrModel.url)
+                   getContext.shareLink(url)
                     Log.d("vjhvvdschjd",qrModel.url)
+                    Log.d("vjhvvdschjd",url)
 
                 }
             }

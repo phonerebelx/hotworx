@@ -56,10 +56,11 @@ class ReferralUrlDialogFragment(private val clickListener: OnClickItemListener) 
 
     private fun initRecyclerView(referralData: List<Data>){
         Log.d("ReferralData", referralData.toString())  // Add this line to log your data
-        if (referralData.size > 0) {
+        if (referralData.isNotEmpty()) {
             referralLocationAdapter = ReferralUrlAdapter(requireContext(), this)
             referralLocationAdapter.setList(referralData as ArrayList<Data>)
             binding.rvLocationSender.adapter = referralLocationAdapter
+            referralLocationAdapter.notifyDataSetChanged()
         }
     }
 
@@ -68,7 +69,4 @@ class ReferralUrlDialogFragment(private val clickListener: OnClickItemListener) 
         clickListener.onItemClick(recieveData,"LOCATION_URL")
         dialog?.dismiss()
     }
-
-
-
 }
