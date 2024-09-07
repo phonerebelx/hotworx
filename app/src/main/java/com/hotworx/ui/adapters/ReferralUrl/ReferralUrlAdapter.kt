@@ -23,12 +23,20 @@ class ReferralUrlAdapter(
     }
 
     fun setList(data: ArrayList<Data>) {
-        dataList = data
-        Log.d("AdapterBind", "Data list size: ${data.size}")
-        data.forEachIndexed { index, item ->
+//        dataList = data
+//        Log.d("AdapterBind", "Data list size: ${data.size}")
+//        data.forEachIndexed { index, item ->
+//            Log.d("AdapterBind", "Item $index - URL: ${item.url}, Type: ${item.type}")
+//        }
+//        notifyDataSetChanged()
+
+        dataList.clear()  // Clear the old data
+        dataList.addAll(data)  // Add the new data
+        Log.d("AdapterBind", "Data list size: ${dataList.size}")
+        dataList.forEachIndexed { index, item ->
             Log.d("AdapterBind", "Item $index - URL: ${item.url}, Type: ${item.type}")
         }
-        notifyDataSetChanged()
+        notifyDataSetChanged()  // Notify that the data has changed
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,7 +54,9 @@ class ReferralUrlAdapter(
 
     inner class ViewHolder(private val binding: ItemReferralUrlBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Data) {
+
             binding.tvUrl.text = item.type ?: ""
+            this.setIsRecyclable(false)
             binding.root.setOnClickListener {
                 Log.d("ViewHolderClick", "Clicked item - URL: ${item.url}, Type: ${item.type}")
                 clickListener.onItemClick(item,"Location_URL")

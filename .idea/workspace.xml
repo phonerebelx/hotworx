@@ -5,62 +5,12 @@
       <config />
     </shared>
     <layouts>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_congratulations.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dock.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_passio_main.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_profile.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_unlock_access_point.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/bottom_sheet_searchuser.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_fitness.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_activity_screen.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_list.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_begin_session.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_book_appointment.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -75,22 +25,12 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard_session_adapter.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboardhotworx.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_hotsquad_search.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -100,17 +40,7 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_latest_reward.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_milestone.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_hotsquad_list.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -130,37 +60,12 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_notification.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pending_invites.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pending_session.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pending_session_dialog.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_qr_dialog.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_reciever_pending_request.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_redeem_info_dialog.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -175,82 +80,7 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_refersquad_invite_dialog.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_refferal_detail.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_session_member_list.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_session_pending_list.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_session_summary.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sidemenu.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_squad_accepted_member.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_squad_member_list.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_squad_pending_member.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_start_session_dialog.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_workout_time.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/header_main.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_activitymember.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_myhotsquadlist.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_notfounduserlist.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_notification.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -260,179 +90,9 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_registereduserlist.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_sessionhighlight.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_sessionhighlightprofile.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_sessionmember.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_sessionpendingrequest.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_squadmember.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_squadpendingrequest.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_user_form.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/layout_loading.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/single_referral_location_adapter.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/menu_side_drawer.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/activity_passio_ui_module.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/add_food_item.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/daily_nutrition_layout.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/dialog_daily_nutrition_target.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/dialog_open_food_facts.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/dialog_photo_tip.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/diary_category_layout.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/food_log_body_layout.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/food_search_layout.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_add_food.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_advisor.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_camera_recognition.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_dashboard.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_diary.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_macros.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_save_weight.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_settings.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/fragment_voice_logging.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/scan_info_layout.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/toolbar_layout.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/layout/voice_recognition_item.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/menu/advisor_menu.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/menu/dashboard_menu.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/passiomodule/src/main/res/navigation/main_nav_graph.xml">
-        <config>
-          <theme>@android:style/Theme.Material.Light</theme>
         </config>
       </layout>
     </layouts>
@@ -441,27 +101,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="fixed">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
+    <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="utm url issue fixed">
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/HotsquadList/Session/SessionSquadEventsResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/HotsquadList/Session/SessionSquadEventsResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/adapters/HotsquadListAdapter/Sessions/EventMemberAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/adapters/HotsquadListAdapter/Sessions/EventMemberAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/adapters/ReferralUrl/ReferralUrlAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/adapters/ReferralUrl/ReferralUrlAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/dialog/ReferralUrl/ReferralUrlDialogFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/dialog/ReferralUrl/ReferralUrlDialogFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/BusinessCard/BusinessCardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/BusinessCard/BusinessCardFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionSummaryFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionSummaryFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_session_summary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_session_summary.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_sessionhighlight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_sessionhighlight.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/dialog/ReferralQr/QrDialogFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/dialog/ReferralQr/QrDialogFragment.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -477,28 +125,7 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Kotlin Class" />
-        <option value="layoutResourceFile" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="buddylist-module" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="buddylist-module" />
@@ -518,9 +145,6 @@
     &quot;accountId&quot;: &quot;1311ed56-9dfe-48db-8b51-02a02a06dcd6&quot;
   }
 }</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/passiomodule/build/intermediates/packaged_res/debug/layout/fragment_dashboard.xml" root0="SKIP_INSPECTION" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -539,19 +163,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;SHOW_ALL_PROCESSES&quot;: &quot;false&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;buddylist-module&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;Z:/My Projects/Android Projects/Hotworx ali github/app/src/main/res/drawable&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/My Projects/Android Projects/Hotworx ali github/app/src/main/res/layout&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Variables&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalResources&quot;
+    &quot;last_opened_file_path&quot;: &quot;Z:/My Projects/Android Projects/Hotworx ali github/app/src/main/res/layout&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;kotlin-gradle-user-dirs&quot;: [
@@ -559,42 +176,14 @@
     ]
   }
 }</component>
-  <component name="PsdUISettings">
-    <option name="MODULES_LIST_MINIMIZE" value="true" />
-    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
-  </component>
   <component name="RecentsManager">
-    <key name="android.template.227954792">
-      <recent name="com.hotworx.ui.fragments.HotsquadList.activity" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\layout" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\java\com\hotworx\passio" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passiomodule\src\main\res" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passiomodule\src\main\java\com\passio\passiomodule" />
-    </key>
-    <key name="android.template.-963415590">
-      <recent name="com.hotworx.ui.passioactivity" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\library" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
-    </key>
-    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="com.hotworx.ui.fragments.HotsquadList" />
-      <recent name="com.hotworx.ui.fragments.HotsquadList.fragments" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
-      <recent name="com.hotworx.ui.adapters.HotsquadListAdapter.Sessions" />
-      <recent name="com.hotworx.models.HotsquadList.Session" />
-      <recent name="com.hotworx.interfaces" />
-      <recent name="com.hotworx.ui.dialog.Hotsquad" />
-      <recent name="com.hotworx.ui.adapters.HotsquadListAdapter.tabsadapter" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.hotworx.ui" />
-      <recent name="com.hotworx.ui.fragments" />
+      <recent name="com.hotworx.ui.dialog.ReferralUrl" />
+      <recent name="com.hotworx.models.BusinessCard" />
+      <recent name="com.hotworx.ui.adapters.ReferralUrl" />
     </key>
   </component>
   <component name="RunManager">
@@ -826,7 +415,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723719020069</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="utm url issue fixed">
+      <option name="closed" value="true" />
+      <created>1725746981817</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1725746981818</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -855,6 +452,7 @@
     <MESSAGE value="business card fixed" />
     <MESSAGE value="URl issue fixed in BusinessCardFragment" />
     <MESSAGE value="fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed" />
+    <MESSAGE value="utm url issue fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="utm url issue fixed" />
   </component>
 </project>
