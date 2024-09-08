@@ -95,7 +95,6 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
         }
     }
 
-
     private fun setAdapter(pendingList: MutableList<PendingSessionResponse.SquadInvitation>) {
         adapter = SessionPendingListAdapter(
             mutableListOf(),

@@ -49,9 +49,25 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         }
 
         binding.userImage.setOnClickListener{
+//            val squadPendingMemberFragment = squadPendingMemberFragment()
+//            dockActivity.replaceDockableFragment(squadPendingMemberFragment)
+
+            // Create a new instance of SquadPendingMemberFragment
             val squadPendingMemberFragment = squadPendingMemberFragment()
+
+            // Create a Bundle to pass the squadId
+            val bundle = Bundle().apply {
+                putString("squad_id", squadId) // Pass the squadId
+            }
+
+            // Set the arguments for the fragment
+            squadPendingMemberFragment.arguments = bundle
+
+            // Replace the fragment
             dockActivity.replaceDockableFragment(squadPendingMemberFragment)
         }
+
+
     }
 
     private fun setupAdapter() {

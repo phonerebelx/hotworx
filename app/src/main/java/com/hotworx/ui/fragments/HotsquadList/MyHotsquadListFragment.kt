@@ -66,6 +66,11 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
             dockActivity.replaceDockableFragment(addListFragment)
         }
 
+        binding.userImage.setOnClickListener{
+            val sessionProfileSummaryFragment = SessionProfileSummaryFragment()
+            dockActivity.replaceDockableFragment(sessionProfileSummaryFragment)
+        }
+
         setAdapter(squadList = hotsquadListModel.data)
     }
 

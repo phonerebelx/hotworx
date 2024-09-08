@@ -3,8 +3,8 @@ package com.hotworx.global;
 
 public class WebServiceConstants {
     public static final String SERVICE_URL = "";
-//    public static final String BASE_URL = "https://sailposapi.uhfdemo.com/api/v1/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
-    public static final String BASE_URL = "https://sailposapi.hotworx.net/api/v1/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
+    public static final String BASE_URL = "https://sailposapi.uhfdemo.com/api/v1/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
+//    public static final String BASE_URL = "https://sailposapi.hotworx.net/api/v1/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
     public static final String CUSTOM_BASE_URL = "https://sailposapi.hotworx.net/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
     public static final String CUSTOM_SUB_URL = "https://sailposapi.hotworx.net/nutritionix/mobileservice_nut.php?action=";
     public static final String SUB_URL = "mobileservice.php?action="; //"mobileservice_intermittent.php?action=";
@@ -67,6 +67,7 @@ public class WebServiceConstants {
     public static final String ADD_USER_NOTIFICATION_ACTION = "ADD_USER_NOTIFICATION_ACTION" ;
     public static final String GET_NOTIFICATION_HISTORY = "GET_NOTIFICATION_HISTORY" ;
     public static final String GET_SQUAD_LIST = "GET_SQUAD_LIST" ;
+    public static final String GET_SESSION_PROFILE = "GET_SESSION_PROFILE" ;
     public static final String GET_APP_INFO= "GET_SQUAD_LIST" ;
     public static final String GET_SQUAD_MEMBER_LIST = "GET_SQUAD_MEMBER_LIST" ;
     public static final String GET_PENDING_REQUEST_LIST = "GET_PENDING_REQUEST_LIST" ;

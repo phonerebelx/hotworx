@@ -730,6 +730,12 @@ public interface WebService {
             @Body SessionHighlightsRequest request
     );
 
+    @GET("hotsquad/userActivities")
+    Call<ResponseBody> getSessionUserProfile(
+            @HeaderMap Map<String, String> headers
+    );
+
+
     @POST("hotsquad/sendSquadSessionInvitation")
     Call<ResponseBody> sendSquadSessionMemberRequest(
             @HeaderMap Map<String, String> headers,

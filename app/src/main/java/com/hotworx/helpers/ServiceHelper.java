@@ -80,6 +80,7 @@ public class ServiceHelper {
                                     || tag.equals(WebServiceConstants.GET_APP_INFO)
                                     || tag.equals(WebServiceConstants.GET_PENDING_REQUEST_LIST)
                                     || tag.equals(WebServiceConstants.GET_PENDING_SESSION_LIST)
+                                    || tag.equals(WebServiceConstants.GET_SESSION_PROFILE)
                                     || tag.equals(WebServiceConstants.GET_NOTIFICATION_HISTORY)){
                                 serviceResponseLisener.ResponseSuccess(responseBody, tag);
                             } else {

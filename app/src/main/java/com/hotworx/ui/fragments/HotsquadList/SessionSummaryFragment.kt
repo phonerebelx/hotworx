@@ -106,7 +106,7 @@ class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClic
 
                             setAdapter(highlight)
                             setMemberAdapter(members)
-                            setMemberProfileAdapter(profile)
+//                            setMemberProfileAdapter(profile)
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }
@@ -135,13 +135,13 @@ class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClic
     }
 
     private fun setMemberProfileAdapter(members: MutableList<SessionSquadEventsResponse.SquadEvent.Participant>) {
-        adapterHighlightProfile = EventHighlightProfileAdapter(members, requireContext(),object : EventHighlightProfileAdapter.OnItemClickListener {
-            override fun onItemClick(item: SessionSquadEventsResponse.SquadEvent.Participant, position: Int) {
-                Log.d("testing","testing dataaaaaaaa")
-            }
-        })
-        binding.recyclerViewMember.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.recyclerViewMember.adapter = adapterHighlightProfile
+//        adapterHighlightProfile = EventHighlightProfileAdapter(members, requireContext(),object : EventHighlightProfileAdapter.OnItemClickListener {
+//            override fun onItemClick(item: SessionSquadEventsResponse.SquadEvent.Participant, position: Int) {
+//                Log.d("testing","testing dataaaaaaaa")
+//            }
+//        })
+//        binding.recyclerViewMember.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//        binding.recyclerViewMember.adapter = adapterHighlightProfile
     }
 
     private fun setMemberAdapter(members: MutableList<SessionSquadEventsResponse.Member>) {

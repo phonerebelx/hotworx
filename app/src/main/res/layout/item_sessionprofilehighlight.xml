@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/listMainView"
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_6sdp"
+        android:background="@color/white"
+        android:elevation="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/_5sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_bold"
+                android:maxLines="3"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/_11ssp"
+                tools:text="@string/text" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/text"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/_9ssp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_weight="1"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvMove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/snack_bar_error_red"
+                        android:textSize="@dimen/_11ssp"
+                        tools:text="@string/text" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/move"
+                        android:gravity="center"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/colorBlack2"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvExcerciseTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/colorGreen"
+                        android:textSize="@dimen/_11ssp"
+                        tools:text="@string/text" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exercise"
+                        android:gravity="center"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/colorBlack2"
+                        android:textSize="@dimen/_9ssp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
+
