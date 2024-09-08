@@ -11,12 +11,72 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <io.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/imgCircle"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/no"
+                android:background="@color/transparent_orange"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/no"
+                android:layout_gravity="center"
+                tools:src="@drawable/listicon"
+                android:scaleType="fitXY" />
+
+        </io.github.florent37.shapeofview.shapes.CircleView>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/text"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/_10ssp" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/text"
+            android:gravity="center_horizontal"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/_10ssp"  />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/text"
+            android:gravity="center_horizontal"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/_10ssp"  />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/highlights"
             android:fontFamily="@font/montserrat_bold"
-            android:textSize="@dimen/_15ssp"
+            android:textSize="@dimen/_14ssp"
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:textColor="@color/black"/>
@@ -36,14 +96,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/members"
+            android:text="@string/activities"
             android:fontFamily="@font/montserrat_bold"
-            android:textSize="@dimen/_15ssp"
+            android:textSize="@dimen/_14ssp"
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:textColor="@color/black"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewMember"
+            android:id="@+id/recyclerViewActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -52,7 +112,7 @@
             app:spanCount="2"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
-            tools:listitem="@layout/item_activitymember"/>
+            tools:listitem="@layout/item_sessionactivity"/>
 
     </LinearLayout>
 

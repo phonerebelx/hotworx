@@ -11,19 +11,20 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hotworx.R
+import com.hotworx.models.HotsquadList.Session.UserActivitiesResponse
 import com.hotworx.ui.adapters.NutritionistChildItemAdapter
 
 class SessionProfileMemberAdapter(
-    private val items: MutableList<SessionSquadEventsResponse.Member>,
+    private val items: MutableList<UserActivitiesResponse.UserData.Activity>,
     private val context: Context,
     private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<SessionProfileMemberAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(item: SessionSquadEventsResponse.Member, position:Int)
+        fun onItemClick(item: UserActivitiesResponse.UserData.Activity, position:Int)
     }
 
-    fun updateData(newList: MutableList<SessionSquadEventsResponse.Member>) {
+    fun updateData(newList: MutableList<UserActivitiesResponse.UserData.Activity>) {
         items.clear()
         items.addAll(newList)
         notifyDataSetChanged()
@@ -38,30 +39,22 @@ class SessionProfileMemberAdapter(
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
-        private val emailsentTextView: TextView = itemView.findViewById(R.id.tvEmail)
+        private val typeTextView: TextView = itemView.findViewById(R.id.tvType)
+        private val dateTextView: TextView = itemView.findViewById(R.id.tvDate)
+        private val locationTextView: TextView = itemView.findViewById(R.id.tvLocation)
         private val calTextView: TextView = itemView.findViewById(R.id.tvCal)
-        private val profileImage: ImageView = itemView.findViewById(R.id.imgIcon)
-        private val listMainView: CardView = itemView.findViewById(R.id.listMainView)
 
-        fun bind(item: SessionSquadEventsResponse.Member) {
-            nameTextView.text = item.name
-            emailsentTextView.text = item.email
-            calTextView.text = item.burnedCal
+        fun bind(item: UserActivitiesResponse.UserData.Activity) {
+            typeTextView.text = item.workout_type
+            dateTextView.text = item.workout_date
+            locationTextView.text = item.location_name
+            calTextView.text = item.total_burnt
 
-            Glide.with(context)
-                .load(item.profileImage)
-                .into(profileImage)
-
-            // Display other information as needed, such as sender name, email, etc.
-            listMainView.setOnClickListener{
-                listener.onItemClick(item,position)
-            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_activitymember, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_sessionactivity, parent, false)
         return ViewHolder(view)
     }
 
@@ -70,11 +63,11 @@ class SessionProfileMemberAdapter(
     }
 
     fun getPositionById(listId: String): Int {
-        for (i in items.indices) {
-            if (items[i].id == listId) {
-                return i
-            }
-        }
+//        for (i in items.indices) {
+//            if (items[i].id == listId) {
+//                return i
+//            }
+//        }
         return -1
     }
 

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSessionProfileSummaryBinding
@@ -24,8 +25,10 @@ import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventHighlightAdapte
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventHighlightProfileAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventMemberAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionProfileHighlightAdapter
+import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionProfileMemberAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadMemberListAdapter
 import com.hotworx.ui.fragments.BaseFragment
+import com.hotworx.ui.views.TitleBar
 
 class SessionProfileSummaryFragment : BaseFragment(){
 
@@ -33,8 +36,9 @@ class SessionProfileSummaryFragment : BaseFragment(){
     private val binding get() = _binding!!
     private lateinit var summaryProfile: UserActivitiesResponse
     private val highlightList = mutableListOf<UserActivitiesResponse.UserData.Highlight>()
+    private val activityList = mutableListOf<UserActivitiesResponse.UserData.Activity>()
     private var adapter: SessionProfileHighlightAdapter? = null
-    private var adapterMember: EventMemberAdapter? = null
+    private var adapterActivity: SessionProfileMemberAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +54,7 @@ class SessionProfileSummaryFragment : BaseFragment(){
         callInvitationApi(WebServiceConstants.GET_SESSION_PROFILE, "")
 
         setAdapter(highlightList)
+        setActivityAdapter(activityList)
     }
 
     private fun callInvitationApi(type: String, data: String) {
@@ -65,13 +70,31 @@ class SessionProfileSummaryFragment : BaseFragment(){
 
         summaryProfile = GsonFactory.getConfiguredGson().fromJson(result, UserActivitiesResponse::class.java)
 
+        binding.tvName.text = summaryProfile.data.profile_info.name
+        binding.tvPhone.text = summaryProfile.data.profile_info.email
+        binding.tvEmail.text = summaryProfile.data.profile_info.phone
+
+        Glide.with(requireContext())
+            .load(summaryProfile.data.profile_info.image)
+            .into(binding.imgIcon)
+
+        // Update highlights if present
         if (!summaryProfile.data.highlights.isNullOrEmpty()) {
-            highlightList.clear() // Clear existing items
-            highlightList.addAll(summaryProfile.data.highlights) // Add new items
-            adapter?.notifyDataSetChanged() // Notify the adapter to update the RecyclerView
-        } else {
-            // Handle empty highlights scenario
+            highlightList.clear()
+            highlightList.addAll(summaryProfile.data.highlights)
+            adapter?.notifyDataSetChanged()
         }
+
+        // Update activities if present
+        if (!summaryProfile.data.activities.isNullOrEmpty()) {
+            activityList.clear()
+            activityList.addAll(summaryProfile.data.activities)
+            adapterActivity?.notifyDataSetChanged()
+        }
+    }
+
+    override fun ResponseFailure(message: String?, tag: String?) {
+        Log.e("ResponseFailure", "Failed to load squad members: $message")
     }
 
     private fun setAdapter(members: MutableList<UserActivitiesResponse.UserData.Highlight>) {
@@ -84,18 +107,19 @@ class SessionProfileSummaryFragment : BaseFragment(){
         binding.recyclerViewHighlight.adapter = adapter
     }
 
-    private fun setMemberAdapter(members: MutableList<SessionSquadEventsResponse.Member>) {
-        adapterMember = EventMemberAdapter(members, requireContext(),object : EventMemberAdapter.OnItemClickListener {
-            override fun onItemClick(item: SessionSquadEventsResponse.Member, position: Int) {
+    private fun setActivityAdapter(members: MutableList<UserActivitiesResponse.UserData.Activity>) {
+        adapterActivity = SessionProfileMemberAdapter(members, requireContext(),object : SessionProfileMemberAdapter.OnItemClickListener {
+            override fun onItemClick(item: UserActivitiesResponse.UserData.Activity, position: Int) {
                 Log.d("testing","testing dataaaaaaaa")
             }
         })
-        binding.recyclerViewMember.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.recyclerViewMember.adapter = adapterMember
+        binding.recyclerViewActivity.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.recyclerViewActivity.adapter = adapterActivity
     }
 
-    override fun ResponseFailure(message: String?, tag: String?) {
-        Log.e("ResponseFailure", "Failed to load squad members: $message")
+    override fun setTitleBar(titleBar: TitleBar) {
+        titleBar.showBackButton()
+        titleBar.hidePassioBtn()
     }
 
     override fun onDestroyView() {
