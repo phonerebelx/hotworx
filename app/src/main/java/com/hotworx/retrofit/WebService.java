@@ -641,15 +641,10 @@ public interface WebService {
             @HeaderMap Map<String, String> headers
     );
 
-
     //Business Card
     @GET("activities/EmployeeReferralInfo")
     Call<ResponseBody> getEmployeeReferralInfo(
             @HeaderMap Map<String, String> headers
     );
-
-
-
-
 
 }
