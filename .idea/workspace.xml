@@ -126,24 +126,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="utm url issue fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/ServiceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/ServiceHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/MyHotsquadListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/MyHotsquadListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionPendingListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionPendingListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionSummaryFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionSummaryFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SquadMemberListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SquadMemberListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/1f902e13a35b74ad60a5137870f7cc46/transformed/ai.passio.passiosdk-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/1f902e13a35b74ad60a5137870f7cc46/transformed/ai.passio.passiosdk-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/META-INF/com/android/build/gradle/aar-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/META-INF/com/android/build/gradle/aar-metadata.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/proguard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/proguard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/res/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/res/values/values.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="utm url issue fixed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,7 +144,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="buddylist-module" />
+        <entry key="$PROJECT_DIR$" value="d574ee77dcb3ff29adb6f0ad33771c243b2bde85" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
