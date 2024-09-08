@@ -47,9 +47,9 @@ class SessionProfileSummaryFragment : BaseFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        callInvitationApi(WebServiceConstants.GET_SESSION_PROFILE, "")
 
-        callInvitationApi(Constants.GET_EVENT_HIGHLIGHT_LIST, "")
-
+        setAdapter(highlightList)
     }
 
     private fun callInvitationApi(type: String, data: String) {
@@ -68,8 +68,9 @@ class SessionProfileSummaryFragment : BaseFragment(){
         if (!summaryProfile.data.highlights.isNullOrEmpty()) {
             highlightList.clear() // Clear existing items
             highlightList.addAll(summaryProfile.data.highlights) // Add new items
-//            updateAdapterList(highlightList) // Update adapter with the new list
+            adapter?.notifyDataSetChanged() // Notify the adapter to update the RecyclerView
         } else {
+            // Handle empty highlights scenario
         }
     }
 

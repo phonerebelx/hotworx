@@ -49,8 +49,8 @@ class SessionProfileHighlightAdapter(
             ExerciseTextView.text = item.exercise_time
             // Display other information as needed, such as sender name, email, etc.
 
-            listMainView.setOnClickListener{
-                listener.onItemClick(item,position)
+            listMainView.setOnClickListener {
+                listener.onItemClick(item, adapterPosition)
             }
 
         }
@@ -65,14 +65,14 @@ class SessionProfileHighlightAdapter(
         holder.bind(items[position])
     }
 
-//    fun getPositionById(listId: String): Int {
+    fun getPositionById(listId: String): Int {
 //        for (i in items.indices) {
 //            if (items[i].id == listId) {
 //                return i
 //            }
 //        }
-//        return -1
-//    }
+        return -1
+    }
 
     override fun getItemCount(): Int = items.size
 }
