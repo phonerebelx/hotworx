@@ -25,6 +25,11 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_dashboard_session_adapter.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
@@ -36,11 +41,6 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_milestone.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_hotsquad_list.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -80,37 +80,12 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_session_profile_summary.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_session_summary.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_squad_member_list.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_workout_time.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_referral_url.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_sessionhighlightprofile.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_sessionprofilehighlight.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
@@ -127,22 +102,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="utm url issue fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/ServiceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/ServiceHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/MyHotsquadListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/MyHotsquadListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionPendingListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionPendingListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionSummaryFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SessionSummaryFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SquadMemberListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HotsquadList/SquadMemberListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/1f902e13a35b74ad60a5137870f7cc46/transformed/ai.passio.passiosdk-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/1f902e13a35b74ad60a5137870f7cc46/transformed/ai.passio.passiosdk-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/META-INF/com/android/build/gradle/aar-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/META-INF/com/android/build/gradle/aar-metadata.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/proguard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/proguard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/res/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/res/values/values.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +126,9 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -189,6 +161,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ApkExportedModule&quot;: &quot;hotworx.app&quot;,
     &quot;BundleExportedModule&quot;: &quot;hotworx.app&quot;,
     &quot;DEBUGGABLE_DEVICE&quot;: &quot;tecno_bf7-adb-1048533372003926-FuyubT._adb-tls-connect._tcp&quot;,
     &quot;DEBUGGABLE_PROCESS&quot;: &quot;com.hotworx&quot;,
@@ -214,7 +187,6 @@
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\layout" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
-      <recent name="com.hotworx.ui.adapters.HotsquadListAdapter.Sessions" />
       <recent name="com.hotworx.ui.dialog.ReferralUrl" />
       <recent name="com.hotworx.models.BusinessCard" />
       <recent name="com.hotworx.ui.adapters.ReferralUrl" />

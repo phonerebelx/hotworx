@@ -7,19 +7,7 @@ import com.hotworx.models.BrivoRequestModel.BrivoCredentialRequestModel;
 import com.hotworx.models.BrivoRequestModel.SetLeadIdForBrivoToken;
 import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
-import com.hotworx.models.HotsquadList.SearchListRequest;
-import com.hotworx.models.HotsquadList.Session.SessionHighlightsRequest;
-import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest;
-import com.hotworx.models.HotsquadList.Session.sendSessionInvitationRequest;
-import com.hotworx.models.HotsquadList.Session.sendSquadSessionMemberRequest;
-import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest;
-import com.hotworx.models.HotsquadList.removeSquadMemberRequest;
-import com.hotworx.models.HotsquadList.sendMemberInvitationRequest;
-import com.hotworx.models.HotsquadList.sendReferralInvitationRequest;
-import com.hotworx.models.HotsquadList.squadMemberDetailRequest;
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
-import com.hotworx.models.ViModel.Registration.SetRegisterLocationModel;
-import com.hotworx.models.ViModel.Unregistraion.SetUnRegisterLocationModel;
 import com.hotworx.requestEntity.AddExerciseDataModel;
 import com.hotworx.requestEntity.DeleteCalRequestBody;
 import com.hotworx.requestEntity.SetFavoriteFood;
@@ -27,7 +15,6 @@ import com.hotworx.requestEntity.SetIntermittentPlan;
 import com.hotworx.requestEntity.UpdateSessionEnt;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -137,6 +124,8 @@ public interface WebService {
             @Field("lead_record_id") String lead_record_id
     );
 
+
+
     //   v2 api's for booking session work
 
 
@@ -154,6 +143,8 @@ public interface WebService {
             @Field("selected_date") String selected_date,
             @Field("view_type") String view_type
     );
+
+
 
     @FormUrlEncoded
     @POST("booking/bookSession_v2")
@@ -206,6 +197,8 @@ public interface WebService {
             @Field("selected_location_id") String selected_location_id
     );
 
+
+
     //Home
     @FormUrlEncoded
     @POST("general/get_summary")
@@ -220,6 +213,7 @@ public interface WebService {
     Call<ResponseBody> getCaloriesStat(
             @HeaderMap Map<String, String> headers
     );
+
 
     //Profile
     @GET("general/view_profile")
@@ -421,6 +415,7 @@ public interface WebService {
             @Query("notification_id") String notification_id,
             @Query("user_action") String user_action);
 
+
     //notification api's
     @POST("general/get_notification_history")
     Call<ResponseBody> getNotificationHistory(
@@ -439,6 +434,8 @@ public interface WebService {
            @Query("id") String id
 
     );
+
+
 
     // Nutrition Calories
     @POST("general/get_intermittent_plan")
@@ -644,133 +641,10 @@ public interface WebService {
             @HeaderMap Map<String, String> headers
     );
 
-
     //Business Card
     @GET("activities/EmployeeReferralInfo")
     Call<ResponseBody> getEmployeeReferralInfo(
             @HeaderMap Map<String, String> headers
     );
-
-
-    //HotSquad List
-
-    @FormUrlEncoded
-    @POST("hotsquad/createSquad")
-    Call<ResponseBody> createHotsquadList(
-            @HeaderMap Map<String, String> headers,
-            @Field("name") String name,
-            @Field("desc") String desc
-    );
-
-    @GET("hotsquad/getSquadList")
-    Call<ResponseBody> getHotsquadList(
-            @HeaderMap Map<String, String> headers,
-            @Query("session_id") String session_id
-    );
-
-
-    @POST("hotsquad/searchSquadMembers")
-    Call<ResponseBody> searchAddSquadMember(
-            @HeaderMap Map<String, String> headers,
-            @Body SearchListRequest request // Accepting the custom request body
-    );
-
-    @POST("hotsquad/sendSquadMemberInvitation")
-    Call<ResponseBody> sendSquadMemberInvitation(
-            @HeaderMap Map<String, String> headers,
-            @Body sendMemberInvitationRequest request // Accepting the custom request body
-    );
-
-    @POST("hotsquad/sendSquadRefarralInvitation")
-    Call<ResponseBody> sendReferralInvitation(
-            @HeaderMap Map<String, String> headers,
-            @Body sendReferralInvitationRequest request // Accepting the custom request body
-    );
-
-    @GET("hotsquad/getPendingSquadMemberInvitationList")
-    Call<ResponseBody> getPendingRequestList(
-            @HeaderMap Map<String, String> headers
-    );
-
-    @POST("hotsquad/squadInvitationResponse")
-    Call<ResponseBody> PendingRequestAccept(
-            @HeaderMap Map<String, String> headers,
-            @Body pendingListAcceptRejectRequest request // Accepting the custom request body
-    );
-
-    @POST("hotsquad/getSquadDetails")
-    Call<ResponseBody> getSquadDetail(
-            @HeaderMap Map<String, String> headers,
-            @Body squadMemberDetailRequest request // Accepting the custom request body
-    );
-
-    @POST("hotsquad/removeSquadMember")
-    Call<ResponseBody> removeSquadMember(
-            @HeaderMap Map<String, String> headers,
-            @Body removeSquadMemberRequest request // Accepting the custom request body
-    );
-
-
-    //App setting
-    @GET("general/GetAppSettings")
-    Call<ResponseBody> getAppSetting(
-            @HeaderMap Map<String, String> headers
-    );
-
-    //Session Booking
-    @POST("hotsquad/getSquadMembersForSessionInvite")
-    Call<ResponseBody> getSquadMemberForSession(
-            @HeaderMap Map<String, String> headers,
-            @Body SquadSessionMemberRequest request
-    );
-
-    @POST("hotsquad/getEventsHighlights")
-    Call<ResponseBody> getEventsList(
-            @HeaderMap Map<String, String> headers,
-            @Body SessionHighlightsRequest request
-    );
-
-    @GET("hotsquad/userActivities")
-    Call<ResponseBody> getSessionUserProfile(
-            @HeaderMap Map<String, String> headers
-    );
-
-
-    @POST("hotsquad/sendSquadSessionInvitation")
-    Call<ResponseBody> sendSquadSessionMemberRequest(
-            @HeaderMap Map<String, String> headers,
-            @Body sendSquadSessionMemberRequest request
-    );
-
-    @GET("hotsquad/getPendingSquadSessionInvitationList")
-    Call<ResponseBody> getPendingSessionList(
-            @HeaderMap Map<String, String> headers
-    );
-
-    @POST("hotsquad/sessionInvitationResponse")
-    Call<ResponseBody> responseSessionInvitationRequest(
-            @HeaderMap Map<String, String> headers,
-            @Body sendSessionInvitationRequest request // Accepting the custom request body
-    );
-
-    // Vi Management
-    @POST("vi/list_location_suana")
-    Call<ResponseBody> getListLocationSuana(
-            @HeaderMap Map<String, String> headers
-    );
-
-
-    @POST("vi/register_device")
-    Call<ResponseBody> registerDevice(
-            @HeaderMap Map<String, String> headers,
-            @Body SetRegisterLocationModel body
-    );
-
-    @POST("vi/unregister_device")
-    Call<ResponseBody> unRegisterDevice(
-            @HeaderMap Map<String, String> headers,
-            @Body SetUnRegisterLocationModel body
-    );
-
 
 }
