@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.activities.DockActivity
@@ -72,6 +73,10 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         }
 
         setAdapter(squadList = hotsquadListModel.data)
+
+//        Glide.with(requireContext())
+//            .load(prefHelper.userDataModel.)
+//            .into(binding.userImage)
     }
 
     override fun onItemClick(item: Hotsquad) {

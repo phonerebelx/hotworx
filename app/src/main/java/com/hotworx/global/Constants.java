@@ -13,6 +13,8 @@ public class Constants {
 
     //
     public static final String HomeFragment = "Home Fragment";
+    public static final String PendingInvitesFragment = "Pending Invites Fragment";
+    public static final String SessionPendingListFragment = "Session PendingList Fragment";
     public static final String ViewPagerFragment = "View PagerFragment";
     public static final String ProfileAndGoalFragment = "ProfileAndGoal Fragment";
     public static final String WorkoutTimeFragment = "WorkoutTimeFragment";

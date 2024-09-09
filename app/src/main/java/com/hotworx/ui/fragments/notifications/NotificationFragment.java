@@ -28,6 +28,9 @@ import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.ui.adapters.NotificationListAdapter;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.fragments.HomeFragment;
+import com.hotworx.ui.fragments.HotsquadList.PendingInvitesFragment;
+import com.hotworx.ui.fragments.HotsquadList.RecieverPendingRequestFragment;
+import com.hotworx.ui.fragments.HotsquadList.SessionPendingListFragment;
 import com.hotworx.ui.fragments.notifications.ReadNotification.LargeImageView.LargeImageViewDialogFragment;
 import com.hotworx.ui.fragments.notifications.ReadNotification.NotificationReadFragment;
 import com.hotworx.ui.views.TitleBar;
@@ -191,6 +194,14 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
                             false
                     );
                 }
+            }
+
+            case "Squad_Member_Invites" -> {
+                myDockActivity.replaceDockableFragment(new PendingInvitesFragment(), Constants.PendingInvitesFragment);
+            }
+
+            case "Squad_Session_Invites" -> {
+                myDockActivity.replaceDockableFragment(new SessionPendingListFragment(), Constants.SessionPendingListFragment);
             }
 
             case "COME_FROM_ATTACHMENT_CLICK_DOWNLOAD" -> {

@@ -94,11 +94,35 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         if (notificationData.getRead_status()) {
             holder.mainView.setBackground(ContextCompat.getDrawable(context, R.drawable.shape_rectangle_notification_white));
             holder.ivReadImg.setVisibility(View.VISIBLE);
-           }
+        }
+//
+//        if(notificationData.getNavigation_type() == "redirect_to_squad_member_invites"){
+//            holder.mainView.setOnClickListener(v -> {
+//                onClickItemListener.onItemClick(notificationData, "Squad_Member_Invites");
+//            });
+//        }else if(notificationData.getNavigation_type() == "redirect_to_squad_session_invites"){
+//            holder.mainView.setOnClickListener(v -> {
+//                onClickItemListener.onItemClick(notificationData, "Squad_Session_Invites");
+//            });
+//        } else if(notificationData.getNavigation_type() == "redirect_to_notifications"){
+//            holder.mainView.setOnClickListener(v -> {
+//                onClickItemListener.onItemClick(notificationData, "Come_From_Click_Notification_Adapter");
+//            });
+//        }
 
-        holder.mainView.setOnClickListener(v -> {
-            onClickItemListener.onItemClick(notificationData, "Come_From_Click_Notification_Adapter");
-        });
+        // Handle notification redirection
+        switch (notificationData.getNavigation_type()) {
+            case "redirect_to_squad_member_invites":
+                holder.mainView.setOnClickListener(v -> onClickItemListener.onItemClick(notificationData, "Squad_Member_Invites"));
+                break;
+            case "redirect_to_squad_session_invites":
+                holder.mainView.setOnClickListener(v -> onClickItemListener.onItemClick(notificationData, "Squad_Session_Invites"));
+                break;
+            case "redirect_to_notifications":
+                holder.mainView.setOnClickListener(v -> onClickItemListener.onItemClick(notificationData, "Come_From_Click_Notification_Adapter"));
+                break;
+        }
+
 //
 //        holder.ivBanner.setOnClickListener(v -> {
 //            onClickItemListener.onItemClick(notificationData, "COME_FROM_IMAGE_CLICK");
@@ -167,8 +191,5 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
             ButterKnife.bind(this, itemView);
         }
     }
-
-
-
 }
 
