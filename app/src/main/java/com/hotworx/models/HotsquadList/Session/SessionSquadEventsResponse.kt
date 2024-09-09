@@ -8,9 +8,7 @@ data class SessionSquadEventsResponse(
     data class SquadEventsData(
         @SerializedName("squad_events") val squadEvents: MutableList<SquadEvent>,
         @SerializedName("members") val members: MutableList<Member>,
-    )
-
-    data class SquadEvent(
+    )data class SquadEvent(
         val id: String,
         val name: String,
         val highlights: Highlights,

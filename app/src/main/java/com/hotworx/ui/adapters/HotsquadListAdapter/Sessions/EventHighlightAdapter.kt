@@ -4,12 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
-import com.hotworx.models.HotsquadList.Session.PendingSessionResponse
 
 class EventHighlightAdapter(
     private val items: MutableList<SessionSquadEventsResponse.SquadEvent>,
@@ -18,7 +17,7 @@ class EventHighlightAdapter(
 ) : RecyclerView.Adapter<EventHighlightAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(item: SessionSquadEventsResponse.SquadEvent, position:Int)
+        fun onItemClick(item: SessionSquadEventsResponse.SquadEvent, position: Int)
     }
 
     fun updateData(newList: MutableList<SessionSquadEventsResponse.SquadEvent>) {
@@ -28,7 +27,7 @@ class EventHighlightAdapter(
     }
 
     fun removeItem(position: Int) {
-        if (position >= 0 && position < items.size) {
+        if (position in items.indices) {  // Safe check for position
             items.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, items.size)
@@ -39,20 +38,26 @@ class EventHighlightAdapter(
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
         private val sentTextView: TextView = itemView.findViewById(R.id.tvDate)
         private val moveTextView: TextView = itemView.findViewById(R.id.tvMove)
-        private val ExerciseTextView: TextView = itemView.findViewById(R.id.tvExcerciseTime)
+        private val exerciseTextView: TextView = itemView.findViewById(R.id.tvExcerciseTime)
         private val listMainView: CardView = itemView.findViewById(R.id.listMainView)
+        private val recyclerViewHighlightProfile: RecyclerView = itemView.findViewById(R.id.recyclerViewHighlightProfile)
 
         fun bind(item: SessionSquadEventsResponse.SquadEvent) {
+            // Binding data to the TextViews
             nameTextView.text = item.highlights.title
             sentTextView.text = item.highlights.sessionDate
             moveTextView.text = item.highlights.totalBurnedCal
-            ExerciseTextView.text = item.highlights.avgExerciseTime
-            // Display other information as needed, such as sender name, email, etc.
+            exerciseTextView.text = item.highlights.avgExerciseTime
 
-            listMainView.setOnClickListener{
-                listener.onItemClick(item,position)
+            // Set up the RecyclerView for participants
+            recyclerViewHighlightProfile.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+            val participantAdapter = EventHighlightProfileAdapter(item.participants, itemView.context)
+            recyclerViewHighlightProfile.adapter = participantAdapter
+
+            // Click listener for the main view
+            listMainView.setOnClickListener {
+                listener.onItemClick(item, bindingAdapterPosition)  // Use bindingAdapterPosition
             }
-
         }
     }
 

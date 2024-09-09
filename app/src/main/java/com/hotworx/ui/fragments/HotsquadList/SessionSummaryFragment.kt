@@ -47,7 +47,6 @@ class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClic
     private var adapterMember: EventMemberAdapter? = null
     private var adapterHighlightProfile: EventHighlightProfileAdapter? = null
     private var squadId: String = ""
-    private lateinit var memberListModel: SquadMemberDetailsResponse.SquadData
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
