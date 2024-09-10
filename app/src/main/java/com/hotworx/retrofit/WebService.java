@@ -7,6 +7,7 @@ import com.hotworx.models.BrivoRequestModel.BrivoCredentialRequestModel;
 import com.hotworx.models.BrivoRequestModel.SetLeadIdForBrivoToken;
 import com.hotworx.models.GetRewardRequest;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
+import com.hotworx.models.HotsquadList.Passio.getPassioRequest;
 import com.hotworx.models.HotsquadList.SearchListRequest;
 import com.hotworx.models.HotsquadList.Session.SessionHighlightsRequest;
 import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest;
@@ -772,5 +773,10 @@ public interface WebService {
             @Body SetUnRegisterLocationModel body
     );
 
-
+    //Passio
+    @GET("activities/GetPassioData")
+    Call<ResponseBody> getPassioData(
+            @HeaderMap Map<String, String> headers,
+            @Body getPassioRequest request
+    );
 }

@@ -1,5 +1,7 @@
 package com.hotworx.ui.fragments.HotsquadList
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentMyHotsquadListBinding
 import com.hotworx.global.WebServiceConstants
+import com.hotworx.models.ComposeModel.RefferalDetailModel.AmbassadorReferralDataModel
 import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.models.HotsquadList.HotsquadListModel
 import com.hotworx.retrofit.GsonFactory
@@ -74,9 +79,78 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
         setAdapter(squadList = hotsquadListModel.data)
 
-//        Glide.with(requireContext())
-//            .load(prefHelper.userDataModel.)
-//            .into(binding.userImage)
+        setImageOrData()
+    }
+
+    private fun getUserDetail(): ArrayList<String> {
+        val userName = prefHelper.loginData.full_name.split(" ")
+
+        val arrayString = ArrayList<String>()
+        var firstName = userName[0]
+        var lastName = if (userName.size > 1) {
+            if (userName.size > 2 && userName[1].isEmpty()) {
+                userName[2]
+            } else {
+                userName[1]
+            }
+        } else {
+            ""
+        }
+
+        val firstFullName = firstName
+        val lastFullName = lastName
+        if (firstName.isNotEmpty()) firstName = firstName[0].toString()
+        if (lastName.isNotEmpty()) lastName = lastName[0].toString()
+
+        val fullName = firstName + lastName
+
+        arrayString.add(fullName)
+        arrayString.add(firstName)
+        arrayString.add(lastName)
+        arrayString.add(firstFullName)
+        arrayString.add(lastFullName)
+        return arrayString
+    }
+
+    private fun setImageOrData() {
+        if (prefHelper.imagePath != null) {
+            binding.tvfirstLastName.visibility = View.GONE
+            binding.cvImageCard.visibility = View.VISIBLE
+
+            Glide.with(requireContext())
+                .load(prefHelper.imagePath)
+                .listener(object : RequestListener<Drawable> {
+                    @SuppressLint("SetTextI18n")
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+
+                        binding.cvImageCard.visibility = View.GONE
+                        binding.tvfirstLastName.visibility = View.VISIBLE
+                        binding.tvfirstLastName.text = "${getUserDetail()[1]}${getUserDetail()[2]}"
+                        return false
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        dataSource: com.bumptech.glide.load.DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+
+                        return false
+                    }
+                })
+                .into(binding.userImage)
+        } else {
+            binding.cvImageCard.visibility = View.GONE
+            binding.tvfirstLastName.visibility = View.VISIBLE
+            binding.tvfirstLastName.text = "${getUserDetail()[1]}${getUserDetail()[2]}"
+        }
     }
 
     override fun onItemClick(item: Hotsquad) {

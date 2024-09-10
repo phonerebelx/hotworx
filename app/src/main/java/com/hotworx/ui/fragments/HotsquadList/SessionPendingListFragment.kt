@@ -2,35 +2,23 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
-import com.hotworx.databinding.FragmentPendingInvitesBinding
 import com.hotworx.databinding.FragmentSessionPendingListBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
-import com.hotworx.helpers.UIHelper
-import com.hotworx.helpers.Utils
-import com.hotworx.interfaces.OnClickPendingModelInterface
 import com.hotworx.interfaces.OnClickSessionPendingModelInterface
-import com.hotworx.models.DashboardData.TodaysPendingSession
-import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.HotsquadList.PendingInvitationResponse
 import com.hotworx.models.HotsquadList.Session.PendingSessionResponse
 import com.hotworx.models.HotsquadList.Session.sendSessionInvitationRequest
-import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest
 import com.hotworx.retrofit.GsonFactory
-import com.hotworx.ui.adapters.HotsquadListAdapter.PendingRequestAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionPendingListAdapter
 import com.hotworx.ui.dialog.Hotsquad.PendingSessionDialogFragment
-import com.hotworx.ui.dialog.SessionDialog.StartSessionDialogFragment
 import com.hotworx.ui.fragments.BaseFragment
 
 class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelInterface {

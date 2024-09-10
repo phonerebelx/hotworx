@@ -74,4 +74,5 @@ public class WebServiceConstants {
     public static final String GET_PENDING_SESSION_LIST = "GET_PENDING_SESSION_LIST" ;
     public static final String MARK_NOTIFICATION_READ = "MARK_NOTIFICATION_READ" ;
     public static final String MARK_ATTACHMENT_READ = "MARK_ATTACHMENT_READ" ;
+    public static final String GET_PASSIO_LIST = "GET_PASSIO_LIST" ;
 }
