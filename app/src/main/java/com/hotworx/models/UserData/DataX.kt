@@ -50,6 +50,7 @@ data class DataX(
     val is_ambassador_allowed: String?,
     val is_employee_allowed: String?,
     val unread_notifications: String?,
-    val new_reciprocal_enabled: String?
+    val new_reciprocal_enabled: String?,
+    val hotsquad_pending_invites: String?,
 
 ): Serializable

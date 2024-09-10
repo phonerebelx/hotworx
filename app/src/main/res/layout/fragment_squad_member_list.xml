@@ -24,15 +24,52 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/text_color"/>
 
-            <ImageView
-                android:id="@+id/user_image"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/pending_user"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:civ_border_color="#FFF"
-                app:civ_border_width="2dp" />
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="right"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/pendingrequesticon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <FrameLayout
+                    android:id="@+id/flView"
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" >
+
+                    <TextView
+                        android:id="@+id/tvNotificationNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_gravity="bottom|end"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:background="@drawable/shape_notification"
+                        android:textSize="@dimen/_5sdp"
+                        android:layout_marginStart="1dp"
+                        android:textColor="@color/colorWhite"
+                        android:text="100"/>
+
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 

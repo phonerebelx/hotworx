@@ -44,6 +44,7 @@ class RecieverPendingRequestFragment : BaseFragment(), TabLayout.OnTabSelectedLi
     override fun setTitleBar(titleBar: TitleBar) {
         super.setTitleBar(titleBar)
         titleBar.showBackButton()
+        titleBar.hidePassioBtn()
         titleBar.subHeading = getString(R.string.Pending_request)
     }
 

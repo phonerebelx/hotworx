@@ -1,12 +1,15 @@
 package com.hotworx.ui.fragments.HotsquadList
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
@@ -15,14 +18,22 @@ import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentMyHotsquadListBinding
+import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
-import com.hotworx.models.ComposeModel.RefferalDetailModel.AmbassadorReferralDataModel
+import com.hotworx.helpers.CustomEvents.checkBrivoAllowed
+import com.hotworx.helpers.Utils
+import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.models.HotsquadList.HotsquadListModel
+import com.hotworx.models.HotsquadList.Session.SessionMemberResponse
+import com.hotworx.models.HotsquadList.Session.SquadSessionInvitationResponse
+import com.hotworx.models.UserData.getUserData
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
 import com.hotworx.ui.fragments.BaseFragment
+import com.hotworx.ui.fragments.HotsquadList.activity.CongratulationsActivity
 import com.hotworx.ui.views.TitleBar
+import org.greenrobot.eventbus.EventBus
 
 class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListener {
     private var _binding: FragmentMyHotsquadListBinding? = null
@@ -42,6 +53,8 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setImageOrData()
 
         // Retrieve the squad ID from the fragment arguments
         arguments?.let {
@@ -79,7 +92,12 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
 
         setAdapter(squadList = hotsquadListModel.data)
 
-        setImageOrData()
+        binding.pendingSessions.setOnClickListener{
+            val recieverPendingRequestFragment = RecieverPendingRequestFragment()
+            dockActivity.replaceDockableFragment(recieverPendingRequestFragment)
+        }
+
+        callApi(Constants.PROFILE_API_CALLING)
     }
 
     private fun getUserDetail(): ArrayList<String> {
@@ -213,8 +231,7 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
                     binding.newUser.visibility = View.GONE
                     setAdapter(hotsquadListModel.data)
                 }
-            }
-            else -> {
+            }else -> {
                 // Handle other cases if necessary
                 Log.d("ResponseSuccessss", "Unhandled Tag: $Tag")
             }
@@ -225,6 +242,37 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         Log.e("ResponseFailure", "Failed to load squad: $message")
         binding.tvNoListFound.text = getString(R.string.no_squad_found)
         binding.tvNoListFound.visibility = View.VISIBLE
+    }
+
+    private fun callApi(type: String) {
+        when (type) {
+            Constants.PROFILE_API_CALLING -> getServiceHelper().enqueueCallExtended(
+                getWebService().viewProfile(
+                    apiHeader(requireContext())
+                ), Constants.PROFILE_API_CALLING, true
+            )
+        }
+    }
+
+    override fun onSuccess(liveData: LiveData<String>, tag: String) {
+        super.onSuccess(liveData, tag)
+        when (tag) {
+            Constants.PROFILE_API_CALLING -> {
+                try {
+                    val userData = GsonFactory.getConfiguredGson()
+                        .fromJson(liveData.value, getUserData::class.java)
+                    if (userData.data != null && !userData.data.isEmpty() && userData.data[0].data != null && userData.data[0].data.unread_notifications != null) {
+                        binding.tvPendingNo.text = userData.data[0].data.hotsquad_pending_invites
+                    } else {
+                    }
+                    if (userData.data[0].data.is_brivo_allowed != "yes") {
+                        EventBus.getDefault().post(checkBrivoAllowed())
+                    }
+                } catch (e: Exception) {
+                    Utils.customToast(requireContext(), resources.getString(R.string.error_failure))
+                }
+            }
+        }
     }
 
     private fun scrollToNotification(listId: String) {
