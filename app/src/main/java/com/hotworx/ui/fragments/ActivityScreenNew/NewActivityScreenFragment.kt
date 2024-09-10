@@ -457,7 +457,8 @@ class NewActivityScreenFragment : BaseFragment(), OnClickItemListener,
             start_date_time = getNinetyDaysActivity.start_date_time,
             end_date_time = getNinetyDaysActivity.end_date_time,
             sauna = getNinetyDaysActivity.sauna_no,
-            location_name = getNinetyDaysActivity.location_name
+            location_name = getNinetyDaysActivity.location_name,
+            has_shared_access = false,
         )
 
         val startSessionDialogFragment = StartSessionDialogFragment(this)

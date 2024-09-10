@@ -273,7 +273,8 @@ public class RootActivity extends BaseActivity implements AuthenticationHandler,
                 false,
                 "",
                 "",
-                ""
+                "",
+                false
         );
         this.activeSession = session;
         this.isAfterBurnWorkoutSession = true;

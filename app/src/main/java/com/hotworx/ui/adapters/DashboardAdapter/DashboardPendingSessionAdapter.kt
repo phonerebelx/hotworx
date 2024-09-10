@@ -86,16 +86,21 @@ class DashboardPendingSessionAdapter(
             onItemClickInterface.onItemClick(item, "COME_FROM_TAB_VIEW")
         }
 
-        binding.ivShareIcon.setOnClickListener {
-            val myhotsquadlistBinding = MyHotsquadListFragment().apply {
-                arguments = Bundle().apply {
-                    putString("Dashboard_share", "dashboardShare")
-                    putString("RecordId", item.session_record_id)
-                }
-            }
-            dockActivity?.replaceDockableFragment(myhotsquadlistBinding)
-        }
+        if(!item.has_shared_access){
+            binding.ivShareIcon.visibility = View.GONE
+        }else{
+            binding.ivShareIcon.visibility = View.VISIBLE
 
+            binding.ivShareIcon.setOnClickListener {
+                val myhotsquadlistBinding = MyHotsquadListFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("Dashboard_share", "dashboardShare")
+                        putString("RecordId", item.session_record_id)
+                    }
+                }
+                dockActivity?.replaceDockableFragment(myhotsquadlistBinding)
+            }
+        }
     }
 
     override fun getItemCount(): Int {

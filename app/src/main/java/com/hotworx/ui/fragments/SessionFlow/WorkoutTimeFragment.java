@@ -368,7 +368,8 @@ public class WorkoutTimeFragment extends BaseFragment {
                 false,
                 "",
                 "",
-                ""
+                "",
+                false
         );
 
         this.activeSession = session;

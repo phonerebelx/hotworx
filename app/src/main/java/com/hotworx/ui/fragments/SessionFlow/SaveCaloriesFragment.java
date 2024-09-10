@@ -436,7 +436,8 @@ public class SaveCaloriesFragment extends BaseFragment {
                 false,
                 "",
                 "",
-                ""
+                "",
+                false
                 );
 //        session.setType(WORKOUT_AFTER_BURN_NAME);
 //        session.setDuration(RoomBuilder.getHotWorxDatabase(myDockActivity).getWorkoutTypeDao().getWorkoutType().getSixty_min_time());

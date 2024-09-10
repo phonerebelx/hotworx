@@ -24,5 +24,6 @@ data class TodaysPendingSession(
     val display_date: String = "",
     val start_date_time: String = "",
     val end_date_time: String = "",
+    val has_shared_access: Boolean,
 
 ): Serializable
