@@ -85,7 +85,7 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
             dockActivity.replaceDockableFragment(addListFragment)
         }
 
-        binding.userImage.setOnClickListener{
+        binding.cvProperty1.setOnClickListener{
             val sessionProfileSummaryFragment = SessionProfileSummaryFragment()
             dockActivity.replaceDockableFragment(sessionProfileSummaryFragment)
         }
@@ -259,14 +259,12 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         when (tag) {
             Constants.PROFILE_API_CALLING -> {
                 try {
-                    val userData = GsonFactory.getConfiguredGson()
-                        .fromJson(liveData.value, getUserData::class.java)
-                    if (userData.data != null && !userData.data.isEmpty() && userData.data[0].data != null && userData.data[0].data.unread_notifications != null) {
+                    val userData = GsonFactory.getConfiguredGson().fromJson(liveData.value, getUserData::class.java)
+                    if(userData.data[0].data.hotsquad_pending_invites == "0"){
+                        binding.flView.visibility = View.GONE
+                    }else{
+                        binding.flView.visibility = View.VISIBLE
                         binding.tvPendingNo.text = userData.data[0].data.hotsquad_pending_invites
-                    } else {
-                    }
-                    if (userData.data[0].data.is_brivo_allowed != "yes") {
-                        EventBus.getDefault().post(checkBrivoAllowed())
                     }
                 } catch (e: Exception) {
                     Utils.customToast(requireContext(), resources.getString(R.string.error_failure))

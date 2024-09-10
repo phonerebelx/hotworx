@@ -15,6 +15,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.graphics.BlendMode.Companion.Color
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -125,6 +127,7 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
 
                             if (members.isNotEmpty()) {
                                 val pendingMembers = members.filter { it.invite_status == "accepted" }.toMutableList()
+
                                 if (pendingMembers.isNotEmpty()) {
                                     setAdapter(pendingMembers)
                                 } else {
@@ -176,9 +179,8 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
         }
     }
 
-
     private fun setAdapter(members: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
-        adapter = SquadMemberListAdapter(members, requireContext(),object : SquadMemberListAdapter.OnItemClickListener {
+        adapter = SquadMemberListAdapter(members, requireContext(), preferenceHelper = prefHelper,object : SquadMemberListAdapter.OnItemClickListener {
             override fun onItemClick(item: SquadMemberDetailsResponse.SquadData.Member) {
                 item?.let {
                     if (item.selected) {
@@ -223,6 +225,7 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
     override fun setTitleBar(titleBar: TitleBar) {
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.squad_members)
+        titleBar.hidePassioBtn()
     }
 
     @SuppressLint("ResourceAsColor")

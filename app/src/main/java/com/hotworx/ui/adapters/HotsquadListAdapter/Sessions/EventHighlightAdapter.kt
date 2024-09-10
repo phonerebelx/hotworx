@@ -54,6 +54,7 @@ class EventHighlightAdapter(
             val participantAdapter = EventHighlightProfileAdapter(item.participants, itemView.context)
             recyclerViewHighlightProfile.adapter = participantAdapter
 
+            
             // Click listener for the main view
             listMainView.setOnClickListener {
                 listener.onItemClick(item, bindingAdapterPosition)  // Use bindingAdapterPosition

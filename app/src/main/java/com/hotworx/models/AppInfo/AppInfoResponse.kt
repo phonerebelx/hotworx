@@ -15,6 +15,7 @@ data class AppInfoResponse(
     )
 
     data class Hotsquad(
-        val search_squad_member_limit: Int
+        val search_squad_member_limit: Int,
+        val mobile_number_limit: Int,
     )
 }

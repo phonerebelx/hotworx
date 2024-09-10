@@ -99,13 +99,19 @@ class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClic
                     try {
                         val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SessionSquadEventsResponse::class.java)
                         if (response?.status == true) {
+
+                            if (response.data.squadEvents.isEmpty() && response.data.members.isEmpty()) {
+                                binding.tvHighlightNotFound.visibility = View.VISIBLE
+                                binding.tvMemberNotFound.visibility = View.VISIBLE
+                            } else {
+                                binding.tvHighlightNotFound.visibility = if (response.data.squadEvents.isEmpty()) View.VISIBLE else View.GONE
+                                binding.tvMemberNotFound.visibility = if (response.data.members.isEmpty()) View.VISIBLE else View.GONE
+                            }
+
                             val highlight = response.data.squadEvents
                             val members = response.data.members
-                            val profile = response.data.squadEvents[0].participants
-
                             setAdapter(highlight)
                             setMemberAdapter(members)
-//                            setMemberProfileAdapter(profile)
                         } else {
                             dockActivity?.showErrorMessage("Something Went Wrong")
                         }
@@ -131,16 +137,6 @@ class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClic
         })
         binding.recyclerViewHighlight.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerViewHighlight.adapter = adapter
-    }
-
-    private fun setMemberProfileAdapter(members: MutableList<SessionSquadEventsResponse.SquadEvent.Participant>) {
-//        adapterHighlightProfile = EventHighlightProfileAdapter(members, requireContext(),object : EventHighlightProfileAdapter.OnItemClickListener {
-//            override fun onItemClick(item: SessionSquadEventsResponse.SquadEvent.Participant, position: Int) {
-//                Log.d("testing","testing dataaaaaaaa")
-//            }
-//        })
-//        binding.recyclerViewMember.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-//        binding.recyclerViewMember.adapter = adapterHighlightProfile
     }
 
     private fun setMemberAdapter(members: MutableList<SessionSquadEventsResponse.Member>) {

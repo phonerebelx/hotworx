@@ -174,7 +174,7 @@ class squadPendingMemberFragment : BaseFragment(), SquadMemberListAdapter.OnItem
 
 
     private fun setAdapter(members: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
-        adapter = SquadMemberListAdapter(members, requireContext(),object : SquadMemberListAdapter.OnItemClickListener {
+        adapter = SquadMemberListAdapter(members, requireContext(), preferenceHelper = prefHelper,object : SquadMemberListAdapter.OnItemClickListener {
             override fun onItemClick(item: SquadMemberDetailsResponse.SquadData.Member) {
                 item?.let {
                     if (item.selected) {

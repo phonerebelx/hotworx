@@ -87,6 +87,7 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
         adapter = SessionPendingListAdapter(
             mutableListOf(),
             requireContext(),
+            prefHelper,
             object : SessionPendingListAdapter.OnItemClickListener {
                 override fun onItemClick(
                     item: PendingSessionResponse.SquadInvitation,

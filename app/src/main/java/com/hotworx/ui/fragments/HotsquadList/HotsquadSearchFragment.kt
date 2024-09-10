@@ -45,6 +45,7 @@ class HotsquadSearchFragment : BaseFragment(){
     var resultString = ""
     var squadId = ""
     var searchLimit:Int = 0
+    var phoneLimit:Int = 0
     var jsonArray: List<String> = mutableListOf()
 
     /**
@@ -80,13 +81,51 @@ class HotsquadSearchFragment : BaseFragment(){
             adapter = userListAdapter
         }
 
+//        binding.addUSer.setOnClickListener {
+//            if (userList.size >= searchLimit) {
+//                dockActivity?.showErrorMessage("You can only add up to $searchLimit members.")
+//                return@setOnClickListener
+//            }
+//
+//            // Count how many phone numbers are already in the list
+//            val phoneNumbersCount = userList.count { isValidPhone(it.searchedName ?: "") }
+//            if (phoneNumbersCount >= phoneLimit) {
+//                dockActivity?.showErrorMessage("You can only add up to $phoneLimit phone numbers.")
+//                return@setOnClickListener
+//            }
+//
+//            val inputText = binding.titleEt.text.toString()
+//            if (TextUtils.isEmpty(inputText)) {
+//                binding.titleEt.error = "Field Required!!"
+//                binding.titleEt.requestFocus()
+//            } else if (!isValidEmailOrPhone(inputText)) {
+//                binding.titleEt.error = "Invalid Email or Phone Number!"
+//                binding.titleEt.requestFocus()
+//            } else {
+//                val userModel = UserModel(inputText)
+//                userList.add(userModel)
+//                userListAdapter.notifyItemInserted(userList.size - 1)
+//                binding.titleEt.text?.clear()
+//                updateSearchButtonVisibility()
+//
+//                jsonArray = convertListToJsonArray(userList)
+//
+//                Log.d("sjkhakjhdks", jsonArray.toString())
+//            }
+//        }
+        getAppInfo()
+//        Log.d("phonelimit", phoneLimit.toString())
+
         binding.addUSer.setOnClickListener {
+            // Check the overall limit of users
             if (userList.size >= searchLimit) {
                 dockActivity?.showErrorMessage("You can only add up to $searchLimit members.")
                 return@setOnClickListener
             }
 
             val inputText = binding.titleEt.text.toString()
+
+            // Check if the input is valid
             if (TextUtils.isEmpty(inputText)) {
                 binding.titleEt.error = "Field Required!!"
                 binding.titleEt.requestFocus()
@@ -94,15 +133,24 @@ class HotsquadSearchFragment : BaseFragment(){
                 binding.titleEt.error = "Invalid Email or Phone Number!"
                 binding.titleEt.requestFocus()
             } else {
+
                 val userModel = UserModel(inputText)
                 userList.add(userModel)
                 userListAdapter.notifyItemInserted(userList.size - 1)
                 binding.titleEt.text?.clear()
                 updateSearchButtonVisibility()
 
+                // Convert the user list to a JSON array
                 jsonArray = convertListToJsonArray(userList)
 
                 Log.d("sjkhakjhdks", jsonArray.toString())
+
+//                if(phoneLimit<= 11){
+//
+//                }else{
+//                    dockActivity?.showErrorMessage("You can only add up to $phoneLimit phone numbers.")
+//                    return@setOnClickListener
+//                }
             }
         }
 
@@ -110,8 +158,6 @@ class HotsquadSearchFragment : BaseFragment(){
         searchUserBottomSheet = SearchUserBottomSheet()
 
         callApi(WebServiceConstants.GET_APP_INFO,"")
-
-        getAppInfo()
 
         binding.btnSearchUser.setOnClickListener{
             // Call the function to get the JSON array and store it in a variable
@@ -220,6 +266,8 @@ class HotsquadSearchFragment : BaseFragment(){
                 val response = GsonFactory.getConfiguredGson()?.fromJson(result, AppInfoResponse::class.java)!!
                 if (response.status) {
                     searchLimit = response.data.hotsquad.search_squad_member_limit.toInt()
+                    phoneLimit = response.data.hotsquad.mobile_number_limit.toInt()
+                    Log.d("phonelimitttt", phoneLimit.toString())
                     Log.d("ResponseIDDDD", "LiveData value: $searchLimit")
                 } else {
                     dockActivity?.showErrorMessage("Something Went Wrong")

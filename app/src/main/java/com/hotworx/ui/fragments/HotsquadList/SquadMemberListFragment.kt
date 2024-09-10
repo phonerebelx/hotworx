@@ -2,11 +2,14 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import com.google.android.material.tabs.TabLayout
 import com.hotworx.R
 import com.hotworx.databinding.FragmentSquadMemberListBinding
@@ -49,25 +52,14 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         }
 
         binding.userImage.setOnClickListener{
-//            val squadPendingMemberFragment = squadPendingMemberFragment()
-//            dockActivity.replaceDockableFragment(squadPendingMemberFragment)
-
             // Create a new instance of SquadPendingMemberFragment
             val squadPendingMemberFragment = squadPendingMemberFragment()
-
-            // Create a Bundle to pass the squadId
             val bundle = Bundle().apply {
                 putString("squad_id", squadId) // Pass the squadId
             }
-
-            // Set the arguments for the fragment
             squadPendingMemberFragment.arguments = bundle
-
-            // Replace the fragment
             dockActivity.replaceDockableFragment(squadPendingMemberFragment)
         }
-
-
     }
 
     private fun setupAdapter() {

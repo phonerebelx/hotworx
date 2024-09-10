@@ -54,6 +54,7 @@
                     android:id="@+id/flView"
                     android:layout_width="@dimen/_13sdp"
                     android:layout_height="@dimen/_13sdp"
+                    android:visibility="gone"
                     android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" >

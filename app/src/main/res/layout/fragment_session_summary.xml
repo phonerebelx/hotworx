@@ -21,17 +21,34 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:textColor="@color/black"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewHighlight"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:spanCount="2"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            tools:listitem="@layout/item_sessionhighlight"/>
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHighlight"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160sdp"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:spanCount="2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_sessionhighlight"/>
+
+            <TextView
+                android:id="@+id/tvHighlightNotFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/regular"
+                android:text="@string/no_data_found"
+                android:visibility="gone"
+                android:textColor="@color/colorBurned"
+                android:textSize="@dimen/_12sdp" />
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -42,17 +59,34 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:textColor="@color/black"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewMember"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:spanCount="2"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            tools:listitem="@layout/item_activitymember"/>
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMember"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:spanCount="2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                tools:listitem="@layout/item_activitymember"/>
+
+            <TextView
+                android:id="@+id/tvMemberNotFound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/regular"
+                android:text="@string/no_data_found"
+                android:visibility="gone"
+                android:textColor="@color/colorBurned"
+                android:textSize="@dimen/_12sdp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

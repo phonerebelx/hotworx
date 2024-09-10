@@ -29,7 +29,7 @@ data class SessionSquadEventsResponse(
 
     data class Member(
         val id: String,
-        @SerializedName("profile_image") val profileImage: String,
+        val profile_image: String,
         val name: String,
         val email: String,
         val phone: String,
