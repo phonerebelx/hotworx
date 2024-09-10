@@ -48,7 +48,7 @@ import com.hotworx.ui.fragments.VPT.VPTFragment;
 import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
 import com.hotworx.ui.passioactivity.PassioMainActivity;
 import com.hotworx.ui.views.TitleBar;
-import com.passio.passiomodule.ui.activity.PassioUiModuleActivity;
+import com.passio.modulepassio.ui.activity.PassioUiModuleActivity;
 
 import java.util.ArrayList;
 

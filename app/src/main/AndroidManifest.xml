@@ -93,7 +93,7 @@
             android:value="barcode" />
 
         <activity
-            android:name="com.passio.passiomodule.ui.activity.PassioUiModuleActivity"
+            android:name="com.passio.modulepassio.ui.activity.PassioUiModuleActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity

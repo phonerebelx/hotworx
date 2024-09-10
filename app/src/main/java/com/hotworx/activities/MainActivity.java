@@ -43,10 +43,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
-
-import ai.passio.passiosdk.core.config.PassioConfiguration;
-import ai.passio.passiosdk.core.config.PassioStatus;
-import ai.passio.passiosdk.passiofood.PassioSDK;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
