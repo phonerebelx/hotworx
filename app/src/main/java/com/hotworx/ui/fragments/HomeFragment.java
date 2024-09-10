@@ -919,7 +919,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     public void onDestroy() {
         super.onDestroy();
         //unbinder.unbind();
-
         if (sessionDashboardDialogFragment != null && sessionDashboardDialogFragment.isVisible()) {
             sessionDashboardDialogFragment.dismiss();
         }

@@ -290,6 +290,7 @@
     <string name="friend_list">My Friend List</string>
     <string name="highlights">Highlights</string>
     <string name="remove">Remove</string>
+
     <string name="pending_req">Pending Squad Request</string>
     <string name="add_hotsquad_list">Add more HOTSQUAD Member to List</string>
     <string name="create_hotsquad">Create hotsquad</string>

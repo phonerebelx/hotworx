@@ -84,6 +84,11 @@ object MealPlanUseCase {
     }
 
     suspend fun logFoodRecords(records: List<FoodRecord>): Boolean {
+        //post api
+        val date = Date().time
+        val foodList = records.map {}
+
+
         records.forEach { record ->
             record.create(record.createdAtTime() ?: Date().time)
         }

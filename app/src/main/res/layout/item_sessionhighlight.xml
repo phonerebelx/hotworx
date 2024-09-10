@@ -85,6 +85,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/move"
+                        android:visibility="gone"
                         android:gravity="center"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:fontFamily="@font/montserrat_regular"
@@ -114,6 +115,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/exercise"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:fontFamily="@font/montserrat_regular"
                         android:textColor="@color/colorBlack2"
                         android:textSize="@dimen/_9ssp" />

@@ -9,7 +9,12 @@ object DiaryUseCase {
     private val repository = Repository.getInstance()
 
     suspend fun getLogsForDay(day: Date): List<FoodRecord> {
-        return repository.getLogsForDay(day)
+        if(true){
+            //Get Api
+            return repository.getLogsForDay(day)
+        }else{
+            return repository.getLogsForDay(day)
+        }
     }
 
     suspend fun getLogsForWeek(day: Date): List<FoodRecord> {

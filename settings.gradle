@@ -1,5 +1,5 @@
 include ':app',':fitbitapi', ':fitbitauth', ':fitbitcommon'
 rootProject.name='hotworx'
 include ':hotsquadlist'
-include ':passiomodule'
 include ':passio-sdk'
+include ':modulepassio'

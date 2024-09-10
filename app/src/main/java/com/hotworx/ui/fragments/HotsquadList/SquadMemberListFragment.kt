@@ -21,7 +21,7 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
     private lateinit var pagerAdapter: MemberRequestViewPagerAdapter
 
     private var squadId: String? = null
-    private var hasSquadAccess: Boolean = false
+//    private var hasSquadAccess: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +37,7 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
 
         arguments?.let {
             squadId = it.getString("squad_id")
-            hasSquadAccess = it.getBoolean("squad_access")
+//            hasSquadAccess = it.getBoolean("squad_access")
         }
 
         setupAdapter()
@@ -71,7 +71,7 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
     }
 
     private fun setupAdapter() {
-        pagerAdapter = MemberRequestViewPagerAdapter(childFragmentManager,  squadId, hasSquadAccess)
+        pagerAdapter = MemberRequestViewPagerAdapter(childFragmentManager,  squadId,2)
         binding.viewPager.adapter = pagerAdapter
         binding.viewPager.offscreenPageLimit = 2
         binding.tabLayout.addOnTabSelectedListener(this)
@@ -90,14 +90,14 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         val pendingTab = binding.tabLayout.newTab().setText(R.string.session_summary)
         binding.tabLayout.addTab(pendingTab)
 
-        pendingTab.view.isClickable = hasSquadAccess
-        pendingTab.view.isEnabled = hasSquadAccess
-
-        if (!hasSquadAccess) {
-            pendingTab.view.alpha = 0.5f // Makes the tab appear disabled
-        } else {
-            pendingTab.view.alpha = 1.0f // Ensure normal appearance for enabled tab
-        }
+//        pendingTab.view.isClickable = hasSquadAccess
+//        pendingTab.view.isEnabled = hasSquadAccess
+//
+//        if (!hasSquadAccess) {
+//            pendingTab.view.alpha = 0.5f // Makes the tab appear disabled
+//        } else {
+//            pendingTab.view.alpha = 1.0f // Ensure normal appearance for enabled tab
+//        }
 
         binding.viewPager.currentItem = 0
     }

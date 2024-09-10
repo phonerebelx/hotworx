@@ -7,7 +7,6 @@ apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-parcelize'
 
 
-
 android {
     namespace "com.hotworx"
     compileSdkVersion 34
@@ -119,7 +118,7 @@ dependencies {
     implementation project(path: ':hotsquadlist')
 
     //passio
-    implementation project(path: ':passiomodule')
+    implementation project(path: ':modulepassio')
 //    api(project(":passio-sdk"))
 //    implementation files('../library/passio-ui-module-release.aar')
 

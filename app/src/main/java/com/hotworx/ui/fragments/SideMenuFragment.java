@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -155,8 +156,7 @@ public class SideMenuFragment extends BaseFragment {
 
         // Passio Sdk activity
         Intent passioIntent = new Intent(getDockActivity(), PassioMainActivity.class);
-        passioIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Optional, based on your needs.
-
+//        passioIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Optional, based on your needs.
         drawerList.add(new NavigationItem(
                 R.string.passio,
                 R.drawable.hotworx_icons,
@@ -165,6 +165,7 @@ public class SideMenuFragment extends BaseFragment {
                 null,
                 null
         ));
+
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null,null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null,null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null,null, null));
