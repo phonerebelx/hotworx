@@ -52,11 +52,17 @@ import com.passio.modulepassio.ui.activity.PassioUiModuleActivity;
 
 import java.util.ArrayList;
 
+import ai.passio.passiosdk.core.config.PassioConfiguration;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import spencerstudios.com.bungeelib.Bungee;
+
+import com.passio.modulepassio.NutritionUIModule;
+import ai.passio.passiosdk.core.config.PassioConfiguration;
+import ai.passio.passiosdk.core.config.PassioMode;
+import ai.passio.passiosdk.passiofood.PassioSDK;
 
 public class SideMenuFragment extends BaseFragment {
 
@@ -248,6 +254,8 @@ public class SideMenuFragment extends BaseFragment {
                 }
             }
         });
+
+
     }
 
     private void apiCallForCaloriesStats() {
@@ -301,4 +309,5 @@ public class SideMenuFragment extends BaseFragment {
             Utils.customToast(myDockActivity, "No Video Available");
         }
     }
+
 }

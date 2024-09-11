@@ -5,8 +5,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_5sdp">
+        android:layout_height="wrap_content">
 
         <io.github.florent37.shapeofview.shapes.CircleView
            android:id="@+id/img"
@@ -39,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@string/text"
+            android:visibility="gone"
             android:layout_below="@id/img"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_centerInParent="true"
