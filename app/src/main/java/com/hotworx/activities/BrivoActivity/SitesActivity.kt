@@ -15,12 +15,9 @@ import android.os.CancellationSignal
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.ImageView
@@ -35,7 +32,6 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import com.brivo.sdk.BrivoLog
@@ -63,7 +59,7 @@ import com.demo.sample.kotlin.BrivoSampleConstants
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.activities.DockActivity
 import com.hotworx.activities.MainActivity
 import com.hotworx.databinding.ActivitySitesBinding

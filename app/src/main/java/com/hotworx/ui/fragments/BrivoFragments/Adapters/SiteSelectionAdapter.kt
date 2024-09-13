@@ -12,7 +12,6 @@ import com.hotworx.R
 import com.hotworx.databinding.FragmentDashboardSessionAdapterBinding
 import com.hotworx.databinding.FragmentLocationSelectionAdapterBinding
 import com.hotworx.interfaces.OnClickItemListener
-import com.hotworx.interfaces.OnClickStringTypeListener
 import com.hotworx.models.BrivoDataModels.BrivoLocation.Site
 import com.hotworx.models.BrivoDataModels.Data
 //import kotlinx.android.synthetic.main.fragment_location_selection_adapter.view.*

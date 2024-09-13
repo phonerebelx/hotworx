@@ -1,10 +1,7 @@
 package com.hotworx.ui.fragments.LeaderBoard;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,28 +16,22 @@ import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.Utils;
-import com.hotworx.helpers.VerticalProgressBar;
 import com.hotworx.models.LeaderBoard.Leaderboard;
-import com.hotworx.models.LeaderBoard.Top3LeaderBoardDetailModel;
 import com.hotworx.requestEntity.LeaderBoardPOJO;
 import com.hotworx.requestEntity.LeaderBoardResponse;
-import com.hotworx.requestEntity.ViewHelpResponse;
 import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.views.TitleBar;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import info.hoang8f.android.segmented.SegmentedGroup;
 
 public class LeaderBoardFragment extends BaseFragment {
     Unbinder unbinder;

@@ -15,42 +15,32 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
-import com.hotworx.helpers.ServiceHelper
-import com.hotworx.helpers.Utils
 import com.hotworx.interfaces.BookingConfirmationDialogClickListener
-import com.hotworx.interfaces.GetStringOnClickListener
 import com.hotworx.interfaces.OnClickItemListener
 import com.hotworx.interfaces.OnClickTypeListener
 import com.hotworx.interfaces.OnItemClickInterface
 import com.hotworx.micsAdapter.SpinnerAdapter
-import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.*
 import com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.AddCardDialog.AddNewCardDialogFragment
 import com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.BookSessionWebModel.WebViewUrlModel
 import com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.ReConformBookingDialog.ReconformBookingDialogFragment
-import com.hotworx.models.SessionBookingModel.FrequentlyLocation
 import com.hotworx.models.SessionBookingModel.Location
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.DatePicker.DataPickerAdapter
 import com.hotworx.ui.adapters.ShowSlots.ShowSlotAdapter
-import com.hotworx.ui.dialog.ReferralQr.QrDialogFragment
 import com.hotworx.ui.dialog.SessionBooking.SessionBookingDialogFragment
 import com.hotworx.ui.dialog.SessionBooking.SessionViewAppointmentDialogFragment
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.BookSession.WebView.WebViewFragment
-import com.hotworx.ui.fragments.HomeFragment
 import com.hotworx.ui.views.TitleBar
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment(), OnItemClickInterface, OnClickTypeListener, OnClickItemListener, BookingConfirmationDialogClickListener {
+class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment(), OnItemClickInterface,
+    OnClickTypeListener, OnClickItemListener, BookingConfirmationDialogClickListener {
 
     private lateinit var acbBySessionType: AppCompatButton
     private lateinit var acbByTime: AppCompatButton
@@ -198,7 +188,8 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
     private fun callBookSessionApi() {
         if (is_reciprocal_allowed == "yes"){
         getServiceHelper().enqueueCallExtended(
-            getWebService().bookSession_v2(ApiHeaderSingleton.apiHeader(requireContext()),
+            getWebService().bookSession_v2(
+                ApiHeaderSingleton.apiHeader(requireContext()),
                 postBookSessionDataModel.sauna_no,
                 postBookSessionDataModel.time_slot,
                 postBookSessionDataModel.booking_date,
@@ -208,7 +199,8 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
         )
         } else{
             getServiceHelper().enqueueCallExtended(
-                getWebService().bookSession(ApiHeaderSingleton.apiHeader(requireContext()),
+                getWebService().bookSession(
+                    ApiHeaderSingleton.apiHeader(requireContext()),
                     postBookSessionDataModel.sauna_no,
                     postBookSessionDataModel.time_slot,
                     postBookSessionDataModel.booking_date,

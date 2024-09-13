@@ -1,9 +1,6 @@
 package com.hotworx.ui.fragments.notifications;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +8,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
-import com.hotworx.helpers.Utils;
 import com.hotworx.interfaces.OnClickItemListener;
 import com.hotworx.models.NotificationHistory.Data;
 import com.hotworx.models.NotificationHistory.NotificationHistoryModel;
@@ -29,7 +24,6 @@ import com.hotworx.ui.adapters.NotificationListAdapter;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.fragments.HomeFragment;
 import com.hotworx.ui.fragments.HotsquadList.PendingInvitesFragment;
-import com.hotworx.ui.fragments.HotsquadList.RecieverPendingRequestFragment;
 import com.hotworx.ui.fragments.HotsquadList.SessionPendingListFragment;
 import com.hotworx.ui.fragments.notifications.ReadNotification.LargeImageView.LargeImageViewDialogFragment;
 import com.hotworx.ui.fragments.notifications.ReadNotification.NotificationReadFragment;

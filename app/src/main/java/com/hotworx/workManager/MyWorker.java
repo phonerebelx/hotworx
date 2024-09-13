@@ -1,38 +1,22 @@
 package com.hotworx.workManager;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
 import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
-import com.hotworx.activities.MainActivity;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
-import com.hotworx.helpers.UIHelper;
-import com.hotworx.requestEntity.BaseModel;
 import com.hotworx.requestEntity.UpdateSessionEnt;
-import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.retrofit.WebService;
 import com.hotworx.retrofit.WebServiceFactory;
 import com.hotworx.room.RoomBuilder;
 import com.hotworx.room.model.SessionEnt;
 
-import java.io.IOException;
 import java.util.List;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created on : Jan 29, 2020

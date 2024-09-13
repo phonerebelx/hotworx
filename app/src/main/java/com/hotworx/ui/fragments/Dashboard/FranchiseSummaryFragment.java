@@ -8,20 +8,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.Constraints;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.Utils;
 import com.hotworx.requestEntity.FrachiseSummaryEnt;
-import com.hotworx.requestEntity.FranchiseListResponseData;
-import com.hotworx.requestEntity.TypeRewardResponse;
-import com.hotworx.requestEntity.ViewSummaryResponse;
 import com.hotworx.retrofit.GsonFactory;
-import com.hotworx.ui.adapters.abstarct.RecyclerViewListAdapter;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.fragments.LeaderBoard.LeaderBoardFragment;
 import com.hotworx.ui.views.TitleBar;

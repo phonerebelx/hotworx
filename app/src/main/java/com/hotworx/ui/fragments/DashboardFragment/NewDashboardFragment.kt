@@ -24,21 +24,17 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
-import com.hotworx.helpers.InternetHelper
 import com.hotworx.helpers.Utils
 import com.hotworx.models.DashboardData.DashboardDataModel
 import com.hotworx.models.DashboardData.NinetyDaysSummary
 import com.hotworx.models.DashboardData.Summary
 import com.hotworx.models.DashboardData.TodaysPendingSession
 import com.hotworx.retrofit.GsonFactory
-import com.hotworx.room.RoomBuilder
 import com.hotworx.ui.adapters.ViewPagerAdapter
 import com.hotworx.ui.dialog.DashboardSession.DashboardSessionDialogFragment
 import com.hotworx.ui.fragments.BaseFragment
-import com.hotworx.ui.fragments.DashboardSessionFragments.CompletedSessionFragment
-import com.hotworx.ui.fragments.DashboardSessionFragments.PendingSessionFragment
 import com.hotworx.ui.views.TitleBar
 import me.relex.circleindicator.CircleIndicator
 

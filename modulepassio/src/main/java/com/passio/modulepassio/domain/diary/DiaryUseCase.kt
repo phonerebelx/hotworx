@@ -1,53 +1,35 @@
 package com.passio.modulepassio.domain.diary
 
 import android.view.View
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.hotworx.models.HotsquadList.Passio.getPassioRequest
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.passio.modulepassio.data.Repository
+import com.passio.modulepassio.ui.base.BaseFragment
 import com.passio.modulepassio.ui.model.FoodRecord
+import com.passio.modulepassio.ui.util.Constant
 import java.util.Date
 
-object DiaryUseCase{
+object DiaryUseCase:com.passio.modulepassio.BaseFragment(){
 
     private val repository = Repository.getInstance()
 
-//    override fun ResponseSuccess(result: String?, tag: String?) {
-//        if (!isAdded) return
-//
-//        if (result != null && tag == WebServiceConstants.GET_PASSIO_LIST) {
-//        } else {
-//        }
-//    }
-
     suspend fun getLogsForDay(day: Date): List<FoodRecord> {
-//        if(true){
-//            //Get Api
-//            return repository.getLogsForDay(day)
-//        }else{
-//            return repository.getLogsForDay(day)
-//        }
-//        return if (shouldFetchFromApi()) {
-//            fetchPassioData(day)
-//            repository.getLogsForDay(day)
-//        } else {
-//            repository.getLogsForDay(day)
-//        }
+        fetchPassioData(day)
         return repository.getLogsForDay(day)
     }
 
-//    private fun fetchPassioData(day: Date) {
-//        val request = getPassioRequest(day.toString())
-//        getServiceHelper().enqueueCall(
-//            getWebService().getPassioData(
-//                apiHeader(requireContext()),
-//                request
-//            ),
-//            WebServiceConstants.GET_PASSIO_LIST,
-//            true
-//        )
-//    }
-//
-//    private fun shouldFetchFromApi(): Boolean {
-//        return true
-//    }
+    private fun fetchPassioData(day: Date) {
+        val request = getPassioRequest(day.toString())
+        getServiceHelper().enqueueCall(
+            getWebService().getPassioData(
+                apiHeader(requireContext()),
+                request
+            ),
+            Constant.WebServiceConstants.GET_PASSIO_LIST,
+            true
+        )
+    }
 
     suspend fun getLogsForWeek(day: Date): List<FoodRecord> {
         return repository.getLogsForWeek(day)

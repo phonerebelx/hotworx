@@ -1,8 +1,6 @@
 package com.hotworx.ui.fragments.GetStarted
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,17 +11,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.GettingStarted.GettingStartedModel.GettingStartedDataModel
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel
-import com.hotworx.models.SessionBookingModel.SessionBookingDataModel
 import com.hotworx.retrofit.GsonFactory
-import com.hotworx.ui.adapters.FrequentlyBooked.FrequentBookingAdapter
 import com.hotworx.ui.adapters.GetStarted.GetStartedAdapter
 import com.hotworx.ui.fragments.BaseFragment
-import com.hotworx.models.GettingStarted.GettingStartedModel.Data
 import com.hotworx.models.GettingStarted.GettingStartedModel.Video
 import com.hotworx.ui.views.TitleBar
 //import kotlinx.android.synthetic.main.fragment_get_started.rvGettingStartedAdapter

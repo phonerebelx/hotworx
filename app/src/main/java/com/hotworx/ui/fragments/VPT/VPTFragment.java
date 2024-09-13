@@ -10,12 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.Operation;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.WebServiceConstants;
-import com.hotworx.helpers.UIHelper;
 import com.hotworx.helpers.Utils;
 import com.hotworx.requestEntity.VideoEnt;
 import com.hotworx.requestEntity.VideoResponseEnt;

@@ -1,6 +1,5 @@
 package com.hotworx.ui.fragments.BrivoFragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,31 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.viewpager.widget.ViewPager
-import com.brivo.sdk.BrivoSDK
 import com.google.android.material.tabs.TabLayout
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentBrivoUserSiteBinding
 import com.hotworx.global.Constants
 import com.hotworx.helpers.Utils
 import com.hotworx.models.BrivoDataModels.AccessBranchesDataModel
 
-import com.hotworx.models.BrivoDataModels.DataNearBy
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.ViewPagerAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.BrivoFragments.BrivoViewPagerFragments.AllDataFragment
 import com.hotworx.ui.fragments.BrivoFragments.BrivoViewPagerFragments.NearbyDataFragment
 import com.brivo.sdk.access.BrivoSDKAccess
-import com.brivo.sdk.model.BrivoConfiguration
-import com.brivo.sdk.onair.model.BrivoSelectedAccessPoint
 import com.hotworx.models.BrivoDataModels.BrivoLocation.Data
 import com.hotworx.models.BrivoDataModels.BrivoLocation.GetBrancheDataModel
-
-import com.hotworx.models.BrivoDataModels.BrivoLocation.Site
-import com.hotworx.retrofit.WebService
-import org.json.JSONObject
-import java.io.InputStream
 
 class BrivoUserSiteFragment : BaseFragment() {
     lateinit var binding: FragmentBrivoUserSiteBinding

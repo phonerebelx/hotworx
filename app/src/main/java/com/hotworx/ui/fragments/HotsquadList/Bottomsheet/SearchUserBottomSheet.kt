@@ -1,7 +1,6 @@
 package com.hotworx.ui.fragments.HotsquadList.Bottomsheet
 
 import android.app.Dialog
-import android.content.DialogInterface
 
 import android.os.Bundle
 import android.util.Log
@@ -10,14 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.hotsquad.hotsquadlist.extensions.showMaterialAlertDialog
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.BottomSheetSearchuserBinding
 import com.hotworx.global.Constants

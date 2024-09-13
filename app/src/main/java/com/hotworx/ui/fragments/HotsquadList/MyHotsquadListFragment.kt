@@ -1,39 +1,31 @@
 package com.hotworx.ui.fragments.HotsquadList
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentMyHotsquadListBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
-import com.hotworx.helpers.CustomEvents.checkBrivoAllowed
 import com.hotworx.helpers.Utils
-import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.Hotsquad
 import com.hotworx.models.HotsquadList.HotsquadListModel
-import com.hotworx.models.HotsquadList.Session.SessionMemberResponse
-import com.hotworx.models.HotsquadList.Session.SquadSessionInvitationResponse
 import com.hotworx.models.UserData.getUserData
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
 import com.hotworx.ui.fragments.BaseFragment
-import com.hotworx.ui.fragments.HotsquadList.activity.CongratulationsActivity
 import com.hotworx.ui.views.TitleBar
-import org.greenrobot.eventbus.EventBus
 
 class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListener {
     private var _binding: FragmentMyHotsquadListBinding? = null

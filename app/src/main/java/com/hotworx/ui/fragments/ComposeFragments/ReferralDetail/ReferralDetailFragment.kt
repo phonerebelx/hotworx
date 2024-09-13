@@ -15,7 +15,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.hotworx.Extensions.shareLink
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentRefferalDetailBinding
 import com.hotworx.global.Constants
 import com.hotworx.helpers.Utils

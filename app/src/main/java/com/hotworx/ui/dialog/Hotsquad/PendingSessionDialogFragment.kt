@@ -11,7 +11,6 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import com.hotworx.R
 import com.hotworx.interfaces.LoadingListener
-import com.hotworx.interfaces.OnClickPendingModelInterface
 import com.hotworx.interfaces.OnClickSessionPendingModelInterface
 import com.hotworx.models.DashboardData.TodaysPendingSession
 import com.hotworx.models.HotsquadList.Session.PendingSessionResponse

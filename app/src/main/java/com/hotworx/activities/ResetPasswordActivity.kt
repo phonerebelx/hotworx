@@ -1,7 +1,6 @@
 package com.hotworx.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,7 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import butterknife.BindView
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
 import com.hotworx.helpers.HashUtils
@@ -19,7 +18,6 @@ import com.hotworx.helpers.Utils
 import com.hotworx.interfaces.LoadingListener
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.ResetPassword.ResetPasswordResponse
-import com.hotworx.requestEntity.ExtendedBaseModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.retrofit.WebService
 import com.hotworx.retrofit.WebServiceFactory

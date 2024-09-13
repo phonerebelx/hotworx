@@ -25,7 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.Utils;
@@ -41,8 +41,6 @@ import com.hotworx.requestEntity.NutritionCaloriesResponse;
 import com.hotworx.requestEntity.ParentNutritionistItem;
 import com.hotworx.requestEntity.UserData;
 import com.hotworx.retrofit.GsonFactory;
-import com.hotworx.ui.adapters.NutritionExerciseParentAdapter;
-import com.hotworx.ui.adapters.NutritionistChildItemAdapter;
 import com.hotworx.ui.adapters.NutritionistExerciseAdapter;
 import com.hotworx.ui.adapters.NutritionistParentItemAdapter;
 import com.hotworx.ui.fragments.AboutUsFragment;
@@ -50,15 +48,12 @@ import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.fragments.HomeFragment;
 import com.hotworx.ui.views.TitleBar;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

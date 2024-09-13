@@ -2,38 +2,23 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
-import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
-import com.hotworx.activities.DockActivity
-import com.hotworx.databinding.FragmentMyHotsquadListBinding
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentPendingInvitesBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
 import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.HotsquadList.FoundUser
-import com.hotworx.models.HotsquadList.Hotsquad
-import com.hotworx.models.HotsquadList.HotsquadListModel
 import com.hotworx.models.HotsquadList.PendingInvitationResponse
-import com.hotworx.models.HotsquadList.SearchListRequest
-import com.hotworx.models.HotsquadList.SearchUserModel
-import com.hotworx.models.HotsquadList.SquadMemberDetailsResponse
-import com.hotworx.models.HotsquadList.UserModel
 import com.hotworx.models.HotsquadList.pendingListAcceptRejectRequest
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.PendingRequestAdapter
-import com.hotworx.ui.adapters.HotsquadListAdapter.SearchRegisteredAdapter
-import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
 import com.hotworx.ui.fragments.BaseFragment
-import com.hotworx.ui.fragments.HotsquadList.Bottomsheet.SearchUserBottomSheet.Companion.TAG
-import com.hotworx.ui.views.TitleBar
 
 class PendingInvitesFragment : BaseFragment() {
 

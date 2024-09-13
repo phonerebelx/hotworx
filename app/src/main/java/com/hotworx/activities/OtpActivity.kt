@@ -12,12 +12,11 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
-import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.chaos.view.PinView
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
 import com.hotworx.helpers.ServiceHelper
@@ -30,11 +29,9 @@ import com.hotworx.models.UserDataModel
 import com.hotworx.models.VerifyOtpPostModel
 import com.hotworx.requestEntity.ExtendedBaseModel
 import com.hotworx.requestEntity.MainProfileResultModel
-import com.hotworx.requestEntity.ViewProfileResponse
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.retrofit.WebService
 import com.hotworx.retrofit.WebServiceFactory
-import com.tapadoo.alerter.Alert
 
 import okhttp3.ResponseBody
 import retrofit2.Call

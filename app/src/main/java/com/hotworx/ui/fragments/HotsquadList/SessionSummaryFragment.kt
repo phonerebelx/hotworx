@@ -1,42 +1,25 @@
 package com.hotworx.ui.fragments.HotsquadList
 
 import SessionSquadEventsResponse
-import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.graphics.Canvas
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.GsonBuilder
-import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSessionSummaryBinding
-import com.hotworx.databinding.FragmentSquadPendingMemberBinding
 import com.hotworx.global.Constants
 import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.HotsquadList.RemoveMemberResponse
 import com.hotworx.models.HotsquadList.Session.SessionHighlightsRequest
 import com.hotworx.models.HotsquadList.SquadMemberDetailsResponse
-import com.hotworx.models.HotsquadList.removeSquadMemberRequest
-import com.hotworx.models.HotsquadList.squadMemberDetailRequest
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventHighlightAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventHighlightProfileAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventMemberAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadMemberListAdapter
 import com.hotworx.ui.fragments.BaseFragment
-import com.hotworx.ui.views.TitleBar
-import java.net.URLDecoder
 
 
 class SessionSummaryFragment : BaseFragment(), SquadMemberListAdapter.OnItemClickListener {

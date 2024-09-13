@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.lifecycle.LiveData
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentConformRegistrationBinding
 import com.hotworx.global.Constants
 import com.hotworx.micsAdapter.SpinnerAdapter

@@ -8,25 +8,19 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
-import com.hotworx.helpers.InternetHelper;
 import com.hotworx.helpers.Utils;
 import com.hotworx.requestEntity.BurntPojo;
 import com.hotworx.requestEntity.CaloriesDetailPojo;
-import com.hotworx.requestEntity.FinalSummaryPojo;
-import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.room.RoomBuilder;
 import com.hotworx.room.model.SessionEnt;
 import com.hotworx.ui.adapters.WorkouDetailAdapter;

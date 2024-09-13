@@ -1,11 +1,6 @@
 package com.hotworx.ui.fragments.PersonalInfo;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.icu.util.ValueIterator;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,19 +17,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
-import com.hotworx.activities.BaseActivity;
-import com.hotworx.activities.LoginActivity;
-import com.hotworx.activities.MainActivity;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.Utils;
-import com.hotworx.requestEntity.ResponseWrapper;
 import com.hotworx.requestEntity.ViewProfileResponse;
 import com.hotworx.requestEntity.tempModel;
 import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.views.TitleBar;
-import com.google.gson.Gson;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -46,7 +36,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import spencerstudios.com.bungeelib.Bungee;
 
 public class PersonalInfoFragment extends BaseFragment {
 

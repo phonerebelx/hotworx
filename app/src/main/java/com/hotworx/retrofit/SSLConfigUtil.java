@@ -13,7 +13,7 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 
-public class SSLConfigUtil {
+public class  SSLConfigUtil {
     public static SSLContext getSSLConfig(Context context) {
         try {
             CertificateFactory cf = CertificateFactory.getInstance("X.509");

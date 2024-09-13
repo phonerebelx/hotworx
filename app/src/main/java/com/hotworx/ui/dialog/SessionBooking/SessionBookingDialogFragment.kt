@@ -5,30 +5,16 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.DialogFragment
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
-import com.hotworx.activities.LoginActivity
-import com.hotworx.activities.MainActivity
 import com.hotworx.global.WebServiceConstants
-import com.hotworx.helpers.ServiceHelper
-import com.hotworx.helpers.Utils
 import com.hotworx.interfaces.BookingConfirmationDialogClickListener
-import com.hotworx.interfaces.GetStringOnClickListener
 import com.hotworx.interfaces.LoadingListener
-import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.GetBookSessionDataModel
 import com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.PostBookSessionDataModel
-import com.hotworx.retrofit.GsonFactory
 import com.hotworx.retrofit.WebService
 import com.hotworx.retrofit.WebServiceFactory
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class SessionBookingDialogFragment(val clickListener: BookingConfirmationDialogClickListener): DialogFragment(), LoadingListener {
     lateinit var btnCancel: AppCompatButton

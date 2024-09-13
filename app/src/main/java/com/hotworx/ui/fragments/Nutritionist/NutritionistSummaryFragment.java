@@ -6,11 +6,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +22,12 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.Utils;
-import com.hotworx.requestEntity.Branded;
 import com.hotworx.requestEntity.NintyDaysCaloriesSession;
-import com.hotworx.requestEntity.NutritionCaloriesResponse;
 import com.hotworx.requestEntity.NutritionistSummaryResponse;
 import com.hotworx.retrofit.GsonFactory;
-import com.hotworx.ui.adapters.FreeFormAdapter;
 import com.hotworx.ui.adapters.NutritionistSummaryAdapter;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.views.TitleBar;
@@ -44,7 +39,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import dalvik.system.BaseDexClassLoader;
 
 public class NutritionistSummaryFragment extends BaseFragment {
 

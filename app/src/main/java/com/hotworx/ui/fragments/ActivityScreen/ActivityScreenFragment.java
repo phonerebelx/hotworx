@@ -1,8 +1,6 @@
 package com.hotworx.ui.fragments.ActivityScreen;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,16 +15,13 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.WebServiceConstants;
-import com.hotworx.helpers.Utils;
 import com.hotworx.requestEntity.CaloriesObject;
-import com.hotworx.requestEntity.LeaderBoardResponse;
 import com.hotworx.requestEntity.ViewActivityResponse;
 import com.hotworx.requestEntity.YearObject;
 import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.ui.fragments.BaseFragment;
-import com.hotworx.ui.fragments.LeaderBoard.LeaderGlobalFragment;
 import com.hotworx.ui.views.TitleBar;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -45,7 +39,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import info.hoang8f.android.segmented.SegmentedGroup;
 
 public class ActivityScreenFragment extends BaseFragment {
     Unbinder unbinder;

@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.activities.LoginActivity;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
@@ -35,7 +34,6 @@ import com.hotworx.ui.fragments.BusinessCard.BusinessCardFragment;
 import com.hotworx.ui.fragments.ComposeFragments.ReferralDetail.ReferralDetailFragment;
 import com.hotworx.ui.fragments.GetStarted.GetStartedFragment;
 import com.hotworx.ui.fragments.HotsquadList.MyHotsquadListFragment;
-import com.hotworx.ui.fragments.HotsquadList.RecieverPendingRequestFragment;
 import com.hotworx.ui.fragments.Intermittent.IntermittentFastingFragment;
 import com.hotworx.ui.fragments.LeaderBoard.LeaderBoardFragment;
 import com.hotworx.ui.fragments.Nutritionist.NutritionistFragment;
@@ -52,17 +50,11 @@ import com.passio.modulepassio.ui.activity.PassioUiModuleActivity;
 
 import java.util.ArrayList;
 
-import ai.passio.passiosdk.core.config.PassioConfiguration;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import spencerstudios.com.bungeelib.Bungee;
-
-import com.passio.modulepassio.NutritionUIModule;
-import ai.passio.passiosdk.core.config.PassioConfiguration;
-import ai.passio.passiosdk.core.config.PassioMode;
-import ai.passio.passiosdk.passiofood.PassioSDK;
 
 public class SideMenuFragment extends BaseFragment {
 

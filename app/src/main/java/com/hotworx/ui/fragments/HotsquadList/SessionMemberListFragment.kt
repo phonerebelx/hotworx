@@ -2,7 +2,6 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,7 +12,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSessionMemberListBinding
 import com.hotworx.global.Constants
 import com.hotworx.models.ErrorResponseEnt

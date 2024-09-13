@@ -1,9 +1,6 @@
 package com.hotworx.ui.fragments.Rewards;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.requestEntity.RewardResp;
-import com.hotworx.requestEntity.ViewHelpResponse;
 import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.views.TitleBar;

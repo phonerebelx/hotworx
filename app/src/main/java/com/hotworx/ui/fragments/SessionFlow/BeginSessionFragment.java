@@ -19,10 +19,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
-import com.hotworx.helpers.ApplicationManager;
 import com.hotworx.helpers.InternetHelper;
 import com.hotworx.helpers.UIHelper;
 import com.hotworx.helpers.Utils;

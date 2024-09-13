@@ -15,7 +15,6 @@ import com.hotworx.R
 import com.hotworx.databinding.FragmentReconformBookingDialogBinding
 import com.hotworx.databinding.FragmentWebViewBinding
 import com.hotworx.interfaces.OnClickItemListener
-import com.hotworx.interfaces.OnClickTypeListener
 
 class ReconformBookingDialogFragment(var clickListener: OnClickItemListener) : DialogFragment() {
 

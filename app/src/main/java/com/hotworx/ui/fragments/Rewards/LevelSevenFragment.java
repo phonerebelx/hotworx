@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentManager;
 
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.models.GetRewardRequest;
@@ -20,7 +20,6 @@ import com.hotworx.models.GetRewardResponse;
 import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.fragments.HomeFragment;
-import com.hotworx.ui.fragments.ProfileAndGoal.ProfileAndGoalFragment;
 import com.hotworx.ui.views.TitleBar;
 
 import java.text.DecimalFormat;

@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import com.hotworx.databinding.FragmentAllDataBinding
 import com.hotworx.interfaces.OnClickItemListener
-import com.hotworx.interfaces.OnClickStringTypeListener
 import com.hotworx.models.BrivoDataModels.BrivoLocation.Site
 import com.hotworx.ui.adapters.LocationAdapter.SiteSelectionAdapter
 import com.hotworx.ui.fragments.ActivityScreen.ActivityDetailFragment

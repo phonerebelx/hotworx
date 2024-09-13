@@ -4,9 +4,17 @@
     <string name="edit">Edit</string>
     <string name="save">Save</string>
     <string name="log">Log</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="message_wait">Please wait while data is loading.</string>
+    <string name="internal_exception_messsage">Looks like we are having a server issue</string>
+    <string name="error_failure">Something went wrong. Please try again.</string>
+    <string name="message_quit">Are you sure you want to exit?</string>
     <string name="scan_info_title">Ways To Scan</string>
     <string name="scan_info_message">You can quickly switch between scanning modes to log your food a variety of ways</string>
     <string name="foods">Whole Foods Mode</string>
+    <string name="msg_connection_failed">Error! Connection to server failed.</string>
+    <string name="msg_connection_error">Please check your internet connection</string>
     <string name="barcode_mode">Barcode Mode</string>
     <string name="nutrition_facts_mode">Nutrition Facts Mode</string>
     <string name="beverages">Beverages</string>

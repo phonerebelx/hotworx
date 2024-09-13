@@ -15,7 +15,6 @@ import com.hotworx.R
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentLocationFeeUpdateDialogBinding
 import com.hotworx.interfaces.OnClickItemListener
-import com.hotworx.interfaces.OnClickStringTypeListener
 import com.hotworx.models.SessionBookingModel.Location
 
 class LocationFeeUpdateDialogFragment : DialogFragment() {

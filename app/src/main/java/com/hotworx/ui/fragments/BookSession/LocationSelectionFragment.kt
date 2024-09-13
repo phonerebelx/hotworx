@@ -4,28 +4,21 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.EditText
 import android.widget.Spinner
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.core.view.isGone
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
 import com.hotworx.interfaces.OnClickItemListener
 import com.hotworx.interfaces.OnClickStringTypeListener
 import com.hotworx.interfaces.OnItemClickInterface
-import com.hotworx.micsAdapter.SpinnerAdapter
 import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.SessionBookingModel.FrequentlyLocation
 import com.hotworx.models.SessionBookingModel.Location
 import com.hotworx.models.SessionBookingModel.SessionBookingDataModel
 import com.hotworx.retrofit.GsonFactory
@@ -33,7 +26,6 @@ import com.hotworx.ui.adapters.FrequentlyBooked.FrequentBookingAdapter
 import com.hotworx.ui.adapters.LocationAdapter.LocationSelectionAdapter
 import com.hotworx.ui.dialog.BookSession.LocationFeeUpdateDialogFragment
 import com.hotworx.ui.fragments.BaseFragment
-import com.hotworx.ui.fragments.HomeFragment
 import com.hotworx.ui.views.TitleBar
 
 class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragment(), OnItemClickInterface, OnClickStringTypeListener,

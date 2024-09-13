@@ -13,7 +13,6 @@ import com.hotworx.R
 import com.hotworx.databinding.FragmentAllDataBinding
 import com.hotworx.databinding.FragmentNearbyDataBinding
 import com.hotworx.interfaces.OnClickItemListener
-import com.hotworx.interfaces.OnClickStringTypeListener
 
 import com.hotworx.models.BrivoDataModels.BrivoLocation.Site
 

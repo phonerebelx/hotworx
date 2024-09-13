@@ -14,13 +14,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadStateAdapter
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.liveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
@@ -33,9 +27,8 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.model.GradientColor
-import com.hotworx.PagingSource.ActivityPagingSource
 import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentNewActivityScreenBinding
 import com.hotworx.global.Constants
 import com.hotworx.helpers.CustomXAxisRenderer
@@ -47,7 +40,6 @@ import com.hotworx.models.NewActivityModels.GraphDataModel
 import com.hotworx.models.NewActivityModels.GraphDataModelItem
 import com.hotworx.models.NewActivityModels.NinetyDaysActivity
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel
-import com.hotworx.models.SessionBookingModel.Location
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.NewActivityAdapter.ActivityByTimelineAdapter
 import com.hotworx.ui.adapters.PagingLoaderAdapter.LoaderAdapter
@@ -58,9 +50,6 @@ import com.hotworx.ui.pagingAdapter.ActivityPagingAdapter
 import com.hotworx.ui.views.TitleBar
 import com.hotworx.viewmodel.ActivityViewModel
 import com.hotworx.viewmodel.ActivityViewModelFactory
-import com.hotworx.viewmodel.ReferralDetailViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

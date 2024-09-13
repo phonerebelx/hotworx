@@ -2,31 +2,18 @@ package com.hotworx.ui.fragments.HotsquadList
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.hotworx.R
-import com.hotworx.Singletons.ApiHeaderSingleton
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSessionProfileSummaryBinding
-import com.hotworx.databinding.FragmentSessionSummaryBinding
-import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
-import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.HotsquadList.Session.PendingSessionResponse
-import com.hotworx.models.HotsquadList.Session.SessionHighlightsRequest
 import com.hotworx.models.HotsquadList.Session.UserActivitiesResponse
-import com.hotworx.models.HotsquadList.SquadMemberDetailsResponse
 import com.hotworx.retrofit.GsonFactory
-import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventHighlightAdapter
-import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventHighlightProfileAdapter
-import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.EventMemberAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionProfileHighlightAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionProfileMemberAdapter
-import com.hotworx.ui.adapters.HotsquadListAdapter.SquadMemberListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
 

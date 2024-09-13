@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,29 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.firebase.crashlytics.internal.model.CrashlyticsReport;
 import com.hotworx.R;
-import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
-import com.hotworx.helpers.Utils;
 import com.hotworx.interfaces.BasketClickListener;
-import com.hotworx.interfaces.OnItemClickInterface;
 import com.hotworx.models.AddNutritionistRequestBody;
 import com.hotworx.models.CartData;
 import com.hotworx.requestEntity.Branded;
-import com.hotworx.requestEntity.DayData;
 import com.hotworx.requestEntity.GenericMsgResponse;
-import com.hotworx.requestEntity.GetFoodResponse;
 import com.hotworx.retrofit.GsonFactory;
 import com.hotworx.ui.adapters.BasketItemAdapter;
-import com.hotworx.ui.adapters.FreeFormAdapter;
 import com.hotworx.ui.fragments.BaseFragment;
 import com.hotworx.ui.views.TitleBar;
 
@@ -45,7 +35,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
