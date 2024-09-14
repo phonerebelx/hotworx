@@ -136,7 +136,7 @@
                     android:fontFamily="@font/bebasneue_regular"
                     android:textColor="@color/white"
                     android:background="@drawable/multicolor_background"
-                    android:backgroundTint="@color/colorDarkRed" />
+                    android:backgroundTint="@color/red" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/AcceptBtn"

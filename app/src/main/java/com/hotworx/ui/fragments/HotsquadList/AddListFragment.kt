@@ -7,21 +7,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentAddListBinding
 import com.hotworx.global.Constants
+import com.hotworx.helpers.CustomEvents.notificationSession
 import com.hotworx.helpers.Utils
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.CreateHotsquadModel
+import com.hotworx.models.UserData.getUserData
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import org.greenrobot.eventbus.EventBus
 
 class AddListFragment : BaseFragment(){
     private var _binding: FragmentAddListBinding? = null
     private val binding get() = _binding!!
     private var isLoading = false
+    private val unreadNotifications = MutableLiveData<String>()
+
+    fun getUnreadNotifications(): LiveData<String> {
+        return unreadNotifications
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,11 +57,18 @@ class AddListFragment : BaseFragment(){
                 callApi(Constants.CREATE_SQUADLIST, "")
             }
         }
+        callApi(Constants.PROFILE_API_CALLING, "")
     }
 
     override fun setTitleBar(titleBar: TitleBar) {
         super.setTitleBar(titleBar)
         titleBar.showBackButton()
+        getUnreadNotifications().observe(viewLifecycleOwner) { unreadNotificationValue ->
+            titleBar.showNotificationBtn(unreadNotificationValue)
+            if (unreadNotificationValue == "0") {
+                titleBar.hideNotificationText()
+            }
+        }
     }
 
     private fun callApi(type: String, data: String) {
@@ -64,6 +80,13 @@ class AddListFragment : BaseFragment(){
                         binding.titleEt.text.toString(),
                         binding.descriptionEt.text.toString(),
                     ), Constants.CREATE_SQUADLIST, true
+                )
+            }
+            Constants.PROFILE_API_CALLING -> {
+                getServiceHelper().enqueueCallExtended(
+                    getWebService().viewProfile(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                    ), Constants.PROFILE_API_CALLING, true
                 )
             }
         }
@@ -80,6 +103,23 @@ class AddListFragment : BaseFragment(){
                         dockActivity.replaceDockableFragment(myHotsquadListFragment)
                     }else{
                         dockActivity?.showErrorMessage("Something Went Wrong")
+                    }
+                } catch (e: Exception) {
+                    val genericMsgResponse = GsonFactory.getConfiguredGson()
+                        ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
+                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                    Log.i("dummy error", e.message.toString())
+                }
+            }
+
+            Constants.PROFILE_API_CALLING -> {
+                try {
+                    val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, getUserData::class.java)!!
+                    if (response.data != null && !response.data.isEmpty() && response.data.get(0).data != null && response.data.get(0).data.unread_notifications != null){
+                        unreadNotifications.setValue(response.data[0].data.unread_notifications!!)
+
+                    } else {
+                        unreadNotifications.setValue("0")
                     }
                 } catch (e: Exception) {
                     val genericMsgResponse = GsonFactory.getConfiguredGson()

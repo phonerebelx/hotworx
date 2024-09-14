@@ -117,6 +117,7 @@ import static com.hotworx.global.Constants.CALENDER_TITLE;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import com.hotworx.ui.fragments.BaseFragment;
 
 public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, OnClickItemListener {
 
@@ -341,7 +342,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         getUnreadNotifications().observe(getViewLifecycleOwner(), new Observer<String>() {
             public void onChanged(String unreadNotifications) {
                 titleBar.showNotificationBtn(unreadNotifications);
-
                 if (unreadNotifications.equals("0")) {
                     titleBar.hideNotificationText();
                 }

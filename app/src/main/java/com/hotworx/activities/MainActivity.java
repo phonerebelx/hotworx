@@ -143,13 +143,11 @@ public class MainActivity extends DockActivity {
             }
         });
 
-
         titleBar.setNotificationButtonListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (loading) {
-                    UIHelper.showLongToastInCenter(getApplicationContext(),
-                            R.string.message_wait);
+                    UIHelper.showLongToastInCenter(getApplicationContext(), R.string.message_wait);
                 } else {
                     EventBus.getDefault().post(new CustomEvents.notificationSession());
                 }

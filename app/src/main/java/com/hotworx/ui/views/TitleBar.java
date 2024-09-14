@@ -120,6 +120,7 @@ public class TitleBar extends RelativeLayout {
         tvNotificationNo.setText(notificationValue);
         ivNotification.setImageResource(R.drawable.notification_bell);
         ivNotification.setVisibility(View.VISIBLE);
+        ivNotification.setClickable(true);
         ivNotification.setOnClickListener(notificationButtonListener);
     }
 
@@ -185,6 +186,4 @@ public class TitleBar extends RelativeLayout {
   public void setNotificationButtonListener(OnClickListener listener) {
       notificationButtonListener = listener;
     }
-
-
 }

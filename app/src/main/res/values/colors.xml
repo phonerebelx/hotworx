@@ -25,6 +25,7 @@
     <color name="text_color_black">#333334</color>
     <color name="colorCardRed">#FE1103</color>
     <color name="colorDarkRed">#c82506</color>
+    <color name="red">#EF4444</color>
     <color name="colorTimer">#e17218</color>
     <color name="colorWorkOutHead">#4f565e</color>
     <color name="colorBurned">#7e7e7e</color>

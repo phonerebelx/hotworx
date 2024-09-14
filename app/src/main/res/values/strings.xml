@@ -50,10 +50,10 @@
     <string name="pending_invite">Pending Invites</string>
     <string name="vi_management">Vi Management</string>
     <string name="passio">Passio</string>
-    <string name="Title">Add your title</string>
+    <string name="Title">Title</string>
     <string name="event_name">Squad Event Name</string>
     <string name="search_name">Search By Phone No,Email</string>
-    <string name="descriptionn">Add your description</string>
+    <string name="descriptionn">Description</string>
     <string name="rewards">Rewards</string>
     <string name="settings">Settings</string>
     <string name="book_appointments">Book Appointments</string>
@@ -142,6 +142,7 @@
     <string name="end_time">12:45 PM</string>
     <string name="full_time">09:00 PM - 12:45 PM</string>
     <string name="month_name">Jan</string>
+    <string name="session_time">Session Time</string>
     <string name="month_date">15</string>
     <string name="month_day"></string>
     <string name="confirmation">Confirmation</string>
@@ -286,6 +287,8 @@
     <string name="Text">Text</string>
     <string name="clear_all">Clear all</string>
     <string name="hotsquad_list">HOTSQUAD List</string>
+    <string name="Pending_request">Pending Request</string>
+    <string name="create_new_squad">Create A New Squad</string>
     <string name="pending_friends">Pending Friends</string>
     <string name="friend_list">My Friend List</string>
     <string name="highlights">Highlights</string>
@@ -552,8 +555,8 @@
     <string name="no_squad_members_found">No Squad Members Found</string>
     <string name="no_squad_found">No Squad Found</string>
     <string name="squad_members">My Friend List</string>
-    <string name="squad_request">Squad Request</string>
-    <string name="session_request">Session Request</string>
+    <string name="squad_request">Squad</string>
+    <string name="session_request">Session</string>
     <string name="otp_message_success">OTP has been sent to your email address</string>
 
     <string name="about_hotworx" translatable="false">

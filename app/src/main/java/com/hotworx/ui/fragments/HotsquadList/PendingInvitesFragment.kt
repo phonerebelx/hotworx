@@ -68,7 +68,7 @@ class PendingInvitesFragment : BaseFragment() {
             updateAdapterList(pendingRequestModel.data!!)
         } else {
             binding.tvNoListFound.visibility = View.VISIBLE
-            binding.tvNoListFound.text = "No Squad List Found"
+            binding.tvNoListFound.text = "No Squad Request Found!"
         }
     }
 
@@ -158,7 +158,7 @@ class PendingInvitesFragment : BaseFragment() {
 
     override fun ResponseFailure(message: String?, tag: String?) {
         if (isAdded) { // Check if fragment is added
-            binding.tvNoListFound.text = "No Squad List Found"
+            binding.tvNoListFound.text = "No Squad Request Found!"
             binding.tvNoListFound.visibility = View.VISIBLE
         }
     }

@@ -10,12 +10,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.LiveData
 import com.google.android.material.tabs.TabLayout
+import com.google.gson.GsonBuilder
 import com.hotworx.R
 import com.hotworx.databinding.FragmentSquadMemberListBinding
 import com.hotworx.databinding.FragmentSquadPendingMemberBinding
+import com.hotworx.global.Constants
+import com.hotworx.models.ErrorResponseEnt
+import com.hotworx.models.HotsquadList.RemoveMemberResponse
+import com.hotworx.models.HotsquadList.SquadMemberDetailsResponse
+import com.hotworx.models.HotsquadList.removeSquadMemberRequest
+import com.hotworx.models.HotsquadList.squadMemberDetailRequest
+import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.tabsadapter.MemberRequestViewPagerAdapter
 import com.hotworx.ui.fragments.BaseFragment
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import java.net.URLDecoder
 
 class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener {
 
@@ -51,7 +62,7 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
             event.action == MotionEvent.ACTION_MOVE
         }
 
-        binding.userImage.setOnClickListener{
+        binding.pendingUsers.setOnClickListener{
             // Create a new instance of SquadPendingMemberFragment
             val squadPendingMemberFragment = squadPendingMemberFragment()
             val bundle = Bundle().apply {
@@ -60,6 +71,8 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
             squadPendingMemberFragment.arguments = bundle
             dockActivity.replaceDockableFragment(squadPendingMemberFragment)
         }
+
+        callInvitationApi(Constants.GET_SQUAD_MEMBER_LIST,"")
     }
 
     private fun setupAdapter() {
@@ -70,6 +83,57 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         binding.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
 
         binding.viewPager.setOnTouchListener { _, _ -> false }
+    }
+
+    private fun callInvitationApi(type: String, data: String) {
+        when (type) {
+            Constants.GET_SQUAD_MEMBER_LIST -> {
+                val request = squadMemberDetailRequest(squadId.toString())
+
+                getServiceHelper()?.enqueueCallExtended(
+                    getWebService()?.getSquadDetail(
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        request
+                    ), Constants.GET_SQUAD_MEMBER_LIST, true
+                )
+            }
+        }
+    }
+
+    override fun onSuccess(liveData: LiveData<String>, tag: String) {
+        super.onSuccess(liveData, tag)
+        when (tag) {
+            Constants.GET_SQUAD_MEMBER_LIST -> {
+                val responseJson = liveData.value
+                Log.d("Response", "LiveData value: $responseJson")
+
+                if (responseJson != null) {
+                    try {
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, SquadMemberDetailsResponse::class.java)
+                        if (response?.status == true) {
+                            val members = response.data.members
+                            if(response.data.pending_invites == 0){
+                                binding.flView.visibility = View.GONE
+                            }else{
+                                binding.flView.visibility = View.VISIBLE
+                                binding.tvNotificationNo.text = response.data.pending_invites.toString()
+                            }
+
+                        } else {
+                            dockActivity?.showErrorMessage("Something Went Wrong")
+                        }
+                    } catch (e: Exception) {
+                        val genericMsgResponse = GsonFactory.getConfiguredGson()
+                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)
+                        dockActivity?.showErrorMessage(genericMsgResponse?.error.toString())
+                        Log.i("Error", e.message.toString())
+                    }
+                } else {
+                    Log.e("Error", "LiveData value is null")
+                    dockActivity?.showErrorMessage("No response from server")
+                }
+            }
+        }
     }
 
     private fun setupTabs() {

@@ -8,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentMyHotsquadListBinding
 import com.hotworx.global.Constants
@@ -26,6 +26,7 @@ import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 
 class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListener {
     private var _binding: FragmentMyHotsquadListBinding? = null
@@ -34,6 +35,11 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     private var adapter: SquadListAdapter? = null
     private var dashboardShare: String = ""
     private var recordId: String = ""
+    private val unreadNotifications = MutableLiveData<String>()
+
+    fun getUnreadNotifications(): LiveData<String> {
+        return unreadNotifications
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -169,8 +175,17 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     }
 
     override fun setTitleBar(titleBar: TitleBar) {
+        super.setTitleBar(titleBar)
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.hotsquad_list)
+        titleBar.hidePassioBtn()
+        titleBar.showTitleBar()
+        getUnreadNotifications().observe(viewLifecycleOwner) { unreadNotificationValue ->
+            titleBar.showNotificationBtn(unreadNotificationValue)
+            if (unreadNotificationValue == "0") {
+                titleBar.hideNotificationText()
+            }
+        }
     }
 
     private fun getSquadList() {
@@ -257,6 +272,13 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
                     }else{
                         binding.flView.visibility = View.VISIBLE
                         binding.tvPendingNo.text = userData.data[0].data.hotsquad_pending_invites
+                    }
+
+                    if (userData.data != null && !userData.data.isEmpty() && userData.data.get(0).data != null && userData.data.get(0).data.unread_notifications != null){
+                        unreadNotifications.setValue(userData.data[0].data.unread_notifications!!)
+
+                    } else {
+                        unreadNotifications.setValue("0")
                     }
                 } catch (e: Exception) {
                     Utils.customToast(requireContext(), resources.getString(R.string.error_failure))

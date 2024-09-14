@@ -79,7 +79,7 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
             updateAdapterList(pendingList) // Update adapter with the new list
         } else {
             binding.tvNoListFound.visibility = View.VISIBLE
-            binding.tvNoListFound.text = "No Session List Found"
+            binding.tvNoListFound.text = "No Session Request Found!"
         }
     }
 
@@ -118,7 +118,7 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
 
     override fun ResponseFailure(message: String?, tag: String?) {
         if (isAdded) { // Check if fragment is added
-            binding.tvNoListFound.text = "No Session List Found"
+            binding.tvNoListFound.text = "No Session Request Found!"
             binding.tvNoListFound.visibility = View.VISIBLE
         }
     }

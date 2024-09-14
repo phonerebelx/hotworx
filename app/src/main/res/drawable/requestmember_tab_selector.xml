@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:state_selected="true">
+    <!-- State when selected with gradient background -->
+    <item android:state_selected="true">
         <shape>
-            <solid android:color="@color/colorprogress" />
-            <corners android:radius="@dimen/_5sdp" />
-            <stroke android:width="@dimen/_1sdp"
-                android:color="@color/white"/>
+            <!-- Gradient applied to the selected state -->
+            <gradient
+                android:startColor="#F15115"
+                android:endColor="#FE1103"
+                android:angle="90" />
+            <corners android:radius="@dimen/_7sdp" />
+            <stroke
+                android:width="@dimen/_1sdp"
+                android:color="@color/white" />
         </shape>
     </item>
+
+    <!-- State when not selected with a solid color -->
     <item android:state_selected="false">
         <shape>
             <solid android:color="@color/wildSand" />
@@ -18,4 +25,3 @@
     </item>
 
 </selector>
-
