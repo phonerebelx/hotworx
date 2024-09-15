@@ -150,6 +150,14 @@ public class MainActivity extends DockActivity {
                     UIHelper.showLongToastInCenter(getApplicationContext(), R.string.message_wait);
                 } else {
                     EventBus.getDefault().post(new CustomEvents.notificationSession());
+
+                    Fragment notificationFragment = new NotificationFragment();
+
+                    getDockActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.mainFrameLayout, notificationFragment) // Replace with your container ID
+                            .addToBackStack(null) // Optional: add to back stack if you want to allow going back to previous fragment
+                            .commit();
                 }
             }
         });
