@@ -1,9 +1,11 @@
 package com.hotworx.ui.dialog.Hotsquad
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
@@ -30,6 +32,7 @@ class PendingSessionDialogFragment(val onClickSessionPendingInterface: OnClickSe
     private lateinit var tvSessionType: TextView
     private lateinit var tvDateNumber: TextView
     private lateinit var cvSession: CardView
+    private lateinit var Close: ImageView
     private lateinit var declineBtn: AppCompatButton
     private lateinit var AcceptBtn: AppCompatButton
     lateinit var todaysPendingSession:  PendingSessionResponse.SquadInvitation
@@ -48,6 +51,7 @@ class PendingSessionDialogFragment(val onClickSessionPendingInterface: OnClickSe
         AcceptBtn = root.findViewById(R.id.AcceptBtn)
         declineBtn = root.findViewById(R.id.declineBtn)
         tvSauna = root.findViewById(R.id.tvSauna)
+        Close = root.findViewById(R.id.CloseDialog)
         tvLocation = root.findViewById(R.id.tvLocation)
 
         setDialogData()
@@ -73,6 +77,10 @@ class PendingSessionDialogFragment(val onClickSessionPendingInterface: OnClickSe
 
         declineBtn.setOnClickListener {
             onClickSessionPendingInterface.onItemClickDecline(todaysPendingSession, "COME_FROM_DECLINE")
+            dialog?.dismiss()
+        }
+
+        Close.setOnClickListener {
             dialog?.dismiss()
         }
     }

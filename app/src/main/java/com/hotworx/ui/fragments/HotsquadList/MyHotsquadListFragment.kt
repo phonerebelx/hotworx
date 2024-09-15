@@ -65,8 +65,10 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         if(dashboardShare == "dashboardShare"){
             binding.btnCreateSquad.visibility = View.GONE
             binding.newUser.visibility = View.GONE
+            binding.requestLayout.visibility = View.GONE
         }else{
             binding.btnCreateSquad.visibility = View.VISIBLE
+            binding.requestLayout.visibility = View.VISIBLE
             binding.btnCreateSquad.setOnClickListener{
                 val addListFragment = AddListFragment()
                 dockActivity.replaceDockableFragment(addListFragment)

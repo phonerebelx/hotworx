@@ -80,13 +80,12 @@ class SessionPendingListAdapter(
                 listener.onItemClick(item,position)
             }
 
-
-            if (preferenceHelper.imagePath != null) {
+            if (item.sender_info.profile_image_url!= null) {
                 firstNameTextView.visibility = View.GONE
                 cvImageCard.visibility = View.VISIBLE
 
                 Glide.with(context)
-                    .load(preferenceHelper.imagePath)
+                    .load(item.sender_info.profile_image_url)
                     .listener(object : RequestListener<Drawable> {
                         @SuppressLint("SetTextI18n")
                         override fun onLoadFailed(
@@ -98,7 +97,7 @@ class SessionPendingListAdapter(
 
                             cvImageCard.visibility = View.GONE
                             firstNameTextView.visibility = View.VISIBLE
-                            firstNameTextView.text = "${getUserDetail()[1]}${getUserDetail()[2]}"
+                            firstNameTextView.text = getUserInitials(item.sender_info.name)
                             return false
                         }
 
@@ -117,41 +116,19 @@ class SessionPendingListAdapter(
             } else {
                 cvImageCard.visibility = View.GONE
                 firstNameTextView.visibility = View.VISIBLE
-                firstNameTextView.text = "${getUserDetail()[1]}${getUserDetail()[2]}"
+                firstNameTextView.text = getUserInitials(item.name)
             }
         }
     }
 
-    private fun getUserDetail(): ArrayList<String> {
-        val userName = preferenceHelper.loginData.full_name.split(" ")
-
-        val arrayString = ArrayList<String>()
-        var firstName = userName[0]
-        var lastName = if (userName.size > 1) {
-            if (userName.size > 2 && userName[1].isEmpty()) {
-                userName[2]
-            } else {
-                userName[1]
-            }
-        } else {
-            ""
-        }
-
-        val firstFullName = firstName
-        val lastFullName = lastName
-        if (firstName.isNotEmpty()) firstName = firstName[0].toString()
-        if (lastName.isNotEmpty()) lastName = lastName[0].toString()
-
-        val fullName = firstName + lastName
-
-        arrayString.add(fullName)
-        arrayString.add(firstName)
-        arrayString.add(lastName)
-        arrayString.add(firstFullName)
-        arrayString.add(lastFullName)
-
-        return arrayString
+    // Helper function to get user initials
+    private fun getUserInitials(fullName: String?): String {
+        val nameParts = fullName?.split(" ") ?: return ""
+        val firstNameInitial = nameParts.getOrNull(0)?.firstOrNull()?.toString() ?: ""
+        val lastNameInitial = nameParts.getOrNull(1)?.firstOrNull()?.toString() ?: ""
+        return firstNameInitial + lastNameInitial
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_sessionpendingrequest, parent, false)

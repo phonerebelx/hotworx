@@ -67,7 +67,6 @@ class SquadMemberListAdapter(
             emailTextView.text = item.email
             phoneTextView.text = item.phone
 
-
             if (item.profile_image_url!= null) {
                 firstNameTextView.visibility = View.GONE
                 cvImageCard.visibility = View.VISIBLE
