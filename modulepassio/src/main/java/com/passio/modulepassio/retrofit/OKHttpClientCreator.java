@@ -1,6 +1,5 @@
 package com.passio.modulepassio.retrofit;
 
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -28,36 +27,33 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 public class OKHttpClientCreator {
 
-    public static OkHttpClient createMyCustomForPreLollipop(Context context,Boolean isBrivoApi) {
-        String version = "";
-        OkHttpClient client = new OkHttpClient();
+    public static OkHttpClient createMyCustomForPreLollipop(Context context, Boolean isBrivoApi) {
+        String version = "unknown";  // Default version
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         BasePreferenceHelper prefHelper = new BasePreferenceHelper(context);
 
-        // set your desired log level
+        // Set desired log level for the interceptor
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         try {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             version = pInfo.versionName;
-        } catch (
-                PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
 
         try {
+            // Configure SSL context
             SSLContext sslContext = SSLConfigUtil.getSSLConfig(context);
-            String finalVersion = version;
             TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             trustManagerFactory.init((KeyStore) null);
             TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
+
             if (!(trustManagers.length == 1 && trustManagers[0] instanceof X509TrustManager)) {
                 throw new IllegalStateException("Unexpected default trust managers: " + Arrays.toString(trustManagers));
             }
 
             X509TrustManager trustManager = (X509TrustManager) trustManagers[0];
-
-
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder()
                     .connectTimeout(50, TimeUnit.SECONDS)
@@ -67,32 +63,27 @@ public class OKHttpClientCreator {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
                             Request original = chain.request();
-                            Request request = null;
-                            try {
-                                Request.Builder requestBuilder = original.newBuilder()
-                                        .addHeader("sec-ch-ua-platform", "Android")
-                                        .addHeader("application-version", finalVersion)
-                                        .addHeader("device-id", UtilsHelpers.Companion.getDeviceId(context));
-                                request = requestBuilder.build();
-                            } catch (Exception ex) {
-                            }
+                            Request.Builder requestBuilder = original.newBuilder()
+                                    .addHeader("sec-ch-ua-platform", "Android")
+                                    .addHeader("application-version", "version")
+                                    .addHeader("device-id", UtilsHelpers.Companion.getDeviceId(context));
 
+                            Request request = requestBuilder.build();
                             return chain.proceed(request);
                         }
                     })
                     .addInterceptor(logging);
 
             if (!isBrivoApi) {
-//                builder.sslSocketFactory(sslContext.getSocketFactory(), trustManager);
+                // Apply SSL context only if not Brivo API
+                builder.sslSocketFactory(sslContext.getSocketFactory(), trustManager);
             }
 
-            client = builder.build();
+            return builder.build();
 
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException | KeyStoreException e) {
             e.printStackTrace();
-        } catch (KeyStoreException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error configuring SSL", e);
         }
-        return client;
     }
 }

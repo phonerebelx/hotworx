@@ -73,6 +73,7 @@
         android:layout_marginRight="@dimen/_70sdp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:tint="#333334"
+        android:visibility="gone"
         android:src="@drawable/ic_food_scanner"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="right"

@@ -180,7 +180,6 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
         super.setTitleBar(titleBar)
         titleBar.showBackButton()
         titleBar.subHeading = getString(R.string.hotsquad_list)
-        titleBar.hidePassioBtn()
         titleBar.showTitleBar()
         getUnreadNotifications().observe(viewLifecycleOwner) { unreadNotificationValue ->
             titleBar.showNotificationBtn(unreadNotificationValue)
@@ -223,7 +222,6 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
     override fun ResponseSuccess(result: String?, Tag: String?) {
         when (Tag) {
             WebServiceConstants.GET_SQUAD_LIST -> {
-                Log.d("ResponseSuccess", "ResponseSuccess called with result: $result")
                 hotsquadListModel = GsonFactory.getConfiguredGson().fromJson(result, HotsquadListModel::class.java)
 
                 if (hotsquadListModel.data.isNullOrEmpty()) {
@@ -275,7 +273,6 @@ class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListe
                         binding.flView.visibility = View.VISIBLE
                         binding.tvPendingNo.text = userData.data[0].data.hotsquad_pending_invites
                     }
-
                     if (userData.data != null && !userData.data.isEmpty() && userData.data.get(0).data != null && userData.data.get(0).data.unread_notifications != null){
                         unreadNotifications.setValue(userData.data[0].data.unread_notifications!!)
 

@@ -79,7 +79,7 @@ abstract class BaseBottomsheetFragment : BottomSheetDialogFragment(), webService
     }
 
     fun fragmentResume() {
-        setTitleBar((dockActivity as MainActivity?)!!.titleBar)
+        (dockActivity as MainActivity?)!!.titleBar?.let { setTitleBar(it) }
     }
 
     override fun onAttach(activity: Activity) {

@@ -5,17 +5,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.hotworx.R
 import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSessionProfileSummaryBinding
+import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
+import com.hotworx.helpers.Utils
 import com.hotworx.models.HotsquadList.Session.UserActivitiesResponse
+import com.hotworx.models.UserData.getUserData
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionProfileHighlightAdapter
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionProfileMemberAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 
 class SessionProfileSummaryFragment : BaseFragment(){
 
@@ -26,6 +33,12 @@ class SessionProfileSummaryFragment : BaseFragment(){
     private val activityList = mutableListOf<UserActivitiesResponse.UserData.Activity>()
     private var adapter: SessionProfileHighlightAdapter? = null
     private var adapterActivity: SessionProfileMemberAdapter? = null
+
+    private val unreadNotifications = MutableLiveData<String>()
+
+    fun getUnreadNotifications(): LiveData<String> {
+        return unreadNotifications
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +52,7 @@ class SessionProfileSummaryFragment : BaseFragment(){
         super.onViewCreated(view, savedInstanceState)
 
         callInvitationApi(WebServiceConstants.GET_SESSION_PROFILE, "")
-
+        callApi(Constants.PROFILE_API_CALLING)
         setAdapter(highlightList)
         setActivityAdapter(activityList)
     }
@@ -104,9 +117,44 @@ class SessionProfileSummaryFragment : BaseFragment(){
         binding.recyclerViewActivity.adapter = adapterActivity
     }
 
+    private fun callApi(type: String) {
+        when (type) {
+            Constants.PROFILE_API_CALLING -> getServiceHelper().enqueueCallExtended(
+                getWebService().viewProfile(
+                    apiHeader(requireContext())
+                ), Constants.PROFILE_API_CALLING, true
+            )
+        }
+    }
+
+    override fun onSuccess(liveData: LiveData<String>, tag: String) {
+        super.onSuccess(liveData, tag)
+        when (tag) {
+            Constants.PROFILE_API_CALLING -> {
+                try {
+                    val userData = GsonFactory.getConfiguredGson().fromJson(liveData.value, getUserData::class.java)
+                    if (userData.data != null && !userData.data.isEmpty() && userData.data.get(0).data != null && userData.data.get(0).data.unread_notifications != null){
+                        unreadNotifications.setValue(userData.data[0].data.unread_notifications!!)
+                    } else {
+                        unreadNotifications.setValue("0")
+                    }
+                } catch (e: Exception) {
+                    Utils.customToast(requireContext(), resources.getString(R.string.error_failure))
+                }
+            }
+        }
+    }
+
     override fun setTitleBar(titleBar: TitleBar) {
+        super.setTitleBar(titleBar)
         titleBar.showBackButton()
-        titleBar.hidePassioBtn()
+        titleBar.showTitleBar()
+        getUnreadNotifications().observe(viewLifecycleOwner) { unreadNotificationValue ->
+            titleBar.showNotificationBtn(unreadNotificationValue)
+            if (unreadNotificationValue == "0") {
+                titleBar.hideNotificationText()
+            }
+        }
     }
 
     override fun onDestroyView() {

@@ -34,6 +34,9 @@ import com.hotworx.ui.fragments.SessionFlow.WorkoutSummaryFragment;
 import com.hotworx.ui.fragments.SessionFlow.WorkoutTimeFragment;
 import com.hotworx.ui.fragments.notifications.NotificationFragment;
 import com.hotworx.ui.passioactivity.PassioMainActivity;
+import ai.passio.passiosdk.core.config.PassioConfiguration;
+import ai.passio.passiosdk.core.config.PassioMode;
+import ai.passio.passiosdk.core.config.PassioStatus;
 import com.hotworx.ui.views.TitleBar;
 
 import org.greenrobot.eventbus.EventBus;
@@ -43,8 +46,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+
+import ai.passio.passiosdk.passiofood.PassioSDK;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.passio.modulepassio.NutritionUIModule;
 
 public class MainActivity extends DockActivity {
 
@@ -163,7 +169,6 @@ public class MainActivity extends DockActivity {
         });
 
         titleBar.setSyncButtonListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if (loading) {
@@ -206,8 +211,9 @@ public class MainActivity extends DockActivity {
         });
         if (savedInstanceState == null)
             initFragment();
-    }
 
+
+    }
 
     public void drawerCallBack(){
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
@@ -350,6 +356,17 @@ public class MainActivity extends DockActivity {
         }
     }
 
+    private void onSDKError(String error) {
+//        textView.setText("ERROR: " + error);
+    }
+
+    private void onSDKReady() {
+        // Assuming NutritionUIModule has a static method like getInstance() or a similar one
+        NutritionUIModule.INSTANCE.launch(this, null);
+        Log.d("ytytytuy", "jhkjhkhlkhlkllhlk");
+        finish();
+    }
+
     private FragmentManager.OnBackStackChangedListener getListener() {
         FragmentManager.OnBackStackChangedListener result = new FragmentManager.OnBackStackChangedListener() {
             public void onBackStackChanged() {
@@ -364,7 +381,6 @@ public class MainActivity extends DockActivity {
         };
         return result;
     }
-
 
     @Override
     public void onLoadingStarted() {

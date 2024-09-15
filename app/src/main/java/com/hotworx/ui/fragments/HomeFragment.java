@@ -337,8 +337,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         super.setTitleBar(titleBar);
         titleBar.showMenuButton();
         titleBar.showSyncBtn();
-        titleBar.showPassioBtn();
-
         getUnreadNotifications().observe(getViewLifecycleOwner(), new Observer<String>() {
             public void onChanged(String unreadNotifications) {
                 titleBar.showNotificationBtn(unreadNotifications);

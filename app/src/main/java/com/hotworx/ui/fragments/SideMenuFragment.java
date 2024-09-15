@@ -156,8 +156,8 @@ public class SideMenuFragment extends BaseFragment {
         Intent passioIntent = new Intent(getDockActivity(), PassioMainActivity.class);
 //        passioIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Optional, based on your needs.
         drawerList.add(new NavigationItem(
-                R.string.passio,
-                R.drawable.hotworx_icons,
+                R.string.diettrax,
+                R.drawable.icon_menu_diettrax,
                 null,
                 passioIntent,
                 null,

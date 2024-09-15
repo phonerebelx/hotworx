@@ -15,21 +15,21 @@ object DiaryUseCase:com.passio.modulepassio.BaseFragment(){
     private val repository = Repository.getInstance()
 
     suspend fun getLogsForDay(day: Date): List<FoodRecord> {
-        fetchPassioData(day)
+//        fetchPassioData(day)
         return repository.getLogsForDay(day)
     }
 
-    private fun fetchPassioData(day: Date) {
-        val request = getPassioRequest(day.toString())
-        getServiceHelper().enqueueCall(
-            getWebService().getPassioData(
-                apiHeader(requireContext()),
-                request
-            ),
-            Constant.WebServiceConstants.GET_PASSIO_LIST,
-            true
-        )
-    }
+//    private fun fetchPassioData(day: Date) {
+//        val request = getPassioRequest(day.toString())
+//        getServiceHelper().enqueueCall(
+//            getWebService().getPassioData(
+//                apiHeader(requireContext()),
+//                request
+//            ),
+//            Constant.WebServiceConstants.GET_PASSIO_LIST,
+//            true
+//        )
+//    }
 
     suspend fun getLogsForWeek(day: Date): List<FoodRecord> {
         return repository.getLogsForWeek(day)

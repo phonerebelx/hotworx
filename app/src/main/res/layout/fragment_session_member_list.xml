@@ -57,7 +57,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_440sdp"
+                    android:layout_height="@dimen/_400sdp"
                     android:clipToPadding="false"
                     android:paddingBottom="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -70,8 +70,8 @@
                     android:layout_height="@dimen/_45sdp"
                     android:background="@drawable/multicolor_background"
                     android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_15sdp"
                     android:text="@string/add_list"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_16sdp"
                     android:fontFamily="@font/bebasneue_regular" />
