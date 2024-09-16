@@ -35,7 +35,7 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
     private lateinit var pagerAdapter: MemberRequestViewPagerAdapter
 
     private var squadId: String? = null
-//    private var hasSquadAccess: Boolean = false
+    private var hasSquadAccess: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +51,8 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
 
         arguments?.let {
             squadId = it.getString("squad_id")
-//            hasSquadAccess = it.getBoolean("squad_access")
+            hasSquadAccess = it.getBoolean("squad_access")
+            Log.d("ldlksjlkjlksv",hasSquadAccess.toString())
         }
 
         setupAdapter()
@@ -62,14 +63,19 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
             event.action == MotionEvent.ACTION_MOVE
         }
 
-        binding.pendingUsers.setOnClickListener{
-            // Create a new instance of SquadPendingMemberFragment
-            val squadPendingMemberFragment = squadPendingMemberFragment()
-            val bundle = Bundle().apply {
-                putString("squad_id", squadId) // Pass the squadId
+        if(hasSquadAccess){
+            binding.iconLayout.visibility = View.VISIBLE
+            binding.pendingUsers.setOnClickListener{
+                // Create a new instance of SquadPendingMemberFragment
+                val squadPendingMemberFragment = squadPendingMemberFragment()
+                val bundle = Bundle().apply {
+                    putString("squad_id", squadId) // Pass the squadId
+                }
+                squadPendingMemberFragment.arguments = bundle
+                dockActivity.replaceDockableFragment(squadPendingMemberFragment)
             }
-            squadPendingMemberFragment.arguments = bundle
-            dockActivity.replaceDockableFragment(squadPendingMemberFragment)
+        }else{
+            binding.iconLayout.visibility = View.GONE
         }
 
         callInvitationApi(Constants.GET_SQUAD_MEMBER_LIST,"")

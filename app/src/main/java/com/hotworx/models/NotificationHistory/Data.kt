@@ -1,5 +1,6 @@
 package com.hotworx.models.NotificationHistory
 
+
 data class Data(
     val id: String?,
     val attachment_url: String?,

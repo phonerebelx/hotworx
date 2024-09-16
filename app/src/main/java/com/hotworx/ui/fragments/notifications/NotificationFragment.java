@@ -128,6 +128,7 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
 
                     notificationListAdapter.markNotificationAsRead(notificationReadModel.getData().getId().toString());
                 }
+                // After marking notification as read, navigate to PendingInvitesFragment
                break;
             case WebServiceConstants.MARK_ATTACHMENT_READ:
                 attachmentReadModel = GsonFactory.getConfiguredGson().fromJson(result, NotificationReadModel.class);
@@ -190,12 +191,37 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
                 }
             }
 
-            case "Squad_Member_Invites" -> {
+            case "Squad_Member_Invites", "SECOND_TIME_CALLING" ->{
+                Data notificationData = (Data) data;
+//                initNotificationDialog(notificationData);
                 myDockActivity.replaceDockableFragment(new PendingInvitesFragment(), Constants.PendingInvitesFragment);
+
+                if (notificationData.getId() != null && !notificationData.getRead_status()) {
+                    serviceHelper.enqueueCall(
+                            webService.getNotificationAsRead(
+                                    ApiHeaderSingleton.apiHeader(requireContext()),
+                                    notificationData.getId()
+                            ),
+                            WebServiceConstants.MARK_NOTIFICATION_READ,
+                            false
+                    );
+                }
             }
 
             case "Squad_Session_Invites" -> {
+                Data notificationData = (Data) data;
+//                initNotificationDialog(notificationData);
                 myDockActivity.replaceDockableFragment(new SessionPendingListFragment(), Constants.SessionPendingListFragment);
+                if (notificationData.getId() != null && !notificationData.getRead_status()) {
+                    serviceHelper.enqueueCall(
+                            webService.getNotificationAsRead(
+                                    ApiHeaderSingleton.apiHeader(requireContext()),
+                                    notificationData.getId()
+                            ),
+                            WebServiceConstants.MARK_NOTIFICATION_READ,
+                            false
+                    );
+                }
             }
 
             case "COME_FROM_ATTACHMENT_CLICK_DOWNLOAD" -> {

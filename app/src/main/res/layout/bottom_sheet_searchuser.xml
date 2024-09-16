@@ -32,8 +32,8 @@
 
                 <ImageView
                     android:id="@+id/crossIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_gravity="end"
