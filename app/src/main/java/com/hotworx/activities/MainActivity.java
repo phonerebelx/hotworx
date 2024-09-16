@@ -155,7 +155,7 @@ public class MainActivity extends DockActivity {
                 if (loading) {
                     UIHelper.showLongToastInCenter(getApplicationContext(), R.string.message_wait);
                 } else {
-                    EventBus.getDefault().post(new CustomEvents.notificationSession());
+//                    EventBus.getDefault().post(new CustomEvents.notificationSession());
 
                     Fragment notificationFragment = new NotificationFragment();
 

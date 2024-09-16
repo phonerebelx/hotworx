@@ -973,11 +973,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         myDockActivity.finish();
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void notificationSessionEvent(CustomEvents.notificationSession event) {
-        myDockActivity.replaceDockableFragment(new NotificationFragment());
-
-    }
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void notificationSessionEvent(CustomEvents.notificationSession event) {
+//        myDockActivity.replaceDockableFragment(new NotificationFragment());
+//    }
 
     @Override
     public <T> void onItemClick(T data, @NonNull String type) {
