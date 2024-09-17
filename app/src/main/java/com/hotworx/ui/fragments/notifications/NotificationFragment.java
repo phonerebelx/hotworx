@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hotworx.R;
+import com.hotworx.ui.fragments.HotsquadList.RecieverPendingRequestFragment;
 import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
@@ -191,10 +192,14 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
                 }
             }
 
-            case "Squad_Member_Invites", "SECOND_TIME_CALLING" ->{
+            case "Squad_Member_Invites"->{
                 Data notificationData = (Data) data;
-//                initNotificationDialog(notificationData);
-                myDockActivity.replaceDockableFragment(new PendingInvitesFragment(), Constants.PendingInvitesFragment);
+//
+                RecieverPendingRequestFragment fragment = new RecieverPendingRequestFragment();
+                Bundle args = new Bundle();
+                args.putString("squad_key", Constants.PendingInvitesFragment);
+                fragment.setArguments(args);
+                myDockActivity.replaceDockableFragment(fragment, Constants.PendingInvitesFragment);
 
                 if (notificationData.getId() != null && !notificationData.getRead_status()) {
                     serviceHelper.enqueueCall(
@@ -210,8 +215,15 @@ public class NotificationFragment extends BaseFragment implements OnClickItemLis
 
             case "Squad_Session_Invites" -> {
                 Data notificationData = (Data) data;
-//                initNotificationDialog(notificationData);
-                myDockActivity.replaceDockableFragment(new SessionPendingListFragment(), Constants.SessionPendingListFragment);
+//
+                myDockActivity.replaceDockableFragment(new RecieverPendingRequestFragment(), Constants.SessionPendingListFragment);
+
+                RecieverPendingRequestFragment fragment = new RecieverPendingRequestFragment();
+                Bundle args = new Bundle();
+                args.putString("session_key", Constants.SessionPendingListFragment);
+                fragment.setArguments(args);
+                myDockActivity.replaceDockableFragment(fragment, Constants.SessionPendingListFragment);
+
                 if (notificationData.getId() != null && !notificationData.getRead_status()) {
                     serviceHelper.enqueueCall(
                             webService.getNotificationAsRead(

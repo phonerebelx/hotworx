@@ -23,7 +23,8 @@ import com.hotworx.ui.fragments.BaseFragment
 class PendingInvitesFragment : BaseFragment() {
 
     private var _binding: FragmentPendingInvitesBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
+
     private lateinit var pendingRequestModel: PendingInvitationResponse
     private var adapter: PendingRequestAdapter? = null
     private val pendingList = mutableListOf<PendingInvitationResponse.SquadData>()
@@ -33,13 +34,13 @@ class PendingInvitesFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPendingInvitesBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Ensure PendingListModel is initialized with an empty list to avoid the UninitializedPropertyAccessException
+        // Initialize PendingRequestModel with an empty list
         pendingRequestModel = PendingInvitationResponse(status = false, message = "", data = mutableListOf())
 
         setAdapter(pendingList)
@@ -50,25 +51,27 @@ class PendingInvitesFragment : BaseFragment() {
 
     private fun getPendingRequestList() {
         getServiceHelper().enqueueCall(
-            getWebService().getPendingRequestList(
-                apiHeader(requireContext())
-            ), WebServiceConstants.GET_PENDING_REQUEST_LIST, true
+            getWebService().getPendingRequestList(apiHeader(requireContext())),
+            WebServiceConstants.GET_PENDING_REQUEST_LIST, true
         )
     }
 
     override fun ResponseSuccess(result: String?, tag: String?) {
         if (!isAdded) return // Safeguard to prevent updates if fragment is not added
+
         Log.d("Response", "Raw JSON response: $result")
         pendingRequestModel = GsonFactory.getConfiguredGson().fromJson(result, PendingInvitationResponse::class.java)
 
         Log.d("Response", "Deserialized data: ${pendingRequestModel.data}")
 
-        if (!pendingRequestModel.data.isNullOrEmpty()) {
-            binding.tvNoListFound.visibility = View.GONE
-            updateAdapterList(pendingRequestModel.data!!)
+        if (pendingRequestModel.data.isNullOrEmpty()) {
+            binding?.tvNoListFound?.apply {
+                visibility = View.VISIBLE
+                text = "No Squad Request Found!"
+            }
         } else {
-            binding.tvNoListFound.visibility = View.VISIBLE
-            binding.tvNoListFound.text = "No Squad Request Found!"
+            binding?.tvNoListFound?.visibility = View.GONE
+            updateAdapterList(pendingRequestModel.data)
         }
     }
 
@@ -83,15 +86,14 @@ class PendingInvitesFragment : BaseFragment() {
 
                 if (responseJson != null) {
                     try {
-                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, PendingInvitationResponse::class.java)!!
+                        val response = GsonFactory.getConfiguredGson().fromJson(responseJson, PendingInvitationResponse::class.java)
                         if (response.status) {
                             dockActivity?.showSuccessMessage(response.message)
                         } else {
                             dockActivity?.showErrorMessage(response.message)
                         }
                     } catch (e: Exception) {
-                        val genericMsgResponse = GsonFactory.getConfiguredGson()
-                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
+                        val genericMsgResponse = GsonFactory.getConfiguredGson().fromJson(responseJson, ErrorResponseEnt::class.java)
                         dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
                         Log.i("Error", e.message.toString())
                     }
@@ -103,7 +105,7 @@ class PendingInvitesFragment : BaseFragment() {
         }
     }
 
-    private fun setAdapter(pendingList: MutableList<PendingInvitationResponse.SquadData>)  {
+    private fun setAdapter(pendingList: MutableList<PendingInvitationResponse.SquadData>) {
         adapter = PendingRequestAdapter(mutableListOf(), requireContext(), object : PendingRequestAdapter.OnItemClickListener {
             override fun onItemClick(item: PendingInvitationResponse.SquadData, position: Int) {
                 val request = pendingListAcceptRejectRequest(
@@ -112,10 +114,8 @@ class PendingInvitesFragment : BaseFragment() {
                     true
                 )
                 getServiceHelper().enqueueCallExtended(
-                    getWebService().PendingRequestAccept(
-                        ApiHeaderSingleton.apiHeader(requireContext()),
-                        request
-                    ), Constants.PENDING_ACCEPT_REJECT, true
+                    getWebService().PendingRequestAccept(apiHeader(requireContext()), request),
+                    Constants.PENDING_ACCEPT_REJECT, true
                 )
                 onItemActionSuccess(position)
             }
@@ -127,19 +127,17 @@ class PendingInvitesFragment : BaseFragment() {
                     false
                 )
                 getServiceHelper().enqueueCallExtended(
-                    getWebService().PendingRequestAccept(
-                        ApiHeaderSingleton.apiHeader(requireContext()),
-                        request
-                    ), Constants.PENDING_ACCEPT_REJECT, true
+                    getWebService().PendingRequestAccept(apiHeader(requireContext()), request),
+                    Constants.PENDING_ACCEPT_REJECT, true
                 )
                 onItemActionSuccess(position)
             }
         })
 
         // Set adapter to RecyclerView
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.itemAnimator = DefaultItemAnimator() // Ensure animations are enabled
-        binding.recyclerView.adapter = adapter
+        binding?.recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        binding?.recyclerView?.itemAnimator = DefaultItemAnimator() // Ensure animations are enabled
+        binding?.recyclerView?.adapter = adapter
     }
 
     private fun updateAdapterList(newList: MutableList<PendingInvitationResponse.SquadData>) {
@@ -158,14 +156,16 @@ class PendingInvitesFragment : BaseFragment() {
 
     override fun ResponseFailure(message: String?, tag: String?) {
         if (isAdded) { // Check if fragment is added
-            binding.tvNoListFound.text = "No Squad Request Found!"
-            binding.tvNoListFound.visibility = View.VISIBLE
+            binding?.tvNoListFound?.apply {
+                visibility = View.VISIBLE
+                text = "No Squad Request Found!"
+            }
         }
     }
 
     private fun scrollToNotification(listId: String) {
-        binding.recyclerView.post {
-            val layoutManager = binding.recyclerView.layoutManager as LinearLayoutManager
+        binding?.recyclerView?.post {
+            val layoutManager = binding!!.recyclerView.layoutManager as LinearLayoutManager
             val position: Int = adapter?.getPositionById(listId) ?: -1
             if (position != -1) {
                 layoutManager.scrollToPositionWithOffset(position, 0)
@@ -178,3 +178,4 @@ class PendingInvitesFragment : BaseFragment() {
         _binding = null
     }
 }
+

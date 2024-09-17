@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.Gson;
 import com.hotworx.R;
+import com.hotworx.global.Constants;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,7 +57,7 @@ public class SplashActivity extends BaseActivity {
                     if ( key.equals("id")){
                         intent.putExtra("hashId", value.toString());
                     }
-                    if (key.equals("image") || key.equals("title") || key.equals("body")) {
+                    if (key.equals("image") || key.equals("title") || key.equals("body")  || key.equals("notification_type")) {
                         intent.putExtra(key, value.toString());
                     }
                 }

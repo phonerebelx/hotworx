@@ -4,5 +4,6 @@ data class NotificationModel (
     val id: String?,
     val title: String?,
     val body: String?,
-    val image: String?
+    val image: String?,
+    val type: String?
 )

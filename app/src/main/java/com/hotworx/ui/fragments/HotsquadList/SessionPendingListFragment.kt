@@ -24,7 +24,7 @@ import com.hotworx.ui.fragments.BaseFragment
 class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelInterface {
 
     private var _binding: FragmentSessionPendingListBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
     private lateinit var pendingSessionResponse: PendingSessionResponse
     private var adapter: SessionPendingListAdapter? = null
     private val pendingList = mutableListOf<PendingSessionResponse.SquadInvitation>()
@@ -40,7 +40,7 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSessionPendingListBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,21 +65,21 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
     }
 
     override fun ResponseSuccess(result: String?, tag: String?) {
-        if (!isAdded) return // Safeguard to prevent updates if fragment is not added
+        if (!isAdded || _binding == null) return // Add safeguard check// Safeguard to prevent updates if fragment is not added
 
         pendingSessionResponse =
             GsonFactory.getConfiguredGson().fromJson(result, PendingSessionResponse::class.java)
 
         if (!pendingSessionResponse.data.isNullOrEmpty()) {
-            binding.tvNoListFound.visibility = View.GONE
+            binding?.tvNoListFound?.visibility = View.GONE
 
             pendingList.clear() // Clear existing items
             pendingList.addAll(pendingSessionResponse.data) // Add new items
 
             updateAdapterList(pendingList) // Update adapter with the new list
         } else {
-            binding.tvNoListFound.visibility = View.VISIBLE
-            binding.tvNoListFound.text = "No Session Request Found!"
+            binding?.tvNoListFound?.visibility = View.VISIBLE
+            binding?.tvNoListFound?.text = "No Session Request Found!"
         }
     }
 
@@ -97,9 +97,9 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
                 }
             })
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.itemAnimator = DefaultItemAnimator()
-        binding.recyclerView.adapter = adapter
+        binding?.recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        binding?.recyclerView?.itemAnimator = DefaultItemAnimator()
+        binding?.recyclerView?.adapter = adapter
     }
 
     private fun updateAdapterList(newList: MutableList<PendingSessionResponse.SquadInvitation>) {
@@ -118,20 +118,20 @@ class SessionPendingListFragment : BaseFragment() , OnClickSessionPendingModelIn
 
     override fun ResponseFailure(message: String?, tag: String?) {
         if (isAdded) { // Check if fragment is added
-            binding.tvNoListFound.text = "No Session Request Found!"
-            binding.tvNoListFound.visibility = View.VISIBLE
+            binding?.tvNoListFound?.text = "No Session Request Found!"
+            binding?.tvNoListFound?.visibility = View.VISIBLE
         }
     }
 
-    private fun scrollToNotification(listId: String) {
-        binding.recyclerView.post {
-            val layoutManager = binding.recyclerView.layoutManager as LinearLayoutManager
-            val position: Int = adapter?.getPositionById(listId) ?: -1
-            if (position != -1) {
-                layoutManager.scrollToPositionWithOffset(position, 0)
-            }
-        }
-    }
+//    private fun scrollToNotification(listId: String) {
+//        binding.recyclerView.post {
+//            val layoutManager = binding.recyclerView.layoutManager as LinearLayoutManager
+//            val position: Int = adapter?.getPositionById(listId) ?: -1
+//            if (position != -1) {
+//                layoutManager.scrollToPositionWithOffset(position, 0)
+//            }
+//        }
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

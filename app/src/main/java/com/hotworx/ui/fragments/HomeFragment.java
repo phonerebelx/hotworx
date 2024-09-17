@@ -177,7 +177,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         bundle.putString("hashId", hashId);
         bundle.putString("image", image);
         bundle.putString("body", body);
-        bundle.putString(Constants.NOTIFICATION_TYPE, notification_type);
+        bundle.putString("notification_type", notification_type);
         bundle.putString(Constants.CUSTOM_MESSAGE, custom_message);
         bundle.putString(Constants.BOOKING_DATE, booking_date);
         bundle.putString(Constants.CUSTOM_TITLE, title);
@@ -297,7 +297,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             int duration = getArguments().getInt("duration",0);
 
             NotificationDialogHomeFragment notificationDialogHomeFragment = new NotificationDialogHomeFragment(this);
-            notificationDialogHomeFragment.setNotificationModel(hashId,title,body,image);
+            notificationDialogHomeFragment.setNotificationModel(hashId,title,body,image,notification_type);
             notificationDialogHomeFragment.show(
                     getParentFragmentManager(), Constants.notificationDialogHomeFragment
             );
@@ -995,7 +995,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 String objid = getArguments().getString("objid");
                 String calendar_title = getArguments().getString("calendar_title");
                 int duration = getArguments().getInt("duration", 0);
-
 
                 myDockActivity.replaceDockableFragment(NotificationFragment.newInstance(
                         navigateTo,

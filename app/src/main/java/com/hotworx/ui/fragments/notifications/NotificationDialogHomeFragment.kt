@@ -49,10 +49,12 @@ class NotificationDialogHomeFragment(val onItemClick: OnClickItemListener) : Dia
         }
         binding.tvTitle.text = notificationModel.title
         binding.tvDesc.text = notificationModel.body
+
+        Log.d("bkdjbcjksbdjkbcsnf",notificationModel.type.toString())
     }
 
-    fun setNotificationModel(id: String?,title: String?,body: String?,image: String?){
-        notificationModel =  NotificationModel(id,title,body,image)
+    fun setNotificationModel(id: String?,title: String?,body: String?,image: String?,type: String?){
+        notificationModel =  NotificationModel(id,title,body,image,type)
     }
 
     private fun setOnClickListener(){
@@ -62,7 +64,7 @@ class NotificationDialogHomeFragment(val onItemClick: OnClickItemListener) : Dia
         }
 
         binding.btnDetail.setOnClickListener {
-
+            Log.d("bkdjbcjksbdjkbc",notificationModel.type.toString())
             onItemClick.onItemClick(notificationModel,"COME_FROM_VIEW_DETAIL")
             dialog?.dismiss()
         }

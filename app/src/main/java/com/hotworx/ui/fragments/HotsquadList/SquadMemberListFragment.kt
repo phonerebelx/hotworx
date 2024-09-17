@@ -52,7 +52,6 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
         arguments?.let {
             squadId = it.getString("squad_id")
             hasSquadAccess = it.getBoolean("squad_access")
-            Log.d("ldlksjlkjlksv",hasSquadAccess.toString())
         }
 
         setupAdapter()
