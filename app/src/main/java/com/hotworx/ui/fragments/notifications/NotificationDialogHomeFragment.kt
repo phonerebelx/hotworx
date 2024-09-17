@@ -62,6 +62,7 @@ class NotificationDialogHomeFragment(val onItemClick: OnClickItemListener) : Dia
         }
 
         binding.btnDetail.setOnClickListener {
+
             onItemClick.onItemClick(notificationModel,"COME_FROM_VIEW_DETAIL")
             dialog?.dismiss()
         }

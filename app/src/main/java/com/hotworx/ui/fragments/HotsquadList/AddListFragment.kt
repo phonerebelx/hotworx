@@ -102,13 +102,14 @@ class AddListFragment : BaseFragment(){
                         val myHotsquadListFragment = MyHotsquadListFragment()
                         dockActivity.replaceDockableFragment(myHotsquadListFragment)
                     }else{
-                        dockActivity?.showErrorMessage("Something Went Wrong")
+                        dockActivity?.showErrorMessage(response.message)
+                        Log.d("dummyerror", response.message.toString())
                     }
                 } catch (e: Exception) {
                     val genericMsgResponse = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
                     dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
-                    Log.i("dummy error", e.message.toString())
+                    Log.i("dummyerror", e.message.toString())
                 }
             }
 

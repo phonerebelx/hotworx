@@ -20,6 +20,7 @@ import com.hotworx.global.WebServiceConstants;
 import com.hotworx.interfaces.ApiListener;
 import com.hotworx.models.BrivoRequestModel.BrivoErrorResponse;
 import com.hotworx.models.ErrorResponseEnt;
+import com.hotworx.models.HotsquadList.CreateHotsquadModel;
 import com.hotworx.models.NewActivityModels.NinetyDaysActivity;
 import com.hotworx.requestEntity.BaseModel;
 import com.hotworx.interfaces.webServiceResponseLisener;
@@ -162,6 +163,23 @@ public class ServiceHelper {
                             String errorBody = response.errorBody().string();
                             apiResponse.setValue(errorBody);
                             BrivoErrorResponse errorResponseEnt = GsonFactory.getConfiguredGson().fromJson(apiResponse.getValue(), BrivoErrorResponse.class);
+                            if (errorResponseEnt != null && errorResponseEnt.getMessage() != null) {
+                                apiListener.onFailure(errorResponseEnt.getMessage(), tag);
+                            }
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+
+
+
+                    }
+
+                    else if (response.code() == 422) {
+
+                        try {
+                            String errorBody = response.errorBody().string();
+                            apiResponse.setValue(errorBody);
+                            CreateHotsquadModel errorResponseEnt = GsonFactory.getConfiguredGson().fromJson(apiResponse.getValue(), CreateHotsquadModel.class);
                             if (errorResponseEnt != null && errorResponseEnt.getMessage() != null) {
                                 apiListener.onFailure(errorResponseEnt.getMessage(), tag);
                             }
