@@ -45,7 +45,7 @@
 
 
                 <ImageView
-                    android:id="@+id/ivPremium"
+                    android:id="@+id/ivTier"
                     android:layout_width="@dimen/_60sdp"
                     android:layout_height="@dimen/_60sdp"
                     android:layout_marginHorizontal="@dimen/_8sdp"

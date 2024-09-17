@@ -66,6 +66,7 @@
     <string name="record_calories">Record Calories</string>
     <string name="interNutritionist">Int</string>
     <string name="_40_mins">40 mins</string>
+    <string name="Use_trial">Use Trial</string>
     <string name="_1_hour_after_burn_label">1-Hour After Burn</string>
     <string name="_60_mins">60 mins</string>
     <string name="total_">TOTAL SESSION TO RECORD</string>
@@ -264,6 +265,7 @@
     <string name="by_creating_an_account_you_agree_to_our">By Creating an account you agree to our</string>
     <string name="terms"><![CDATA[Terms & Conditions]]></string>
     <string name="SV_ST">SAVE START READING</string>
+    <string name="Text">Text</string>
     <string name="SV_CB">SAVE CALORIES BURNED</string>
     <string name="one_hour">01:00:00</string>
     <string name="done_">DONE</string>

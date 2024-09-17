@@ -13,6 +13,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.CalendarContract;
 import android.text.SpannableString;
 import android.text.format.Time;
@@ -25,6 +26,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +37,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -70,6 +73,7 @@ import com.hotworx.helpers.InternetHelper;
 import com.hotworx.helpers.UIHelper;
 import com.hotworx.helpers.Utils;
 import com.hotworx.interfaces.DialogBoxInterface;
+import com.hotworx.interfaces.OnClickItemListener;
 import com.hotworx.interfaces.OnClickTypeListener;
 import com.hotworx.models.ActiveSessionModel;
 import com.hotworx.models.DashboardData.DashboardDataModel;
@@ -99,6 +103,7 @@ import com.hotworx.ui.fragments.Rewards.LevelFiveFragment;
 import com.hotworx.ui.fragments.Rewards.LevelSevenFragment;
 import com.hotworx.ui.fragments.Rewards.LevelSixFragment;
 
+import com.hotworx.ui.fragments.notifications.NotificationDialogHomeFragment;
 import com.hotworx.ui.fragments.notifications.NotificationFragment;
 import com.hotworx.ui.views.TitleBar;
 import com.hotworx.workManager.MyWorker;
@@ -115,6 +120,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -130,7 +136,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, OnClickItemListener {
 
     private Unbinder unbinder;
     private final String TAG = HomeFragment.class.getSimpleName();
@@ -165,14 +171,29 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private Data data;
     private Constraints constraints;
     private Animation popIn;
+    private final MutableLiveData<String> unreadNotifications = new MutableLiveData<>();
+
+    public LiveData<String> getUnreadNotifications() {
+        return unreadNotifications;
+    }
+
+
+    private final MutableLiveData<String> is_new_reciprocal = new MutableLiveData<>();
+
+    public LiveData<String> get_is_new_reciprocal() {
+        return is_new_reciprocal;
+    }
+
 
     DashboardSessionDialogFragment sessionDashboardDialogFragment;
 
 
-    public static HomeFragment newInstance(String navigateTo,String hashId,String notification_type, String custom_message, String booking_date, String title, String objid, String calender_title, int duration) {
+    public static HomeFragment newInstance(String navigateTo, String hashId,String image,String body,String title, String notification_type, String custom_message, String booking_date, String objid, String calender_title, int duration) {
         Bundle bundle = new Bundle();
         bundle.putString("navigateTo", navigateTo);
         bundle.putString("hashId", hashId);
+        bundle.putString("image", image);
+        bundle.putString("body", body);
         bundle.putString(Constants.NOTIFICATION_TYPE, notification_type);
         bundle.putString(Constants.CUSTOM_MESSAGE, custom_message);
         bundle.putString(Constants.BOOKING_DATE, booking_date);
@@ -229,6 +250,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         swipeRefreshLayout.setOnRefreshListener(this);
         mWorkManager = WorkManager.getInstance();
 
+
+        Log.d("currentDateeee",getCurrentDate());
+
         data = new Data.Builder()
                 .putString(Constants.USER_ID, prefHelper.getUserId())
                 .build();
@@ -275,28 +299,24 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             });
         }
 
-        if (getArguments()!= null && getArguments().getString("navigateTo")!=null){
+        if (getArguments()!= null && getArguments().getString("navigateTo")!=null && getArguments().getString("hashId") != null) {
             String navigateTo = getArguments().getString("navigateTo");
             String hashId = getArguments().getString("hashId");
+            String image = getArguments().getString("image");
+            String body = getArguments().getString("body");
             String notification_type = getArguments().getString("notification_type");
             String custom_message = getArguments().getString("custom_message");
             String booking_date = getArguments().getString("booking_date");
-            String title = getArguments().getString("title");
+            String title = getArguments().getString(Constants.CUSTOM_TITLE);
             String objid = getArguments().getString("objid");
             String calendar_title = getArguments().getString("calendar_title");
             int duration = getArguments().getInt("duration",0);
-            myDockActivity.replaceDockableFragment( NotificationFragment.newInstance(
-                    navigateTo,
-                    hashId,
-                    notification_type,
-                    custom_message,
-                    booking_date,
-                    title,
-                    objid,
-                    calendar_title,
-                    duration
-            ));
-            setArguments(null);
+
+            NotificationDialogHomeFragment notificationDialogHomeFragment = new NotificationDialogHomeFragment(this);
+            notificationDialogHomeFragment.setNotificationModel(hashId,title,body,image);
+            notificationDialogHomeFragment.show(
+                    getParentFragmentManager(), Constants.notificationDialogHomeFragment
+            );
         }
     }
 
@@ -333,7 +353,17 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         super.setTitleBar(titleBar);
         titleBar.showMenuButton();
         titleBar.showSyncBtn();
-        titleBar.showNotificationBtn();
+
+        getUnreadNotifications().observe(getViewLifecycleOwner(), new Observer<String>() {
+            public void onChanged(String unreadNotifications) {
+                titleBar.showNotificationBtn(unreadNotifications);
+
+                if (unreadNotifications.equals("0")) {
+                    titleBar.hideNotificationText();
+                }
+
+            }
+        });
         titleBar.showBrivoBtn();
         titleBar.setSubHeading(getResources().getString(R.string.welcome));
         titleBar.setContentDescription(getString(R.string.welcome_to_the_dashboard));
@@ -342,15 +372,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private void initAnimations() {
         popIn = AnimationUtils.loadAnimation(myDockActivity, R.anim.pop_in);
     }
-
-
-    ////////////////////////////closed due to new dashboard //////////////////////////////////////////////
-//    private void initAdapter() {
-//        rvDetail.setLayoutManager(new LinearLayoutManager(getDockActivity(), LinearLayoutManager.VERTICAL, false));
-//        adapter = new HomeAdapter(getDockActivity());
-//        rvDetail.setAdapter(adapter);
-//    }
-
 
     public void createWorkoutSessionDialog() {
         if (prefHelper.getActiveSession() != null && !checkWorkoutSessionDialogShowing()) {
@@ -379,32 +400,8 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     }
 
     ////////////////////////////closed due to new dashboard //////////////////////////////////////////////
-//    private void setCurrentDate() {
-//        DateFormat dateFormat = new SimpleDateFormat("MMM dd yyyy", Locale.getDefault());
-//        Date date = new Date();
-//        dateFormat.format(date);
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(date);
-//
-//
-//        calendar.add(Calendar.DATE, 0);
-//        today = dateFormat.format(calendar.getTime());
-//        today_textview.setText(today);
-//        today_textview.setContentDescription("current date is " + today);
-//
-//        calendar.add(Calendar.DATE, -1);
-//        yesterday = dateFormat.format(calendar.getTime());
-//        yesterday_textview.setText(yesterday);
-//
-//        calendar.add(Calendar.DATE, -1);
-//        daybefore = dateFormat.format(calendar.getTime());
-//        dayBefore_textview.setText(daybefore);
-//        apiCallForOverAllSummary(getCurrentDate(0));
-//
-//    }
-    ////////////////////////////closed due to new dashboard //////////////////////////////////////////////
     private String getCurrentDate(int type) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         DateFormat dateFormat2 = new SimpleDateFormat("MMM dd yyyy", Locale.getDefault());
 
         Date date = new Date();
@@ -488,7 +485,8 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             case Constants.DASHBOARDCALLING:
                 getServiceHelper().enqueueCallExtended(
                         getWebService().getDashboard(
-                                ApiHeaderSingleton.apiHeader(requireContext())
+                                ApiHeaderSingleton.apiHeader(requireContext()),
+                                getCurrentDate()
                         ), Constants.DASHBOARDCALLING, true
                 );
 
@@ -503,7 +501,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 break;
         }
     }
-
 
     /////////////////////////// new extended webservice /////////////////////////////
     @Override
@@ -522,15 +519,24 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 );
                 setUpGraph(getDashboardApiResponse.getData().getNinety_days_summary());
             } catch (Exception e) {
+                Log.d("Exception: ",e.getMessage().toString());
                 Utils.customToast(requireContext(), getResources().getString(R.string.error_failure));
             }
         }
         if (Constants.PROFILE_API_CALLING.equals(tag)){
+
             try {
                 getUserData userData = GsonFactory.getConfiguredGson()
                         .fromJson(liveData.getValue(), getUserData.class);
-
-                if (!userData.getData().get(0).getData().is_brivo_allowed().equals("yes")){
+                if (userData.getData() != null && !userData.getData().isEmpty() &&
+                        userData.getData().get(0).getData() != null &&
+                        userData.getData().get(0).getData().getUnread_notifications() != null) {
+                    is_new_reciprocal.setValue( userData.getData().get(0).getData().getNew_reciprocal_enabled());
+                    unreadNotifications.setValue( userData.getData().get(0).getData().getUnread_notifications());
+                } else {
+                    unreadNotifications.setValue("0");
+                }
+                if (!userData.getData().get(0).getData().is_brivo_allowed().equals("yes")) {
                     EventBus.getDefault().post(new CustomEvents.checkBrivoAllowed());
                 }
 
@@ -538,6 +544,13 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 Utils.customToast(requireContext(), getResources().getString(R.string.error_failure));
             }
         }
+    }
+
+    private String getCurrentDate() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getDefault()); // Automatically picks the device's current time zone
+        return sdf.format(date);
     }
 
     @Override
@@ -550,7 +563,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             myDockActivity.showErrorMessage(message);
         }
     }
-
 
     /////////////////////////// new extended webservice /////////////////////////////
 
@@ -593,6 +605,12 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         } else {
             ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager()); //viewPager.getAdapter() instanceof ViewPagerAdapter ? (ViewPagerAdapter) viewPager.getAdapter() : new ViewPagerAdapter(getChildFragmentManager());
             PendingSessionFragment psf = new PendingSessionFragment();
+            String reciprocalValue = get_is_new_reciprocal().getValue();
+            if (reciprocalValue != null) {
+                psf.setSet_is_reciprocal_allowed(reciprocalValue);
+            } else {
+                psf.setSet_is_reciprocal_allowed("no");
+            }
             psf.setData(getTodaysPendingSession);
             adapter.addFrag(psf, "PSF's");
 
@@ -916,7 +934,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     public void onRefresh() {
         swipeRefreshLayout.setRefreshing(false);
         callApi(Constants.DASHBOARDCALLING);
-
+        callApi(Constants.PROFILE_API_CALLING);
     }
 
     private void addEventToCalender(String date) {
@@ -974,8 +992,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
         startActivity(new Intent(getDockActivity(), SitesActivity.class));
         myDockActivity.finish();
-//        myDockActivity.replaceDockableFragment(new BrivoUserSiteFragment());
-
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -983,4 +999,42 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         myDockActivity.replaceDockableFragment(new NotificationFragment());
 
     }
+
+    @Override
+    public <T> void onItemClick(T data, @NonNull String type) {
+        if (type.equals("COME_FROM_CLOSE")){
+            setArguments(null);
+        }else{
+            if (getArguments()!= null && getArguments().getString("navigateTo")!=null) {
+                String navigateTo = getArguments().getString("navigateTo");
+                String hashId = getArguments().getString("hashId");
+                String image = getArguments().getString("image");
+                String body = getArguments().getString("body");
+                String notification_type = getArguments().getString("notification_type");
+                String custom_message = getArguments().getString("custom_message");
+                String booking_date = getArguments().getString("booking_date");
+                String title = getArguments().getString(Constants.CUSTOM_TITLE);
+                String objid = getArguments().getString("objid");
+                String calendar_title = getArguments().getString("calendar_title");
+                int duration = getArguments().getInt("duration", 0);
+
+
+                myDockActivity.replaceDockableFragment(NotificationFragment.newInstance(
+                        navigateTo,
+                        hashId,
+                        notification_type,
+                        custom_message,
+                        booking_date,
+                        title,
+                        objid,
+                        calendar_title,
+                        duration
+                ));
+            }
+        setArguments(null);
+        }
+    }
+
+
+
 }

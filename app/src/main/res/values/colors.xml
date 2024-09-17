@@ -3,6 +3,8 @@
     <color name="colorPrimary">#E45C26</color>
     <color name="colorPrimaryDark">#E45C26</color>
     <color name="colorAccent">#E45C26</color>
+    <color name="colorAccent2">#FAAC58</color>
+    <color name="transparent_orange">#C6F8E8E3</color>
     <color name="colorOTP">#d31a17</color>
     <color name="colorWhite">#fff</color>
     <color name="colorBlack">#000</color>

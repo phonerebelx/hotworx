@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/_10sdp"
-    app:cardCornerRadius="@dimen/_10sdp"
-    app:cardElevation="@dimen/_15sdp"
+    android:layout_marginHorizontal="@dimen/_20sdp"
+    app:cardCornerRadius="@dimen/_3sdp"
+    app:cardElevation="@dimen/_10sdp"
     tools:context=".ui.fragments.notifications.ReadNotification.NotificationReadFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_rectengle_notification_white_border"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +25,8 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:gravity="end">
-            <ImageView
 
+            <ImageView
                 android:layout_width="@dimen/_200sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginEnd="@dimen/_14sdp"
@@ -35,60 +40,102 @@
                 android:layout_marginEnd="@dimen/_14sdp"
                 android:layout_gravity="center"
                 android:src="@drawable/cancel_grey"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginHorizontal="@dimen/_35sdp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/notificationImage_cv"
-                android:layout_width="@dimen/_75sdp"
-                android:layout_height="@dimen/_90sdp"
+            <io.github.florent37.shapeofview.shapes.RoundRectView
+                android:id="@+id/imgRect"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_110sdp"
                 android:layout_gravity="center"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_heading">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivNotification"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                app:shape_roundRect_bottomLeftRadius="@dimen/_15sdp"
+                app:shape_roundRect_bottomRightRadius="@dimen/_15sdp"
+                app:shape_roundRect_topLeftRadius="@dimen/_15sdp"
+                app:shape_roundRect_topRightRadius="@dimen/_15sdp"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/banner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/hotworx_icons"
-                    android:scaleType="fitXY"/>
-            </androidx.cardview.widget.CardView>
+                    android:contentDescription="@string/no"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+
+            </io.github.florent37.shapeofview.shapes.RoundRectView>
 
             <TextView
-                android:id="@+id/tvBooking"
+                android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/Text"
+                android:layout_gravity="end"
                 android:fontFamily="@font/montserrat_regular"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:gravity="center_vertical"
-                android:text="Booking # "
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_8ssp"
+                android:layout_below="@+id/title"
+                android:layout_marginHorizontal="@dimen/_5sdp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Text"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"/>
+
+
+
+                    <ImageView
+                        android:id="@+id/attachmentImg"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:visibility="gone"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:src="@drawable/attachment"
+                       android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tvDesc"
-                android:layout_width="wrap_content"
+                android:id="@+id/detail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
-                android:gravity="center_vertical"
-                android:text="20 Calories -  40 Calories"
+                android:text="@string/Text"
+                android:textSize="@dimen/_10ssp"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:maxLines="5"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/_10sdp" />
-
+                android:fontFamily="@font/montserrat_regular"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:visibility="gone"
             android:layout_gravity="center">
             <Button
                 android:id="@+id/btnThnks"

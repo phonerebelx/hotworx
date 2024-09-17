@@ -49,5 +49,7 @@ data class DataX(
     val is_brivo_allowed: String,
     val is_ambassador_allowed: String?,
     val is_employee_allowed: String?,
+    val unread_notifications: String?,
+    val new_reciprocal_enabled: String?
 
 ): Serializable

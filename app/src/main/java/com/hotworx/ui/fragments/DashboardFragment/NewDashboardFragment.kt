@@ -111,7 +111,8 @@ class NewDashboardFragment : BaseFragment() {
             Constants.DASHBOARDCALLING -> {
                 getServiceHelper().enqueueCallExtended(
                     getWebService().getDashboard(
-                        ApiHeaderSingleton.apiHeader(requireContext())
+                        ApiHeaderSingleton.apiHeader(requireContext()),
+                        ""
                     ), Constants.DASHBOARDCALLING, true
                 )
             }

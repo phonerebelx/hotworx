@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -227,33 +228,66 @@ public class ActivityScreenFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_monthly:
-                ninety_days.setChecked(true);
-                monthly.setChecked(false);
-                ninety_days.setBackgroundResource(R.drawable.multicolor_background);
-                ninety_days.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite));
-                monthly.setBackgroundResource(R.color.colorWhite);
-                monthly.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack));
-                if (ninety_list != null && ninety_list.size() > 0)
-                    getChildFragmentManager().beginTransaction().replace(R.id.list_container,
-                            ListNinetyDaysFragment.newInstance(ninety_list)).commit();
-                else Toast.makeText(myDockActivity, "No data found..!!", Toast.LENGTH_SHORT).show();
-                break;
+                Log.d("ActivityScreenFragment", "Monthly button clicked");
 
-
-            case R.id.btn_weekly:
+                // Update UI to reflect the selected button
                 ninety_days.setChecked(false);
                 monthly.setChecked(true);
                 monthly.setBackgroundResource(R.drawable.multicolor_background);
                 monthly.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite));
                 ninety_days.setBackgroundResource(R.color.colorWhite);
                 ninety_days.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack));
-                if (month_list != null && month_list.size() > 0)
-                    getChildFragmentManager().beginTransaction().
-                            replace(R.id.list_container, ListMonthlyFragment.newInstance(month_list)).commit();
-                else Toast.makeText(myDockActivity, "No data found..!!", Toast.LENGTH_SHORT).show();
+
+                // Reload RecyclerView with monthly data
+                ListMonthlyFragment monthlyFragment = (ListMonthlyFragment) getChildFragmentManager().findFragmentById(R.id.list_container);
+                if (month_list != null && !month_list.isEmpty()) {
+                    if (monthlyFragment != null) {
+                        monthlyFragment.updateList(month_list);
+                    } else {
+                        getChildFragmentManager().beginTransaction()
+                                .replace(R.id.list_container, ListMonthlyFragment.newInstance(month_list))
+                                .commitAllowingStateLoss();
+                    }
+                    Log.d("ActivityScreenFragment", "Monthly data loaded");
+                } else {
+                    Toast.makeText(myDockActivity, "No data found..!!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case R.id.btn_weekly:
+                Log.d("ActivityScreenFragment", "Weekly button clicked");
+
+                // Update UI to reflect the selected button
+                ninety_days.setChecked(true);
+                monthly.setChecked(false);
+                ninety_days.setBackgroundResource(R.drawable.multicolor_background);
+                ninety_days.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorWhite));
+                monthly.setBackgroundResource(R.color.colorWhite);
+                monthly.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorBlack));
+
+                // Reload RecyclerView with 90 days data
+                ListNinetyDaysFragment ninetyDaysFragment = (ListNinetyDaysFragment) getChildFragmentManager().findFragmentById(R.id.list_container);
+
+                if (ninetyDaysFragment != null && !ninety_list.isEmpty()) {
+                    ninetyDaysFragment.updateList(ninety_list);
+                } else {
+                    getChildFragmentManager().beginTransaction()
+                            .replace(R.id.list_container, ListNinetyDaysFragment.newInstance(ninety_list))
+                            .commitAllowingStateLoss();
+                }
+
+//                if (ninety_list != null && !ninety_list.isEmpty()) {
+//
+//                    Log.d("ActivityScreenFragment", "Ninety days data loaded");
+//                } else {
+//                    Toast.makeText(myDockActivity, "No data found..!!", Toast.LENGTH_SHORT).show();
+//                }
                 break;
         }
     }
+
+
+
 
     @Override
     public void onDestroy() {

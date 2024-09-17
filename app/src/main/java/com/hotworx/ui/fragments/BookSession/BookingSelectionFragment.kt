@@ -50,7 +50,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class BookingSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickTypeListener, OnClickItemListener, BookingConfirmationDialogClickListener {
+class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment(), OnItemClickInterface, OnClickTypeListener, OnClickItemListener, BookingConfirmationDialogClickListener {
 
     private lateinit var acbBySessionType: AppCompatButton
     private lateinit var acbByTime: AppCompatButton
@@ -87,7 +87,7 @@ class BookingSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickTy
     ): View? {
         val root = inflater.inflate(R.layout.fragment_booking_selection, container, false)
         // Inflate the layout for this fragment
-
+        Log.d("acbBySessionType",is_reciprocal_allowed.toString())
         acbBySessionType = root.findViewById(R.id.acbBySessionType)
         acbByTime = root.findViewById(R.id.acbByTime)
         rvDateSelector = root.findViewById(R.id.rvDateSelector)
@@ -147,8 +147,11 @@ class BookingSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickTy
 
     private fun callApi(type: String, checkCondition: String) {
         checkIsLoadingStart()
+
         when (type) {
+
             Constants.GETBOOKINGSESSION -> {
+                if (is_reciprocal_allowed == "yes"){
                 getServiceHelper().enqueueCallExtended(
                     getWebService().getLevelTwo_v2(
                         ApiHeaderSingleton.apiHeader(requireContext()),
@@ -157,6 +160,16 @@ class BookingSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickTy
                         postLevelTwoDataMode.view_type
                     ), Constants.GETBOOKINGSESSION, true
                 )
+                }else{
+                    getServiceHelper().enqueueCallExtended(
+                        getWebService().getLevelTwo(
+                            ApiHeaderSingleton.apiHeader(requireContext()),
+                            postLevelTwoDataMode.selected_location_id,
+                            postLevelTwoDataMode.selected_date,
+                            postLevelTwoDataMode.view_type
+                        ), Constants.GETBOOKINGSESSION, true
+                    )
+                }
             }
 
             Constants.GETSHOWSLOTS -> {
@@ -183,6 +196,7 @@ class BookingSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickTy
     }
 
     private fun callBookSessionApi() {
+        if (is_reciprocal_allowed == "yes"){
         getServiceHelper().enqueueCallExtended(
             getWebService().bookSession_v2(ApiHeaderSingleton.apiHeader(requireContext()),
                 postBookSessionDataModel.sauna_no,
@@ -192,6 +206,17 @@ class BookingSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickTy
                 postBookSessionDataModel.selected_location_id,
                 message_popup), Constants.BOOKSESSION, true
         )
+        } else{
+            getServiceHelper().enqueueCallExtended(
+                getWebService().bookSession(ApiHeaderSingleton.apiHeader(requireContext()),
+                    postBookSessionDataModel.sauna_no,
+                    postBookSessionDataModel.time_slot,
+                    postBookSessionDataModel.booking_date,
+                    postBookSessionDataModel.session_type,
+                    postBookSessionDataModel.selected_location_id
+                ), Constants.BOOKSESSION, true
+            )
+        }
     }
 
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
@@ -253,7 +278,7 @@ class BookingSelectionFragment : BaseFragment(), OnItemClickInterface, OnClickTy
                     else if ((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == false) && getWebViewUrlModel.add_card_url != null){
                         initReconformDialog(getWebViewUrlModel.text ?: "Not Found")
                     }
-                    else if ((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == true) && getWebViewUrlModel.add_card_url == null) {
+                    else if (((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == true) && getWebViewUrlModel.add_card_url == null) || (is_reciprocal_allowed == "no")) {
                         showBookingConfirmationDialog()
                     }
 

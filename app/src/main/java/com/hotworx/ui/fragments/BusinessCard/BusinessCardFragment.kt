@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.viewpager2.widget.ViewPager2
@@ -34,15 +35,20 @@ import com.hotworx.global.Constants
 import com.hotworx.helpers.Utils
 import com.hotworx.interfaces.OnClickItemListener
 import com.hotworx.models.BusinessCard.BusinessCardModel
+import com.hotworx.models.BusinessCard.UrlModel
 import com.hotworx.models.ComposeModel.MyReferrals.MyReferralDataModel
 import com.hotworx.models.ComposeModel.RefferalDetailModel.AmbassadorReferralDataModel
 import com.hotworx.models.ComposeModel.RefferalDetailModel.Data
 import com.hotworx.models.ComposeModel.RefferalDetailModel.URLsetModel.UrlDataMode
+import com.hotworx.models.ReferralQr.ReferralQrDataModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.ViewPager.ViewPagerAdapter
 import com.hotworx.ui.dialog.ReferalRedeemBalance.RedeemBalanceDialogFragment
 import com.hotworx.ui.dialog.ReferralLocation.ReferralLocationDialogFragment
+import com.hotworx.ui.dialog.ReferralQr.QrDialogFragment
+import com.hotworx.ui.dialog.ReferralUrl.ReferralUrlDialogFragment
 import com.hotworx.ui.fragments.BaseFragment
+import com.hotworx.ui.fragments.MyReferrals.MyReferralFragment
 import com.hotworx.ui.views.TitleBar
 
 class BusinessCardFragment : BaseFragment(), OnClickItemListener {
@@ -52,6 +58,14 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
     lateinit var buy_url: String
     lateinit var trial_url: String
     lateinit var selected_location_name: String
+    lateinit var selected_location_code: String
+    private var UTM_ID: String = ""
+    lateinit var referralData: Data
+    lateinit var referralQrDataModel: ReferralQrDataModel
+    val args = Bundle()
+    var selectedUrl = ""
+    var selectedUtmId = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -69,8 +83,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         return binding.root
     }
 
-
-
     private fun <T> callApi(type: String, data: T) {
         when (type) {
             Constants.GET_EMPLOYEE_REFERRAL ->
@@ -82,7 +94,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         }
     }
 
-
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
         super.onSuccess(liveData, tag)
         when (tag) {
@@ -93,21 +104,69 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                             liveData.value,
                             BusinessCardModel::class.java
                         )
-                    setUserDetail()
-                    buy_url = getBusinessCardModel.data?.get(0)?.buy_url ?: ""
-                    trial_url = getBusinessCardModel.data?.get(0)?.trail_url ?: ""
-                    getBusinessCardModel.data?.get(0)?.location_address?.let {
-                        getBusinessCardModel.data?.get(0)?.location_name?.let { it1 ->
-                            selected_location_name = it1
-                            setLocationText(
-                                it1,
-                                it
-                            )
-                        }
+
+                    // Handle UTM list
+                    val utmList = getBusinessCardModel.data?.get(0)?.utm_list ?: emptyList()
+                    utmList.forEach { utm ->
+                        // Log each UTM URL
+                        Log.d("Buy_URL", "UTM Name: ${utm.name}, URL: ${utm.buy_url}")
+                        Log.d("TRAIL_URL", "UTM Name: ${utm.name}, URL: ${utm.trail_url}")
                     }
-                     val utmName = getBusinessCardModel.data?.get(0)?.utm_list?.get(0)?.name ?: "UTM not found"
+
+                    // Set the buy_url and trial_url from the first UTM list item
+                    val firstUtm = utmList.getOrNull(0) ?: run {
+                        Log.d("UTM List", "No UTM data available")
+                        null
+                    }
+                    buy_url = firstUtm?.buy_url ?: ""
+                    trial_url = firstUtm?.trail_url ?: ""
+
+
+                    // Set referralQrDataModel and referralData
+                    referralQrDataModel = ReferralQrDataModel(
+                        getBusinessCardModel.name_on_businesscard ?: "",
+                        getBusinessCardModel.employee_address ?: "",
+                        selectedUrl ?: ""
+                    )
+                    referralData = Data(
+                        buy_url = firstUtm?.url_list?.get(0)?.url.toString(),
+                        currency_symbol = "",
+                        lead_id = "",
+                        firstUtm?.id.toString(),
+                        location_code = getBusinessCardModel.data?.get(0)?.location_code ?: "",
+                        location_name = getBusinessCardModel.data?.get(0)?.location_name ?: "",
+                        remaining_balance = 0,
+                        total_amount_used = 0,
+                        total_gift_amount = 0,
+                        trail_url = firstUtm?.url_list?.get(0)?.url.toString(),
+                        redeemed_text = "",
+                        location_address = "",
+                        url = firstUtm?.url_list?.get(0)?.url ?: "",
+                        "",
+                        ""
+                    )
+
+                    args.putParcelable("Location_Model", referralData)
+
+                    // Set location details
+                    getBusinessCardModel.data?.get(0)?.let { locationData ->
+                        setUserDetail(email = locationData.location_email, phone = locationData.location_phone)
+                        selected_location_name = locationData.location_name ?: ""
+                        selected_location_code = locationData.location_code ?: ""
+                        setLocationText(locationData.location_name ?: "", locationData.location_address ?: "")
+                    }
+
+                    // Set UTM text and QR code for the first UTM item
+                    val utmName = firstUtm?.name ?: "UTM not found"
+                    val utmUrlName = firstUtm?.url_list?.get(0)?.type ?: ""
+                    selectedUrl =firstUtm?.url_list?.get(0)?.url ?: ""
                     setUTMText(utmName)
-                    setQrCode(getBusinessCardModel.data?.get(0)?.utm_list?.get(0)?.url ?: "")
+                    setUTMURLText(utmUrlName)
+                    setQrCode(selectedUrl)
+
+                    selectedUtmId = firstUtm?.id ?: ""
+                    UTM_ID = firstUtm?.id ?: ""
+                    Log.d("CheckingByDefaultID",selectedUtmId)
 
                 } catch (e: Exception) {
                     Utils.customToast(requireContext(), resources.getString(R.string.error_failure))
@@ -115,7 +174,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             }
         }
     }
-
 
     override fun onFailure(message: String, tag: String) {
         if (Constants.GET_EMPLOYEE_REFERRAL == tag) {
@@ -135,15 +193,31 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
             it.tvDropoffLocation.setOnClickListener{
                 initUTMDialog()
             }
+
+            it.tvUTMURL.setOnClickListener{
+                initURLDialog()
+            }
+            it.cvMulti.setOnClickListener {
+                callMyReferral()
+            }
+            it.ivQrCode.setOnClickListener {
+                Log.d("setOnClickListener: ",referralQrDataModel.toString())
+                initQrDialog(referralQrDataModel)
+            }
         }
     }
 
+    fun callMyReferral(){
+        val myReferralFragment = MyReferralFragment()
+        myReferralFragment.arguments = args
+        myDockActivity.replaceDockableFragment(myReferralFragment)
+    }
 
-    private fun setUserDetail(){
+    private fun setUserDetail(email: String?, phone: String?){
         binding.tvUserName.text = getBusinessCardModel.name_on_businesscard
         binding.tvUserDetail.text = getBusinessCardModel.card_title
-        binding.tvEmail.text = getBusinessCardModel.business_email
-        binding.tvPhone.text = getBusinessCardModel.phone_number
+        binding.tvEmail.text = email ?: ""
+        binding.tvPhone.text = phone ?: ""
     }
     private fun setImageOrData() {
         if (prefHelper.imagePath != null) {
@@ -187,7 +261,6 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
 
     }
 
-
     private fun getUserDetail(): ArrayList<String> {
         val userName = prefHelper.loginData.full_name.split(" ")
 
@@ -217,42 +290,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         arrayString.add(lastFullName)
         return arrayString
     }
-    private fun initUTMDialog() {
-        val referralData = ArrayList<Data>()
-        if (getBusinessCardModel.data != null){
-            getBusinessCardModel.data!!.forEach {
-                if (it.location_name == selected_location_name) {
-                  it.utm_list.forEach {
-                    referralData.add(
-                        Data(
-                             "",
-                            "",
-                             "",
-                             "",
-                            it.name ?: "",
-                            0,
-                            0,
-                            0,
-                            it.url ?: "",
-                            "",
-                             ""
-                        )
 
-                    )
-                }
-                }
-            }
-                val referralLocationDialogFragment = ReferralLocationDialogFragment(this)
-                referralLocationDialogFragment.referralData = referralData
-                referralLocationDialogFragment.veriftyIsLocationOrNot = false
-                referralLocationDialogFragment.show(
-                    parentFragmentManager,
-                    referralLocationDialogFragment.tag
-                )
-            }else{
-                myDockActivity.showErrorMessage("Location not found")
-            }
-    }
     private fun initReferralDialog() {
         val referralData = ArrayList<Data>()
         if (getBusinessCardModel.data != null){
@@ -262,6 +300,7 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                         it.buy_url ?: "",
                         it.currency_symbol ?: "",
                         it.lead_id ?: "",
+                        it.utm_list[0].id.toString(),
                         it.location_code ?: "",
                         it.location_name ?: "",
                         0,
@@ -269,7 +308,10 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
                         0,
                         it.trail_url ?: "",
                        "",
-                        it.location_address ?: ""
+                        it.location_address ?: "",
+                        "",
+                        "",
+                        ""
                     )
                 )
             }
@@ -285,6 +327,114 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         }
     }
 
+    private fun initUTMDialog() {
+        val referralData = ArrayList<Data>()
+        if (getBusinessCardModel.data != null){
+            getBusinessCardModel.data!!.forEach {
+                if (it.location_name == selected_location_name) {
+                    it.utm_list.forEach {
+                        selectedUrl = it.id.toString()
+                        referralData.add(
+                            Data(
+                                "",
+                                "",
+                                "",
+                                it.id.toString(),
+                                "",
+                                it.name ?: "",
+                                0,
+                                0,
+                                0,
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            )
+                        )
+                    }
+                }
+            }
+            val referralLocationDialogFragment = ReferralLocationDialogFragment(this)
+
+            val bundle = Bundle().apply {
+                //                putSerializable("referralData", referralData) // Assuming referralData is Serializable
+                putString("UTMVALUE", "UTM")
+            }
+
+            // Set the bundle as arguments
+            referralLocationDialogFragment.arguments = bundle
+            referralLocationDialogFragment.referralData = referralData
+            referralLocationDialogFragment.veriftyIsLocationOrNot = false
+            referralLocationDialogFragment.show(
+                parentFragmentManager,
+                referralLocationDialogFragment.tag
+            )
+        }else{
+            myDockActivity.showErrorMessage("Location not found")
+        }
+    }
+
+    private fun initURLDialog() {
+        val referralData = ArrayList<Data>()
+        selectedUtmId = UTM_ID
+        Log.d("Debugggggg", "Selected UTM ID: $selectedUtmId")
+
+        if (getBusinessCardModel.data != null){
+            getBusinessCardModel.data!!.forEach {
+                if (it.location_name == selected_location_name) {
+                    it.utm_list.forEach { utm ->
+                        Log.d("Debuggggg", "Checking UTM ID: ${utm.id}")
+                        if (utm.id == selectedUtmId) {
+                            utm.url_list.forEach { urlItem ->
+                                Log.d("Debugggggg", "Adding URL: ${urlItem.url}")
+                                referralData.add(
+                                    Data(
+                                        "",
+                                        "",
+                                        utm.name ?: "",
+                                        selectedUtmId,
+                                        "",
+                                        "",
+                                        0,
+                                        0,
+                                        0,
+                                        "",
+                                        "",
+                                        "",
+                                        urlItem.url ?: "",
+                                        urlItem.type ?: "",
+                                        urlItem.description ?: ""
+                                    )
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+            val referralLocationDialogFragment = ReferralLocationDialogFragment(this)
+
+            val bundle = Bundle().apply {
+                //                putSerializable("referralData", referralData) // Assuming referralData is Serializable
+                putString("UTMVALUE", "UTM")
+            }
+
+            val referralUrlDialogFragment = ReferralUrlDialogFragment(this)
+            referralUrlDialogFragment.referralData = referralData
+            referralUrlDialogFragment.veriftyIsLocationOrNot = false
+            referralUrlDialogFragment.show(parentFragmentManager, referralUrlDialogFragment.tag)
+        }else{
+            myDockActivity.showErrorMessage("Location not found")
+        }
+
+        if (referralData.isEmpty()) {
+            Log.d("Debug", "No matching UTM data found for ID: $selectedUtmId")
+        } else {
+            Log.d("Debug", "Referral data size: ${referralData.size}")
+        }
+    }
+
     private fun setLocationText(location_name: String, location_address: String ) {
         binding.tvLocation.text = location_name
         binding.tvLocationName.text = location_name
@@ -295,6 +445,9 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         binding.tvDropoffLocation.text = utmName
     }
 
+    private fun setUTMURLText(utmUrlName: String ) {
+        binding.tvUTMURL.text = utmUrlName
+    }
 
     private fun generateQr(context: Context, url: String): Bitmap {
         val data = QrData.Url(url)
@@ -343,61 +496,156 @@ class BusinessCardFragment : BaseFragment(), OnClickItemListener {
         return bitmap
     }
 
-
     private fun setQrCode( url: String) {
-        generateQrBitmap = generateQr(requireContext(),url)
+//        if (selectedUrl.isNullOrEmpty()) {
+//            Log.d("QRCodeDialog", "URL received in dialog: $selectedUrl")
+//            Utils.customToast(requireContext(), "URL is not available.")
+//            return
+//        }
+//        generateQrBitmap = generateQr(requireContext(), selectedUrl)
+//        binding.ivQrCode.setImageBitmap(generateQrBitmap)
+
+        if (url.isNullOrEmpty()) {
+            Log.d("QRCodeDialog", "URL received is empty: $url")
+            Utils.customToast(requireContext(), "URL is not available.")
+            return
+        }
+        generateQrBitmap = generateQr(requireContext(), url)
         binding.ivQrCode.setImageBitmap(generateQrBitmap)
     }
 
-    private fun sendUrl() {
-        if (::getBusinessCardModel.isInitialized && ::buy_url.isInitialized && ::trial_url.isInitialized){
-            val setUrlDataMode = getBusinessCardModel?.let { details ->
-                UrlDataMode(
-                    details.buy_text ?: "",
-                    buy_url,
-                    details.trail_text  ?: "",
-                    trial_url
-                )
-            }
-
-            if (setUrlDataMode != null) {
-                val message = """
-                ${setUrlDataMode.buy_text}
-                ${setUrlDataMode.buy_url}
-
-                ${setUrlDataMode.trail_text}
-                ${setUrlDataMode.trail_url}
-            """.trimIndent()
-                context?.shareLink(message)
-            } else {
-                Utils.customToast(requireContext(), "Something Went Wrong")
-            }
-        }else{
-            Utils.customToast(requireContext(), "Url not found")
-        }
+    private fun initQrDialog(referralQrDataModel: ReferralQrDataModel) {
+         referralQrDataModel.url= selectedUrl   // Ensure selectedUrl is set here
+        // Continue with any other logic, e.g., setting the QR code, etc.
+        Log.d("QrDialog", "Referral URL: $selectedUrl")
+        val qrDialogFragment = QrDialogFragment()
+        qrDialogFragment.qrModel = referralQrDataModel
+        qrDialogFragment.url = selectedUrl
+        qrDialogFragment.checkComeFromBusinessCard = true
+        qrDialogFragment.setContext(requireContext())
+        qrDialogFragment.dockActivity = dockActivity
+        qrDialogFragment.show(
+            parentFragmentManager,
+            qrDialogFragment.tag
+        )
     }
-
-
 
     override fun <T> onItemClick(data: T, type: String) {
         val receivedData = data as com.hotworx.models.ComposeModel.RefferalDetailModel.Data
 
         when (type){
+//            "LOCATION_DETAIL" -> {
+//                setLocationText(receivedData.location_name, receivedData.location_address)
+//                selected_location_name = receivedData.location_name
+//                UTM_ID = receivedData.utm_id
+//
+//                getBusinessCardModel.data!!.forEach {
+//                    if (it.location_name == selected_location_name) {
+//                       it.utm_list.let { array ->
+//                           setUTMText(array[0].name?: "")
+//                           setQrCode(array[0].url ?: "")
+//                           referralQrDataModel.url = array[0].url.toString()
+//
+//                       }
+//                        referralData.location_name = it.location_name
+//                        referralData.location_code = it.location_code!!
+//                        referralData.trail_url = selectedUrl
+//                        referralData.utm_id = it.utm_list[0].id.toString()
+//                        setUserDetail(it.location_email,it.location_phone)
+//                    }
+//                }
+//            }
+
             "LOCATION_DETAIL" -> {
+                // Set location name and address
                 setLocationText(receivedData.location_name, receivedData.location_address)
+
+                // Set selected location name and UTM ID from received data
                 selected_location_name = receivedData.location_name
-                getBusinessCardModel.data!!.forEach {
-                    if (it.location_name == selected_location_name) {
-                        setUTMText(it.utm_list[0].name?: "")
-                        setQrCode(it.utm_list[0].url ?: "")
+                UTM_ID = receivedData.utm_id
+
+                // Iterate through the business card data
+                getBusinessCardModel.data?.forEach { businessCard ->
+                    // Check if location name matches the selected location name
+                    if (businessCard.location_name == selected_location_name) {
+                        // Extract UTM list and update UI
+                        businessCard.utm_list.let { utmList ->
+                            if (utmList.isNotEmpty()) {
+                                // Set the UTM name and corresponding URL
+                                setUTMText(utmList[0].name ?: "")
+                                selectedUrl = utmList[0].url_list?.get(0)?.url ?: ""
+
+                                // Update referral data
+                                referralData.location_name = businessCard.location_name
+                                referralData.location_code = businessCard.location_code ?: ""
+                                referralData.trail_url = selectedUrl
+                                referralData.utm_id = utmList[0].id.toString()
+
+                                // Set user details (location email and phone)
+                                setUserDetail(businessCard.location_email, businessCard.location_phone)
+
+                                // Update QR code based on the newly selected URL
+                                setQrCode(selectedUrl)
+
+                            } else {
+                                Log.d("LOCATION_DETAIL", "No UTM data available for location: $selected_location_name")
+                            }
+                        }
                     }
                 }
             }
+
             "UTM_DETAIL" -> {
+                val receiveData: Data = data as Data
                 setUTMText(receivedData.location_name)
-                setQrCode(receivedData.trail_url ?: "")
+//                setQrCode(selectedUrl)
+
+                selectedUtmId = receiveData.utm_id
+
+                referralData.trail_url = selectedUrl
+
+                Log.d("DEBUG_UTM_ID", "UTM_ID before loop: $UTM_ID")
+
+                getBusinessCardModel.data!!.forEach {loc ->
+                    loc.utm_list.forEach {utm ->
+
+                        if (utm.name == receivedData.location_name)    {
+                            UTM_ID = utm.id?.toString() ?: ""
+                            selectedUrl = utm.url_list[0].url.toString()
+                            referralData.location_name = loc.location_name ?: ""
+                            referralData.location_code = loc.location_code ?: ""
+                            Log.d("DEBUG_UTM_ID_UPDATED", "UTM_ID updated to: $UTM_ID")
+                        }
+                    }
+                }
+            }
+
+            "LOCATION_URL" -> {
+                val receiveData: Data = data as Data
+                selectedUrl = receiveData.url
+                val selectedType = receiveData.type
+
+                if(UTM_ID == ""){
+                    selectedUtmId = referralData.utm_id
+                }else{
+                    selectedUtmId = UTM_ID
+                }
+
+                // Directly assign the selected type to the tvUTMURL field
+                binding.tvUTMURL.text = selectedType
+
+                // Continue with any other logic, e.g., setting the QR code, etc.
+                setUTMURLText(selectedType)
+                setQrCode(selectedUrl)
+
+                Log.d("SelectedURL", selectedUrl)
+                Log.d("SelectedType", selectedType)
+                Log.d("SelectedUTMIddd", selectedUtmId)
+
             }
         }
+
+        args.putParcelable("Location_Model", referralData)
     }
 
     override fun setTitleBar(titleBar: TitleBar) {

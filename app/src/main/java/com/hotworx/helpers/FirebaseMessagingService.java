@@ -35,35 +35,20 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             prefHelper.setNotificationString("navigate");
 
             Map<String, String> map = remoteMessage.getData();
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+
+                System.out.println("Key: " + key + ", Value: " + value);
+            }
+            String id = map.get("id");
+            String image = map.get("image");
             String title = map.get("title");
             String body = map.get("body");
-            sendNotification(title, body, KEY_MESSAGE_TYPE_DEFAULT, 0, new Intent(this, SplashActivity.class));
+
+            sendNotification(title, body,id,image, KEY_MESSAGE_TYPE_DEFAULT, 0, new Intent(this, SplashActivity.class));
         }
 
-
-
-//        if (remoteMessage.getData() != null) {
-//            Map<String, String> map = remoteMessage.getData();
-//            String notification_type = "";
-//            String title = "";
-//            String body = "";
-//            String booking_date = "";
-//            String custom_message = "";
-//            String objid = "";
-//            String calendar_title="";
-//            int duration=0;
-//
-//            notification_type = map.get("notification_type");
-//            title = map.get("title");
-//            body = map.get("body");
-//            booking_date = map.get("booking_date");
-//            custom_message = map.get("custom_message");
-//            objid = map.get("objid");
-//            duration = Integer.parseInt(map.get("duration"));
-//            calendar_title = map.get("calendar_title");
-//            sendNotification(notification_type, title, body, booking_date, custom_message, objid,calendar_title,duration);
-//
-//        }
     }
 
 
@@ -74,10 +59,14 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
 
 
-    public void sendNotification(String title, String messageBody, String channelId, int notificationId, Intent intent) {
+    public void sendNotification(String title, String messageBody,String id,String img, String channelId, int notificationId, Intent intent) {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         intent.putExtra("navigateTo", "NotificationFragment");
+        intent.putExtra("hashId", id);
+        intent.putExtra("title", title);
+        intent.putExtra("body", messageBody);
+        intent.putExtra("image", img);
 
         PendingIntent pendingIntent;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
