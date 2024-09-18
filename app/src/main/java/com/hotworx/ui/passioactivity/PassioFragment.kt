@@ -14,19 +14,27 @@ import com.hotworx.R
 import com.hotworx.databinding.FragmentAddListBinding
 import com.hotworx.databinding.FragmentPassioBinding
 import com.hotworx.global.WebServiceConstants
+import com.hotworx.models.HotsquadList.HotsquadListModel
+import com.hotworx.models.HotsquadList.Passio.GetPassioModel
+import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
+import com.hotworx.ui.views.TitleBar
 import com.passio.modulepassio.NutritionUIModule
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.passio.modulepassio.domain.diary.DiaryUseCase
+import com.passio.modulepassio.interfaces.PassioDataCallback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
-class PassioFragment : BaseFragment(){
+class PassioFragment : BaseFragment(), PassioDataCallback {
     private var _binding: FragmentPassioBinding? = null
     private val binding get() = _binding
-    private lateinit var textView: TextView
+    private lateinit var passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,49 +63,106 @@ class PassioFragment : BaseFragment(){
                 PassioMode.IS_READY_FOR_DETECTION -> onSDKReady()
                 PassioMode.IS_BEING_CONFIGURED -> {
                 }
+
                 PassioMode.IS_DOWNLOADING_MODELS -> {}
             }
         }
+
+        // Set the callback before calling DiaryUseCase
+        DiaryUseCase.setPassioDataCallback(this)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val logs = DiaryUseCase.getLogsForDay(Date())
+                withContext(Dispatchers.Main) {
+                    // Check if the fragment is still attached before updating UI
+                    if (isAdded && binding != null) {
+                        binding?.textView?.text = "Logs received: ${logs.size}"
+                    } else {
+                        Log.e("PassioFragment", "Fragment is not attached, skipping UI update")
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    // Ensure the fragment is attached before updating UI on error
+                    if (isAdded && binding != null) {
+                        binding?.textView?.text = "Error: ${e.message}"
+                    }
+                }
+            }
+        }
+
     }
 
     private fun onSDKError(error: String) {
-        textView.text = "ERROR: $error"
+        binding?.textView?.text = "ERROR: $error"
     }
 
     private fun onSDKReady() {
         NutritionUIModule.launch(this.requireContext())
-        Log.d("ytytytuy","jhkjhkhlkhlkllhlk")
+        Log.d("ytytytuy", "jhkjhkhlkhlkllhlk")
+//        getPassioList()
         requireActivity().finish()
     }
 
-//    override fun ResponseSuccess(result: String?, Tag: String?) {
-//        when (Tag) {
-//            WebServiceConstants.GET_SQUAD_LIST -> {
-//                hotsquadListModel = GsonFactory.getConfiguredGson().fromJson(result, HotsquadListModel::class.java)
-//
-//                if (hotsquadListModel.data.isNullOrEmpty()) {
-//
-//                } else {
-//                    // Call the child module's function (e.g., DiaryUseCase.getLogsForDay) automatically
-//                    CoroutineScope(Dispatchers.IO).launch {
-//                        try {
-//                            val day = Date() // Example, you can adjust this to the correct date
-//                            val foodLogs = DiaryUseCase.getLogsForDay(day)
-//
-//                            // Update UI with the result (foodLogs) on the main thread
-//                            withContext(Dispatchers.Main) {
-//                                Log.d("FoodLogs", "Fetched food logs: $foodLogs")
-//                                // Do something with the fetched food logs if needed
-//                            }
-//                        } catch (e: Exception) {
-//                            Log.e("APIError", "Error fetching logs: ${e.message}")
-//                        }
-//                    }
-//                }
-//            }
-//            else -> {
-//                Log.d("ResponseSuccessss", "Unhandled Tag: $Tag")
-//            }
-//        }
-//    }
+    override fun setTitleBar(titleBar: TitleBar) {
+        super.setTitleBar(titleBar)
+        titleBar.showBackButton()
+    }
+
+    override fun onFetchPassioData(day: Date) {
+        if (!isAdded || context == null) {
+            Log.e("PassioFragment", "Fragment is not attached, skipping API call")
+            return
+        }
+        val formattedDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(day)
+        Log.d("PassioFragment", "Formatted date for API: $formattedDate")
+
+        getServiceHelper().enqueueCall(
+            getWebService().getPassioData(apiHeader(requireContext()), formattedDate),
+            WebServiceConstants.GET_PASSIO_LIST,
+            true
+        )
+    }
+
+    override fun ResponseSuccess(result: String?, tag: String?) {
+        if (!isAdded || _binding == null) return // Add safeguard check
+        Log.d("PassioFragment", "Response received for tag: $tag")
+        // Parse the response based on the tag
+        if (tag == WebServiceConstants.GET_PASSIO_LIST) {
+            val passioData = GsonFactory.getConfiguredGson().fromJson(result, com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse::class.java)
+
+            if (passioData != null) {
+                onPassioDataSuccess(passioData)
+            } else {
+                onPassioDataError("Received empty response")
+            }
+        }
+    }
+
+    override fun ResponseFailure(message: String?, tag: String?) {
+        if (tag == WebServiceConstants.GET_PASSIO_LIST) {
+            onPassioDataError(message ?: "Unknown error")
+        }
+    }
+
+    override fun onPassioDataSuccess(passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse) {
+        this.passioList = passioList // Initialize the lateinit property
+        Log.d("ParentFragment", "Passio data received: $passioList")
+        DiaryUseCase.onPassioDataReceived(passioList)
+    }
+
+    override fun onPassioDataError(error: String) {
+        if (::passioList.isInitialized) {
+            // This case should not normally happen if passioList is used correctly
+            Log.d("DiaryUseCase", "Received Passio data from parent: $passioList")
+        } else {
+            // Log error related to passioList being uninitialized
+            Log.d("DiaryUseCase", "passioList is not initialized. Error: $error")
+        }
+
+        // Additionally, handle the server error separately
+        Log.e("DiaryUseCase", "Server issue: $error")
+        // You might want to notify the user or take corrective actions here
+    }
 }

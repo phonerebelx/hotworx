@@ -1,0 +1,6 @@
+package com.passio.modulepassio.models.HotsquadList.Passio
+
+data class Calcium(
+    val unit: Unit,
+    val value: Int
+)

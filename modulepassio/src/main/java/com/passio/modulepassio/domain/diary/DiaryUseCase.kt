@@ -1,35 +1,44 @@
 package com.passio.modulepassio.domain.diary
 
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.hotworx.models.HotsquadList.Passio.getPassioRequest
 import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.passio.modulepassio.data.Repository
+import com.passio.modulepassio.interfaces.PassioDataCallback
+import com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
 import com.passio.modulepassio.ui.base.BaseFragment
 import com.passio.modulepassio.ui.model.FoodRecord
 import com.passio.modulepassio.ui.util.Constant
 import java.util.Date
 
-object DiaryUseCase{
+object DiaryUseCase:com.passio.modulepassio.BaseFragment(){
 
+    private var callback: PassioDataCallback? = null
     private val repository = Repository.getInstance()
 
+    // Add the setPassioDataCallback method to set the callback
+    fun setPassioDataCallback(callback: PassioDataCallback) {
+        this.callback = callback
+    }
+
     suspend fun getLogsForDay(day: Date): List<FoodRecord> {
-//        fetchPassioData(day)
+        Log.d("DiaryUseCase", "Callback to fetch passio data for day: $day")
+        callback?.onFetchPassioData(day)
+
         return repository.getLogsForDay(day)
     }
 
-//    private fun fetchPassioData(day: Date) {
-//        val request = getPassioRequest(day.toString())
-//        getServiceHelper().enqueueCall(
-//            getWebService().getPassioData(
-//                apiHeader(requireContext()),
-//                request
-//            ),
-//            Constant.WebServiceConstants.GET_PASSIO_LIST,
-//            true
-//        )
-//    }
+    // This method will be called from the parent once the API data is available
+    fun onPassioDataReceived(passioList: GetPassioResponse) {
+        if (passioList.isNotEmpty()) {
+            Log.d("DiaryUseCaseeee", "Passio data received: $passioList")
+            // Process the data
+        } else {
+            Log.d("DiaryUseCaseeee", "Received null Passio data")
+        }
+    }
 
     suspend fun getLogsForWeek(day: Date): List<FoodRecord> {
         return repository.getLogsForWeek(day)

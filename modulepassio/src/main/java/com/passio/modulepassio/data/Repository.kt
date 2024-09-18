@@ -22,12 +22,20 @@ import ai.passio.passiosdk.passiofood.data.model.PassioFoodItem
 import ai.passio.passiosdk.passiofood.nutritionfacts.PassioNutritionFacts
 import android.content.Context
 import android.graphics.Bitmap
+import android.util.Log
+import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
+import com.passio.modulepassio.domain.diary.DiaryUseCase.getServiceHelper
+import com.passio.modulepassio.domain.diary.DiaryUseCase.getWebService
+import com.passio.modulepassio.domain.diary.DiaryUseCase.requireContext
+import com.passio.modulepassio.ui.util.Constant
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import org.joda.time.DateTime
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 import kotlin.coroutines.suspendCoroutine
 
 class Repository private constructor() {
@@ -233,5 +241,8 @@ class Repository private constructor() {
         }
         return connector.fetchWaterRecords(startDate.toDate(), endDate.toDate())
     }
+
+
+
 
 }

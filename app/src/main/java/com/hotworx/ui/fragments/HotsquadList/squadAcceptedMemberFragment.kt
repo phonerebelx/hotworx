@@ -240,6 +240,19 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             val position = viewHolder.adapterPosition
+
+            // Check if position is valid
+            if (position == RecyclerView.NO_POSITION || position < 0) {
+                return // If position is invalid, exit early
+            }
+
+            val member = adapter?.items?.get(position)
+
+            if (member != null && member.has_squad_access) {
+                adapter?.notifyItemChanged(position)
+                return
+            }
+
             showConfirmationDialog(position)
         }
 
@@ -254,6 +267,20 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
         ) {
             val itemView = viewHolder.itemView
             val context = viewHolder.itemView.context // Safe context access
+            val position = viewHolder.adapterPosition
+
+            // Check if position is valid
+            if (position == RecyclerView.NO_POSITION || position < 0) {
+                return // If position is invalid, exit early
+            }
+
+            val item = adapter?.items?.get(position)
+
+            if (item != null && item.has_squad_access) {
+                // If the member has squad access, disable swipe by setting dX to 0
+                super.onChildDraw(c, recyclerView, viewHolder, 0f, dY, actionState, isCurrentlyActive)
+                return
+            }
 
             // Initialize drawable and background color if null
             if (deleteIcon == null || background == null) {
@@ -296,7 +323,7 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
 
         private fun showConfirmationDialog(position: Int) {
             context?.let {
-                AlertDialog.Builder(it)
+                val dialog = AlertDialog.Builder(it)
                     .setTitle("Confirm Delete")
                     .setMessage("Are you sure you want to delete this item?")
                     .setPositiveButton("Yes") { _, _ ->
@@ -309,7 +336,12 @@ class squadAcceptedMemberFragment : BaseFragment(), SquadMemberListAdapter.OnIte
                         dialog.dismiss()
                     }
                     .create()
-                    .show()
+
+                // Prevent the dialog from being canceled by clicking outside or pressing the back button
+                dialog.setCancelable(false)
+                dialog.setCanceledOnTouchOutside(false)
+
+                dialog.show()
             }
         }
 

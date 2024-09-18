@@ -3,14 +3,10 @@ package com.hotworx.ui.adapters.HotsquadListAdapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -18,13 +14,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.hotworx.R
-import com.hotworx.activities.DockActivity
 import com.hotworx.helpers.BasePreferenceHelper
-import com.hotworx.models.HotsquadList.Hotsquad
-import com.hotworx.models.HotsquadList.PendingInvitationResponse.SquadData
 import com.hotworx.models.HotsquadList.SquadMemberDetailsResponse
-import com.hotworx.ui.adapters.HotsquadListAdapter.SearchNotFoundUserAdapter.OnItemClickListener
-import com.hotworx.ui.fragments.HotsquadList.HotsquadSearchFragment
 
 class SquadMemberListAdapter(
     val items: MutableList<SquadMemberDetailsResponse.SquadData.Member>,

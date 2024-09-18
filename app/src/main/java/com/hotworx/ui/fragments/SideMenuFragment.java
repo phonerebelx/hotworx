@@ -45,7 +45,6 @@ import com.hotworx.ui.fragments.Settings.SettingsFragment;
 import com.hotworx.ui.fragments.VIDeviceManagement.RegistrationFragment;
 import com.hotworx.ui.fragments.VPT.VPTFragment;
 import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
-import com.hotworx.ui.passioactivity.PassioMainActivity;
 import com.hotworx.ui.views.TitleBar;
 import com.passio.modulepassio.ui.activity.PassioUiModuleActivity;
 

@@ -777,6 +777,6 @@ public interface WebService {
     @GET("activities/GetPassioData")
     Call<ResponseBody> getPassioData(
             @HeaderMap Map<String, String> headers,
-            @Body getPassioRequest request
+            @Query("date") String date
     );
 }

@@ -1,9 +1,6 @@
 package com.hotworx.activities;
 
-import static android.Manifest.permission.POST_NOTIFICATIONS;
-
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -15,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.hotworx.R;
-import com.hotworx.activities.BrivoActivity.SitesActivity;
 import com.hotworx.global.Constants;
 import com.hotworx.global.SideMenuDirection;
 import com.hotworx.global.SideMenuChooser;
@@ -34,21 +30,12 @@ import com.hotworx.ui.fragments.SessionFlow.WorkoutSummaryFragment;
 import com.hotworx.ui.fragments.SessionFlow.WorkoutTimeFragment;
 import com.hotworx.ui.fragments.notifications.NotificationFragment;
 import com.hotworx.ui.passioactivity.PassioFragment;
-import com.hotworx.ui.passioactivity.PassioMainActivity;
-import ai.passio.passiosdk.core.config.PassioConfiguration;
-import ai.passio.passiosdk.core.config.PassioMode;
-import ai.passio.passiosdk.core.config.PassioStatus;
 import com.hotworx.ui.views.TitleBar;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.List;
-
-import ai.passio.passiosdk.passiofood.PassioSDK;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.passio.modulepassio.NutritionUIModule;

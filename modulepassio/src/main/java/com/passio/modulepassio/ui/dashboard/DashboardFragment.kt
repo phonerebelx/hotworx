@@ -49,7 +49,10 @@ class DashboardFragment : BaseFragment<DashboardViewModel>() {
                 title += " " + UserCache.getProfile().userName
             }
             title += "!"
+
             toolbar.setup(title, baseToolbarListener)
+
+
 
             timeTitle.setOnClickListener {
                 showDatePickerDialog(requireContext()) { selectedDate ->
@@ -99,13 +102,13 @@ class DashboardFragment : BaseFragment<DashboardViewModel>() {
 
     private val baseToolbarListener = object : BaseToolbar.ToolbarListener {
         override fun onBack() {
-            viewModel.navigateBack()
+//            viewModel.navigateBack()
+            requireActivity().supportFragmentManager.popBackStack()
         }
 
         override fun onRightIconClicked() {
             showPopupMenu(binding.toolbar.findViewById(R.id.toolbarMenu))
         }
-
     }
 
     private fun initObserver() {

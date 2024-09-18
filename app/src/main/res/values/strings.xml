@@ -290,6 +290,7 @@
     <string name="Text">Text</string>
     <string name="clear_all">Clear all</string>
     <string name="hotsquad_list">HOTSQUAD</string>
+    <string name="search_hotsquad_list">Search HOTSQUAD User</string>
     <string name="Pending_request">Pending Request</string>
     <string name="create_new_squad">Create A New Squad</string>
     <string name="pending_friends">Pending Friends</string>

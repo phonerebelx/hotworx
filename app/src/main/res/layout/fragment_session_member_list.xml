@@ -70,7 +70,7 @@
                     android:layout_height="@dimen/_45sdp"
                     android:background="@drawable/multicolor_background"
                     android:layout_gravity="center"
-                    android:text="@string/add_list"
+                    android:text="@string/send_invite"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/_16sdp"
