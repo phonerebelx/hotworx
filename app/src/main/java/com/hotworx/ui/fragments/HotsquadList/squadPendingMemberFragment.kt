@@ -188,25 +188,21 @@ class squadPendingMemberFragment : BaseFragment(), SquadMemberListAdapter.OnItem
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
-        if(squadAccess){
-            // Attach ItemTouchHelper to RecyclerView
-            val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-            itemTouchHelper.attachToRecyclerView(binding.recyclerView)
-        }else{
-        }
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
     }
 
-//    private fun updateAdapterList(newList: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
-//        adapter?.updateData(newList)
-//    }
-//
-//    private fun onItemActionSuccess(position: Int) {
-//        adapter?.let {
-//            if (position >= 0 && position < it.itemCount) {
-//                it.removeItem(position)
-//            }
-//        }
-//    }
+    private fun updateAdapterList(newList: MutableList<SquadMemberDetailsResponse.SquadData.Member>) {
+        adapter?.updateData(newList)
+    }
+
+    private fun onItemActionSuccess(position: Int) {
+        adapter?.let {
+            if (position >= 0 && position < it.itemCount) {
+                it.removeItem(position)
+            }
+        }
+    }
 
     override fun ResponseFailure(message: String?, tag: String?) {
         Log.e("ResponseFailure", "Failed to load squad members: $message")

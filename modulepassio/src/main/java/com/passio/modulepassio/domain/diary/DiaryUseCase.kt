@@ -10,7 +10,7 @@ import com.passio.modulepassio.ui.model.FoodRecord
 import com.passio.modulepassio.ui.util.Constant
 import java.util.Date
 
-object DiaryUseCase:com.passio.modulepassio.BaseFragment(){
+object DiaryUseCase{
 
     private val repository = Repository.getInstance()
 

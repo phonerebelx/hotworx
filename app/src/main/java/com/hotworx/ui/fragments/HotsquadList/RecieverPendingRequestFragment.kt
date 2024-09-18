@@ -47,10 +47,6 @@ class RecieverPendingRequestFragment : BaseFragment(), TabLayout.OnTabSelectedLi
             sessionKey = args.getString("session_key").toString()
         }
 
-        // Log the keys for debugging
-        Log.d("RecieverPendingRequestFragment", "squadKey: $squadKey")
-        Log.d("RecieverPendingRequestFragment", "sessionKey: $sessionKey")
-
         if(Constants.PendingInvitesFragment == squadKey){
             Log.d("RecieverPendingRequestFragment", "Selecting squad tab")
             binding.tabLayout.getTabAt(0)?.select()

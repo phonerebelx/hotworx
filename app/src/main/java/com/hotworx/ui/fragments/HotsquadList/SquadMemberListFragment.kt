@@ -69,6 +69,7 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
                 val squadPendingMemberFragment = squadPendingMemberFragment()
                 val bundle = Bundle().apply {
                     putString("squad_id", squadId) // Pass the squadId
+                    putBoolean("squad_access", hasSquadAccess) // Pass the squadId
                 }
                 squadPendingMemberFragment.arguments = bundle
                 dockActivity.replaceDockableFragment(squadPendingMemberFragment)
@@ -81,7 +82,7 @@ class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener 
     }
 
     private fun setupAdapter() {
-        pagerAdapter = MemberRequestViewPagerAdapter(childFragmentManager,  squadId,2)
+        pagerAdapter = MemberRequestViewPagerAdapter(childFragmentManager, squadId,hasSquadAccess,2)
         binding.viewPager.adapter = pagerAdapter
         binding.viewPager.offscreenPageLimit = 2
         binding.tabLayout.addOnTabSelectedListener(this)

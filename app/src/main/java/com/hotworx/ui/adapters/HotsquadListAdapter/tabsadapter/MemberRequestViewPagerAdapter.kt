@@ -11,6 +11,7 @@ import com.hotworx.ui.fragments.HotsquadList.squadPendingMemberFragment
 class MemberRequestViewPagerAdapter(
     fm: FragmentManager,
     private val squadId: String?,
+    private val has_squad_access: Boolean,
     private val tabCount: Int
 ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
@@ -28,6 +29,7 @@ class MemberRequestViewPagerAdapter(
     private fun createFragment(fragment: Fragment): Fragment {
         fragment.arguments = Bundle().apply {
             putString("squad_id", squadId)
+            putBoolean("squad_access", has_squad_access)
         }
         return fragment
     }

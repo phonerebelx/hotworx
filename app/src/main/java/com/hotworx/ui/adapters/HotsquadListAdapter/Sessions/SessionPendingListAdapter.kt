@@ -116,7 +116,7 @@ class SessionPendingListAdapter(
             } else {
                 cvImageCard.visibility = View.GONE
                 firstNameTextView.visibility = View.VISIBLE
-                firstNameTextView.text = getUserInitials(item.name)
+                firstNameTextView.text = getUserInitials(item.sender_info.name)
             }
         }
     }

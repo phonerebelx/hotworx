@@ -9,6 +9,11 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.hotworx.R
 import com.passio.modulepassio.NutritionUIModule
+import com.passio.modulepassio.domain.diary.DiaryUseCase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.Date
 
 class PassioMainActivity : ComponentActivity() {
     private lateinit var textView: TextView
@@ -25,7 +30,6 @@ class PassioMainActivity : ComponentActivity() {
             sdkDownloadsModels = true
             debugMode = -333
         }
-
         PassioSDK.instance.configure(passioConfiguration) { passioStatus ->
             Log.d("HHHH", passioStatus.toString())
             when (passioStatus.mode) {
@@ -47,5 +51,23 @@ class PassioMainActivity : ComponentActivity() {
         NutritionUIModule.launch(this)
         Log.d("ytytytuy","jhkjhkhlkhlkllhlk")
         finish()
+    }
+
+    // Example in a main activity or view model
+    fun fetchDiaryLogsForDay(day: Date) {
+        // Create a coroutine scope
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // Call the suspend function from DiaryUseCase
+                val logs = DiaryUseCase.getLogsForDay(day)
+                CoroutineScope(Dispatchers.Main).launch {
+                    // Update UI with the logs
+                    println("Logs for the day: $logs")
+                }
+            } catch (e: Exception) {
+                // Handle the exception
+                println("Error fetching logs: ${e.message}")
+            }
+        }
     }
 }

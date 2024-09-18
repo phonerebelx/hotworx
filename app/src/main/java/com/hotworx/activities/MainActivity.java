@@ -33,6 +33,7 @@ import com.hotworx.ui.fragments.SideMenuFragment;
 import com.hotworx.ui.fragments.SessionFlow.WorkoutSummaryFragment;
 import com.hotworx.ui.fragments.SessionFlow.WorkoutTimeFragment;
 import com.hotworx.ui.fragments.notifications.NotificationFragment;
+import com.hotworx.ui.passioactivity.PassioFragment;
 import com.hotworx.ui.passioactivity.PassioMainActivity;
 import ai.passio.passiosdk.core.config.PassioConfiguration;
 import ai.passio.passiosdk.core.config.PassioMode;
@@ -190,8 +191,15 @@ public class MainActivity extends DockActivity {
                     UIHelper.showLongToastInCenter(getApplicationContext(),
                             R.string.message_wait);
                 } else {
-                    startActivity(new Intent(getDockActivity(), PassioMainActivity.class));
-                    myDockActivity.finish();
+                    Fragment passioFragment = new PassioFragment();
+
+                    getDockActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.mainFrameLayout, passioFragment) // Replace with your container ID
+                            .addToBackStack(null) // Optional: add to back stack if you want to allow going back to previous fragment
+                            .commit();
+//                    startActivity(new Intent(getDockActivity(), PassioMainActivity.class));
+//                    myDockActivity.finish();
                 }
             }
         });

@@ -114,7 +114,7 @@ class PendingRequestAdapter(
             } else {
                 cvImageCard.visibility = View.GONE
                 firstNameTextView.visibility = View.VISIBLE
-                firstNameTextView.text = getUserInitials(item.name)
+                firstNameTextView.text = getUserInitials(item.request_from?.name)
             }
         }
     }

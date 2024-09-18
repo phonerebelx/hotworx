@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.hotworx.R;
+import com.hotworx.ui.passioactivity.PassioFragment;
 import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
 import com.hotworx.activities.LoginActivity;
 import com.hotworx.global.Constants;
@@ -150,19 +151,19 @@ public class SideMenuFragment extends BaseFragment {
         drawerList.add(new NavigationItem(R.string.home, R.drawable.icon_menu_home, null, null,null, Constants.ACTION_HOME));
         drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null,null, null));
 
-//        drawerList.add(new NavigationItem(R.string.passio, R.drawable.hotworx_icons, null,new Intent(getDockActivity(), PassioMainActivity.class), null, null));
+        drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
 
-        // Passio Sdk activity
-        Intent passioIntent = new Intent(getDockActivity(), PassioMainActivity.class);
-//        passioIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Optional, based on your needs.
-        drawerList.add(new NavigationItem(
-                R.string.diettrax,
-                R.drawable.icon_menu_diettrax,
-                null,
-                passioIntent,
-                null,
-                null
-        ));
+//        // Passio Sdk activity
+//        Intent passioIntent = new Intent(getDockActivity(), PassioMainActivity.class);
+////        passioIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Optional, based on your needs.
+//        drawerList.add(new NavigationItem(
+//                R.string.diettrax,
+//                R.drawable.icon_menu_diettrax,
+//                null,
+//                passioIntent,
+//                null,
+//                null
+//        ));
 
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null,null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null,null, null));

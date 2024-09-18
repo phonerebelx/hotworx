@@ -1,5 +1,7 @@
 package com.hotworx.ui.fragments.HotsquadList
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +11,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import com.hotworx.R
 import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSessionProfileSummaryBinding
@@ -74,10 +78,44 @@ class SessionProfileSummaryFragment : BaseFragment(){
         binding.tvPhone.text = summaryProfile.data.profile_info.email
         binding.tvEmail.text = summaryProfile.data.profile_info.phone
 
-        Glide.with(requireContext())
-            .load(summaryProfile.data.profile_info.image)
-            .into(binding.imgIcon)
+        if (summaryProfile.data.profile_info.image!= null) {
+            binding.tvfirstLastName.visibility = View.GONE
+            binding.cvImageCard.visibility = View.VISIBLE
 
+            Glide.with(requireContext())
+                .load(summaryProfile.data.profile_info.image)
+                .listener(object : RequestListener<Drawable> {
+                    @SuppressLint("SetTextI18n")
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+
+                        binding.cvImageCard.visibility = View.GONE
+                        binding.tvfirstLastName.visibility = View.VISIBLE
+                        binding.tvfirstLastName.text = getUserInitials(summaryProfile.data.profile_info.name)
+                        return false
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        dataSource: com.bumptech.glide.load.DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+
+                        return false
+                    }
+                })
+                .into(binding.imgIcon)
+        } else {
+            binding.cvImageCard.visibility = View.GONE
+            binding.tvfirstLastName.visibility = View.VISIBLE
+            binding.tvfirstLastName.text = getUserInitials(summaryProfile.data.profile_info.name)
+        }
         // Update highlights if present
         if (!summaryProfile.data.highlights.isNullOrEmpty()) {
             highlightList.clear()
@@ -91,6 +129,14 @@ class SessionProfileSummaryFragment : BaseFragment(){
             activityList.addAll(summaryProfile.data.activities)
             adapterActivity?.notifyDataSetChanged()
         }
+    }
+
+    // Helper function to get user initials
+    private fun getUserInitials(fullName: String?): String {
+        val nameParts = fullName?.split(" ") ?: return ""
+        val firstNameInitial = nameParts.getOrNull(0)?.firstOrNull()?.toString() ?: ""
+        val lastNameInitial = nameParts.getOrNull(1)?.firstOrNull()?.toString() ?: ""
+        return firstNameInitial + lastNameInitial
     }
 
     override fun ResponseFailure(message: String?, tag: String?) {
