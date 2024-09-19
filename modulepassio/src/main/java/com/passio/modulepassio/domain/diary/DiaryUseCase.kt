@@ -18,7 +18,6 @@ object DiaryUseCase:com.passio.modulepassio.BaseFragment(){
     private var callback: PassioDataCallback? = null
     private val repository = Repository.getInstance()
 
-    // Add the setPassioDataCallback method to set the callback
     fun setPassioDataCallback(callback: PassioDataCallback) {
         this.callback = callback
     }

@@ -17,6 +17,7 @@ import com.passio.modulepassio.ui.util.showDatePickerDialog
 import ai.passio.passiosdk.passiofood.data.measurement.UnitEnergy
 import ai.passio.passiosdk.passiofood.data.measurement.UnitMass
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -52,6 +53,9 @@ class DashboardFragment : BaseFragment<DashboardViewModel>() {
 
             toolbar.setup(title, baseToolbarListener)
 
+            toolbar.setOnClickListener{
+
+            }
 
 
             timeTitle.setOnClickListener {
@@ -103,7 +107,12 @@ class DashboardFragment : BaseFragment<DashboardViewModel>() {
     private val baseToolbarListener = object : BaseToolbar.ToolbarListener {
         override fun onBack() {
 //            viewModel.navigateBack()
-            requireActivity().supportFragmentManager.popBackStack()
+//            requireActivity().supportFragmentManager.popBackStack()
+
+            val intent = Intent("com.hotworx.OPEN_MAIN")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+//            finish()
         }
 
         override fun onRightIconClicked() {

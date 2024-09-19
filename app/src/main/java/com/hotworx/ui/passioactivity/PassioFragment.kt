@@ -3,6 +3,7 @@ package com.hotworx.ui.passioactivity
 import ai.passio.passiosdk.core.config.PassioConfiguration
 import ai.passio.passiosdk.core.config.PassioMode
 import ai.passio.passiosdk.passiofood.PassioSDK
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -35,6 +36,11 @@ class PassioFragment : BaseFragment(), PassioDataCallback {
     private var _binding: FragmentPassioBinding? = null
     private val binding get() = _binding
     private lateinit var passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.d("PassioFragmenttttt", "Fragment attached")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -101,7 +107,6 @@ class PassioFragment : BaseFragment(), PassioDataCallback {
     private fun onSDKReady() {
         NutritionUIModule.launch(this.requireContext())
         Log.d("ytytytuy", "jhkjhkhlkhlkllhlk")
-//        getPassioList()
         requireActivity().finish()
     }
 
@@ -147,22 +152,17 @@ class PassioFragment : BaseFragment(), PassioDataCallback {
     }
 
     override fun onPassioDataSuccess(passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse) {
-        this.passioList = passioList // Initialize the lateinit property
+        this.passioList = passioList
         Log.d("ParentFragment", "Passio data received: $passioList")
         DiaryUseCase.onPassioDataReceived(passioList)
     }
 
     override fun onPassioDataError(error: String) {
         if (::passioList.isInitialized) {
-            // This case should not normally happen if passioList is used correctly
             Log.d("DiaryUseCase", "Received Passio data from parent: $passioList")
         } else {
-            // Log error related to passioList being uninitialized
             Log.d("DiaryUseCase", "passioList is not initialized. Error: $error")
         }
-
-        // Additionally, handle the server error separately
         Log.e("DiaryUseCase", "Server issue: $error")
-        // You might want to notify the user or take corrective actions here
     }
 }
