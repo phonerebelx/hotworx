@@ -11,11 +11,20 @@ import ai.passio.passiosdk.passiofood.data.model.PassioAdvisorFoodInfo
 import ai.passio.passiosdk.passiofood.data.model.PassioMealPlanItem
 import ai.passio.passiosdk.passiofood.data.model.PassioSpeechRecognitionModel
 import android.util.Log
+import com.passio.modulepassio.domain.diary.DiaryUseCase
+import com.passio.modulepassio.interfaces.PassioDataCallback
+import com.passio.modulepassio.interfaces.PostPassioDataCallback
+import com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
 import java.util.Date
 
 object MealPlanUseCase {
 
     private val repository = Repository.getInstance()
+    private var callback: PostPassioDataCallback? = null
+
+    fun postPassioDataCallback(callback: PostPassioDataCallback) {
+        this.callback = callback
+    }
 
     suspend fun getFoodRecord(
         passioFoodDataInfo: PassioFoodDataInfo,
@@ -86,14 +95,42 @@ object MealPlanUseCase {
 
     suspend fun logFoodRecords(records: List<FoodRecord>): Boolean {
         //post api
-        val date = Date().time
+        val date = Date()
 
-        Log.d("kdjklajkls", records.toString())
+        Log.d("logFoodRecords", records.toString())
+
+        // Notify callback with the list of records
+        callback?.onPostPassioData(records)
 
         records.forEach { record ->
             record.create(record.createdAtTime() ?: Date().time)
         }
 
-        return repository.logFoodRecords(records)
+//        return repository.logFoodRecords(records)
+        return try {
+            val result = repository.logFoodRecords(records)
+            // Notify callback of success
+            if (result) {
+                callback?.onPassioDataSuccess(records)
+            } else {
+                // Notify callback of failure if the result is not successful
+                callback?.onPassioDataError("Failed to post records")
+            }
+            result
+        } catch (e: Exception) {
+            // Notify callback of error
+            callback?.onPassioDataError(e.message ?: "Unknown error")
+            false
+        }
+    }
+
+    // This method will be called from the parent once the API data is available
+    fun onPassioDataPost(records: List<FoodRecord>) {
+        if (records.isNotEmpty()) {
+            Log.d("MealPlanUseCaseeee", "Passio data received: $records")
+            // Process the data
+        } else {
+            Log.d("MealPlanUseCaseeee", "Received empty Passio data")
+        }
     }
 }
