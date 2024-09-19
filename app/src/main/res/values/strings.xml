@@ -491,6 +491,7 @@
     <string name="no_data">No data</string>
     <string name="no_data_found">No record found</string>
     <string name="loading">Loading…</string>
+    <string name="digest">Loading…</string>
     <string name="error_loading_data">Error loading data. Check your internet connection and try
         again later.
     </string>
@@ -524,6 +525,7 @@
     <string name="notifications">Notifications</string>
     <string name="nutritionist">Nutritionist</string>
     <string name="diettrax">DietTrax</string>
+    <string name="diettrax_new">Let\'s Connect to DietTrax New Feature!</string>
     <string name="intermittent_fasting">Intermittent Fasting</string>
     <string name="free_form">FreeForm</string>
     <string name="favorite_foods">Favorites</string>

@@ -135,6 +135,7 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
 
     override fun setTitleBar(titleBar: TitleBar) {
         super.setTitleBar(titleBar)
+
         titleBar.showBackButton()
     }
 
