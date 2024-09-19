@@ -80,19 +80,23 @@ class PassioFragment : BaseFragment(), PassioDataCallback {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val logs = DiaryUseCase.getLogsForDay(Date())
+                // Switch to the main thread for UI updates
                 withContext(Dispatchers.Main) {
-                    // Check if the fragment is still attached before updating UI
+                    // Check if the fragment is still attached and binding is available before updating UI
                     if (isAdded && binding != null) {
                         binding?.textView?.text = "Logs received: ${logs.size}"
+                        Log.e("PassioFragmentTExtData", "Logs received: ${logs.size}")
                     } else {
                         Log.e("PassioFragment", "Fragment is not attached, skipping UI update")
                     }
                 }
             } catch (e: Exception) {
+                // Handle error on the main thread
                 withContext(Dispatchers.Main) {
                     // Ensure the fragment is attached before updating UI on error
                     if (isAdded && binding != null) {
                         binding?.textView?.text = "Error: ${e.message}"
+                        Log.e("PassioFragmentTExtData", "Error: ${e.message}")
                     }
                 }
             }
@@ -102,12 +106,13 @@ class PassioFragment : BaseFragment(), PassioDataCallback {
 
     private fun onSDKError(error: String) {
         binding?.textView?.text = "ERROR: $error"
+        Log.e("SDKKKKERRORRR", "ERROR: $error")
     }
 
     private fun onSDKReady() {
         NutritionUIModule.launch(this.requireContext())
         Log.d("ytytytuy", "jhkjhkhlkhlkllhlk")
-        requireActivity().finish()
+//        requireActivity().finish()
     }
 
     override fun setTitleBar(titleBar: TitleBar) {

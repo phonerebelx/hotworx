@@ -290,6 +290,11 @@
           <theme>@android:style/Theme.Material.Light</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/modulepassio/src/main/res/layout/add_food_item.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/modulepassio/src/main/res/layout/dialog_daily_nutrition_target.xml">
         <config>
           <theme>@android:style/Theme.Material.Light</theme>
@@ -419,9 +424,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/dashboard/DashboardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/dashboard/DashboardFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/res/layout/fragment_my_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/res/layout/fragment_my_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/res/menu/dashboard_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/res/menu/dashboard_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioMainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_passio_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/domain/mealplan/MealPlanUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/domain/mealplan/MealPlanUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/camera/CameraRecognitionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/camera/CameraRecognitionFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/res/navigation/main_nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/res/navigation/main_nav_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

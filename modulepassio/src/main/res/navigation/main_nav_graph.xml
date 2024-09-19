@@ -352,8 +352,6 @@
         android:name="com.passio.modulepassio.ui.profile.MyProfileFragment"
         android:label="My Profile"
         tools:layout="@layout/fragment_my_profile">
-
-
     </fragment>
 
     <fragment

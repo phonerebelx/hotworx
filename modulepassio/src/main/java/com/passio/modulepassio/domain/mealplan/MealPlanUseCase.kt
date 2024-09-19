@@ -10,6 +10,7 @@ import ai.passio.passiosdk.passiofood.data.measurement.Grams
 import ai.passio.passiosdk.passiofood.data.model.PassioAdvisorFoodInfo
 import ai.passio.passiosdk.passiofood.data.model.PassioMealPlanItem
 import ai.passio.passiosdk.passiofood.data.model.PassioSpeechRecognitionModel
+import android.util.Log
 import java.util.Date
 
 object MealPlanUseCase {
@@ -86,7 +87,8 @@ object MealPlanUseCase {
     suspend fun logFoodRecords(records: List<FoodRecord>): Boolean {
         //post api
         val date = Date().time
-        val foodList = records.map {}
+
+        Log.d("kdjklajkls", records.toString())
 
         records.forEach { record ->
             record.create(record.createdAtTime() ?: Date().time)
