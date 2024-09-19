@@ -31,6 +31,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rc_8_white"
                 android:elevation="4dp"
+                android:visibility="gone"
                 android:padding="8dp">
 
                 <androidx.appcompat.widget.AppCompatTextView

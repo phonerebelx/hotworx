@@ -108,7 +108,6 @@ class DashboardFragment : BaseFragment<DashboardViewModel>() {
         override fun onBack() {
 //            viewModel.navigateBack()
 //            requireActivity().supportFragmentManager.popBackStack()
-
             val intent = Intent("com.hotworx.OPEN_MAIN")
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
