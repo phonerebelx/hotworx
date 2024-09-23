@@ -4,31 +4,20 @@ import ai.passio.passiosdk.core.config.PassioConfiguration
 import ai.passio.passiosdk.core.config.PassioMode
 import ai.passio.passiosdk.passiofood.PassioSDK
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.lifecycle.LiveData
-import com.hotworx.R
-import com.hotworx.databinding.FragmentAddListBinding
 import com.hotworx.databinding.FragmentPassioBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
-import com.hotworx.models.ErrorResponseEnt
-import com.hotworx.models.HotsquadList.HotsquadListModel
-import com.hotworx.models.HotsquadList.Passio.GetPassioModel
+import com.hotworx.models.HotsquadList.Passio.FoodEntry
+import com.hotworx.models.HotsquadList.Passio.PostPassioResponse
 import com.hotworx.models.HotsquadList.Passio.postPassioRequest
-import com.hotworx.models.HotsquadList.Session.SessionMemberResponse
-import com.hotworx.models.HotsquadList.Session.SquadSessionInvitationResponse
-import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
-import com.hotworx.ui.fragments.HotsquadList.activity.CongratulationsActivity
 import com.hotworx.ui.views.TitleBar
 import com.passio.modulepassio.NutritionUIModule
 import com.passio.modulepassio.Singletons.ApiHeaderSingleton
@@ -50,7 +39,9 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
     private var _binding: FragmentPassioBinding? = null
     private val binding get() = _binding
     private lateinit var passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
+    private lateinit var recordList: com.passio.modulepassio.models.HotsquadList.Passio.PostPassioResponse
     private lateinit var records: List<FoodRecord>
+    private var isApiCallInProgress = false // Flag to prevent multiple calls
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -202,17 +193,17 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
 
                 if (responseJson != null) {
                     try {
-                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, GetPassioModel::class.java)!!
-                        val formattedDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).parse("your-date-string") ?: Date()
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, PostPassioResponse::class.java)!!
+                        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+                        val currentDate = Date()
+                        val formattedDate = dateFormat.format(currentDate)
                         if (response != null) {
-                            onPostPassioData(records)
+                            onPassioDataSuccess(recordList)
                         } else {
                             onPassioDataError("Received empty response")
                         }
                     } catch (e: Exception) {
-                        val genericMsgResponse = GsonFactory.getConfiguredGson()
-                            ?.fromJson(responseJson, ErrorResponseEnt::class.java)!!
-                        dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                        dockActivity?.showErrorMessage(e.message.toString())
                         Log.i("Error", e.message.toString())
                     }
                 } else {
@@ -223,27 +214,49 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         }
     }
 
-    override fun onPostPassioData(records: List<FoodRecord>) {
+    override fun onPostPassioData(date: String, url: String, records: List<FoodRecord>) {
         if (!isAdded || context == null) {
             Log.e("PassioFragment", "Fragment is not attached, skipping API call")
             return
         }
-//        val formattedDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(day)
-//        Log.d("PassioFragment", "Formatted date for API: $formattedDate")
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
+        this.records = records
+        Log.d("ParentFragmentMeal", "Passio data received: $records")
 
-        val requestBody = postPassioRequest(records)
+        val foodEntries = records.map { record ->
+            FoodEntry(
+                food_entry_date = formattedDate,  // Use the formatted current date
+                "",           // Replace with actual URL if available
+                food_list = record
+            )
+        }
 
+        // Create the request object
+        val request = postPassioRequest(food_entries = foodEntries)
+
+        // Make the API call
         getServiceHelper()?.enqueueCallExtended(
             getWebService()?.postPassioData(
                 ApiHeaderSingleton.apiHeader(requireContext()),
-               requestBody
-            ), Constants.SESSION_MEMBER, true
+                request
+            ), Constants.POST_PASSIO_RECORD, true
         )
     }
 
-    override fun onPassioDataSuccess(records: List<FoodRecord>) {
-        this.records = records
-        Log.d("ParentFragment", "Passio data received: $records")
-        MealPlanUseCase.onPassioDataPost(records)
+    override fun onPassioDataSuccess(recordList: com.passio.modulepassio.models.HotsquadList.Passio.PostPassioResponse) {
+        this.recordList = recordList
+        Log.d("recordList", "Record data received: $recordList")
+        MealPlanUseCase.onPassioDataPost("","",records)
+    }
+
+    override fun Error(error: String) {
+        if (::recordList.isInitialized) {
+            Log.d("RecordListtt", "Received Passio data from parent: $recordList")
+        } else {
+            Log.d("RecordListtt", "passioList is not initialized. Error: $error")
+        }
+        Log.e("RecordListtt", "Server issue: $error")
     }
 }

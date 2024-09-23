@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,11 +48,16 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
     private lateinit var pendingSessionAdapter: DashboardPendingSessionAdapter
     private lateinit var btnBookSession: AppCompatButton
     private lateinit var startSessionDialogFragment: StartSessionDialogFragment
-    var set_is_reciprocal_allowed: String = "no"
     //var getTodaysPendingSession: ArrayList<TodaysPendingSession>? = null
     private var sessionTypesList: ArrayList<TodaysPendingSession>? = null
     private var selectedSession: TodaysPendingSession? = null
 
+    private var set_is_reciprocal_allowed: String? = null
+
+    fun setSet_is_reciprocal_allowed(isReciprocalAllowed: String?) {
+        this.set_is_reciprocal_allowed = isReciprocalAllowed
+        // You can now use isReciprocalAllowed where needed
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -66,6 +72,7 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
         btnBookSession = root.findViewById(R.id.btnBookSession)
         setPendingSessionAdapter()
         setOnCLickListener()
+        Log.d("ndskfndnnkfl", set_is_reciprocal_allowed.toString())
         return root
     }
 
@@ -80,7 +87,7 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
 
     private fun setOnCLickListener() {
         btnBookSession.setOnClickListener {
-            dockActivity.replaceDockableFragment(LocationSelectionFragment(set_is_reciprocal_allowed))
+            dockActivity.replaceDockableFragment(LocationSelectionFragment(set_is_reciprocal_allowed.toString()))
         }
     }
 

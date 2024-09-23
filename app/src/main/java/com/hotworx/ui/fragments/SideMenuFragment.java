@@ -155,18 +155,6 @@ public class SideMenuFragment extends BaseFragment {
 
         drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
 
-//        // Passio Sdk activity
-//        Intent passioIntent = new Intent(getDockActivity(), PassioMainActivity.class);
-////        passioIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Optional, based on your needs.
-//        drawerList.add(new NavigationItem(
-//                R.string.diettrax,
-//                R.drawable.icon_menu_diettrax,
-//                null,
-//                passioIntent,
-//                null,
-//                null
-//        ));
-
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null,null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null,null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null,null, null));

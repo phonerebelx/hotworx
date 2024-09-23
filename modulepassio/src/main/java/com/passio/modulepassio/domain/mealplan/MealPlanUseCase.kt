@@ -15,7 +15,9 @@ import com.passio.modulepassio.domain.diary.DiaryUseCase
 import com.passio.modulepassio.interfaces.PassioDataCallback
 import com.passio.modulepassio.interfaces.PostPassioDataCallback
 import com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 object MealPlanUseCase {
 
@@ -90,42 +92,60 @@ object MealPlanUseCase {
 
     suspend fun logFoodRecord(record: FoodRecord): Boolean {
         record.create(record.createdAtTime() ?: Date().time)
-        return repository.logFoodRecord(record)
+
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
+        // Notify callback with the list of records
+        var recordList = ArrayList<FoodRecord>()
+        recordList.add(record)
+        callback?.onPostPassioData(formattedDate,"",recordList)
+
+        Log.d("ksnklcndkndcnklcnd","food logged success")
+        return try {
+            val result =  repository.logFoodRecord(record)
+            if (result) {
+//                callback?.onPostPassioData(formattedDate,"",records)
+                true
+            } else {
+                callback?.Error("Failed to post records")
+                false
+            }
+            result
+        } catch (e: Exception) {
+            callback?.Error(e.message ?: "Unknown error")
+            false
+        }
     }
 
     suspend fun logFoodRecords(records: List<FoodRecord>): Boolean {
         //post api
-        val date = Date()
-
-        Log.d("logFoodRecords", records.toString())
-
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
         // Notify callback with the list of records
-        callback?.onPostPassioData(records)
+        callback?.onPostPassioData(formattedDate,"",records)
 
         records.forEach { record ->
             record.create(record.createdAtTime() ?: Date().time)
         }
-
 //        return repository.logFoodRecords(records)
         return try {
             val result = repository.logFoodRecords(records)
-            // Notify callback of success
             if (result) {
-                callback?.onPassioDataSuccess(records)
+//                callback?.onPostPassioData(formattedDate,"",records)
             } else {
-                // Notify callback of failure if the result is not successful
-                callback?.onPassioDataError("Failed to post records")
+                callback?.Error("Failed to post records")
             }
             result
         } catch (e: Exception) {
-            // Notify callback of error
-            callback?.onPassioDataError(e.message ?: "Unknown error")
+            callback?.Error(e.message ?: "Unknown error")
             false
         }
     }
 
     // This method will be called from the parent once the API data is available
-    fun onPassioDataPost(records: List<FoodRecord>) {
+    fun onPassioDataPost(day: String,url:String,records: List<FoodRecord>) {
         if (records.isNotEmpty()) {
             Log.d("MealPlanUseCaseeee", "Passio data received: $records")
             // Process the data

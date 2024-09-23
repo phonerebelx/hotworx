@@ -53,6 +53,7 @@ public class LeftNavigationBinderAdapter extends BaseAdapter {
         TextView textView = (TextView) view.findViewById(R.id.text);
         TextView catdTextView = (TextView) view.findViewById(R.id.tvTextView);
         ImageView image = (ImageView) view.findViewById(R.id.image);
+        ImageView right_icon = (ImageView) view.findViewById(R.id.right_icon);
         ConstraintLayout clInviteFriend = (ConstraintLayout) view.findViewById(R.id.clInviteFriend);
         textView.setText(drawerItems.get(position).getText());
         image.setImageResource(drawerItems.get(position).getDrawable());
@@ -69,7 +70,6 @@ public class LeftNavigationBinderAdapter extends BaseAdapter {
             catdTextView.setText( R.string.business);
             clInviteFriend.setVisibility(View.VISIBLE);
         }
-
 
         return view;
     }

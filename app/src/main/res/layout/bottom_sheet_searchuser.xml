@@ -60,6 +60,7 @@
                         android:layout_gravity="center_vertical"
                         android:text="@string/registered_member"
                         android:layout_weight="1"
+                        android:textAllCaps="false"
                         android:textColor="@color/mirage"
                         android:textSize="@dimen/_15ssp" />
 
@@ -114,12 +115,14 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tvContacts"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/bebasneue_regular"
                         android:layout_gravity="center_vertical"
                         android:text="@string/your_contacts"
                         android:layout_weight="1"
+                        android:textAllCaps="false"
                         android:textColor="@color/mirage"
                         android:textSize="@dimen/_15ssp" />
 

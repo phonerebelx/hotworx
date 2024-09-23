@@ -37,6 +37,12 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/right_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:gravity="center" />
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,8 +56,7 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
 //        acpLocationSpinner = root.findViewById(R.id.acpLocationSpinner)
 
         callApi(Constants.GETBOOKINGLOCATION, "")
-
-
+        Log.d("jbjbjkxasb",is_reciprocal_allowed)
         return root
     }
 
