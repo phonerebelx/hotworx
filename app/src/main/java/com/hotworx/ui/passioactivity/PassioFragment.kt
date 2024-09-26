@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
+import com.hotworx.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentPassioBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
@@ -20,8 +22,6 @@ import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
 import com.passio.modulepassio.NutritionUIModule
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.passio.modulepassio.domain.diary.DiaryUseCase
 import com.passio.modulepassio.domain.mealplan.MealPlanUseCase
 import com.passio.modulepassio.interfaces.PassioDataCallback

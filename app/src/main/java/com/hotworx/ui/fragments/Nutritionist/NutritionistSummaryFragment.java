@@ -22,7 +22,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.hotworx.R;
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
+import com.hotworx.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.Utils;
 import com.hotworx.requestEntity.NintyDaysCaloriesSession;

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.BottomSheetSearchuserBinding
 import com.hotworx.global.Constants

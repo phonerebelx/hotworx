@@ -23,8 +23,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-
-import com.passio.modulepassio.helpers.BasePreferenceHelper;
 import com.passio.modulepassio.interfaces.LoadingListener;
 import com.passio.modulepassio.ui.base.BaseFragment;
 
@@ -41,7 +39,7 @@ public abstract class DockActivity extends AppCompatActivity
     public abstract int getDockFrameLayoutId();
 
     BaseFragment baseFragment;
-    public BasePreferenceHelper prefHelper;
+//    public BasePreferenceHelper prefHelper;
     //For side menu
     protected DrawerLayout drawerLayout;
 
@@ -49,7 +47,7 @@ public abstract class DockActivity extends AppCompatActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        prefHelper = new BasePreferenceHelper(this);
+//        prefHelper = new BasePreferenceHelper(this);
 
         // Initialize your DockActivity here
         myDockActivity = this;

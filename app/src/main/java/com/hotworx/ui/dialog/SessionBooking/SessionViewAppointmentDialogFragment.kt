@@ -78,7 +78,7 @@ class SessionViewAppointmentDialogFragment() : DialogFragment(), LoadingListener
 
     private fun setOnClickListener() {
         acbViewAppointment.setOnClickListener {
-            myDockActivity!!.emptyBackStack()
+//            myDockActivity!!.emptyBackStack()
             myDockActivity!!.replaceDockableFragment(HomeFragment(), Constants.HomeFragment)
         }
         tvSkipDialog.setOnClickListener {

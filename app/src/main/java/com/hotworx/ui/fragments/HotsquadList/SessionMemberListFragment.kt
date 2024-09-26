@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSessionMemberListBinding
 import com.hotworx.global.Constants
 import com.hotworx.models.ErrorResponseEnt

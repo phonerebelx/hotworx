@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hotworx.R
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentAddListBinding
 import com.hotworx.global.Constants
 import com.hotworx.helpers.CustomEvents.notificationSession
@@ -19,7 +20,6 @@ import com.hotworx.models.UserData.getUserData
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import org.greenrobot.eventbus.EventBus
 
 class AddListFragment : BaseFragment(){

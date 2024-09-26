@@ -28,7 +28,7 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.model.GradientColor
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentNewActivityScreenBinding
 import com.hotworx.global.Constants
 import com.hotworx.helpers.CustomXAxisRenderer

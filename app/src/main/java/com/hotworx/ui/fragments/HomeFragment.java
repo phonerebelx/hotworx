@@ -52,7 +52,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.hotworx.R;
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
+import com.hotworx.Singletons.ApiHeaderSingleton;
 import com.hotworx.activities.BrivoActivity.SitesActivity;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
@@ -117,6 +117,7 @@ import static com.hotworx.global.Constants.CALENDER_TITLE;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
 import com.hotworx.ui.fragments.BaseFragment;
 
 public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, OnClickItemListener {
@@ -141,7 +142,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     TextView tvDay;
     TextView tvStreak;
     TextView tvlevel;
-
+    String reciprocalVal = "no";
     @BindView(R.id.swipeContainer)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -164,14 +165,16 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private final MutableLiveData<String> is_new_reciprocal = new MutableLiveData<>();
 
     public LiveData<String> get_is_new_reciprocal() {
-        return is_new_reciprocal;
+         return is_new_reciprocal;
     }
 
+    ArrayList<TodaysPendingSession> getTodaysPendingSession = new ArrayList<>();
+    ArrayList<TodaysPendingSession> getTodaysCompletedSession = new ArrayList<>();
 
     DashboardSessionDialogFragment sessionDashboardDialogFragment;
 
 
-    public static HomeFragment newInstance(String navigateTo, String hashId,String image,String body,String title, String notification_type, String custom_message, String booking_date, String objid, String calender_title, int duration) {
+    public static HomeFragment newInstance(String navigateTo, String hashId, String image, String body, String title, String notification_type, String custom_message, String booking_date, String objid, String calender_title, int duration) {
         Bundle bundle = new Bundle();
         bundle.putString("navigateTo", navigateTo);
         bundle.putString("hashId", hashId);
@@ -188,6 +191,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         homeFragment.setArguments(bundle);
         return homeFragment;
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -195,8 +199,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             ActivityCompat.requestPermissions(myDockActivity, new String[]{POST_NOTIFICATIONS}, 1);
         }
         apiCallGetRewards();
+        apiCallForIntermittentPlan();
+        callApi(Constants.PROFILE_API_CALLING);
+        callApi(Constants.DASHBOARDCALLING);
     }
-
 
     @SuppressLint("MissingInflatedId")
     @Nullable
@@ -204,6 +210,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, view);
+
         prefHelper.setNotificationString("");
         circleIndicator3 = view.findViewById(R.id.circleIndicator3);
         viewPager = view.findViewById(R.id.viewPager);
@@ -233,8 +240,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         swipeRefreshLayout.setOnRefreshListener(this);
         mWorkManager = WorkManager.getInstance();
 
-
-        Log.d("currentDateeee",getCurrentDate());
+        Log.d("currentDateeee", getCurrentDate());
 
         data = new Data.Builder()
                 .putString(Constants.USER_ID, prefHelper.getUserId())
@@ -246,9 +252,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
         FirebaseApp.initializeApp(getContext());
         getFirebaseToken();
-        apiCallForIntermittentPlan();
-        callApi(Constants.PROFILE_API_CALLING);
-        callApi(Constants.DASHBOARDCALLING);
 
         //addCustomEventToCalendar();
 
@@ -283,7 +286,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             });
         }
 
-        if (getArguments()!= null && getArguments().getString("navigateTo")!=null && getArguments().getString("hashId") != null) {
+        if (getArguments() != null && getArguments().getString("navigateTo") != null && getArguments().getString("hashId") != null) {
             String navigateTo = getArguments().getString("navigateTo");
             String hashId = getArguments().getString("hashId");
             String image = getArguments().getString("image");
@@ -294,14 +297,23 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             String title = getArguments().getString(Constants.CUSTOM_TITLE);
             String objid = getArguments().getString("objid");
             String calendar_title = getArguments().getString("calendar_title");
-            int duration = getArguments().getInt("duration",0);
+            int duration = getArguments().getInt("duration", 0);
 
             NotificationDialogHomeFragment notificationDialogHomeFragment = new NotificationDialogHomeFragment(this);
-            notificationDialogHomeFragment.setNotificationModel(hashId,title,body,image,notification_type);
+            notificationDialogHomeFragment.setNotificationModel(hashId, title, body, image, notification_type);
             notificationDialogHomeFragment.show(
                     getParentFragmentManager(), Constants.notificationDialogHomeFragment
             );
         }
+
+        // Now the view is created, you can safely observe LiveData
+//        get_is_new_reciprocal().observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(String reciprocalValue) {
+//                // Call addTabsMain with the updated value
+////                addTabsMain(viewPager, getTodaysPendingSession, getTodaysCompletedSession);
+//            }
+//        });
     }
 
     @Override
@@ -310,13 +322,14 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         fragmentResume();
         createWorkoutSessionDialog();
         autoSync();
+        callApi(Constants.PROFILE_API_CALLING);
+        callApi(Constants.DASHBOARDCALLING);
     }
 
     @Override
     public void onPause() {
         super.onPause();
         removedWorkoutSessionDialog();
-
     }
 
     @Override
@@ -486,7 +499,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     public void onSuccess(LiveData<String> liveData, String tag) {
         super.onSuccess(liveData, tag);
-        if (!isAdded()) { return; }
+        if (!isAdded()) {
+            return;
+        }
         if (Constants.DASHBOARDCALLING.equals(tag)) {
 
             try {
@@ -499,11 +514,11 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 );
                 setUpGraph(getDashboardApiResponse.getData().getNinety_days_summary());
             } catch (Exception e) {
-                Log.d("Exception: ",e.getMessage().toString());
+                Log.d("Exception: ", e.getMessage().toString());
                 Utils.customToast(requireContext(), getResources().getString(R.string.error_failure));
             }
         }
-        if (Constants.PROFILE_API_CALLING.equals(tag)){
+        if (Constants.PROFILE_API_CALLING.equals(tag)) {
 
             try {
                 getUserData userData = GsonFactory.getConfiguredGson()
@@ -511,8 +526,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 if (userData.getData() != null && !userData.getData().isEmpty() &&
                         userData.getData().get(0).getData() != null &&
                         userData.getData().get(0).getData().getUnread_notifications() != null) {
-                    is_new_reciprocal.setValue( userData.getData().get(0).getData().getNew_reciprocal_enabled());
-                    unreadNotifications.setValue( userData.getData().get(0).getData().getUnread_notifications());
+                    Log.d("checkRecip", "this is for is_new_reciprocal " + userData.getData().get(0).getData().getNew_reciprocal_enabled());
+                    is_new_reciprocal.setValue(userData.getData().get(0).getData().getNew_reciprocal_enabled());
+                    unreadNotifications.setValue(userData.getData().get(0).getData().getUnread_notifications());
                 } else {
                     unreadNotifications.setValue("0");
                 }
@@ -535,7 +551,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void onFailure(String message, String tag) {
-        if (!isAdded()) { return; }
+        if (!isAdded()) {
+            return;
+        }
         if (Constants.DASHBOARDCALLING.equals(tag)) {
             myDockActivity.showErrorMessage(message);
         }
@@ -578,30 +596,66 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     }
 
     private void addTabsMain(ViewPager viewPager, ArrayList<TodaysPendingSession> getTodaysPendingSession, ArrayList<TodaysPendingSession> getTodaysCompletedSession) {
+        ViewPagerAdapter adapter;
+
         if (viewPager.getAdapter() != null && viewPager.getAdapter().getCount() == 2) {
             ((PendingSessionFragment) viewPager.getAdapter().instantiateItem(viewPager, 0)).setData(getTodaysPendingSession);
             ((CompletedSessionFragment) viewPager.getAdapter().instantiateItem(viewPager, 1)).setData(getTodaysCompletedSession);
             viewPager.getAdapter().notifyDataSetChanged();
         } else {
-            ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager()); //viewPager.getAdapter() instanceof ViewPagerAdapter ? (ViewPagerAdapter) viewPager.getAdapter() : new ViewPagerAdapter(getChildFragmentManager());
-            PendingSessionFragment psf = new PendingSessionFragment();
-            String reciprocalValue = get_is_new_reciprocal().getValue();
-            if (reciprocalValue != null) {
-                psf.setSet_is_reciprocal_allowed(reciprocalValue);
-            } else {
-                psf.setSet_is_reciprocal_allowed("no");
-            }
-            psf.setData(getTodaysPendingSession);
-            adapter.addFrag(psf, "PSF's");
 
-            CompletedSessionFragment csf = new CompletedSessionFragment();
-            csf.setData(getTodaysCompletedSession);
-            adapter.addFrag(csf, "CSF's");
+            adapter = new ViewPagerAdapter(getChildFragmentManager());
 
-            adapter.notifyDataSetChanged();
-            viewPager.setAdapter(adapter);
+            get_is_new_reciprocal().observe(getViewLifecycleOwner(), new Observer<String>() {
+                @Override
+                public void onChanged(String reciprocalValue) {
+                    reciprocalVal = reciprocalValue;
+                    PendingSessionFragment psf = new PendingSessionFragment(reciprocalVal);
+
+
+                    psf.setData(getTodaysPendingSession);
+                    adapter.addFrag(psf, "PSF's");
+
+                    // Prepare CompletedSessionFragment
+                    CompletedSessionFragment csf = new CompletedSessionFragment();
+                    csf.setData(getTodaysCompletedSession);
+                    adapter.addFrag(csf, "CSF's");
+
+                    // Set adapter to the viewPager and notify data change
+                    viewPager.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }
+            });
+
         }
     }
+
+
+//    private void addTabsMain(ViewPager viewPager, ArrayList<TodaysPendingSession> getTodaysPendingSession, ArrayList<TodaysPendingSession> getTodaysCompletedSession) {
+//        if (viewPager.getAdapter() != null && viewPager.getAdapter().getCount() == 2) {
+//            ((PendingSessionFragment) viewPager.getAdapter().instantiateItem(viewPager, 0)).setData(getTodaysPendingSession);
+//            ((CompletedSessionFragment) viewPager.getAdapter().instantiateItem(viewPager, 1)).setData(getTodaysCompletedSession);
+//            viewPager.getAdapter().notifyDataSetChanged();
+//        } else {
+//            ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager()); //viewPager.getAdapter() instanceof ViewPagerAdapter ? (ViewPagerAdapter) viewPager.getAdapter() : new ViewPagerAdapter(getChildFragmentManager());
+//            PendingSessionFragment psf = new PendingSessionFragment();
+//            String reciprocalValue = get_is_new_reciprocal().getValue();
+//            if (reciprocalValue != null) {
+//                psf.setSet_is_reciprocal_allowed(reciprocalValue);
+//            } else {
+//                psf.setSet_is_reciprocal_allowed("no");
+//            }
+//            psf.setData(getTodaysPendingSession);
+//            adapter.addFrag(psf, "PSF's");
+//
+//            CompletedSessionFragment csf = new CompletedSessionFragment();
+//            csf.setData(getTodaysCompletedSession);
+//            adapter.addFrag(csf, "CSF's");
+//
+//            adapter.notifyDataSetChanged();
+//            viewPager.setAdapter(adapter);
+//        }
+//    }
 
     private void setUpGraph(ArrayList<NinetyDaysSummary> getSummaryDataForGraph) {
         ArrayList<String> data = new ArrayList<>();
@@ -905,7 +959,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void ResponseFailure(String message, String tag) {
-        Utils.customToast(requireContext(),message);
+        Utils.customToast(requireContext(), message);
         if (swipeRefreshLayout != null) swipeRefreshLayout.setRefreshing(false);
     }
 
@@ -941,7 +995,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         values.put("calendar_id", 3);
         values.put("title", "HOTWORX2");
         values.put("dtstart", cal.getTimeInMillis()); // event starts at 1hours from now
-        values.put("dtend", cal.getTimeInMillis() + 3*60*60*1000); // ends 3 hours from now
+        values.put("dtend", cal.getTimeInMillis() + 3 * 60 * 60 * 1000); // ends 3 hours from now
         values.put("description", "Hotworx test description");
         values.put("eventTimezone", Time.getCurrentTimezone());
         Uri event = cr1.insert(EVENTS_URI, values);
@@ -980,10 +1034,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     @Override
     public <T> void onItemClick(T data, @NonNull String type) {
-        if (type.equals("COME_FROM_CLOSE")){
+        if (type.equals("COME_FROM_CLOSE")) {
             setArguments(null);
-        }else{
-            if (getArguments()!= null && getArguments().getString("navigateTo")!=null) {
+        } else {
+            if (getArguments() != null && getArguments().getString("navigateTo") != null) {
                 String navigateTo = getArguments().getString("navigateTo");
                 String hashId = getArguments().getString("hashId");
                 String image = getArguments().getString("image");
@@ -1008,10 +1062,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                         duration
                 ));
             }
-        setArguments(null);
+            setArguments(null);
         }
     }
-
 
 
 }

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSessionSummaryBinding
 import com.hotworx.global.Constants
 import com.hotworx.models.ErrorResponseEnt

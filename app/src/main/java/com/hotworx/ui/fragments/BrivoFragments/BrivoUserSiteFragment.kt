@@ -9,7 +9,6 @@ import androidx.lifecycle.LiveData
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentBrivoUserSiteBinding
 import com.hotworx.global.Constants
 import com.hotworx.helpers.Utils
@@ -21,6 +20,7 @@ import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.BrivoFragments.BrivoViewPagerFragments.AllDataFragment
 import com.hotworx.ui.fragments.BrivoFragments.BrivoViewPagerFragments.NearbyDataFragment
 import com.brivo.sdk.access.BrivoSDKAccess
+import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.models.BrivoDataModels.BrivoLocation.Data
 import com.hotworx.models.BrivoDataModels.BrivoLocation.GetBrancheDataModel
 
@@ -39,11 +39,6 @@ class BrivoUserSiteFragment : BaseFragment() {
 
 
         callApi(Constants.BRIVODATACALLING)
-
-
-
-
-
 
         return binding.root
     }

@@ -15,7 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
 import com.hotworx.interfaces.BookingConfirmationDialogClickListener
 import com.hotworx.interfaces.OnClickItemListener

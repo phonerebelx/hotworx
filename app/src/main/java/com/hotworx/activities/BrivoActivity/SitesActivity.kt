@@ -59,7 +59,7 @@ import com.demo.sample.kotlin.BrivoSampleConstants
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.activities.DockActivity
 import com.hotworx.activities.MainActivity
 import com.hotworx.databinding.ActivitySitesBinding

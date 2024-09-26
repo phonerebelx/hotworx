@@ -24,7 +24,7 @@ import com.github.alexzhirkevich.customqrgenerator.vector.style.QrVectorLogoPadd
 import com.github.alexzhirkevich.customqrgenerator.vector.style.QrVectorLogoShape
 import com.github.alexzhirkevich.customqrgenerator.vector.style.QrVectorPixelShape
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentBusinessCardBinding
 import com.hotworx.global.Constants
 import com.hotworx.helpers.Utils

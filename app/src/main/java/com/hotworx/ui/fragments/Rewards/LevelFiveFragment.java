@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hotworx.R;
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
+import com.hotworx.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.models.GetRewardRequest;

@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
+import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentPendingInvitesBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants

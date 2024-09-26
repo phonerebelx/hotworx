@@ -15,7 +15,7 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import butterknife.Unbinder
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
+import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
 import com.hotworx.helpers.UIHelper

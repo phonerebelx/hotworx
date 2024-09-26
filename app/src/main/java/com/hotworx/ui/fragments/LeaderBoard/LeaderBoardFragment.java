@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.hotworx.R;
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
+import com.hotworx.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.helpers.Utils;
 import com.hotworx.models.LeaderBoard.Leaderboard;

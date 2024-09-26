@@ -14,6 +14,7 @@ import androidx.lifecycle.LiveData
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.GsonBuilder
 import com.hotworx.R
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.databinding.FragmentSquadMemberListBinding
 import com.hotworx.databinding.FragmentSquadPendingMemberBinding
 import com.hotworx.global.Constants
@@ -25,7 +26,6 @@ import com.hotworx.models.HotsquadList.squadMemberDetailRequest
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.tabsadapter.MemberRequestViewPagerAdapter
 import com.hotworx.ui.fragments.BaseFragment
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
 import java.net.URLDecoder
 
 class SquadMemberListFragment : BaseFragment(), TabLayout.OnTabSelectedListener {

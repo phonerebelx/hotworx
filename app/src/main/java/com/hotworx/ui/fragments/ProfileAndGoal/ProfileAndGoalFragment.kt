@@ -21,7 +21,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.helpers.Utils
 import com.hotworx.micsAdapter.SpinnerAdapter
 import com.hotworx.models.ErrorResponseEnt

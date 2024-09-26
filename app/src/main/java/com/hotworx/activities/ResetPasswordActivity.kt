@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import butterknife.BindView
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
 import com.hotworx.helpers.HashUtils
@@ -66,8 +66,7 @@ class ResetPasswordActivity : BaseActivity(), LoadingListener {
     private fun callResetPasswordApi() {
         onLoadingStarted()
         val encodedPassword = HashUtils.sha256(etPassword.text.toString())
-        webService?.resetpassword(
-            ApiHeaderSingleton.apiHeader(this@ResetPasswordActivity), encodedPassword
+        webService?.resetpassword(ApiHeaderSingleton.apiHeader(this@ResetPasswordActivity), encodedPassword
         )?.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 onLoadingFinished()

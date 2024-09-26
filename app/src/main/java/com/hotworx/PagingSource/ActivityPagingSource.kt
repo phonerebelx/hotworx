@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.hotworx.Extensions.await
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.activities.DockActivity
 import com.hotworx.models.NewActivityModels.NinetyDaysActivity
 import com.hotworx.retrofit.WebService

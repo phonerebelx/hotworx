@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
+import com.hotworx.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentHotsquadSearchBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants

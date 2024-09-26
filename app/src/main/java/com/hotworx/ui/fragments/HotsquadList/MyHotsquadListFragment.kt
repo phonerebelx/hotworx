@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.hotworx.R
+import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentMyHotsquadListBinding
 import com.hotworx.global.Constants
@@ -26,7 +27,6 @@ import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.adapters.HotsquadListAdapter.SquadListAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 
 class MyHotsquadListFragment : BaseFragment(), SquadListAdapter.OnItemClickListener {
     private var _binding: FragmentMyHotsquadListBinding? = null

@@ -134,7 +134,7 @@
                                 android:layout_height="@dimen/_20sdp"
                                 android:layout_weight="0.5"
                                 android:fontFamily="@font/montserrat_regular"
-                                android:text="Jane"
+                                tools:text="Jane"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_10sdp"
                                 android:textStyle="bold" />
@@ -163,7 +163,7 @@
                                 android:layout_height="@dimen/_20sdp"
                                 android:layout_weight="0.5"
                                 android:fontFamily="@font/montserrat_regular"
-                                android:text="Dao"
+                                tools:text="Dao"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="@dimen/_10sdp"
                                 android:textStyle="bold" />

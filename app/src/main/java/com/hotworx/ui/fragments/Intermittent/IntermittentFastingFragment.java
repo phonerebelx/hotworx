@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.hotworx.R;
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
+import com.hotworx.Singletons.ApiHeaderSingleton;
 import com.hotworx.helpers.UIHelper;
 import com.hotworx.interfaces.OnIntermittentFastingItemClick;
 import com.hotworx.requestEntity.GenericMsgResponse;

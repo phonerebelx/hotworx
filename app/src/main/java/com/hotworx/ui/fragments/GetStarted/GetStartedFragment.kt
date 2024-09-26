@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.GettingStarted.GettingStartedModel.GettingStartedDataModel

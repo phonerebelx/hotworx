@@ -7,7 +7,7 @@ import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
+import com.hotworx.Singletons.ApiHeaderSingleton;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;
 import com.hotworx.requestEntity.UpdateSessionEnt;

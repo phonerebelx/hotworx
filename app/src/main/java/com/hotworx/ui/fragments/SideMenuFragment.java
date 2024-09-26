@@ -21,8 +21,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.hotworx.R;
+import com.hotworx.Singletons.ApiHeaderSingleton;
 import com.hotworx.ui.passioactivity.PassioFragment;
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton;
+
 import com.hotworx.activities.LoginActivity;
 import com.hotworx.global.Constants;
 import com.hotworx.global.WebServiceConstants;

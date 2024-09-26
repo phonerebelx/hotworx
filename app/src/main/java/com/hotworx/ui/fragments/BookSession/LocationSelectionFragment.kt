@@ -14,7 +14,7 @@ import androidx.core.view.isGone
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.global.Constants
 import com.hotworx.interfaces.OnClickItemListener
 import com.hotworx.interfaces.OnClickStringTypeListener
@@ -42,8 +42,6 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
     private lateinit var rvLocationSelector: RecyclerView
     private lateinit var etLocation: AppCompatEditText
 
-
-
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +54,6 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
 //        acpLocationSpinner = root.findViewById(R.id.acpLocationSpinner)
 
         callApi(Constants.GETBOOKINGLOCATION, "")
-        Log.d("jbjbjkxasb",is_reciprocal_allowed)
         return root
     }
 
@@ -259,6 +256,7 @@ class LocationSelectionFragment(var is_reciprocal_allowed: String) : BaseFragmen
 
     override fun setTitleBar(titleBar: TitleBar) {
         super.setTitleBar(titleBar)
+
         titleBar.showBackButton()
         titleBar.subHeading = resources.getString(R.string.sessions)
         titleBar.contentDescription = getString(R.string.sessions)

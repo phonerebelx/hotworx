@@ -42,7 +42,7 @@ import com.hotworx.ui.fragments.SessionFlow.SaveCaloriesFragment
 import com.hotworx.ui.fragments.fitbit.RootActivity
 
 
-class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
+class PendingSessionFragment(var set_is_reciprocal_allowed: String) : BaseFragment(), OnClickPendingModelInterface {
     private lateinit var rvPendingSessions: RecyclerView
     private lateinit var tvNoRecordFound: TextView
     private lateinit var pendingSessionAdapter: DashboardPendingSessionAdapter
@@ -52,12 +52,7 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
     private var sessionTypesList: ArrayList<TodaysPendingSession>? = null
     private var selectedSession: TodaysPendingSession? = null
 
-    private var set_is_reciprocal_allowed: String? = null
 
-    fun setSet_is_reciprocal_allowed(isReciprocalAllowed: String?) {
-        this.set_is_reciprocal_allowed = isReciprocalAllowed
-        // You can now use isReciprocalAllowed where needed
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -71,11 +66,16 @@ class PendingSessionFragment : BaseFragment(), OnClickPendingModelInterface {
         tvNoRecordFound = root.findViewById(R.id.tvNoRecordFound)
         btnBookSession = root.findViewById(R.id.btnBookSession)
         setPendingSessionAdapter()
-        setOnCLickListener()
-        Log.d("ndskfndnnkfl", set_is_reciprocal_allowed.toString())
+
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setOnCLickListener()
+
+
+    }
     private fun setPendingSessionAdapter() {
         val dataSource = sessionTypesList ?: ArrayList()
         tvNoRecordFound.isVisible = dataSource.isEmpty()

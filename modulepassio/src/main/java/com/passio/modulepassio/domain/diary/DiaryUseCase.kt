@@ -1,19 +1,13 @@
 package com.passio.modulepassio.domain.diary
 
 import android.util.Log
-import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.hotworx.models.HotsquadList.Passio.getPassioRequest
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 import com.passio.modulepassio.data.Repository
 import com.passio.modulepassio.interfaces.PassioDataCallback
 import com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
-import com.passio.modulepassio.ui.base.BaseFragment
 import com.passio.modulepassio.ui.model.FoodRecord
-import com.passio.modulepassio.ui.util.Constant
 import java.util.Date
 
-object DiaryUseCase:com.passio.modulepassio.BaseFragment(){
+object DiaryUseCase{
 
     private var callback: PassioDataCallback? = null
     private val repository = Repository.getInstance()

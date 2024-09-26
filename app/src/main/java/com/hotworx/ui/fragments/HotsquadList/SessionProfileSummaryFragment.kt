@@ -14,7 +14,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.hotworx.R
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton
+import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentSessionProfileSummaryBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
@@ -26,7 +27,6 @@ import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionProfileHighli
 import com.hotworx.ui.adapters.HotsquadListAdapter.Sessions.SessionProfileMemberAdapter
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
-import com.passio.modulepassio.Singletons.ApiHeaderSingleton.apiHeader
 
 class SessionProfileSummaryFragment : BaseFragment(){
 
