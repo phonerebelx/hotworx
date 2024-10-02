@@ -24,8 +24,10 @@ import com.hotworx.ui.views.TitleBar
 import com.passio.modulepassio.NutritionUIModule
 import com.passio.modulepassio.domain.diary.DiaryUseCase
 import com.passio.modulepassio.domain.mealplan.MealPlanUseCase
+import com.passio.modulepassio.interfaces.DeletePassioDataCallback
 import com.passio.modulepassio.interfaces.PassioDataCallback
 import com.passio.modulepassio.interfaces.PostPassioDataCallback
+import com.passio.modulepassio.models.HotsquadList.Passio.DeleteMealData
 import com.passio.modulepassio.ui.model.FoodRecord
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,12 +37,14 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallback{
+class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallback,DeletePassioDataCallback{
     private var _binding: FragmentPassioBinding? = null
     private val binding get() = _binding
     private lateinit var passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
     private lateinit var recordList: com.passio.modulepassio.models.HotsquadList.Passio.PostPassioResponse
+    private lateinit var deleteList: com.passio.modulepassio.models.HotsquadList.Passio.DeleteMealData
     private lateinit var records: List<FoodRecord>
+    private lateinit var recordsData: FoodRecord
     private var isApiCallInProgress = false // Flag to prevent multiple calls
 
     override fun onAttach(context: Context) {
@@ -82,11 +86,13 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
 
         // Set the callback before calling DiaryUseCase
         DiaryUseCase.setPassioDataCallback(this)
+        DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val logsDiary = DiaryUseCase.getLogsForDay(Date())
+                val deleteDiary = DiaryUseCase.deleteRecord(FoodRecord())
                 val logsMeal = MealPlanUseCase.logFoodRecord(FoodRecord())
                 // Switch to the main thread for UI updates
                 withContext(Dispatchers.Main) {
@@ -95,6 +101,7 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
                         binding?.textView?.text = "Logs received: ${logsDiary.size}"
                         Log.e("PassioFragmentTExtData", "Logs received: ${logsDiary.size}")
                         Log.e("PassioLogMeal", "Logs received: ${logsMeal}")
+                        Log.e("DeleteeeeLogMeal", "Logs received: ${deleteDiary}")
                     } else {
                         Log.e("PassioFragment", "Fragment is not attached, skipping UI update")
                     }
@@ -211,6 +218,31 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
                     dockActivity?.showErrorMessage("No response from server")
                 }
             }
+
+            Constants.DELETE_PASSIO_RECORD -> {
+                val responseJson = liveData.value
+                Log.d("Response", "LiveData value: $responseJson")
+
+                if (responseJson != null) {
+                    try {
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, DeleteMealData::class.java)!!
+                        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+                        val currentDate = Date()
+                        val formattedDate = dateFormat.format(currentDate)
+                        if (response != null) {
+                            deleteDataSuccess(deleteList)
+                        } else {
+                            deleteDataError("Received empty response")
+                        }
+                    } catch (e: Exception) {
+                        dockActivity?.showErrorMessage(e.message.toString())
+                        Log.i("Error", e.message.toString())
+                    }
+                } else {
+                    Log.e("Error", "LiveData value is null")
+                    dockActivity?.showErrorMessage("No response from server")
+                }
+            }
         }
     }
 
@@ -229,7 +261,7 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
             FoodEntry(
                 food_entry_date = formattedDate,  // Use the formatted current date
                 "",           // Replace with actual URL if available
-                food_list = record
+                food_list = listOf(record)
             )
         }
 
@@ -258,5 +290,41 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
             Log.d("RecordListtt", "passioList is not initialized. Error: $error")
         }
         Log.e("RecordListtt", "Server issue: $error")
+    }
+
+    //Delete Passio Record
+    override fun onDeletePassioData(uuid: String, food_entry_date: String ,recordsData: FoodRecord) {
+        if (!isAdded || context == null) {
+            Log.e("DeletePassioFragment", "Fragment is not attached, skipping API call")
+            return
+        }
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
+        this.recordsData = recordsData
+
+        // Make the API call
+        getServiceHelper()?.enqueueCallExtended(
+            getWebService()?.deletePassioData(
+                ApiHeaderSingleton.apiHeader(requireContext()),
+                recordsData.uuid,
+                formattedDate
+            ), Constants.DELETE_PASSIO_RECORD, true
+        )
+    }
+
+    override fun deleteDataSuccess(deleteList: DeleteMealData) {
+        this.deleteList = deleteList
+        Log.d("DeleteList", "Record data received: $deleteList")
+        DiaryUseCase.onPassioDataDelete("","",deleteList)
+    }
+
+    override fun deleteDataError(error: String) {
+        if (::deleteList.isInitialized) {
+            Log.d("deleteListtttttt", "Received Passio data from parent: $deleteList")
+        } else {
+            Log.d("deleteListtttttt", "passioList is not initialized. Error: $error")
+        }
+        Log.e("deleteListtttttt", "Server issue: $error")
     }
 }

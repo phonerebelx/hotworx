@@ -113,5 +113,8 @@ public class Constants {
     //Hotsquad Session
     public static final String SESSION_MEMBER = "SESSION_MEMBER";
     public static final String SEND_SESSION_MEMBER = "SEND_SESSION_MEMBER";
+
+    //Passio
     public static final String POST_PASSIO_RECORD = "POST_PASSIO_RECORD";
+    public static final String DELETE_PASSIO_RECORD = "DELETE_PASSIO_RECORD";
 }

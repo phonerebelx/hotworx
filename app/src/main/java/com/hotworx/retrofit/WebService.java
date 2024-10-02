@@ -34,6 +34,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -782,5 +783,12 @@ public interface WebService {
     Call<ResponseBody> postPassioData(
             @HeaderMap Map<String, String> headers,
             @Body postPassioRequest body
+    );
+
+    @DELETE("activities/DeletePassioData")
+    Call<ResponseBody> deletePassioData(
+            @HeaderMap Map<String, String> headers,
+            @Query("uuid") String uuid,
+            @Query("food_entry_date") String food_entry_date
     );
 }
