@@ -304,6 +304,7 @@ class ReferralDetailFragment : BaseFragment(), OnClickItemListener, OnRefreshLis
     private fun initReferralDialog() {
         val referralLocationDialogFragment = ReferralLocationDialogFragment(this)
         referralLocationDialogFragment.referralData = viewModel.referralDetails.value!!.data
+        referralLocationDialogFragment.veriftyIsLocationOrNot = false
         referralLocationDialogFragment.show(
             parentFragmentManager,
             referralLocationDialogFragment.tag
