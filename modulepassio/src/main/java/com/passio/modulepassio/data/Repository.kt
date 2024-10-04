@@ -22,6 +22,7 @@ import ai.passio.passiosdk.passiofood.data.model.PassioFoodItem
 import ai.passio.passiosdk.passiofood.nutritionfacts.PassioNutritionFacts
 import android.content.Context
 import android.graphics.Bitmap
+import android.util.Log
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
@@ -131,6 +132,8 @@ class Repository private constructor() {
     }
 
     suspend fun getLogsForDay(day: Date): List<FoodRecord> {
+
+
         return connector.fetchDayRecords(day)
     }
 
@@ -138,6 +141,7 @@ class Repository private constructor() {
         val today = DateTime(day.time)
         val startOfWeek = getStartOfWeek(today)//.millis
         val endOfWeek = getEndOfWeek(today)//.millis
+        Log.d("getLogsForWeek", "fetchLogsRecords found: fetchLogsRecords")
         return connector.fetchLogsRecords(startOfWeek.toDate(), endOfWeek.toDate())
     }
 
@@ -146,7 +150,7 @@ class Repository private constructor() {
         val today = DateTime(day.time)
         val startOfMonth = getStartOfMonth(today)//.millis
         val endOfMonth = getEndOfMonth(today)//.millis
-
+        Log.d("getLogsForMonth", "fetchLogsRecords found: fetchLogsRecords")
         return connector.fetchLogsRecords(startOfMonth.toDate(), endOfMonth.toDate())
     }
 
@@ -154,6 +158,7 @@ class Repository private constructor() {
     suspend fun getLogsForLast30Days(): List<FoodRecord> {
         val today = DateTime()
         val before30Days = getBefore30Days(today)
+        Log.d("getLogsForLast30Days", "fetchLogsRecords found: fetchLogsRecords")
         return connector.fetchLogsRecords(before30Days.toDate(), today.toDate())
     }
 

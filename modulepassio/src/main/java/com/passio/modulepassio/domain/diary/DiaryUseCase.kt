@@ -7,6 +7,9 @@ import com.passio.modulepassio.interfaces.PassioDataCallback
 import com.passio.modulepassio.models.HotsquadList.Passio.DeleteMealData
 import com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
 import com.passio.modulepassio.ui.model.FoodRecord
+import com.passio.modulepassio.ui.util.getBefore30Days
+import kotlinx.coroutines.delay
+import org.joda.time.DateTime
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -16,7 +19,6 @@ object DiaryUseCase{
     private var callback: PassioDataCallback? = null
     private var callbackdelete: DeletePassioDataCallback? = null
     private val repository = Repository.getInstance()
-    private var Status:Boolean = false
 
     fun setPassioDataCallback(callback: PassioDataCallback) {
         this.callback = callback
@@ -28,20 +30,22 @@ object DiaryUseCase{
 
     suspend fun getLogsForDay(day: Date): List<FoodRecord> {
         Log.d("DiaryUseCase", "Callback to fetch passio data for day: $day")
-        callback?.onFetchPassioData(day)
+
+//        callback?.onFetchPassioData(day)
 
         return repository.getLogsForDay(day)
     }
 
-    // This method will be called from the parent once the API data is available
-    fun onPassioDataReceived(passioList: GetPassioResponse) {
-        if (passioList.isNotEmpty()) {
-            Log.d("DiaryUseCaseeee", "Passio data received: $passioList")
-            // Process the data
-        } else {
-            Log.d("DiaryUseCaseeee", "Received null Passio data")
-        }
-    }
+//    // This method will be called from the parent once the API data is available
+//    fun onPassioDataReceived(passioList: GetPassioResponse) {
+//        if (passioList.isNotEmpty()) {
+//            Log.d("DiaryUseCaseeee success gte", "Passio data received get: $passioList")
+//
+//        } else {
+//            Log.d("DiaryUseCaseeee failed get", "Received null Passio data")
+//
+//        }
+//    }
 
     suspend fun getLogsForWeek(day: Date): List<FoodRecord> {
         return repository.getLogsForWeek(day)
@@ -51,7 +55,12 @@ object DiaryUseCase{
         return repository.getLogsForMonth(day)
     }
     suspend fun getLogsForLast30Days(): List<FoodRecord> {
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
+//        callback?.onFetchPassioData(currentDate)
         return repository.getLogsForLast30Days()
+//        return repository.getLogsForDay(currentDate)
     }
 
     suspend fun deleteRecord(foodRecord: FoodRecord): Boolean {
@@ -68,7 +77,7 @@ object DiaryUseCase{
     // This method will be called from the parent once the API data is available
     fun onPassioDataDelete(uuid:String,food_entry_date:String,deleteList: DeleteMealData) {
         if (deleteList.data.isNotEmpty()) {
-            Log.d("DiaryDeletee", "Passio data received: $deleteList")
+            Log.d("DiaryDeletee", "Passio data received delete: $deleteList")
             // Process the data
         } else {
             Log.d("DiaryDeleteeElse", "Received empty Passio data")

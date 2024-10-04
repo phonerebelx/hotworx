@@ -8,8 +8,8 @@ import ai.passio.passiosdk.passiofood.data.measurement.UnitEnergy
 import ai.passio.passiosdk.passiofood.data.measurement.UnitMass
 import android.content.Context
 import android.text.format.DateFormat
+import android.util.Log
 import com.google.gson.GsonBuilder
-import com.passio.modulepassio.data.PassioConnector
 import org.joda.time.DateTime
 import java.util.Calendar
 import java.util.Date
@@ -76,6 +76,7 @@ class SharedPrefsPassioConnector(context: Context) : PassioConnector {
 
         val json = records.map { gson.toJson(it) }
         sharedPreferences.saveRecords(json)
+        Log.d("updateRecords+fetchDayRecords123", "updateRecords daye found: fetchLogsRecords $json")
         return true
     }
 
@@ -91,6 +92,7 @@ class SharedPrefsPassioConnector(context: Context) : PassioConnector {
         }
         val json = records.map { gson.toJson(it) }
         sharedPreferences.saveRecords(json)
+        Log.d("updateRecords+fetchDayRecords123", "updateRecords daye found: fetchLogsRecords $json")
         return true
     }
 
@@ -111,6 +113,7 @@ class SharedPrefsPassioConnector(context: Context) : PassioConnector {
                 dayString == recordDay
             }
         }
+        Log.d("fetchDayRecords+fetchDayRecords123", "fetchLogsRecords daye found: fetchLogsRecords ${dayRecords.size}")
         return dayRecords
     }
 
@@ -126,6 +129,7 @@ class SharedPrefsPassioConnector(context: Context) : PassioConnector {
     override suspend fun fetchLogsRecords(startDate: Date, endDate: Date): List<FoodRecord> {
         val fromDate = DateTime(startDate.time).millis
         val toDate = DateTime(endDate.time).millis
+        Log.d("fetchLogsRecords", "fetchLogsRecords found: fetchLogsRecords ${records.size}")
         return records.filter { it.createdAtTime() in fromDate..toDate }
     }
 

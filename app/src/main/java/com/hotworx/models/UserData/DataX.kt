@@ -52,5 +52,6 @@ data class DataX(
     val unread_notifications: String?,
     val new_reciprocal_enabled: String?,
     val hotsquad_pending_invites: String?,
-
+    val is_hotsquad_enabled: String?,
+    val is_passio_enabled: String?
 ): Serializable

@@ -1,5 +1,6 @@
 package com.passio.modulepassio.ui.dashboard
 
+import android.util.Log
 import com.passio.modulepassio.domain.diary.DiaryUseCase
 import com.passio.modulepassio.domain.user.UserProfileUseCase
 import com.passio.modulepassio.domain.water.WaterUseCase
@@ -12,6 +13,7 @@ import com.passio.modulepassio.ui.util.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.passio.modulepassio.interfaces.PassioDataCallback
 import com.prolificinteractive.materialcalendarview.CalendarMode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,6 +46,12 @@ class DashboardViewModel : BaseViewModel() {
 
     private val _weightSummary = SingleLiveEvent<Pair<Double, Double>>()
     val weightSummary: LiveData<Pair<Double, Double>> get() = _weightSummary
+    private var callback: PassioDataCallback? = null
+
+    fun setPassioDataCallback(callback: PassioDataCallback) {
+        this.callback = callback
+    }
+
 
     init {
         _calendarMode.postValue(calendarModeCurrent)

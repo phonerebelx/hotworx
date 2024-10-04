@@ -26,7 +26,8 @@ class ReferralLocationDialogFragment(private val clickListener: OnClickItemListe
 
     lateinit var binding: FragmentReferralLocationBinding
     lateinit var referralData: List<Data>
-    var veriftyIsLocationOrNot by Delegates.notNull<Boolean>()
+//    var veriftyIsLocationOrNot by Delegates.notNull<Boolean>()
+    var veriftyIsLocationOrNot: Boolean = false // Default value
     lateinit var referralLocationAdapter: ReferralLocationAdapter
     var utm = ""
     var titleValue = ""
@@ -42,6 +43,9 @@ class ReferralLocationDialogFragment(private val clickListener: OnClickItemListe
             utm = bundle.getString("UTMVALUE")?.trim() ?: ""
             Log.d("jskjhjkh",utm)
         }
+
+        // Initialize veriftyIsLocationOrNot based on the utm value
+        veriftyIsLocationOrNot = utm.equals("LOCATION", ignoreCase = true)
 
         setCountData()
         initRecyclerView(referralData)

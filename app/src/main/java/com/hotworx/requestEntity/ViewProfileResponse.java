@@ -221,6 +221,8 @@ public class ViewProfileResponse extends BaseModel implements Serializable {
     private String country;
 
     private String is_ambassador_allowed;
+    private String is_hotsquad_enabled;
+    private String is_passio_enabled;
     private String is_employee_allowed;
 
     public String getIsAmbassadorAllowed() {
@@ -230,6 +232,24 @@ public class ViewProfileResponse extends BaseModel implements Serializable {
     public void setIsAmbassadorAllowed(String is_ambassador_allowed) {
         this.is_ambassador_allowed = is_ambassador_allowed;
     }
+
+    public String getIs_hotsquad_enabled() {
+        return is_hotsquad_enabled;
+    }
+
+    public void setIs_hotsquad_enabled(String is_hotsquad_enabled) {
+        this.is_hotsquad_enabled = is_hotsquad_enabled;
+    }
+
+
+    public String getIs_passio_enabled() {
+        return is_passio_enabled;
+    }
+
+    public void setIs_passio_enabled(String is_passio_enabled) {
+        this.is_passio_enabled = is_passio_enabled;
+    }
+
 
     public String getIsEmployeeAllowed() {
         return is_employee_allowed;

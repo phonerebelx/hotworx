@@ -154,12 +154,18 @@ public class SideMenuFragment extends BaseFragment {
         drawerList.add(new NavigationItem(R.string.home, R.drawable.icon_menu_home, null, null,null, Constants.ACTION_HOME));
         drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null,null, null));
 
-        drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
-
+//        drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
+        
+        if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getIs_passio_enabled() != null && prefHelper.getLoginData().getIs_passio_enabled().equalsIgnoreCase("yes")) {
+            drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
+        }
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null,null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null,null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null,null, null));
-        drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad,new MyHotsquadListFragment(), null,null, null));
+
+        if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getIs_hotsquad_enabled() != null && prefHelper.getLoginData().getIs_hotsquad_enabled().equalsIgnoreCase("yes")) {
+            drawerList.add(new NavigationItem(R.string.hotsquadlist, R.drawable.icon_menu_hotsquad,new MyHotsquadListFragment(), null,null, null));
+        }else {}
 //        drawerList.add(new NavigationItem(R.string.pending_invite, R.drawable.icon_menu_hotsquad,new RecieverPendingRequestFragment(), null,null, null));
 
         drawerList.add(new NavigationItem(R.string.rewards, R.drawable.icon_menu_rewards, new LatestRewardFragment(), null,null, null));

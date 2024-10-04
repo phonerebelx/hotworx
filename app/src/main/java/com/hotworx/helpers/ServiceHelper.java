@@ -59,8 +59,6 @@ public class ServiceHelper {
         this.prefHelper = new BasePreferenceHelper(context);
     }
 
-
-
     public void enqueueCall(Call<ResponseBody> call, final String tag, final boolean showLoader) {
         if (InternetHelper.CheckInternetConectivity(context)) {
             if (showLoader)
@@ -100,7 +98,9 @@ public class ServiceHelper {
                         }
                         else if (response.code() == 552) {
                             apiListener.onFailureWithResponseCode(response.code(), "New version of app is available, please update to continue", tag);
-                        } else {
+                        }else if (response.code() == 404 ) {
+                            apiListener.onFailureWithResponseCode(response.code(), "No Record Found", tag);
+                        }  else {
                             Utils.customToast(context, context.getString(R.string.error_failure));
                             serviceResponseLisener.ResponseFailure(context.getString(R.string.error_failure), tag);
                         }
@@ -125,7 +125,6 @@ public class ServiceHelper {
             serviceResponseLisener.ResponseNoInternet(tag);
         }
     }
-
 
     public void enqueueCallExtended(Call<ResponseBody> call, final String tag, final boolean showLoader) {
         apiResponse = new MutableLiveData<String>();

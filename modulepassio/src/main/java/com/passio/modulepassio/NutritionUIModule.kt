@@ -1,8 +1,8 @@
 package com.passio.modulepassio
 
-import com.passio.modulepassio.data.PassioConnector
 import android.content.Context
 import android.content.Intent
+import com.passio.modulepassio.data.PassioConnector
 import com.passio.modulepassio.ui.activity.PassioUiModuleActivity
 
 object NutritionUIModule {

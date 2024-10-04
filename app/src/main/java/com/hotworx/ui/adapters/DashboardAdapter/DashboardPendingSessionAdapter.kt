@@ -86,6 +86,7 @@ class DashboardPendingSessionAdapter(
             onItemClickInterface.onItemClick(item, "COME_FROM_TAB_VIEW")
         }
 
+//                && prefHelper.getLoginData().getIs_passio_enabled().equals("yes", ignoreCase = true)
         if(!item.has_shared_access){
             binding.ivShareIcon.visibility = View.GONE
         }else{

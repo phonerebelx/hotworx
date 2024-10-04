@@ -22,17 +22,20 @@ import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
 import com.passio.modulepassio.NutritionUIModule
+import com.passio.modulepassio.data.PassioHotsquadConnector
 import com.passio.modulepassio.domain.diary.DiaryUseCase
 import com.passio.modulepassio.domain.mealplan.MealPlanUseCase
 import com.passio.modulepassio.interfaces.DeletePassioDataCallback
 import com.passio.modulepassio.interfaces.PassioDataCallback
 import com.passio.modulepassio.interfaces.PostPassioDataCallback
 import com.passio.modulepassio.models.HotsquadList.Passio.DeleteMealData
+import com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
 import com.passio.modulepassio.ui.model.FoodRecord
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.awaitResponse
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -50,6 +53,11 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d("PassioFragmenttttt", "Fragment attached")
+    }
+
+    private val passioConnector: PassioHotsquadConnector = PassioHotsquadConnector().apply {
+//        initialize()
+        setPassioDataCallback(this@PassioFragment)  // Set the callback
     }
 
     override fun onCreateView(
@@ -85,13 +93,16 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         }
 
         // Set the callback before calling DiaryUseCase
-        DiaryUseCase.setPassioDataCallback(this)
+        passioConnector
+//        DiaryUseCase.setPassioDataCallback(this)
+        PassioHotsquadConnector().setPassioDataCallback(this)
         DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val logsDiary = DiaryUseCase.getLogsForDay(Date())
+//                val logsDiary = DiaryUseCase.getLogsForDay(Date())
+                val logsDiary = DiaryUseCase.getLogsForLast30Days()
                 val deleteDiary = DiaryUseCase.deleteRecord(FoodRecord())
                 val logsMeal = MealPlanUseCase.logFoodRecord(FoodRecord())
                 // Switch to the main thread for UI updates
@@ -153,15 +164,18 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
     }
 
     override fun ResponseSuccess(result: String?, tag: String?) {
-        if (!isAdded || _binding == null) return // Add safeguard check
+        if (!isAdded || _binding == null) return
         Log.d("PassioFragment", "Response received for tag: $tag")
-        // Parse the response based on the tag
         if (tag == WebServiceConstants.GET_PASSIO_LIST) {
+
             val passioData = GsonFactory.getConfiguredGson().fromJson(result, com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse::class.java)
 
-            if (passioData != null) {
+            if (passioData != null && passioData.isNotEmpty()) {
                 onPassioDataSuccess(passioData)
+                Log.d("Success1DiaryUseCaseGetResponseSuccess", "Callback to fetch passio data for day: $passioData")
             } else {
+                Log.d("PassioFragment", "Received empty response, showing empty message")
+//                showEmptyMessage()
                 onPassioDataError("Received empty response")
             }
         }
@@ -170,15 +184,19 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
     override fun ResponseFailure(message: String?, tag: String?) {
         if (tag == WebServiceConstants.GET_PASSIO_LIST) {
             onPassioDataError(message ?: "Unknown error")
+
         }
     }
 
     override fun onPassioDataSuccess(passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse) {
         this.passioList = passioList
-        Log.d("ParentFragment", "Passio data received: $passioList")
-        DiaryUseCase.onPassioDataReceived(passioList)
+        if (passioList.isNotEmpty()) {
+            PassioHotsquadConnector().onPassioDataReceived(passioList)
+//            DiaryUseCase.onPassioDataReceived(passioList)
+        } else {
+            Log.d("PassioFragmentSuccess", "Received empty Passio data, not fetching local data")
+        }
     }
-
     override fun onPassioDataError(error: String) {
         if (::passioList.isInitialized) {
             Log.d("DiaryUseCase", "Received Passio data from parent: $passioList")
@@ -187,7 +205,6 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         }
         Log.e("DiaryUseCase", "Server issue: $error")
     }
-
 
     //POST API
 
@@ -255,7 +272,7 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         val currentDate = Date()
         val formattedDate = dateFormat.format(currentDate)
         this.records = records
-        Log.d("ParentFragmentMeal", "Passio data received: $records")
+        Log.d("ParentFragmentMeal", "Passio data received post: $records")
 
         val foodEntries = records.map { record ->
             FoodEntry(
