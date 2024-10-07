@@ -85,7 +85,9 @@ class DashboardViewModel : BaseViewModel() {
     fun fetchLogsForCurrentDay() {
         viewModelScope.launch {
             val userProfile = useCaseUserProfile.getUserProfile()
+            Log.d("DashboardViewModel", "Fetching logs for date: $currentDate")
             val records = useCase.getLogsForDay(currentDate)
+            Log.d("DashboardViewModel", "Fetched records: $records")
             _logsLD.postValue(Pair(userProfile, records))
             fetchWaterSummary()
             fetchWeightSummary()

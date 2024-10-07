@@ -24,6 +24,7 @@ import com.hotworx.ui.views.TitleBar
 import com.passio.modulepassio.NutritionUIModule
 import com.passio.modulepassio.data.PassioHotsquadConnector
 import com.passio.modulepassio.domain.diary.DiaryUseCase
+import com.passio.modulepassio.domain.diary.DiaryUseCase.apiPassioList
 import com.passio.modulepassio.domain.mealplan.MealPlanUseCase
 import com.passio.modulepassio.interfaces.DeletePassioDataCallback
 import com.passio.modulepassio.interfaces.PassioDataCallback
@@ -93,16 +94,16 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         }
 
         // Set the callback before calling DiaryUseCase
-        passioConnector
-//        DiaryUseCase.setPassioDataCallback(this)
+//        passioConnector
+        DiaryUseCase.setPassioDataCallback(this)
         PassioHotsquadConnector().setPassioDataCallback(this)
         DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-//                val logsDiary = DiaryUseCase.getLogsForDay(Date())
-                val logsDiary = DiaryUseCase.getLogsForLast30Days()
+                val logsDiary = DiaryUseCase.getLogsForDay(Date())
+//                val logsDiary = DiaryUseCase.getLogsForLast30Days()
                 val deleteDiary = DiaryUseCase.deleteRecord(FoodRecord())
                 val logsMeal = MealPlanUseCase.logFoodRecord(FoodRecord())
                 // Switch to the main thread for UI updates
@@ -170,13 +171,20 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
 
             val passioData = GsonFactory.getConfiguredGson().fromJson(result, com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse::class.java)
 
-            if (passioData != null && passioData.isNotEmpty()) {
-                onPassioDataSuccess(passioData)
-                Log.d("Success1DiaryUseCaseGetResponseSuccess", "Callback to fetch passio data for day: $passioData")
+//            if (passioData != null && passioData.isNotEmpty()) {
+//                onPassioDataSuccess(passioData)
+//                Log.d("Success1DiaryUseCaseGetResponseSuccess", "Callback to fetch passio data for day: $passioData")
+//            } else {
+//                Log.d("PassioFragment", "Received empty response, showing empty message")
+////                showEmptyMessage()
+//                onPassioDataError("Received empty response")
+//            }
+            if (passioList.isNotEmpty()) {
+                Log.d("PassioFragment", "Received non-empty Passio data")
+                DiaryUseCase.onPassioDataReceived(passioList) // Pass the API data to the use case.
             } else {
-                Log.d("PassioFragment", "Received empty response, showing empty message")
-//                showEmptyMessage()
-                onPassioDataError("Received empty response")
+                Log.d("PassioFragment", "Received empty Passio data")
+                DiaryUseCase.onPassioDataReceived(GetPassioResponse()) // Pass an empty instance of GetPassioResponse
             }
         }
     }
@@ -191,12 +199,32 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
     override fun onPassioDataSuccess(passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse) {
         this.passioList = passioList
         if (passioList.isNotEmpty()) {
-            PassioHotsquadConnector().onPassioDataReceived(passioList)
-//            DiaryUseCase.onPassioDataReceived(passioList)
+//            PassioHotsquadConnector().onPassioDataReceived(passioList)
+            DiaryUseCase.onPassioDataReceived(passioList)
         } else {
             Log.d("PassioFragmentSuccess", "Received empty Passio data, not fetching local data")
         }
+//        if (passioList.isNotEmpty()) {
+//            Log.d("PassioFragmentSuccess", "Received non-empty Passio data")
+//
+//            // Map the passioList to a list of FoodRecord
+//            apiPassioList = passioList.map { passioItem ->
+//                FoodRecord().apply {
+//                    id = passioItem.id
+//                    name = passioItem.name
+//                    additionalData = passioItem.details // Assuming this maps to additionalData; adjust as necessary
+//                    iconId = passioItem.iconId
+//                }
+//            }
+//
+//            Log.d("PassioFragmentGETT", "API data set successfully: $apiPassioList")
+//            DiaryUseCase.onPassioDataReceived(passioList) // Pass the API data to the use case.
+//        } else {
+//            Log.d("PassioFragmentGETTLOCALLL", "Received empty Passio data")
+//            DiaryUseCase.onPassioDataReceived(GetPassioResponse()) // Pass an empty instance.
+//        }
     }
+
     override fun onPassioDataError(error: String) {
         if (::passioList.isInitialized) {
             Log.d("DiaryUseCase", "Received Passio data from parent: $passioList")

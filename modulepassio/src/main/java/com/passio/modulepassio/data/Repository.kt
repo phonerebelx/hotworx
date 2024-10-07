@@ -137,6 +137,7 @@ class Repository private constructor() {
         return connector.fetchDayRecords(day)
     }
 
+
     suspend fun getLogsForWeek(day: Date): List<FoodRecord> {
         val today = DateTime(day.time)
         val startOfWeek = getStartOfWeek(today)//.millis

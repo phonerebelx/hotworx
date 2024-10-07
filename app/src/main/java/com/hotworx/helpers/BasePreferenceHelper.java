@@ -142,7 +142,7 @@ public class BasePreferenceHelper extends PreferenceHelper {
         editor.remove("userProfile");
 
         // Apply the changes
-        editor.apply(); // use apply() instead of commit() for asynchronous saving
+        editor.apply();
     }
 
     public void saveString(String key, String value) {

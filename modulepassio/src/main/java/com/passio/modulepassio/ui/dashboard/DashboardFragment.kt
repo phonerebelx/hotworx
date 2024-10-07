@@ -18,6 +18,7 @@ import ai.passio.passiosdk.passiofood.data.measurement.UnitEnergy
 import ai.passio.passiosdk.passiofood.data.measurement.UnitMass
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.util.Log
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -229,6 +230,7 @@ class DashboardFragment : BaseFragment<DashboardViewModel>() {
     private fun updateLogs(data: Pair<UserProfile, List<FoodRecord>>) {
 
         with(binding) {
+            Log.d("DashboardFragment", "Updating logs with data: $data")
             val userProfile = data.first
             val records = data.second
             val currentCalories = records.map { it.nutrients().calories() }

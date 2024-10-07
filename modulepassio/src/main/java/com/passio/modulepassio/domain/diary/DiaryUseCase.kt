@@ -1,12 +1,15 @@
 package com.passio.modulepassio.domain.diary
 
 import android.util.Log
+import com.passio.modulepassio.data.PassioHotsquadConnector
 import com.passio.modulepassio.data.Repository
 import com.passio.modulepassio.interfaces.DeletePassioDataCallback
 import com.passio.modulepassio.interfaces.PassioDataCallback
 import com.passio.modulepassio.models.HotsquadList.Passio.DeleteMealData
 import com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
+import com.passio.modulepassio.models.HotsquadList.Passio.Ingredient
 import com.passio.modulepassio.ui.model.FoodRecord
+import com.passio.modulepassio.ui.model.FoodRecordIngredient
 import com.passio.modulepassio.ui.util.getBefore30Days
 import kotlinx.coroutines.delay
 import org.joda.time.DateTime
@@ -19,7 +22,7 @@ object DiaryUseCase{
     private var callback: PassioDataCallback? = null
     private var callbackdelete: DeletePassioDataCallback? = null
     private val repository = Repository.getInstance()
-
+    var apiPassioList: List<FoodRecord> = emptyList()
     fun setPassioDataCallback(callback: PassioDataCallback) {
         this.callback = callback
     }
@@ -30,22 +33,40 @@ object DiaryUseCase{
 
     suspend fun getLogsForDay(day: Date): List<FoodRecord> {
         Log.d("DiaryUseCase", "Callback to fetch passio data for day: $day")
-
-//        callback?.onFetchPassioData(day)
-
-        return repository.getLogsForDay(day)
+        callback?.onFetchPassioData(day)
+//        return repository.getLogsForDay(day)
+        return if (apiPassioList.isNotEmpty()) {
+            Log.d("DiaryUseCaseSucessss", "Using API data for logs")
+            apiPassioList
+        } else {
+            Log.d("DiaryUseCaseLocallll", "API data not available, falling back to local data")
+            repository.getLogsForDay(day) // This would only be used as a fallback.
+        }
     }
 
-//    // This method will be called from the parent once the API data is available
-//    fun onPassioDataReceived(passioList: GetPassioResponse) {
-//        if (passioList.isNotEmpty()) {
-//            Log.d("DiaryUseCaseeee success gte", "Passio data received get: $passioList")
-//
-//        } else {
-//            Log.d("DiaryUseCaseeee failed get", "Received null Passio data")
-//
-//        }
-//    }
+    fun onPassioDataReceived(passioList: GetPassioResponse) {
+        apiPassioList = passioList.toFoodRecordList()
+        if (passioList.isNotEmpty()) {
+            Log.d("DiaryUseCaseeeesuccessGet", "Passio data received get: $passioList")
+
+        } else {
+            Log.d("DiaryUseCaseeeefailedGet", "Received null Passio data")
+
+        }
+    }
+
+    // Extension function to convert GetPassioResponse to List<FoodRecord>
+    fun GetPassioResponse.toFoodRecordList(): List<FoodRecord> {
+        return this.map { passioItem ->
+            FoodRecord().apply {
+                id = passioItem.id
+                name = passioItem.name
+                additionalData = passioItem.details // Assuming this maps to additionalData; adjust as necessary
+                iconId = passioItem.iconId
+                // Add any other necessary fields from passioItem to FoodRecord
+            }
+        }
+    }
 
     suspend fun getLogsForWeek(day: Date): List<FoodRecord> {
         return repository.getLogsForWeek(day)
