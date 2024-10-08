@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboard">
+
+    <fragment
+        android:id="@+id/dashboard"
+        android:name="com.example.passiomodulenew.ui.dashboard.DashboardFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/dashboard_to_search"
+            app:destination="@id/search" />
+        <action
+            android:id="@+id/dashboard_to_progress"
+            app:destination="@id/progress">
+
+            <argument
+                android:name="currentDate"
+                app:argType="long" />
+
+        </action>
+        <action
+            android:id="@+id/dashboard_to_weight_tracking"
+            app:destination="@id/weight_tracking">
+
+            <argument
+                android:name="currentDate"
+                app:argType="long" />
+
+        </action>
+        <action
+            android:id="@+id/dashboard_to_water_tracking"
+            app:destination="@id/water_tracking">
+
+            <argument
+                android:name="currentDate"
+                app:argType="long" />
+
+        </action>
+
+        <action
+            android:id="@+id/dashboard_to_my_profile"
+            app:destination="@id/my_profile" />
+
+        <action
+            android:id="@+id/dashboard_to_settings"
+            app:destination="@id/settings" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/weight_tracking"
+        android:name="com.example.passiomodulenew.ui.weight.WeightTrackingFragment"
+        android:label="WeightTrackingFragment"
+        tools:layout="@layout/fragment_weight_tracking">
+        <action
+            android:id="@+id/weight_tracking_to_save_weight"
+            app:destination="@id/save_weight" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/save_weight"
+        android:name="com.example.passiomodulenew.ui.weight.SaveWeightFragment"
+        android:label="SaveWeightFragment"
+        tools:layout="@layout/fragment_save_weight" />
+
+    <fragment
+        android:id="@+id/water_tracking"
+        android:name="com.example.passiomodulenew.ui.water.WaterTrackingFragment"
+        android:label="WaterTrackingFragment"
+        tools:layout="@layout/fragment_water_tracking">
+        <action
+            android:id="@+id/water_tracking_to_save_water"
+            app:destination="@id/save_water" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/save_water"
+        android:name="com.example.passiomodulenew.ui.water.SaveWaterFragment"
+        android:label="SaveWeightFragment"
+        tools:layout="@layout/fragment_save_weight" />
+
+    <fragment
+        android:id="@+id/diary"
+        android:name="com.example.passiomodulenew.ui.diary.DiaryFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_diary">
+
+        <action
+            android:id="@+id/diary_to_edit"
+            app:destination="@id/edit">
+            <argument
+                android:name="isEditLog"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
+        <action
+            android:id="@+id/diary_to_progress"
+            app:destination="@id/progress">
+
+            <argument
+                android:name="currentDate"
+                app:argType="long" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/mealplan"
+        android:name="com.example.passiomodulenew.ui.mealplan.MealPlanFragment"
+        android:label="Meal Plan"
+        tools:layout="@layout/fragment_meal_plan">
+
+        <action
+            android:id="@+id/mealplan_to_edit"
+            app:destination="@id/edit" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/progress"
+        android:name="com.example.passiomodulenew.ui.progress.ProgressFragment"
+        android:label="Progress"
+        tools:layout="@layout/fragment_progress">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/edit"
+        android:name="com.example.passiomodulenew.ui.edit.EditFoodFragment"
+        android:label="Edit"
+        tools:layout="@layout/fragment_edit_food">
+
+        <action
+            android:id="@+id/edit_to_edit"
+            app:destination="@id/edit" />
+
+        <action
+            android:id="@+id/edit_to_nutrition_info"
+            app:destination="@id/nutrition_info" />
+
+        <action
+            android:id="@+id/edit_to_food_creator"
+            app:destination="@id/food_creator" />
+
+        <action
+            android:id="@+id/edit_to_edit_recipe"
+            app:destination="@id/edit_recipe" />
+
+        <action
+            android:id="@+id/edit_to_search"
+            app:destination="@id/search"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/search"
+            app:popUpToInclusive="true">
+
+            <argument
+                android:name="isIngredient"
+                android:defaultValue="true"
+                app:argType="boolean" />
+
+        </action>
+
+        <action
+            android:id="@+id/edit_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard">
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/search"
+        android:name="com.example.passiomodulenew.ui.search.FoodSearchFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/search_to_edit"
+            app:destination="@id/edit"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/edit"
+            app:popUpToInclusive="true">
+
+        </action>
+        <action
+            android:id="@+id/search_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/add_food"
+            app:popUpToInclusive="true">
+
+        </action>
+        <action
+            android:id="@+id/search_to_edit_ingredient"
+            app:destination="@id/edit_ingredient">
+
+
+            <!--app:launchSingleTop="true"
+            app:popUpTo="@id/edit_recipe"
+            app:popUpToInclusive="false"-->
+
+        </action>
+
+        <action
+            android:id="@+id/back_to_edit_recipe"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/edit_recipe"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/camera"
+        android:name="com.example.passiomodulenew.ui.camera.CameraRecognitionFragment"
+        android:label="CameraRecognitionFragment"
+        tools:layout="@layout/fragment_camera_recognition">
+
+        <action
+            android:id="@+id/camera_to_edit"
+            app:destination="@id/edit"
+            app:launchSingleTop="true">
+
+        </action>
+        <action
+            android:id="@+id/camera_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true">
+
+        </action>
+        <action
+            android:id="@+id/camera_to_search"
+            app:destination="@id/search"
+            app:launchSingleTop="true">
+
+        </action>
+        <action
+            android:id="@+id/camera_to_food_creator"
+            app:destination="@id/food_creator"
+            app:launchSingleTop="true">
+
+        </action>
+
+
+        <action
+            android:id="@+id/camera_to_edit_ingredient"
+            app:destination="@id/edit_ingredient">
+        </action>
+
+        <action
+            android:id="@+id/back_to_edit_recipe"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/edit_recipe"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/macros"
+        android:name="com.example.passiomodulenew.ui.progress.MacrosFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_macros">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/micros"
+        android:name="com.example.passiomodulenew.ui.progress.MicrosFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_micros">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_food"
+        android:name="com.example.passiomodulenew.ui.menu.AddFoodFragment"
+        android:label="Add Food"
+        tools:layout="@layout/fragment_add_food">
+
+        <action
+            android:id="@+id/add_food_to_camera"
+            app:destination="@id/camera" />
+
+        <action
+            android:id="@+id/add_food_to_search"
+            app:destination="@id/search" />
+        <action
+            android:id="@+id/add_food_to_photo"
+            app:destination="@id/take_select_photo" />
+        <action
+            android:id="@+id/add_food_to_voice_logging"
+            app:destination="@id/voice_logging" />
+        <action
+            android:id="@+id/add_food_to_advisor"
+            app:destination="@id/advisor" />
+        <action
+            android:id="@+id/add_food_to_my_foods"
+            app:destination="@id/my_foods" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/my_foods"
+        android:name="com.example.passiomodulenew.ui.myfood.MyFoodsFragment"
+        android:label="MyFoodsFragment"
+        tools:layout="@layout/fragment_my_foods">
+        <action
+            android:id="@+id/my_foods_to_food_creator"
+            app:destination="@id/food_creator" />
+        <action
+            android:id="@+id/my_foods_to_edit"
+            app:destination="@id/edit" />
+        <action
+            android:id="@+id/my_foods_to_edit_recipe"
+            app:destination="@id/edit_recipe" />
+        <action
+            android:id="@+id/my_foods_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/edit_recipe"
+        android:name="com.example.passiomodulenew.ui.editrecipe.EditRecipeFragment"
+        android:label="EditRecipeFragment"
+        tools:layout="@layout/fragment_edit_recipe">
+
+        <action
+            android:id="@+id/edit_recipe_to_take_photo"
+            app:destination="@id/take_photo">
+            <argument
+                android:name="isPicker"
+                android:defaultValue="true"
+                app:argType="boolean" />
+            <argument
+                android:name="isSinglePhoto"
+                android:defaultValue="true"
+                app:argType="boolean" />
+        </action>
+
+        <action
+            android:id="@+id/edit_recipe_to_edit_ingredient"
+            app:destination="@id/edit_ingredient" />
+
+
+        <action
+            android:id="@+id/edit_recipe_to_voice_logging"
+            app:destination="@id/voice_logging" />
+
+        <action
+            android:id="@+id/edit_recipe_to_search"
+            app:destination="@id/search" />
+
+        <action
+            android:id="@+id/edit_recipe_to_camera"
+            app:destination="@id/camera" />
+
+        <action
+            android:id="@+id/edit_recipe_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard" />
+
+        <action
+            android:id="@+id/edit_recipe_to_my_foods"
+            app:destination="@id/my_foods"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard" >
+            <argument
+                android:name="isRecipeShow"
+                app:argType="boolean"
+                android:defaultValue="true"/>
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/edit_ingredient"
+        android:name="com.example.passiomodulenew.ui.editingredient.EditIngredientFragment"
+        android:label="EditIngredientFragment"
+        tools:layout="@layout/fragment_edit_ingredient">
+
+        <action
+            android:id="@+id/back_to_edit_recipe"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/edit_recipe"
+            app:popUpToInclusive="false" />
+
+        <action
+            android:id="@+id/edit_ingredient_to_nutrition_info"
+            app:destination="@id/nutrition_info" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/custom_foods"
+        android:name="com.example.passiomodulenew.ui.customfoods.CustomFoodsFragment"
+        android:label="CustomFoodsFragment"
+        tools:layout="@layout/fragment_custom_foods">
+
+        <action
+            android:id="@+id/custom_food_to_food_creator"
+            app:destination="@id/food_creator" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scan_barcode"
+        android:name="com.example.passiomodulenew.ui.foodcreator.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/fragment_scan_barcode">
+
+
+        <action
+            android:id="@+id/scan_barcode_to_edit"
+            app:destination="@id/edit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/food_creator"
+        android:name="ai.passio.nutrition.uimodule.ui.foodcreator.FoodCreatorFragment"
+        android:label="FoodCreatorFragment"
+        tools:layout="@layout/fragment_food_creator">
+
+        <action
+            android:id="@+id/food_creator_to_take_photo"
+            app:destination="@id/take_photo">
+            <argument
+                android:name="isPicker"
+                android:defaultValue="true"
+                app:argType="boolean" />
+            <argument
+                android:name="isSinglePhoto"
+                android:defaultValue="true"
+                app:argType="boolean" />
+        </action>
+        <action
+            android:id="@+id/food_creator_to_scan_barcode"
+            app:destination="@id/scan_barcode" />
+        <action
+            android:id="@+id/food_creator_to_my_foods"
+            app:destination="@id/my_foods"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard" />
+        <action
+            android:id="@+id/food_creator_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/advisor"
+        android:name="ai.passio.nutrition.uimodule.ui.advisor.AdvisorFragment"
+        android:label="AdvisorFragment"
+        tools:layout="@layout/fragment_advisor">
+
+        <action
+            android:id="@+id/advisor_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard" />
+
+        <action
+            android:id="@+id/advisor_to_search"
+            app:destination="@id/search" />
+
+        <action
+            android:id="@+id/advisor_to_take_photo"
+            app:destination="@id/take_photo">
+            <argument
+                android:name="isPicker"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/voice_logging"
+        android:name="ai.passio.nutrition.uimodule.ui.voice.VoiceLoggingFragment"
+        android:label="VoiceLoggingFragment"
+        tools:layout="@layout/fragment_voice_logging">
+
+        <action
+            android:id="@+id/voice_logging_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard" />
+
+        <action
+            android:id="@+id/voice_logging_to_search"
+            app:destination="@id/search" />
+
+        <action
+            android:id="@+id/back_to_edit_recipe"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/edit_recipe"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/take_select_photo"
+        android:name="ai.passio.nutrition.uimodule.ui.image.TakeOrSelectPhotoFragment"
+        android:label="Choose Photo"
+        tools:layout="@layout/fragment_add_food">
+
+        <action
+            android:id="@+id/take_select_photo_to_image_food_result"
+            app:destination="@id/image_food_result" />
+        <action
+            android:id="@+id/take_select_photo_to_take_photo"
+            app:destination="@id/take_photo" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/take_photo"
+        android:name="ai.passio.nutrition.uimodule.ui.image.TakePhotoFragment"
+        android:label="Take Photo"
+        tools:layout="@layout/fragment_take_photo">
+
+        <action
+            android:id="@+id/take_photo_to_image_food_result"
+            app:destination="@id/image_food_result" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/image_food_result"
+        android:name="ai.passio.nutrition.uimodule.ui.image.ImageFoodResultFragment"
+        android:label="Food Result"
+        tools:layout="@layout/fragment_image_food_result">
+
+        <action
+            android:id="@+id/image_food_result_to_diary"
+            app:destination="@id/diary"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/dashboard" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/my_profile"
+        android:name="ai.passio.nutrition.uimodule.ui.profile.MyProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/fragment_my_profile">
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="ai.passio.nutrition.uimodule.ui.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings">
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nutrition_info"
+        android:name="ai.passio.nutrition.uimodule.ui.nutritioninfo.NutritionInfoFragment"
+        android:label="NutritionInfo"
+        tools:layout="@layout/fragment_nutrition_info">
+
+
+    </fragment>
+
+</navigation>

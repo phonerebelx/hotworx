@@ -152,6 +152,7 @@ public class SideMenuFragment extends BaseFragment {
             drawerList.add(new NavigationItem(R.string.business,0,  new BusinessCardFragment(), null,null, Constants.BUSINESS_CARD));
           }
         drawerList.add(new NavigationItem(R.string.home, R.drawable.icon_menu_home, null, null,null, Constants.ACTION_HOME));
+
         drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null,null, null));
 
 //        drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));

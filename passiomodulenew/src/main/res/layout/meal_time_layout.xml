@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rc_8_border_gray300"
+    android:orientation="horizontal"
+    android:padding="1dp"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/breakfast"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/rc_8_primary_left"
+        android:fontFamily="@font/inter_medium"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_effect"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="@string/breakfast"
+        android:textColor="@color/passio_white"
+        android:textSize="@dimen/_10ssp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/passio_gray300" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lunch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_medium"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_effect"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="@string/lunch"
+        android:textColor="@color/passio_gray500"
+        android:textSize="@dimen/_10ssp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/passio_gray300" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_medium"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_effect"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="@string/dinner"
+        android:textColor="@color/passio_gray500"
+        android:textSize="@dimen/_10ssp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/passio_gray300" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/snack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/rc_8_white_right"
+        android:fontFamily="@font/inter_medium"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_effect"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="@string/snack"
+        android:textColor="@color/passio_gray500"
+        android:textSize="@dimen/_10ssp" />
+
+</merge>
