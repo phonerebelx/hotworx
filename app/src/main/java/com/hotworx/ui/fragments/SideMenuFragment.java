@@ -153,8 +153,9 @@ public class SideMenuFragment extends BaseFragment {
           }
         drawerList.add(new NavigationItem(R.string.home, R.drawable.icon_menu_home, null, null,null, Constants.ACTION_HOME));
 
-        drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null,null, null));
-
+        if (prefHelper.getLoginData() != null && (prefHelper.getLoginData().getIsEmployeeAllowed() != null && String.valueOf(prefHelper.getLoginData().getIsEmployeeAllowed()).equals("yes"))){
+            drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null,null, null));
+        }
 //        drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
         
         if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getIs_passio_enabled() != null && prefHelper.getLoginData().getIs_passio_enabled().equalsIgnoreCase("yes")) {
