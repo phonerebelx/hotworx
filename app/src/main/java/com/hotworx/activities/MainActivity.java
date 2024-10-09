@@ -208,7 +208,6 @@ public class MainActivity extends DockActivity {
         if (savedInstanceState == null)
             initFragment();
 
-
     }
 
     public void drawerCallBack(){
@@ -217,8 +216,6 @@ public class MainActivity extends DockActivity {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 //Called when a drawer's position changes.
-
-
             }
 
             @Override
@@ -350,17 +347,6 @@ public class MainActivity extends DockActivity {
                         duration), Constants.HomeFragment);
                 break;
         }
-    }
-
-    private void onSDKError(String error) {
-//        textView.setText("ERROR: " + error);
-    }
-
-    private void onSDKReady() {
-        // Assuming NutritionUIModule has a static method like getInstance() or a similar one
-        NutritionUIModule.INSTANCE.launch(this, null);
-        Log.d("ytytytuy", "jhkjhkhlkhlkllhlk");
-        finish();
     }
 
     private FragmentManager.OnBackStackChangedListener getListener() {

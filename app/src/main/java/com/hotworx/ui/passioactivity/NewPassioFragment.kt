@@ -70,26 +70,28 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val passioConfiguration = PassioConfiguration(
-            this.requireContext(),
-            "pHAFLe95rgGnHjSZwkZIBrY0pyqXchBZymTtp4gX4hoZ"
-        ).apply {
-            sdkDownloadsModels = true
-            debugMode = -333
-        }
+//        val passioConfiguration = PassioConfiguration(
+//            this.requireContext(),
+//            "pHAFLe95rgGnHjSZwkZIBrY0pyqXchBZymTtp4gX4hoZ"
+//        ).apply {
+//            sdkDownloadsModels = true
+//            debugMode = -333
+//        }
 
-        PassioSDK.instance.configure(passioConfiguration) { passioStatus ->
-            Log.d("HHHH", passioStatus.toString())
-            when (passioStatus.mode) {
-                PassioMode.NOT_READY -> onSDKError("Not ready")
-                PassioMode.FAILED_TO_CONFIGURE -> onSDKError(getString(passioStatus.error!!.errorRes))
-                PassioMode.IS_READY_FOR_DETECTION -> onSDKReady()
-                PassioMode.IS_BEING_CONFIGURED -> {
-                }
+//        PassioSDK.instance.configure(passioConfiguration) { passioStatus ->
+//            Log.d("HHHH", passioStatus.toString())
+//            when (passioStatus.mode) {
+//                PassioMode.NOT_READY -> onSDKError("Not ready")
+//                PassioMode.FAILED_TO_CONFIGURE -> onSDKError(getString(passioStatus.error!!.errorRes))
+//                PassioMode.IS_READY_FOR_DETECTION -> onSDKReady()
+//                PassioMode.IS_BEING_CONFIGURED -> {
+//                }
+//
+//                PassioMode.IS_DOWNLOADING_MODELS -> {}
+//            }
+//        }
 
-                PassioMode.IS_DOWNLOADING_MODELS -> {}
-            }
-        }
+        onSDKReady()
 
         // Set the callback before calling DiaryUseCase
 //        passioConnector
@@ -130,14 +132,9 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
 
     }
 
-    private fun onSDKError(error: String) {
-        binding?.textView?.text = "ERROR: $error"
-        Log.e("SDKKKKERRORRR", "ERROR: $error")
-    }
-
     private fun onSDKReady() {
         NutritionUIModule.launch(this.requireContext())
-        Log.d("ytytytuy", "jhkjhkhlkhlkllhlk")
+        Log.d("LaunchPassioActivity", "PassioCallBackBridgeActivity")
 //        requireActivity().finish()
     }
 
