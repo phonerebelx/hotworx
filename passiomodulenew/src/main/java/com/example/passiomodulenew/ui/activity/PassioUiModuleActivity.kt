@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.passiomodulenew.data.Repository
 import com.example.passiomodulenew.data.SharedPrefsPassioConnector
-import com.example.passiomodulenew.uimodule.NutritionUIModule
+import com.example.passiomodulenew.NutritionUIModule
 import com.passio.passiomodulenew.R
 import com.passio.passiomodulenew.databinding.ActivityPassioUiModuleBinding
 

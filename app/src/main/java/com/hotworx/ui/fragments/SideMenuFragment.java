@@ -22,6 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.bumptech.glide.Glide;
 import com.hotworx.R;
 import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.hotworx.ui.passioactivity.NewPassioFragment;
 import com.hotworx.ui.passioactivity.PassioFragment;
 
 import com.hotworx.activities.LoginActivity;
@@ -159,7 +160,7 @@ public class SideMenuFragment extends BaseFragment {
 //        drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
         
         if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getIs_passio_enabled() != null && prefHelper.getLoginData().getIs_passio_enabled().equalsIgnoreCase("yes")) {
-            drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
+            drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NewPassioFragment(),null, null, null));
         }
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null,null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null,null, null));

@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
-import com.example.passiomodulenew.uimodule.NutritionUIModule
+import com.example.passiomodulenew.NutritionUIModule
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentPassioBinding
@@ -24,29 +24,27 @@ import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
 import com.passio.modulepassio.data.PassioHotsquadConnector
 import com.passio.modulepassio.domain.diary.DiaryUseCase
-import com.passio.modulepassio.domain.diary.DiaryUseCase.apiPassioList
 import com.passio.modulepassio.domain.mealplan.MealPlanUseCase
 import com.passio.modulepassio.interfaces.DeletePassioDataCallback
-import com.passio.modulepassio.interfaces.PassioDataCallback
-import com.passio.modulepassio.interfaces.PostPassioDataCallback
-import com.passio.modulepassio.models.HotsquadList.Passio.DeleteMealData
-import com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
+import com.example.passiomodulenew.interfaces.PassioDataCallback
+import com.example.passiomodulenew.interfaces.PostPassioDataCallback
+import com.example.passiomodulenew.Passio.DeleteMealData
+import com.example.passiomodulenew.Passio.GetPassioResponse
 import com.passio.modulepassio.ui.model.FoodRecord
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.awaitResponse
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallback,DeletePassioDataCallback{
+class PassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCallback,DeletePassioDataCallback{
     private var _binding: FragmentPassioBinding? = null
     private val binding get() = _binding
-    private lateinit var passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse
-    private lateinit var recordList: com.passio.modulepassio.models.HotsquadList.Passio.PostPassioResponse
-    private lateinit var deleteList: com.passio.modulepassio.models.HotsquadList.Passio.DeleteMealData
+    private lateinit var passioList: GetPassioResponse
+    private lateinit var recordList: com.example.passiomodulenew.Passio.PostPassioResponse
+    private lateinit var deleteList: DeleteMealData
     private lateinit var records: List<FoodRecord>
     private lateinit var recordsData: FoodRecord
     private var isApiCallInProgress = false // Flag to prevent multiple calls
@@ -169,7 +167,7 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         Log.d("PassioFragment", "Response received for tag: $tag")
         if (tag == WebServiceConstants.GET_PASSIO_LIST) {
 
-            val passioData = GsonFactory.getConfiguredGson().fromJson(result, com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse::class.java)
+            val passioData = GsonFactory.getConfiguredGson().fromJson(result, GetPassioResponse::class.java)
 
 //            if (passioData != null && passioData.isNotEmpty()) {
 //                onPassioDataSuccess(passioData)
@@ -196,7 +194,7 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         }
     }
 
-    override fun onPassioDataSuccess(passioList: com.passio.modulepassio.models.HotsquadList.Passio.GetPassioResponse) {
+    override fun onPassioDataSuccess(passioList: GetPassioResponse) {
         this.passioList = passioList
         if (passioList.isNotEmpty()) {
 //            PassioHotsquadConnector().onPassioDataReceived(passioList)
@@ -322,7 +320,7 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         )
     }
 
-    override fun onPassioDataSuccess(recordList: com.passio.modulepassio.models.HotsquadList.Passio.PostPassioResponse) {
+    override fun onPassioDataSuccess(recordList: com.example.passiomodulenew.Passio.PostPassioResponse) {
         this.recordList = recordList
         Log.d("recordList", "Record data received: $recordList")
         MealPlanUseCase.onPassioDataPost("","",records)

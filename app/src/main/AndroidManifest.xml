@@ -47,9 +47,6 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme,android:allowBackup,android:name">
         <activity
-            android:name=".ui.passioactivity.PassioMainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.fragments.HotsquadList.activity.CongratulationsActivity"
             android:exported="false" />
 
@@ -108,6 +105,12 @@
             android:name="com.passio.modulepassio.ui.activity.PassioUiModuleActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.example.passiomodulenew.ui.activity.PassioUiModuleActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true"

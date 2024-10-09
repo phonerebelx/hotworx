@@ -20,6 +20,7 @@ import java.util.Date
 
 object UserCache {
     private lateinit var userProfile: UserProfile
+
     fun getProfile(): UserProfile {
         return if (::userProfile.isInitialized) {
             userProfile

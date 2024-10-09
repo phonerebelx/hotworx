@@ -1,4 +1,4 @@
-package com.example.passiomodulenew.uimodule
+package com.example.passiomodulenew
 
 import com.example.passiomodulenew.data.PassioConnector
 import android.content.Context
@@ -10,7 +10,7 @@ object NutritionUIModule {
     private var connector: PassioConnector? = null
 
     fun launch(context: Context, connector: PassioConnector? = null) {
-        this.connector = connector
+        NutritionUIModule.connector = connector
         context.startActivity(Intent(context, PassioUiModuleActivity::class.java))
     }
 
