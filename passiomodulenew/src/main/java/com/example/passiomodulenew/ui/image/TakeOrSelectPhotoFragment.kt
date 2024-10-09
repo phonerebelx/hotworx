@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.menu.AddFoodAdapter
-import ai.passio.nutrition.uimodule.ui.menu.AddFoodOption
-import ai.passio.nutrition.uimodule.ui.util.uriToBitmap
+import com.example.passiomodulenew.ui.menu.AddFoodAdapter
+import com.example.passiomodulenew.ui.menu.AddFoodOption
+import com.example.passiomodulenew.ui.util.uriToBitmap
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri

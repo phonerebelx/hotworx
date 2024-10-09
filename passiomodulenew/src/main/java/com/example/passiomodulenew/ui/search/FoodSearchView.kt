@@ -1,12 +1,6 @@
-package ai.passio.nutrition.uimodule.ui.search
+package com.example.passiomodulenew.ui.search
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.databinding.FoodSearchLayoutBinding
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.StringKT.isValid
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.showKeyboard
-import ai.passio.nutrition.uimodule.ui.view.VerticalSpaceItemDecoration
+import com.example.passiomodulenew.ui.search.FoodSuggestionsAdapter
 import ai.passio.passiosdk.passiofood.PassioFoodDataInfo
 import android.content.Context
 import android.text.Editable
@@ -18,6 +12,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.StringKT.isValid
+import com.example.passiomodulenew.ui.util.ViewEXT.showKeyboard
+import com.example.passiomodulenew.ui.view.VerticalSpaceItemDecoration
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FoodSearchLayoutBinding
 
 private const val INPUT_DELAY = 450L
 

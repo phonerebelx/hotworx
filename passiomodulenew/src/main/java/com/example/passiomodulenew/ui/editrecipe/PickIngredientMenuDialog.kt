@@ -1,7 +1,7 @@
 package com.example.passiomodulenew.ui.editrecipe
 
-import ai.passio.nutrition.uimodule.ui.menu.AddFoodAdapter
-import ai.passio.nutrition.uimodule.ui.menu.AddFoodOption
+import com.example.passiomodulenew.ui.menu.AddFoodAdapter
+import com.example.passiomodulenew.ui.menu.AddFoodOption
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle

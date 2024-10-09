@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.progress
+package com.example.passiomodulenew.ui.progress
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

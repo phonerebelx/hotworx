@@ -1,16 +1,16 @@
-package ai.passio.nutrition.uimodule.ui.voice
+package com.example.passiomodulenew.ui.voice
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.databinding.ItemImageFoodResultBinding
-import ai.passio.nutrition.uimodule.ui.util.StringKT.capitalized
-import ai.passio.nutrition.uimodule.ui.util.StringKT.singleDecimal
-import ai.passio.nutrition.uimodule.ui.util.loadPassioIcon
 import ai.passio.passiosdk.passiofood.data.measurement.Grams
 import ai.passio.passiosdk.passiofood.data.model.PassioSpeechRecognitionModel
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.passiomodulenew.ui.util.StringKT.capitalized
+import com.example.passiomodulenew.ui.util.StringKT.singleDecimal
+import com.example.passiomodulenew.ui.util.loadPassioIcon
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.ItemImageFoodResultBinding
 import kotlin.math.roundToInt
 
 internal class SpeechRecognitionAdapter(private val onItemSelectChange: (selectedCount: Int) -> Unit) :

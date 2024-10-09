@@ -1,7 +1,8 @@
-package ai.passio.nutrition.uimodule.ui.model
+package com.passio.modulepassio.ui.model
 
 import ai.passio.passiosdk.passiofood.data.model.PassioAdvisorResponse
 import android.graphics.Bitmap
+import com.passio.modulepassio.ui.model.PassioAdvisorSender
 
 
 class PassioAdvisorData {

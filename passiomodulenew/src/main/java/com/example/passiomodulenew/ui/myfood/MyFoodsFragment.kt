@@ -1,14 +1,14 @@
-package ai.passio.nutrition.uimodule.ui.myfood
+package com.example.passiomodulenew.ui.myfood
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.databinding.FragmentMyFoodsBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
 import com.google.android.material.tabs.TabLayoutMediator
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentMyFoodsBinding
 
 class MyFoodsFragment : BaseFragment<MyFoodsViewModel>() {
 

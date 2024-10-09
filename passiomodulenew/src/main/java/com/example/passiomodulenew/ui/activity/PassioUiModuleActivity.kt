@@ -1,8 +1,7 @@
 package com.example.passiomodulenew.ui.activity
 
-import ai.passio.nutrition.uimodule.NutritionUIModule
 
-import ai.passio.nutrition.uimodule.ui.menu.MainMenuDialog
+import com.example.passiomodulenew.ui.menu.MainMenuDialog
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -12,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.passiomodulenew.data.Repository
 import com.example.passiomodulenew.data.SharedPrefsPassioConnector
+import com.example.passiomodulenew.uimodule.NutritionUIModule
 import com.passio.passiomodulenew.R
 import com.passio.passiomodulenew.databinding.ActivityPassioUiModuleBinding
 

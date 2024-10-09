@@ -1,16 +1,9 @@
 package com.example.passiomodulenew.ui.foodcreator
 
-import ai.passio.nutrition.uimodule.ui.foodcreator.NutritionFactsItem
-import ai.passio.nutrition.uimodule.ui.foodcreator.NutritionFactsItemAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.profile.GenericSpinnerAdapter
-import ai.passio.nutrition.uimodule.ui.util.PhotoPickerListener
-import ai.passio.nutrition.uimodule.ui.util.PhotoPickerManager
-import ai.passio.nutrition.uimodule.ui.util.saveBitmapToStorage
-import ai.passio.nutrition.uimodule.ui.util.uriToBitmap
 import ai.passio.passiosdk.passiofood.data.measurement.Grams
 import ai.passio.passiosdk.passiofood.data.measurement.Milliliters
 import ai.passio.passiosdk.passiofood.data.model.PassioServingSize
@@ -26,10 +19,15 @@ import com.example.passiomodulenew.ui.base.BaseFragment
 import com.example.passiomodulenew.ui.base.BaseToolbar
 import com.example.passiomodulenew.ui.model.FoodRecord
 import com.example.passiomodulenew.ui.model.clone
+import com.example.passiomodulenew.ui.profile.GenericSpinnerAdapter
+import com.example.passiomodulenew.ui.util.PhotoPickerListener
+import com.example.passiomodulenew.ui.util.PhotoPickerManager
 import com.example.passiomodulenew.ui.util.StringKT.isGram
 import com.example.passiomodulenew.ui.util.ViewEXT.setupEditable
 import com.example.passiomodulenew.ui.util.loadFoodImage
+import com.example.passiomodulenew.ui.util.saveBitmapToStorage
 import com.example.passiomodulenew.ui.util.toast
+import com.example.passiomodulenew.ui.util.uriToBitmap
 import com.passio.passiomodulenew.R
 import com.passio.passiomodulenew.databinding.FragmentFoodCreatorBinding
 

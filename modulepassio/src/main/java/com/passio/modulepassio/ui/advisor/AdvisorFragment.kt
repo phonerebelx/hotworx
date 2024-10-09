@@ -1,6 +1,5 @@
 package com.passio.modulepassio.ui.advisor
 
-import com.passio.modulepassio.ui.advisor.AdvisorViewModel
 import com.passio.modulepassio.R
 import com.passio.modulepassio.data.ResultWrapper
 import com.passio.modulepassio.databinding.FragmentAdvisorBinding
@@ -11,7 +10,7 @@ import android.view.ViewGroup
 import com.passio.modulepassio.ui.base.BaseFragment
 import com.passio.modulepassio.ui.base.BaseToolbar
 import com.passio.modulepassio.ui.image.TakePhotoFragment
-import ai.passio.nutrition.uimodule.ui.model.PassioAdvisorData
+import com.passio.modulepassio.ui.model.PassioAdvisorData
 import com.passio.modulepassio.ui.util.DesignUtils
 import com.passio.modulepassio.ui.util.ViewEXT.disable
 import com.passio.modulepassio.ui.util.ViewEXT.enable

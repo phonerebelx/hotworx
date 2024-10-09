@@ -1,5 +1,5 @@
 /*
-package ai.passio.nutrition.uimodule.ui.model
+package com.passio.modulepassio.ui.model
 
 enum class MeasurementSystem {
     METRIC, // For weight: kg, for height: meters (m) and centimeters (cm), for water: liters (L) or milliliters (mL).

@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.util
+package com.example.passiomodulenew.ui.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

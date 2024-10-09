@@ -425,6 +425,111 @@
           <theme>@android:style/Theme.Material.Light</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/dialog_daily_nutrition_target.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_advisor.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_camera_recognition.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_dashboard.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_diary.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_edit_food.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_macros.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_my_foods.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_my_profile.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_nutrition_info.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_progress.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_save_weight.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_search.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_settings.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_voice_logging.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_water_tracking.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_weight_tracking.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/menu/advisor_menu.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/menu/dashboard_menu.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/menu/main_menu.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/navigation/main_nav_graph.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -438,15 +543,269 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/SideMenuFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/SideMenuFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/1f902e13a35b74ad60a5137870f7cc46/transformed/ai.passio.passiosdk-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/1f902e13a35b74ad60a5137870f7cc46/transformed/ai.passio.passiosdk-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/META-INF/com/android/build/gradle/aar-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/META-INF/com/android/build/gradle/aar-metadata.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/proguard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/proguard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/res/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/res/values/values.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/.transforms/2e8e9b45508f0976adc317a6112909a4/transformed/instrumented_classes/com/hotsquad/hotsquadlist/activity/BaseActivity$genericNetworkErrorHandler$1$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/listener/DialogListeners.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/listener/DialogListeners.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/listener/GenericListeners.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/listener/GenericListeners.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/model/request/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/model/request/LoginRequest.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/model/request/RegistrationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/model/request/RegistrationRequest.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/model/response/GlobalResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/model/response/GlobalResponse.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/model/response/LoginResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/model/response/LoginResponse.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/ApiResponseCallback.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/ApiResponseCallback.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/RemoteConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/RemoteConstant.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/Routes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/Routes.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/SoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/SoService.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/APIError.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/APIError.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/BaseDataSource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/BaseDataSource.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/DataSource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/DataSource.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/ErrorHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/network/domain/ErrorHandler.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/repository/AppRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/repository/AppRepository.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/repository/UserRepository.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/storage/AppPreferences.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/storage/AppPreferences.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/utils/AppToast.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/utils/AppToast.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/utils/Constant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/utils/Constant.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/utils/Utils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/utils/Utils.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/viewModel/UserViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/com/hotsquad/hotsquadlist/viewModel/UserViewModel.kapt_metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kapt3/stubs/debug/error/NonExistentClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/META-INF/hotsquadlist_debug.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/BaseActivity$genericNetworkErrorHandler$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/BaseActivity$genericNetworkErrorHandler$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/BaseActivity$genericNetworkErrorHandler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/BaseActivity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/LoginActivity$onCreate$1$1$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/LoginActivity$onCreate$1$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/LoginActivity$special$$inlined$viewModel$default$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/activity/LoginActivity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/adapter/GenericAdapter$LastDiffUtilCallback.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/adapter/GenericAdapter$MyViewHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/adapter/GenericAdapter$OnItemClickListener$DefaultImpls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/adapter/GenericAdapter$OnItemClickListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/adapter/GenericAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/bindingAdapter/BindingAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/extensions/ActivityExtKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/extensions/IntentExtKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/helper/MainClass$onCreate$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/helper/MainClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/InjectUtils$special$$inlined$inject$default$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/InjectUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$NetworkModule$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt$provideOkHttpClient$$inlined$-addInterceptor$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/NetworkModuleKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt$RepositoryModule$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/RepositoryModuleKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt$ViewModelModule$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt$ViewModelModule$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/koin/module/ViewModelModuleKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/listener/DialogListeners$DefaultImpls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/listener/DialogListeners.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/listener/GenericListeners$DefaultImpls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/listener/GenericListeners.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/model/request/LoginRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/model/request/RegistrationRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/model/response/GlobalResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/model/response/LoginResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Error.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Loading.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/ApiResponseCallback$Success.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/ApiResponseCallback.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/RemoteConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/Routes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/SoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/APIError$Companion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/APIError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/BaseDataSource$callApi$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/BaseDataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt$performNetworkCallOperation$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt$performNetworkCallOperation$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/DataAccessStrategyKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/DataSource$login$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/DataSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/network/domain/ErrorHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/repository/AppRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/repository/UserRepository$login$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/repository/UserRepository$login$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/storage/AppPreferences$loginData$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/storage/AppPreferences.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/utils/AppToast.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/utils/Constant$PreferenceKeys.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/utils/Constant$RetrofitConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/utils/Constant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/utils/Utils$showDatePickerDialog$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/utils/Utils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/viewModel/UserViewModel$loginRequest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotsquadlist/build/tmp/kotlin-classes/debug/com/hotsquad/hotsquadlist/viewModel/UserViewModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/advisor/AdvisorAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/advisor/AdvisorAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/advisor/AdvisorFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/advisor/AdvisorFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/advisor/AdvisorViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/advisor/AdvisorViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/model/MeasurementSystemFlutter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/model/MeasurementSystemFlutter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/model/MicroNutrient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/model/MicroNutrient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/model/PassioAdvisorData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/model/PassioAdvisorData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/model/PassioAdvisorSender.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/model/PassioAdvisorSender.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/nutritioninfo/NutritionInfoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/nutritioninfo/NutritionInfoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/nutritioninfo/NutritionInfoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/nutritioninfo/NutritionInfoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/nutritioninfo/NutritionInfoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/nutritioninfo/NutritionInfoViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/progress/MicroNutrientAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/progress/MicroNutrientAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/progress/MicrosFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/progress/MicrosFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/progress/MicrosViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/ui/progress/MicrosViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/7ae429eb7aafe3cb0760f3788a0c5f38/transformed/jetified-passiolib-release-api.jar" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/7ae429eb7aafe3cb0760f3788a0c5f38/transformed/jetified-passiolib-release-api.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/a94572544b137e0aa6d20e6a1c296259/transformed/jetified-passiolib-release-runtime.jar" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/a94572544b137e0aa6d20e6a1c296259/transformed/jetified-passiolib-release-runtime.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/c4f1a77aeb37bebebb6a71a2af268375/transformed/jetified-passiolib-release-runtime/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/c4f1a77aeb37bebebb6a71a2af268375/transformed/jetified-passiolib-release-runtime/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jars/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jars/classes.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jni/arm64-v8a/libpassiolib.so" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jni/arm64-v8a/libpassiolib.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jni/armeabi-v7a/libpassiolib.so" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jni/armeabi-v7a/libpassiolib.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jni/x86/libpassiolib.so" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jni/x86/libpassiolib.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jni/x86_64/libpassiolib.so" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/ccd7f81f305c0d704bd779ffefbd2d1c/transformed/jetified-passiolib-release/jni/x86_64/libpassiolib.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/build/.transforms/e133acc1546121044698d6dd16b24809/transformed/jetified-passiolib-release.aar" beforeDir="false" afterPath="$PROJECT_DIR$/passio-sdk/build/.transforms/e133acc1546121044698d6dd16b24809/transformed/jetified-passiolib-release.aar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passio-sdk/passiolib-release.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/NutritionUIModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/NutritionUIModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnector.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/Repository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/Repository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/SharedPrefsPassioConnector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/SharedPrefsPassioConnector.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/activity/PassioUiModuleActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/activity/PassioUiModuleActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/advisor/AdvisorAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/advisor/AdvisorAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/advisor/AdvisorFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/advisor/AdvisorFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/advisor/AdvisorViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/advisor/AdvisorViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/camera/CameraRecognitionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/camera/CameraRecognitionFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/camera/CameraRecognitionViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/camera/CameraRecognitionViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/camera/RecognitionResultView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/camera/RecognitionResultView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/customfoods/CustomFoodsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/customfoods/CustomFoodsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/customfoods/CustomFoodsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/customfoods/CustomFoodsViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/dashboard/DashboardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/dashboard/DashboardFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/diary/DiaryCategory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/diary/DiaryCategory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/diary/DiaryFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/diary/DiaryFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/diary/FoodSuggestionsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/diary/FoodSuggestionsAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/edit/EditFoodFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/edit/EditFoodFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/editrecipe/EditRecipeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/editrecipe/EditRecipeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/editrecipe/PickIngredientMenuDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/editrecipe/PickIngredientMenuDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/foodcreator/FoodCreatorFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/foodcreator/FoodCreatorFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/foodcreator/FoodCreatorViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/foodcreator/FoodCreatorViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/image/ImageFoodResultFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/image/ImageFoodResultFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/image/TakeOrSelectPhotoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/image/TakeOrSelectPhotoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/image/TakePhotoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/image/TakePhotoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/mealplan/MealPlanFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/mealplan/MealPlanFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/MeasurementUnit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/MeasurementUnit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/MicroNutrient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/MicroNutrient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/PassioAdvisorData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/PassioAdvisorData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/PassioAdvisorSender.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/PassioAdvisorSender.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/UserProfile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/UserProfile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/UserReminder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/model/UserReminder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myfood/MyFoodsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myfood/MyFoodsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myfood/MyFoodsPagerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myfood/MyFoodsPagerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myfood/MyFoodsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myfood/MyFoodsViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myreceipes/MyRecipesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myreceipes/MyRecipesFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myreceipes/MyRecipesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/myreceipes/MyRecipesViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/navigation/Router.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/navigation/Router.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/nutritioninfo/NutritionInfoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/nutritioninfo/NutritionInfoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/nutritioninfo/NutritionInfoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/nutritioninfo/NutritionInfoFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/nutritioninfo/NutritionInfoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/nutritioninfo/NutritionInfoViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/DailyNutritionTargetDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/DailyNutritionTargetDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/GenericSpinnerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/GenericSpinnerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/MyProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/MyProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/MyProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/MyProfileViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MacrosFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MacrosFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MacrosViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MacrosViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MacrosViewPagerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MacrosViewPagerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MicroNutrientAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MicroNutrientAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MicrosFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MicrosFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MicrosViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MicrosViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MonthAxisValueFormatter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/MonthAxisValueFormatter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/ProgressFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/ProgressFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/ProgressViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/ProgressViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/WeekAxisValueFormatter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/WeekAxisValueFormatter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/WeekMonthPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/progress/WeekMonthPicker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodItemSearchAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodItemSearchAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodSearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodSearchFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodSearchView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodSearchView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodSearchViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodSearchViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodSuggestionsAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/search/FoodSuggestionsAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/settings/HeightPickerDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/settings/HeightPickerDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/settings/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/settings/SettingsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/settings/SettingsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/settings/SettingsViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/CommonDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/CommonDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/Event.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/Event.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/ImageUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/ImageUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/PassioSdkEXT.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/PassioSdkEXT.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/PathUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/PathUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/PhotoPickerManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/PhotoPickerManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/ProgressDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/ProgressDialog.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/ViewModelUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/util/ViewModelUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/BMIChartView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/BMIChartView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/BitmapAnalyzer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/BitmapAnalyzer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/BottomSpaceItemDecoration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/BottomSpaceItemDecoration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/DailyNutrition.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/DailyNutrition.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/HorizontalSpaceItemDecoration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/HorizontalSpaceItemDecoration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/VerticalSpaceItemDecoration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/view/VerticalSpaceItemDecoration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/voice/SpeechRecognitionAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/voice/SpeechRecognitionAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/voice/VoiceLoggingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/voice/VoiceLoggingFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/voice/VoiceLoggingViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/voice/VoiceLoggingViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/water/SaveWaterFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/water/SaveWaterFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/water/WaterAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/water/WaterAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/water/WaterTrackingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/water/WaterTrackingFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/water/WaterTrackingViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/water/WaterTrackingViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/weight/SaveWeightFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/weight/SaveWeightFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/weight/WeightAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/weight/WeightAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/weight/WeightTrackingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/weight/WeightTrackingFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/weight/WeightTrackingViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/weight/WeightTrackingViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/dialog_daily_nutrition_target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/dialog_daily_nutrition_target.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_advisor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_advisor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_camera_recognition.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_camera_recognition.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_dashboard.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_diary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_diary.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_edit_food.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_edit_food.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_macros.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_macros.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_my_foods.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_my_foods.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_my_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_my_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_nutrition_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_nutrition_info.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_progress.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_progress.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_save_weight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_save_weight.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_voice_logging.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_voice_logging.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_water_tracking.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_water_tracking.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_weight_tracking.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_weight_tracking.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/navigation/main_nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/navigation/main_nav_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -456,7 +815,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R5CR82TGVPA)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\ESHOP\.android\avd\Pixel_8_Pro_API_33.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -497,44 +856,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;BundleExportedModule&quot;: &quot;hotworx.app&quot;,
-    &quot;DEBUGGABLE_DEVICE&quot;: &quot;tecno_bf7-1048533372003926&quot;,
-    &quot;DEBUGGABLE_PROCESS&quot;: &quot;com.hotworx&quot;,
-    &quot;DEBUGGER_ID&quot;: &quot;Auto&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHOW_ALL_PROCESSES&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;passio-hotsquad&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/My Projects/Android Projects/Hotworx ali github - Copy&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "BundleExportedModule": "hotworx.app",
+    "DEBUGGABLE_DEVICE": "tecno_bf7-1048533372003926",
+    "DEBUGGABLE_PROCESS": "com.hotworx",
+    "DEBUGGER_ID": "Auto",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHOW_ALL_PROCESSES": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "passio-hotsquad",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "Z:/My Projects/Android Projects/Hotworx ali github/passio-sdk",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;kotlin&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "kotlin"
     ],
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;C:\\Users\\ESHOP\\.gradle&quot;
+    "kotlin-gradle-user-dirs": [
+      "C:\\Users\\ESHOP\\.gradle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passio-sdk" />
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\modulepassio\src\main\java\com\passio\modulepassio\models\HotsquadList\Passio" />
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\modulepassio\src\main\res\layout" />
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\modulepassio\src\main\java\com\passio\modulepassio" />
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\modulepassio\src\main\res\raw" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\sharedmodule" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />

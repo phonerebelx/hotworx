@@ -1,8 +1,9 @@
-package ai.passio.nutrition.uimodule.ui.model
+package com.example.passiomodulenew.ui.model
 
 import ai.passio.passiosdk.passiofood.data.measurement.Grams
 import ai.passio.passiosdk.passiofood.data.measurement.Micrograms
 import ai.passio.passiosdk.passiofood.data.measurement.Milligrams
+import com.example.passiomodulenew.ui.model.FoodRecord
 
 data class MicroNutrient(
     val name: String,

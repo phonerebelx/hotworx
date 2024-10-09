@@ -1,20 +1,20 @@
-package ai.passio.nutrition.uimodule.ui.myreceipes
+package com.example.passiomodulenew.ui.myreceipes
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.databinding.FragmentCustomFoodsBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.customfoods.CustomFoodsAdapter
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.toast
 import android.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.customfoods.CustomFoodsAdapter
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.toast
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentCustomFoodsBinding
 import com.yanzhenjie.recyclerview.SwipeMenuItem
 
 class MyRecipesFragment : BaseFragment<MyRecipesViewModel>() {

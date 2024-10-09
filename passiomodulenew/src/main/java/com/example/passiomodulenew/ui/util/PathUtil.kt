@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.util
+package com.example.passiomodulenew.ui.util
 
 import android.annotation.SuppressLint
 import android.content.ContentUris

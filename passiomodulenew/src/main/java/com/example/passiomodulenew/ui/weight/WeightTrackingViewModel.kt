@@ -1,15 +1,15 @@
-package ai.passio.nutrition.uimodule.ui.weight
+package com.example.passiomodulenew.ui.weight
 
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.domain.weight.WeightUseCase
-import ai.passio.nutrition.uimodule.ui.activity.UserCache
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
-import ai.passio.nutrition.uimodule.ui.model.MeasurementUnit
-import ai.passio.nutrition.uimodule.ui.model.WeightRecord
-import ai.passio.nutrition.uimodule.ui.profile.WeightUnit
-import ai.passio.nutrition.uimodule.ui.profile.lbsToKg
-import ai.passio.nutrition.uimodule.ui.progress.TimePeriod
-import ai.passio.nutrition.uimodule.ui.util.SingleLiveEvent
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.domain.weight.WeightUseCase
+import com.example.passiomodulenew.ui.activity.UserCache
+import com.example.passiomodulenew.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.model.MeasurementUnit
+import com.example.passiomodulenew.ui.model.WeightRecord
+import com.example.passiomodulenew.ui.profile.WeightUnit
+import com.example.passiomodulenew.ui.profile.lbsToKg
+import com.example.passiomodulenew.ui.progress.TimePeriod
+import com.example.passiomodulenew.ui.util.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers

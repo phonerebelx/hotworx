@@ -1,13 +1,12 @@
 package com.example.passiomodulenew.ui.progress
 
-
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
+import com.example.passiomodulenew.ui.util.DesignUtils
 import com.passio.passiomodulenew.R
 import com.passio.passiomodulenew.databinding.TimePeriodLayoutBinding
 

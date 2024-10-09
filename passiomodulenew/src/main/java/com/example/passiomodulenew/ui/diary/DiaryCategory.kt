@@ -1,8 +1,7 @@
 package com.example.passiomodulenew.ui.diary
 
-import ai.passio.nutrition.uimodule.ui.diary.DiaryLogsAdapter
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.sentEnable
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.ViewEXT.sentEnable
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet

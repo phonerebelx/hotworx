@@ -1,12 +1,6 @@
-package ai.passio.nutrition.uimodule.ui.settings
+package com.example.passiomodulenew.ui.settings
 
-import ai.passio.nutrition.uimodule.databinding.DialogHeightPickerBinding
-import ai.passio.nutrition.uimodule.ui.model.MeasurementUnit
-import ai.passio.nutrition.uimodule.ui.model.UserProfile
-import ai.passio.nutrition.uimodule.ui.profile.LengthUnit
-import ai.passio.nutrition.uimodule.ui.profile.feetInchesToMeters
-import ai.passio.nutrition.uimodule.ui.profile.metersCentimetersToMeters
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.model.MeasurementUnit
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -16,6 +10,12 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.passiomodulenew.ui.model.UserProfile
+import com.example.passiomodulenew.ui.profile.LengthUnit
+import com.example.passiomodulenew.ui.profile.feetInchesToMeters
+import com.example.passiomodulenew.ui.profile.metersCentimetersToMeters
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.passio.passiomodulenew.databinding.DialogHeightPickerBinding
 
 class HeightPickerDialog(private val listener: HeightPickerListener) :
     DialogFragment() {

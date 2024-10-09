@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.model
+package com.passio.modulepassio.ui.model
 
 import ai.passio.passiosdk.passiofood.data.measurement.Grams
 import ai.passio.passiosdk.passiofood.data.measurement.Micrograms

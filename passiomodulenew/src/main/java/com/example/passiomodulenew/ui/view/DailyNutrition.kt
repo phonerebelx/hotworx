@@ -1,8 +1,5 @@
-package ai.passio.nutrition.uimodule.ui.view
+package com.example.passiomodulenew.ui.view
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.databinding.DailyNutritionLayoutBinding
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
@@ -11,10 +8,13 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.ui.util.DesignUtils
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.DailyNutritionLayoutBinding
 
 class DailyNutrition @JvmOverloads constructor(
     context: Context,

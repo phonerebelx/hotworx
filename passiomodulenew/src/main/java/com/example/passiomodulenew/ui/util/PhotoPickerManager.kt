@@ -1,12 +1,12 @@
-package ai.passio.nutrition.uimodule.ui.util
+package com.example.passiomodulenew.ui.util
 
-import ai.passio.nutrition.uimodule.ui.image.TakePhotoFragment
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.passiomodulenew.ui.image.TakePhotoFragment
 
 interface PhotoPickerListener {
     fun onImagePicked(uris: List<Uri>)

@@ -1,8 +1,8 @@
-package ai.passio.nutrition.uimodule.ui.model
+package com.example.passiomodulenew.ui.model
 
-import ai.passio.nutrition.uimodule.ui.profile.LengthUnit
-import ai.passio.nutrition.uimodule.ui.profile.WaterUnit
-import ai.passio.nutrition.uimodule.ui.profile.WeightUnit
+import com.example.passiomodulenew.ui.profile.LengthUnit
+import com.example.passiomodulenew.ui.profile.WaterUnit
+import com.example.passiomodulenew.ui.profile.WeightUnit
 
 data class MeasurementUnit(
     var lengthUnit: LengthUnit = LengthUnit.Imperial,

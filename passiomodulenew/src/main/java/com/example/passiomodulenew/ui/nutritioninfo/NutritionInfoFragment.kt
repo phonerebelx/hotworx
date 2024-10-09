@@ -1,23 +1,22 @@
-package ai.passio.nutrition.uimodule.ui.nutritioninfo
+package com.example.passiomodulenew.ui.nutritioninfo
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.data.SharedPrefUtils
-import ai.passio.nutrition.uimodule.databinding.FragmentNutritionInfoBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.StringKT.capitalized
-import ai.passio.nutrition.uimodule.ui.util.StringKT.isValid
-import ai.passio.nutrition.uimodule.ui.util.loadFoodImage
-import ai.passio.nutrition.uimodule.ui.util.loadPassioIcon
-import ai.passio.nutrition.uimodule.ui.view.BottomSpaceItemDecoration
+import com.example.passiomodulenew.ui.model.MicroNutrient
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.data.SharedPrefUtils
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.StringKT.capitalized
+import com.example.passiomodulenew.ui.util.StringKT.isValid
+import com.example.passiomodulenew.ui.util.loadFoodImage
+import com.example.passiomodulenew.ui.view.BottomSpaceItemDecoration
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentNutritionInfoBinding
 
 class NutritionInfoFragment : BaseFragment<NutritionInfoViewModel>() {
 

@@ -1,10 +1,5 @@
-package ai.passio.nutrition.uimodule.ui.search
+package com.example.passiomodulenew.ui.search
 
-import ai.passio.nutrition.uimodule.databinding.SearchItemLayoutBinding
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.util.StringKT.capitalized
-import ai.passio.nutrition.uimodule.ui.util.loadFoodImage
-import ai.passio.nutrition.uimodule.ui.util.loadPassioIcon
 import ai.passio.passiosdk.passiofood.PassioFoodDataInfo
 import ai.passio.passiosdk.passiofood.data.model.PassioIDEntityType
 import android.annotation.SuppressLint
@@ -14,6 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.util.StringKT.capitalized
+import com.example.passiomodulenew.ui.util.loadFoodImage
+import com.example.passiomodulenew.ui.util.loadPassioIcon
+import com.passio.passiomodulenew.databinding.SearchItemLayoutBinding
 
 interface FoodSearchAdapterListener {
     fun onFoodClicked(searchResult: PassioFoodDataInfo)

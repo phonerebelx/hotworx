@@ -1,38 +1,36 @@
-package ai.passio.nutrition.uimodule.ui.water
+package com.example.passiomodulenew.ui.water
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.databinding.FragmentWaterTrackingBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.activity.UserCache
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
-import ai.passio.nutrition.uimodule.ui.model.WaterRecord
-import ai.passio.nutrition.uimodule.ui.profile.WaterUnit
-import ai.passio.nutrition.uimodule.ui.profile.ozToMl
-import ai.passio.nutrition.uimodule.ui.progress.TimePeriod
-import ai.passio.nutrition.uimodule.ui.progress.WeekMonthPicker
-import ai.passio.nutrition.uimodule.ui.util.DAY_FORMAT
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.StringKT.setDrawableEnd
-import ai.passio.nutrition.uimodule.ui.util.StringKT.setSpannableBold
-import ai.passio.nutrition.uimodule.ui.util.StringKT.singleDecimal
-import ai.passio.nutrition.uimodule.ui.util.dateToFormat
-import ai.passio.nutrition.uimodule.ui.util.getEndOfMonth
-import ai.passio.nutrition.uimodule.ui.util.getEndOfWeek
-import ai.passio.nutrition.uimodule.ui.util.getMonthName
-import ai.passio.nutrition.uimodule.ui.util.getStartOfMonth
-import ai.passio.nutrition.uimodule.ui.util.getStartOfWeek
-import ai.passio.nutrition.uimodule.ui.util.getWeekDuration
-import ai.passio.nutrition.uimodule.ui.util.isPartOfCurrentMonth
-import ai.passio.nutrition.uimodule.ui.util.isPartOfCurrentWeek
-import ai.passio.nutrition.uimodule.ui.util.toast
+import com.example.passiomodulenew.ui.activity.UserCache
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.model.WaterRecord
+import com.example.passiomodulenew.ui.profile.WaterUnit
+import com.example.passiomodulenew.ui.profile.ozToMl
+import com.example.passiomodulenew.ui.progress.TimePeriod
+import com.example.passiomodulenew.ui.progress.WeekMonthPicker
+import com.example.passiomodulenew.ui.util.DAY_FORMAT
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.StringKT.setDrawableEnd
+import com.example.passiomodulenew.ui.util.StringKT.setSpannableBold
+import com.example.passiomodulenew.ui.util.StringKT.singleDecimal
+import com.example.passiomodulenew.ui.util.dateToFormat
+import com.example.passiomodulenew.ui.util.getEndOfMonth
+import com.example.passiomodulenew.ui.util.getEndOfWeek
+import com.example.passiomodulenew.ui.util.getMonthName
+import com.example.passiomodulenew.ui.util.getStartOfMonth
+import com.example.passiomodulenew.ui.util.getStartOfWeek
+import com.example.passiomodulenew.ui.util.getWeekDuration
+import com.example.passiomodulenew.ui.util.isPartOfCurrentMonth
+import com.example.passiomodulenew.ui.util.isPartOfCurrentWeek
+import com.example.passiomodulenew.ui.util.toast
 import android.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.data.ResultWrapper
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LimitLine
 import com.github.mikephil.charting.components.XAxis
@@ -42,6 +40,8 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentWaterTrackingBinding
 import com.yanzhenjie.recyclerview.SwipeMenuItem
 import org.joda.time.DateTime
 import org.joda.time.Days
@@ -160,7 +160,6 @@ class WaterTrackingFragment : BaseFragment<WaterTrackingViewModel>() {
                     requireContext().toast("Could not remove weight. Please try again.")
                 }
             }
-
             is ResultWrapper.Error -> {
                 requireContext().toast(resultWrapper.error)
             }

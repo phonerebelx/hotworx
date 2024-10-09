@@ -1,15 +1,15 @@
-package ai.passio.nutrition.uimodule.ui.settings
+package com.example.passiomodulenew.ui.settings
 
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.domain.user.UserProfileUseCase
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
-import ai.passio.nutrition.uimodule.ui.model.UserProfile
-import ai.passio.nutrition.uimodule.ui.profile.LengthUnit
-import ai.passio.nutrition.uimodule.ui.profile.WaterUnit
-import ai.passio.nutrition.uimodule.ui.profile.WeightUnit
-import ai.passio.nutrition.uimodule.ui.util.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.domain.user.UserProfileUseCase
+import com.example.passiomodulenew.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.model.UserProfile
+import com.example.passiomodulenew.ui.profile.LengthUnit
+import com.example.passiomodulenew.ui.profile.WaterUnit
+import com.example.passiomodulenew.ui.profile.WeightUnit
+import com.example.passiomodulenew.ui.util.SingleLiveEvent
 import kotlinx.coroutines.launch
 
 class SettingsViewModel : BaseViewModel() {

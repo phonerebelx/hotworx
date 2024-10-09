@@ -3,7 +3,7 @@ package com.passio.modulepassio.ui.advisor
 import com.passio.modulepassio.data.ResultWrapper
 import com.passio.modulepassio.domain.mealplan.MealPlanUseCase
 import com.passio.modulepassio.ui.base.BaseViewModel
-import ai.passio.nutrition.uimodule.ui.model.PassioAdvisorData
+import com.passio.modulepassio.ui.model.PassioAdvisorData
 import com.passio.modulepassio.ui.util.SingleLiveEvent
 import ai.passio.passiosdk.passiofood.NutritionAdvisor
 import ai.passio.passiosdk.passiofood.data.model.PassioAdvisorFoodInfo

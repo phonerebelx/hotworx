@@ -1,13 +1,13 @@
 package com.example.passiomodulenew.ui.dashboard
 
-import ai.passio.nutrition.uimodule.ui.dashboard.DisableDateSelectionDecorator
-import ai.passio.nutrition.uimodule.ui.dashboard.FutureDaysDecorator
-import ai.passio.nutrition.uimodule.ui.dashboard.PastDaysWithEventsDecorator
-import ai.passio.nutrition.uimodule.ui.dashboard.PastDaysWithoutEventsDecorator
-import ai.passio.nutrition.uimodule.ui.dashboard.SelectedDayDecorator
-import ai.passio.nutrition.uimodule.ui.dashboard.TodayDecorator
-import ai.passio.nutrition.uimodule.ui.dashboard.millisToDay
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.sentEnable
+import com.example.passiomodulenew.ui.dashboard.DisableDateSelectionDecorator
+import com.example.passiomodulenew.ui.dashboard.FutureDaysDecorator
+import com.example.passiomodulenew.ui.dashboard.PastDaysWithEventsDecorator
+import com.example.passiomodulenew.ui.dashboard.PastDaysWithoutEventsDecorator
+import com.example.passiomodulenew.ui.dashboard.SelectedDayDecorator
+import com.example.passiomodulenew.ui.dashboard.TodayDecorator
+import com.example.passiomodulenew.ui.dashboard.millisToDay
+import com.example.passiomodulenew.ui.util.ViewEXT.sentEnable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

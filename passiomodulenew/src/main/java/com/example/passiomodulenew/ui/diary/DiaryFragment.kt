@@ -1,7 +1,7 @@
 package com.example.passiomodulenew.ui.diary
 
-import ai.passio.nutrition.uimodule.ui.diary.QuickSuggestionView
-import ai.passio.nutrition.uimodule.ui.model.SuggestedFoods
+import com.example.passiomodulenew.ui.diary.QuickSuggestionView
+import com.example.passiomodulenew.ui.model.SuggestedFoods
 import ai.passio.passiosdk.passiofood.data.measurement.UnitEnergy
 import ai.passio.passiosdk.passiofood.data.measurement.UnitMass
 import android.os.Bundle

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.view.BitmapAnalyzer
+import com.example.passiomodulenew.ui.view.BitmapAnalyzer
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Bitmap

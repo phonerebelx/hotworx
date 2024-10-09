@@ -1,18 +1,18 @@
-package ai.passio.nutrition.uimodule.ui.search
+package com.example.passiomodulenew.ui.search
 
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.domain.customfood.CustomFoodUseCase
-import ai.passio.nutrition.uimodule.domain.mealplan.MealPlanUseCase
-import ai.passio.nutrition.uimodule.domain.recipe.RecipeUseCase
-import ai.passio.nutrition.uimodule.domain.search.EditFoodUseCase
-import ai.passio.nutrition.uimodule.domain.search.SearchUseCase
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.util.SingleLiveEvent
 import ai.passio.passiosdk.passiofood.PassioFoodDataInfo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.domain.customfood.CustomFoodUseCase
+import com.example.passiomodulenew.domain.mealplan.MealPlanUseCase
+import com.example.passiomodulenew.domain.recipe.RecipeUseCase
+import com.example.passiomodulenew.domain.search.EditFoodUseCase
+import com.example.passiomodulenew.domain.search.SearchUseCase
+import com.example.passiomodulenew.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.util.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

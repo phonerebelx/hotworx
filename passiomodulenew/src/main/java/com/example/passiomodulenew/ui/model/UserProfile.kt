@@ -1,7 +1,5 @@
 package com.example.passiomodulenew.ui.model
 
-import ai.passio.nutrition.uimodule.ui.model.MeasurementUnit
-import ai.passio.nutrition.uimodule.ui.model.UserReminder
 import com.example.passiomodulenew.ui.activity.UserCache
 import com.example.passiomodulenew.ui.profile.ActivityLevel
 import com.example.passiomodulenew.ui.profile.CalorieDeficit

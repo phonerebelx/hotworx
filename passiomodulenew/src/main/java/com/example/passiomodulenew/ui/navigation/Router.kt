@@ -1,7 +1,7 @@
-package ai.passio.nutrition.uimodule.ui.navigation
+package com.example.passiomodulenew.ui.navigation
 
-import ai.passio.nutrition.uimodule.ui.model.FoodRecordIngredient
 import ai.passio.passiosdk.passiofood.PassioFoodDataInfo
+import com.example.passiomodulenew.ui.model.FoodRecordIngredient
 
 interface Router {
 

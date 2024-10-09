@@ -1,16 +1,17 @@
-package ai.passio.nutrition.uimodule.ui.progress
+package com.example.passiomodulenew.ui.progress
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.data.SharedPrefUtils
-import ai.passio.nutrition.uimodule.databinding.FragmentMicrosBinding
+import com.example.passiomodulenew.ui.model.MicroNutrient
+import com.example.passiomodulenew.ui.progress.MicroNutrientAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
-import ai.passio.nutrition.uimodule.ui.util.showDatePickerDialog
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.data.SharedPrefUtils
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.util.showDatePickerDialog
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentMicrosBinding
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import java.util.Date

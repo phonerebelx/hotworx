@@ -1,12 +1,12 @@
-package ai.passio.nutrition.uimodule.ui.profile
+package com.example.passiomodulenew.ui.profile
 
-import ai.passio.nutrition.uimodule.R
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.passio.passiomodulenew.R
 
 class GenericSpinnerAdapter<T>(
     context: Context,

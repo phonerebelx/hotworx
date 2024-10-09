@@ -1,7 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.view
-
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
+package com.example.passiomodulenew.ui.view
 
 import android.content.Context
 import android.graphics.*
@@ -9,6 +6,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.passio.passiomodulenew.R
 
 class BMIChartView @JvmOverloads constructor(
     context: Context,

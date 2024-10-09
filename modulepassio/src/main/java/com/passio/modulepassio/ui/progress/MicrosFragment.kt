@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
+import com.passio.modulepassio.ui.model.MicroNutrient
 import com.passio.modulepassio.ui.progress.MicroNutrientAdapter
 import androidx.core.view.isVisible
 import com.passio.modulepassio.R

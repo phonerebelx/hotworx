@@ -1,14 +1,15 @@
-package ai.passio.nutrition.uimodule.ui.progress
+package com.example.passiomodulenew.ui.progress
 
-import ai.passio.nutrition.uimodule.R
+import com.example.passiomodulenew.ui.progress.MacrosViewPagerAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.databinding.FragmentProgressBinding
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
 import com.google.android.material.tabs.TabLayoutMediator
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentProgressBinding
 
 class ProgressFragment : BaseFragment<ProgressViewModel>() {
 

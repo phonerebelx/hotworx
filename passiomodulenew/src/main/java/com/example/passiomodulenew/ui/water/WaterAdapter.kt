@@ -1,14 +1,14 @@
-package ai.passio.nutrition.uimodule.ui.water
+package com.example.passiomodulenew.ui.water
 
-import ai.passio.nutrition.uimodule.databinding.ItemWeightRecordBinding
-import ai.passio.nutrition.uimodule.ui.activity.UserCache
-import ai.passio.nutrition.uimodule.ui.model.WaterRecord
-import ai.passio.nutrition.uimodule.ui.util.StringKT.singleDecimal
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.passiomodulenew.ui.activity.UserCache
+import com.example.passiomodulenew.ui.model.WaterRecord
+import com.example.passiomodulenew.ui.util.StringKT.singleDecimal
+import com.passio.passiomodulenew.databinding.ItemWeightRecordBinding
 
 class WaterAdapter(
     private val weightRecords: ArrayList<WaterRecord>,

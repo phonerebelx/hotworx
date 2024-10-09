@@ -1,16 +1,15 @@
 package com.example.passiomodulenew.ui.editrecipe
 
-import ai.passio.nutrition.uimodule.ui.editrecipe.OnPickIngredientOption
-import ai.passio.nutrition.uimodule.ui.editrecipe.PickIngredientMenuDialog
-import ai.passio.nutrition.uimodule.ui.menu.AddFoodOption
+
+import com.example.passiomodulenew.ui.menu.AddFoodOption
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.util.PhotoPickerListener
-import ai.passio.nutrition.uimodule.ui.util.PhotoPickerManager
-import ai.passio.nutrition.uimodule.ui.util.saveBitmapToStorage
-import ai.passio.nutrition.uimodule.ui.util.uriToBitmap
+import com.example.passiomodulenew.ui.util.PhotoPickerListener
+import com.example.passiomodulenew.ui.util.PhotoPickerManager
+import com.example.passiomodulenew.ui.util.saveBitmapToStorage
+import com.example.passiomodulenew.ui.util.uriToBitmap
 import ai.passio.passiosdk.passiofood.data.model.PassioIDEntityType
 import android.annotation.SuppressLint
 import android.graphics.Color

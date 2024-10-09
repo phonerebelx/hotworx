@@ -1,9 +1,9 @@
-package ai.passio.nutrition.uimodule
+package com.example.passiomodulenew.uimodule
 
 import com.example.passiomodulenew.data.PassioConnector
-import ai.passio.nutrition.uimodule.ui.activity.PassioUiModuleActivity
 import android.content.Context
 import android.content.Intent
+import com.example.passiomodulenew.ui.activity.PassioUiModuleActivity
 
 object NutritionUIModule {
 

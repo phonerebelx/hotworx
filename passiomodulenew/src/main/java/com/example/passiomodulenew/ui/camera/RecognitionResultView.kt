@@ -1,7 +1,7 @@
 package com.example.passiomodulenew.ui.camera
 
 import com.example.passiomodulenew.domain.camera.RecognitionResult
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.DesignUtils
 import com.example.passiomodulenew.ui.util.StringKT.capitalized
 import com.example.passiomodulenew.ui.util.StringKT.isValid
 import com.example.passiomodulenew.ui.util.StringKT.singleDecimal

@@ -1,11 +1,7 @@
 package com.example.passiomodulenew.ui.edit
 
-import ai.passio.nutrition.uimodule.ui.edit.EditFoodModel
-import ai.passio.nutrition.uimodule.ui.edit.IngredientAdapter
-import ai.passio.nutrition.uimodule.ui.edit.MealTimePicker
-import ai.passio.nutrition.uimodule.ui.edit.OpenFoodFactsDialog
-import ai.passio.nutrition.uimodule.ui.util.CommonDialog
-import ai.passio.nutrition.uimodule.ui.util.OnCommonDialogListener
+import com.example.passiomodulenew.ui.util.CommonDialog
+import com.example.passiomodulenew.ui.util.OnCommonDialogListener
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle

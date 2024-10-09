@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.util
+package com.example.passiomodulenew.ui.util
 
 import ai.passio.passiosdk.passiofood.PassioSDK
 import ai.passio.passiosdk.passiofood.data.measurement.Converter

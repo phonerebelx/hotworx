@@ -1,6 +1,5 @@
 package com.example.passiomodulenew.ui.camera
 
-import ai.passio.nutrition.uimodule.ui.camera.ScanMode
 import ai.passio.passiosdk.core.camera.PassioCameraViewProvider
 import ai.passio.passiosdk.passiofood.FoodDetectionConfiguration
 import ai.passio.passiosdk.passiofood.PassioID

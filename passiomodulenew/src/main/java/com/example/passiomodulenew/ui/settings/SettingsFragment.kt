@@ -1,21 +1,21 @@
-package ai.passio.nutrition.uimodule.ui.settings
+package com.example.passiomodulenew.ui.settings
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.data.ResultWrapper
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.databinding.FragmentSettingsBinding
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
-import ai.passio.nutrition.uimodule.ui.model.UserProfile
-import ai.passio.nutrition.uimodule.ui.profile.GenericSpinnerAdapter
-import ai.passio.nutrition.uimodule.ui.profile.LengthUnit
-import ai.passio.nutrition.uimodule.ui.profile.WeightUnit
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.setOnChangeListener
-import ai.passio.nutrition.uimodule.ui.util.toast
 import android.widget.AdapterView
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.model.UserProfile
+import com.example.passiomodulenew.ui.profile.GenericSpinnerAdapter
+import com.example.passiomodulenew.ui.profile.LengthUnit
+import com.example.passiomodulenew.ui.profile.WeightUnit
+import com.example.passiomodulenew.ui.util.ViewEXT.setOnChangeListener
+import com.example.passiomodulenew.ui.util.toast
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentSettingsBinding
 
 class SettingsFragment : BaseFragment<SettingsViewModel>() {
 

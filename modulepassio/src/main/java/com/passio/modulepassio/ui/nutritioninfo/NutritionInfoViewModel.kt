@@ -1,6 +1,6 @@
 package com.passio.modulepassio.ui.nutritioninfo
 
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
+import com.passio.modulepassio.ui.model.MicroNutrient
 import androidx.lifecycle.LiveData
 import com.passio.modulepassio.ui.base.BaseViewModel
 import com.passio.modulepassio.ui.model.FoodRecord

@@ -1,17 +1,6 @@
-package ai.passio.nutrition.uimodule.ui.profile
+package com.example.passiomodulenew.ui.profile
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.databinding.FragmentMyProfileBinding
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
-import ai.passio.nutrition.uimodule.ui.model.MeasurementUnit
-import ai.passio.nutrition.uimodule.ui.model.UserProfile
-import ai.passio.nutrition.uimodule.ui.profile.DailyNutritionTargetDialog.DailyNutritionTarget
-import ai.passio.nutrition.uimodule.ui.settings.HeightPickerDialog
-import ai.passio.nutrition.uimodule.ui.util.RoundedSlicesPieChartRenderer
-import ai.passio.nutrition.uimodule.ui.util.StringKT.singleDecimal
-import ai.passio.nutrition.uimodule.ui.util.toast
+import com.example.passiomodulenew.ui.model.MeasurementUnit
 import ai.passio.passiosdk.passiofood.data.model.PassioMealPlan
 import android.graphics.Color
 import android.os.Bundle
@@ -27,9 +16,19 @@ import android.widget.AdapterView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.model.UserProfile
+import com.example.passiomodulenew.ui.settings.HeightPickerDialog
+import com.example.passiomodulenew.ui.util.RoundedSlicesPieChartRenderer
+import com.example.passiomodulenew.ui.util.StringKT.singleDecimal
+import com.example.passiomodulenew.ui.util.toast
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentMyProfileBinding
 
 class MyProfileFragment : BaseFragment<MyProfileViewModel>() {
 
@@ -415,13 +414,13 @@ class MyProfileFragment : BaseFragment<MyProfileViewModel>() {
 
     private val dailyNutritionTargetCustomizeListener =
         object : DailyNutritionTargetDialog.DailyNutritionTargetCustomizeListener {
-            override fun onCustomized(dailyNutritionTarget: DailyNutritionTarget) {
+            override fun onCustomized(dailyNutritionTarget: DailyNutritionTargetDialog.DailyNutritionTarget) {
                 viewModel.changeDailyNutritionTarget(dailyNutritionTarget)
             }
 
         }
 
-    private fun showDailyNutritionTargetPicker(dailyNutritionTarget: DailyNutritionTarget) {
+    private fun showDailyNutritionTargetPicker(dailyNutritionTarget: DailyNutritionTargetDialog.DailyNutritionTarget) {
         DailyNutritionTargetDialog(
             dailyNutritionTarget,
             dailyNutritionTargetCustomizeListener

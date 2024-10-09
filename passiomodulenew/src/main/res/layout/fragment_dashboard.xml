@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ai.passio.nutrition.uimodule.ui.view.DailyNutrition
+            <com.example.passiomodulenew.ui.view.DailyNutrition
                 android:id="@+id/dailyNutrition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

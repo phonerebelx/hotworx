@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ai.passio.nutrition.uimodule.ui.base.BaseToolbar
+        <com.example.passiomodulenew.ui.base.BaseToolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

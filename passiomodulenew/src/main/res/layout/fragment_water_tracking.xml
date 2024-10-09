@@ -7,9 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/passio_background"
-    tools:context=".ui.progress.ProgressFragment">
+    >
 
-    <ai.passio.nutrition.uimodule.ui.base.BaseToolbar
+    <com.example.passiomodulenew.ui.base.BaseToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ai.passio.nutrition.uimodule.ui.progress.WeekMonthPicker
+    <com.example.passiomodulenew.ui.progress.WeekMonthPicker
         android:id="@+id/weekMonthPicker"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.model
+package com.example.passiomodulenew.ui.model
 
 import ai.passio.passiosdk.passiofood.data.model.PassioAdvisorResponse
 import android.graphics.Bitmap

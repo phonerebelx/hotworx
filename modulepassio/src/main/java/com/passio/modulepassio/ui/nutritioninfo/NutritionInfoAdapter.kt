@@ -1,6 +1,6 @@
 package com.passio.modulepassio.ui.nutritioninfo
 
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
+import com.passio.modulepassio.ui.model.MicroNutrient
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.view.LayoutInflater

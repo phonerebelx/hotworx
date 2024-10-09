@@ -1,6 +1,6 @@
-package ai.passio.nutrition.uimodule.ui.myfood
+package com.example.passiomodulenew.ui.myfood
 
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.base.BaseViewModel
 
 class MyFoodsViewModel : BaseViewModel() {
 

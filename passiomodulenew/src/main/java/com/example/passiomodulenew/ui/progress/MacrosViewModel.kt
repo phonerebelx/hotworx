@@ -1,11 +1,11 @@
-package ai.passio.nutrition.uimodule.ui.progress
+package com.example.passiomodulenew.ui.progress
 
-import ai.passio.nutrition.uimodule.domain.diary.DiaryUseCase
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.util.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.passiomodulenew.domain.diary.DiaryUseCase
+import com.example.passiomodulenew.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.util.SingleLiveEvent
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import java.util.Date

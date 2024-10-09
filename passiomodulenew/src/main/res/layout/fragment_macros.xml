@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.progress.ProgressFragment">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/passio_background">
 
-        <ai.passio.nutrition.uimodule.ui.progress.WeekMonthPicker
+        <com.example.passiomodulenew.ui.progress.WeekMonthPicker
             android:id="@+id/weekMonthPicker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

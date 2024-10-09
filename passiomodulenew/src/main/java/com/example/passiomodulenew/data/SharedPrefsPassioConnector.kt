@@ -1,7 +1,5 @@
 package com.example.passiomodulenew.data
 
-import ai.passio.nutrition.uimodule.data.UnitEnergySerializer
-import ai.passio.nutrition.uimodule.data.UnitMassSerializer
 import com.example.passiomodulenew.ui.model.FoodRecord
 import com.example.passiomodulenew.ui.model.UserProfile
 import com.example.passiomodulenew.ui.model.WaterRecord

@@ -1,10 +1,10 @@
-package ai.passio.nutrition.uimodule.ui.search
+package com.example.passiomodulenew.ui.search
 
-import ai.passio.nutrition.uimodule.databinding.SuggestionsLayoutBinding
-import ai.passio.nutrition.uimodule.ui.util.StringKT.capitalized
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.passiomodulenew.ui.util.StringKT.capitalized
+import com.passio.passiomodulenew.databinding.SuggestionsLayoutBinding
 
 class FoodSuggestionsAdapter(
     private val suggestionCallback: (suggestion: String) -> Unit,

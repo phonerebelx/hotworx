@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.util
+package com.example.passiomodulenew.ui.util
 
 open class Event<out T>(private val content: T) {
 

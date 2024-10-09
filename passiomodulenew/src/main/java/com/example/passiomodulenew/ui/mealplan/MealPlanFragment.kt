@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.view.HorizontalSpaceItemDecoration
+import com.example.passiomodulenew.ui.view.HorizontalSpaceItemDecoration
 import ai.passio.passiosdk.passiofood.PassioMealTime
 import ai.passio.passiosdk.passiofood.data.model.PassioMealPlanItem
 import android.util.Log

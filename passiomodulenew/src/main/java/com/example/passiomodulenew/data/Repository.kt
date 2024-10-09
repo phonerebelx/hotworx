@@ -8,11 +8,11 @@ import com.example.passiomodulenew.ui.model.WaterRecord
 import com.example.passiomodulenew.ui.model.WeightRecord
 import com.example.passiomodulenew.ui.progress.TimePeriod
 import com.example.passiomodulenew.ui.util.StringKT.isValid
-import ai.passio.nutrition.uimodule.ui.util.getBefore30Days
-import ai.passio.nutrition.uimodule.ui.util.getEndOfMonth
-import ai.passio.nutrition.uimodule.ui.util.getEndOfWeek
-import ai.passio.nutrition.uimodule.ui.util.getStartOfMonth
-import ai.passio.nutrition.uimodule.ui.util.getStartOfWeek
+import com.example.passiomodulenew.ui.util.getBefore30Days
+import com.example.passiomodulenew.ui.util.getEndOfMonth
+import com.example.passiomodulenew.ui.util.getEndOfWeek
+import com.example.passiomodulenew.ui.util.getStartOfMonth
+import com.example.passiomodulenew.ui.util.getStartOfWeek
 import ai.passio.passiosdk.passiofood.FoodCandidates
 import ai.passio.passiosdk.passiofood.FoodDetectionConfiguration
 import ai.passio.passiosdk.passiofood.FoodRecognitionListener

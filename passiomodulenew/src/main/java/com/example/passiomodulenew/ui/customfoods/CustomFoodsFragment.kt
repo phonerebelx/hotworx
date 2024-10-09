@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.DesignUtils
 import android.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible

@@ -1,6 +1,5 @@
 package com.example.passiomodulenew.ui.image
 
-import ai.passio.nutrition.uimodule.ui.image.ImageFoodResultViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,11 @@ import ai.passio.passiosdk.passiofood.data.model.PassioAdvisorFoodInfo
 import android.graphics.Bitmap
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import com.example.passiomodulenew.data.ResultWrapper
 import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.util.ViewEXT.disable
+import com.example.passiomodulenew.ui.util.ViewEXT.enable
+import com.example.passiomodulenew.ui.util.toast
 import com.passio.passiomodulenew.databinding.FragmentImageFoodResultBinding
 import kotlinx.coroutines.launch
 
@@ -127,6 +130,4 @@ class ImageFoodResultFragment : BaseFragment<ImageFoodResultViewModel>() {
             noResult.isVisible = !isResultFound
         }
     }
-
-
 }

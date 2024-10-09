@@ -1,6 +1,6 @@
 package com.passio.modulepassio.ui.progress
 
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
+import com.passio.modulepassio.ui.model.MicroNutrient
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

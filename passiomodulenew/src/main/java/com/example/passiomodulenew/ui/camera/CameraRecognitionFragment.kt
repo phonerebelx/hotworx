@@ -1,9 +1,6 @@
 package com.example.passiomodulenew.ui.camera
 
-import ai.passio.nutrition.uimodule.ui.camera.RecognitionResultView
-import com.example.passiomodulenew.ui.camera.ScanInfoDialog
-import ai.passio.nutrition.uimodule.ui.camera.ScanMode
-import ai.passio.nutrition.uimodule.ui.util.ProgressDialog
+
 import ai.passio.passiosdk.core.camera.PassioCameraViewProvider
 import ai.passio.passiosdk.passiofood.data.model.PassioFoodItem
 import android.Manifest
@@ -30,6 +27,7 @@ import com.example.passiomodulenew.ui.base.BaseFragment
 import com.example.passiomodulenew.ui.base.BaseToolbar
 import com.example.passiomodulenew.ui.model.FoodRecord
 import com.example.passiomodulenew.ui.model.FoodRecordIngredient
+import com.example.passiomodulenew.ui.util.ProgressDialog
 import com.example.passiomodulenew.ui.util.toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED

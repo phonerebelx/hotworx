@@ -8,7 +8,7 @@ import com.passio.modulepassio.databinding.ItemAdvisorSenderTextBinding
 import com.passio.modulepassio.databinding.ItemAdvisorWelcomeBinding
 import com.passio.modulepassio.ui.image.FoodImageResultAdapter
 import com.passio.modulepassio.ui.image.OnItemSelectChange
-import ai.passio.nutrition.uimodule.ui.model.PassioAdvisorData
+import com.passio.modulepassio.ui.model.PassioAdvisorData
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View

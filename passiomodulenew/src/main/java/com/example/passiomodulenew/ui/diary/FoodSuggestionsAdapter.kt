@@ -1,6 +1,6 @@
 package com.example.passiomodulenew.ui.diary
 
-import ai.passio.nutrition.uimodule.ui.model.SuggestedFoods
+import com.example.passiomodulenew.ui.model.SuggestedFoods
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

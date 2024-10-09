@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.view
+package com.example.passiomodulenew.ui.view
 
 import android.graphics.Rect
 import android.view.View

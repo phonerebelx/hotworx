@@ -76,7 +76,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ai.passio.nutrition.uimodule.ui.view.DailyNutrition
+    <com.example.passiomodulenew.ui.view.DailyNutrition
         android:id="@+id/dailyNutrition"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <ai.passio.nutrition.uimodule.ui.diary.QuickSuggestionView
+    <com.example.passiomodulenew.ui.diary.QuickSuggestionView
         android:id="@+id/quickSuggestions"
         android:layout_width="0dp"
         android:layout_height="0dp"

@@ -1,10 +1,10 @@
-package ai.passio.nutrition.uimodule.ui.nutritioninfo
+package com.example.passiomodulenew.ui.nutritioninfo
 
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
-import ai.passio.nutrition.uimodule.ui.util.SingleLiveEvent
+import com.example.passiomodulenew.ui.model.MicroNutrient
 import androidx.lifecycle.LiveData
+import com.example.passiomodulenew.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.util.SingleLiveEvent
 
 class NutritionInfoViewModel : BaseViewModel() {
 

@@ -1,22 +1,24 @@
-package ai.passio.nutrition.uimodule.ui.weight
+package com.example.passiomodulenew.ui.weight
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.databinding.FragmentSaveWeightBinding
-import ai.passio.nutrition.uimodule.ui.activity.UserCache
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
-import ai.passio.nutrition.uimodule.ui.model.WeightRecord
-import ai.passio.nutrition.uimodule.ui.util.StringKT.singleDecimal
-import ai.passio.nutrition.uimodule.ui.util.showDatePickerDialog
-import ai.passio.nutrition.uimodule.ui.util.showTimePickerDialog
-import ai.passio.nutrition.uimodule.ui.util.toast
 import android.text.Editable
 import android.text.TextWatcher
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.ui.activity.UserCache
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.model.WeightRecord
+import com.example.passiomodulenew.ui.util.StringKT.singleDecimal
+import com.example.passiomodulenew.ui.util.showDatePickerDialog
+import com.example.passiomodulenew.ui.util.showTimePickerDialog
+import com.example.passiomodulenew.ui.util.toast
+import com.example.passiomodulenew.ui.weight.WeightTrackingViewModel
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentSaveWeightBinding
 
 class SaveWeightFragment : BaseFragment<WeightTrackingViewModel>() {
 

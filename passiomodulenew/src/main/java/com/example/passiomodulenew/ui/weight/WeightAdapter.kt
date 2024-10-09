@@ -1,14 +1,14 @@
-package ai.passio.nutrition.uimodule.ui.weight
+package com.example.passiomodulenew.ui.weight
 
-import ai.passio.nutrition.uimodule.databinding.ItemWeightRecordBinding
-import ai.passio.nutrition.uimodule.ui.activity.UserCache
-import ai.passio.nutrition.uimodule.ui.model.WeightRecord
-import ai.passio.nutrition.uimodule.ui.util.StringKT.singleDecimal
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.passiomodulenew.ui.activity.UserCache
+import com.example.passiomodulenew.ui.model.WeightRecord
+import com.example.passiomodulenew.ui.util.StringKT.singleDecimal
+import com.passio.passiomodulenew.databinding.ItemWeightRecordBinding
 
 class WeightAdapter(
     private val weightRecords: ArrayList<WeightRecord>,

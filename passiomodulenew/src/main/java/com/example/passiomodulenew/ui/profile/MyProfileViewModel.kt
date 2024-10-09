@@ -1,16 +1,15 @@
-package ai.passio.nutrition.uimodule.ui.profile
+package com.example.passiomodulenew.ui.profile
 
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.domain.user.UserProfileUseCase
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
-import ai.passio.nutrition.uimodule.ui.model.UserProfile
-import ai.passio.nutrition.uimodule.ui.profile.DailyNutritionTargetDialog.DailyNutritionTarget
-import ai.passio.nutrition.uimodule.ui.util.SingleLiveEvent
 import ai.passio.passiosdk.passiofood.PassioSDK
 import ai.passio.passiosdk.passiofood.data.model.PassioMealPlan
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.domain.user.UserProfileUseCase
+import com.example.passiomodulenew.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.model.UserProfile
+import com.example.passiomodulenew.ui.util.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -18,7 +17,7 @@ class MyProfileViewModel : BaseViewModel() {
 
     private val useCase = UserProfileUseCase
     private var userProfile: UserProfile? = null
-    val dailyNutritionTargetCustomize = SingleLiveEvent<DailyNutritionTarget>()
+    val dailyNutritionTargetCustomize = SingleLiveEvent<DailyNutritionTargetDialog.DailyNutritionTarget>()
     private val _userProfileEvent = SingleLiveEvent<UserProfile>()
     val userProfileEvent: LiveData<UserProfile> get() = _userProfileEvent
 
@@ -73,7 +72,7 @@ class MyProfileViewModel : BaseViewModel() {
         }
     }
 
-    fun changeDailyNutritionTarget(dailyNutritionTarget: DailyNutritionTarget) {
+    fun changeDailyNutritionTarget(dailyNutritionTarget: DailyNutritionTargetDialog.DailyNutritionTarget) {
 
         viewModelScope.launch {
             userProfile?.apply {
@@ -90,7 +89,7 @@ class MyProfileViewModel : BaseViewModel() {
     fun customizeDailyNutritionTarget() {
         userProfile?.let {
             dailyNutritionTargetCustomize.postValue(
-                DailyNutritionTarget(
+                DailyNutritionTargetDialog.DailyNutritionTarget(
                     it.caloriesTarget,
                     it.carbsPer,
                     it.proteinPer,

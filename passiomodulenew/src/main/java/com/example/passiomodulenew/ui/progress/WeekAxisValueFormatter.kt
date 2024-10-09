@@ -1,4 +1,4 @@
-package ai.passio.nutrition.uimodule.ui.progress
+package com.example.passiomodulenew.ui.progress
 
 import com.github.mikephil.charting.formatter.ValueFormatter
 import org.joda.time.DateTime

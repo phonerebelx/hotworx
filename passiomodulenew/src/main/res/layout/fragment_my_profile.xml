@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".ui.profile.MyProfileFragment">
 
-    <ai.passio.nutrition.uimodule.ui.base.BaseToolbar
+    <com.example.passiomodulenew.ui.base.BaseToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -443,7 +443,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ai.passio.nutrition.uimodule.ui.view.BMIChartView
+                    <com.example.passiomodulenew.ui.view.BMIChartView
                         android:id="@+id/bmiChart"
                         android:layout_width="0dp"
                         android:layout_height="80dp"

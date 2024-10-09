@@ -1,17 +1,18 @@
-package ai.passio.nutrition.uimodule.ui.search
+package com.example.passiomodulenew.ui.search
 
-import ai.passio.nutrition.uimodule.data.ResultWrapper
-import ai.passio.nutrition.uimodule.databinding.FragmentSearchBinding
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.model.FoodRecordIngredient
-import ai.passio.nutrition.uimodule.ui.util.toast
+import com.example.passiomodulenew.ui.search.FoodSearchView
 import ai.passio.passiosdk.passiofood.PassioFoodDataInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.model.FoodRecordIngredient
+import com.example.passiomodulenew.ui.util.toast
+import com.passio.passiomodulenew.databinding.FragmentSearchBinding
 
 class FoodSearchFragment : BaseFragment<FoodSearchViewModel>() {
 

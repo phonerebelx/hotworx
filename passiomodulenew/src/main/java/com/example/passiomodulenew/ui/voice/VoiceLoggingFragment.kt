@@ -1,19 +1,9 @@
-package ai.passio.nutrition.uimodule.ui.voice
+package com.example.passiomodulenew.ui.voice
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.data.ResultWrapper
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.databinding.FragmentVoiceLoggingBinding
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.model.FoodRecordIngredient
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.disable
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.enable
-import ai.passio.nutrition.uimodule.ui.util.toast
 import ai.passio.passiosdk.passiofood.data.model.PassioSpeechRecognitionModel
 import android.Manifest
 import android.content.Intent
@@ -30,6 +20,17 @@ import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.model.FoodRecordIngredient
+import com.example.passiomodulenew.ui.util.ViewEXT.disable
+import com.example.passiomodulenew.ui.util.ViewEXT.enable
+import com.example.passiomodulenew.ui.util.toast
+import com.example.passiomodulenew.ui.voice.SpeechRecognitionAdapter
+import com.example.passiomodulenew.ui.voice.VoiceLoggingViewModel
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.FragmentVoiceLoggingBinding
 import java.util.Locale
 
 

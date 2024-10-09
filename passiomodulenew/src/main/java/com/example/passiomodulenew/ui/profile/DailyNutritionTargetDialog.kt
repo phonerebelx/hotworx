@@ -1,8 +1,5 @@
-package ai.passio.nutrition.uimodule.ui.profile
+package com.example.passiomodulenew.ui.profile
 
-import ai.passio.nutrition.uimodule.databinding.DialogDailyNutritionTargetBinding
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.StringKT.singleDecimal
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -17,6 +14,9 @@ import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.DialogFragment
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.StringKT.singleDecimal
+import com.passio.passiomodulenew.databinding.DialogDailyNutritionTargetBinding
 import com.warkiz.tickseekbar.OnSeekChangeListener
 import com.warkiz.tickseekbar.SeekParams
 import com.warkiz.tickseekbar.TickSeekBar

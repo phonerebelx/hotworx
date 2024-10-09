@@ -336,7 +336,7 @@
                         android:textColor="@color/passio_gray900"
                         android:textSize="@dimen/_12ssp" />
 
-                    <ai.passio.nutrition.uimodule.ui.edit.MealTimePicker
+                    <com.example.passiomodulenew.ui.edit.MealTimePicker
                         android:id="@+id/mealTimePicker"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

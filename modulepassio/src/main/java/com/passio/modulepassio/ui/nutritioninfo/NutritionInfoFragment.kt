@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.passio.modulepassio.ui.base.BaseFragment
 import com.passio.modulepassio.ui.base.BaseToolbar
 import com.passio.modulepassio.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
+import com.passio.modulepassio.ui.model.MicroNutrient
 import com.passio.modulepassio.ui.util.DesignUtils
 import com.passio.modulepassio.ui.util.StringKT.capitalized
 import com.passio.modulepassio.ui.util.StringKT.isValid

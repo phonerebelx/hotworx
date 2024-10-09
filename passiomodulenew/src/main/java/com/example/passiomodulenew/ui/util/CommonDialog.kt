@@ -1,13 +1,13 @@
-package ai.passio.nutrition.uimodule.ui.util
+package com.example.passiomodulenew.ui.util
 
-import ai.passio.nutrition.uimodule.databinding.DialogCommonBinding
-import ai.passio.nutrition.uimodule.ui.util.StringKT.isValid
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.WindowManager
 import androidx.core.view.isVisible
+import com.example.passiomodulenew.ui.util.StringKT.isValid
+import com.passio.passiomodulenew.databinding.DialogCommonBinding
 
 internal interface OnCommonDialogListener {
     fun onNegativeAction()

@@ -162,7 +162,7 @@
         app:layout_constraintTop_toTopOf="@id/viewfinder"
         tools:visibility="visible" />
 
-    <ai.passio.nutrition.uimodule.ui.camera.RecognitionResultView
+    <com.example.passiomodulenew.ui.camera.RecognitionResultView
         android:id="@+id/recognitionResult"
         android:layout_width="0dp"
         android:layout_height="0dp"

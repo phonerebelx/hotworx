@@ -1,6 +1,7 @@
-package ai.passio.nutrition.uimodule.ui.progress
+package com.example.passiomodulenew.ui.progress
 
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.base.BaseViewModel
+
 
 class ProgressViewModel : BaseViewModel() {
 

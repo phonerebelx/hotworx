@@ -1,11 +1,6 @@
 package com.example.passiomodulenew.ui.advisor
 
-import ai.passio.nutrition.uimodule.ui.image.FoodImageResultAdapter
-import ai.passio.nutrition.uimodule.ui.image.OnItemSelectChange
-import ai.passio.nutrition.uimodule.ui.model.PassioAdvisorData
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.disable
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.enable
+import com.example.passiomodulenew.ui.model.PassioAdvisorData
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +10,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.passiomodulenew.ui.image.FoodImageResultAdapter
+import com.example.passiomodulenew.ui.image.OnItemSelectChange
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.ViewEXT.disable
+import com.example.passiomodulenew.ui.util.ViewEXT.enable
 import com.passio.passiomodulenew.databinding.ItemAdvisorProcessingBinding
 import com.passio.passiomodulenew.databinding.ItemAdvisorReceiverIngridientsBinding
 import com.passio.passiomodulenew.databinding.ItemAdvisorReceiverTextBinding

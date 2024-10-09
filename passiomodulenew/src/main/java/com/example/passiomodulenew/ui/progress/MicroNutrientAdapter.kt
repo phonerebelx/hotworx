@@ -1,11 +1,6 @@
-package ai.passio.nutrition.uimodule.ui.progress
+package com.example.passiomodulenew.ui.progress
 
-import ai.passio.nutrition.uimodule.R
-import ai.passio.nutrition.uimodule.databinding.ItemMicrosProgressBinding
-import ai.passio.nutrition.uimodule.databinding.ItemShowMoreBinding
-import ai.passio.nutrition.uimodule.ui.model.MicroNutrient
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.StringKT.capitalized
+import com.example.passiomodulenew.ui.model.MicroNutrient
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
@@ -13,6 +8,11 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.StringKT.capitalized
+import com.passio.passiomodulenew.R
+import com.passio.passiomodulenew.databinding.ItemMicrosProgressBinding
+import com.passio.passiomodulenew.databinding.ItemShowMoreBinding
 import kotlin.math.roundToInt
 
 class MicroNutrientAdapter(

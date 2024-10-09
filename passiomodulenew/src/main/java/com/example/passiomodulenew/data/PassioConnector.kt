@@ -1,9 +1,9 @@
 package com.example.passiomodulenew.data
 
-import ai.passio.nutrition.uimodule.ui.model.FoodRecord
-import ai.passio.nutrition.uimodule.ui.model.UserProfile
-import ai.passio.nutrition.uimodule.ui.model.WaterRecord
-import ai.passio.nutrition.uimodule.ui.model.WeightRecord
+import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.model.UserProfile
+import com.example.passiomodulenew.ui.model.WaterRecord
+import com.example.passiomodulenew.ui.model.WeightRecord
 import java.util.*
 
 interface PassioConnector {

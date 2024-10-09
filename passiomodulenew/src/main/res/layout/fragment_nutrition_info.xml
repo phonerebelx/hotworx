@@ -7,7 +7,7 @@
     android:background="@color/passio_background"
     tools:context=".ui.progress.ProgressFragment">
 
-    <ai.passio.nutrition.uimodule.ui.base.BaseToolbar
+    <com.example.passiomodulenew.ui.base.BaseToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

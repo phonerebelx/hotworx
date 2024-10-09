@@ -1,20 +1,10 @@
 package com.example.passiomodulenew.ui.advisor
 
-import ai.passio.nutrition.uimodule.ui.advisor.AdvisorViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ai.passio.nutrition.uimodule.ui.base.BaseFragment
-import ai.passio.nutrition.uimodule.ui.base.BaseToolbar
-import ai.passio.nutrition.uimodule.ui.image.TakePhotoFragment
-import ai.passio.nutrition.uimodule.ui.model.PassioAdvisorData
-import ai.passio.nutrition.uimodule.ui.util.DesignUtils
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.disable
-import ai.passio.nutrition.uimodule.ui.util.ViewEXT.enable
-import ai.passio.nutrition.uimodule.ui.util.toast
-import ai.passio.nutrition.uimodule.ui.util.uriToBitmap
-import ai.passio.nutrition.uimodule.ui.view.VerticalSpaceItemDecoration
+import com.example.passiomodulenew.ui.model.PassioAdvisorData
 import ai.passio.passiosdk.passiofood.data.model.PassioResult
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -28,6 +18,15 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.example.passiomodulenew.data.ResultWrapper
+import com.example.passiomodulenew.ui.base.BaseFragment
+import com.example.passiomodulenew.ui.base.BaseToolbar
+import com.example.passiomodulenew.ui.image.TakePhotoFragment
+import com.example.passiomodulenew.ui.util.DesignUtils
+import com.example.passiomodulenew.ui.util.ViewEXT.disable
+import com.example.passiomodulenew.ui.util.ViewEXT.enable
+import com.example.passiomodulenew.ui.util.toast
+import com.example.passiomodulenew.ui.util.uriToBitmap
+import com.example.passiomodulenew.ui.view.VerticalSpaceItemDecoration
 import com.passio.passiomodulenew.R
 import com.passio.passiomodulenew.databinding.FragmentAdvisorBinding
 import kotlinx.coroutines.Dispatchers

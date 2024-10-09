@@ -1,9 +1,9 @@
-package ai.passio.nutrition.uimodule.ui.myfood
+package com.example.passiomodulenew.ui.myfood
 
-import ai.passio.nutrition.uimodule.ui.customfoods.CustomFoodsFragment
-import ai.passio.nutrition.uimodule.ui.myreceipes.MyRecipesFragment
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.passiomodulenew.ui.customfoods.CustomFoodsFragment
+import com.example.passiomodulenew.ui.myreceipes.MyRecipesFragment
 
 class MyFoodsPagerAdapter(parentFragment: Fragment) : FragmentStateAdapter(parentFragment) {
     private val fragmentList = listOf(

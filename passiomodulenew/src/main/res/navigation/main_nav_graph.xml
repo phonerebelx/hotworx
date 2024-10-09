@@ -427,7 +427,7 @@
 
     <fragment
         android:id="@+id/food_creator"
-        android:name="ai.passio.nutrition.uimodule.ui.foodcreator.FoodCreatorFragment"
+        android:name="com.example.passiomodulenew.ui.foodcreator.FoodCreatorFragment"
         android:label="FoodCreatorFragment"
         tools:layout="@layout/fragment_food_creator">
 
@@ -460,7 +460,7 @@
 
     <fragment
         android:id="@+id/advisor"
-        android:name="ai.passio.nutrition.uimodule.ui.advisor.AdvisorFragment"
+        android:name="com.example.passiomodulenew.ui.advisor.AdvisorFragment"
         android:label="AdvisorFragment"
         tools:layout="@layout/fragment_advisor">
 
@@ -486,7 +486,7 @@
 
     <fragment
         android:id="@+id/voice_logging"
-        android:name="ai.passio.nutrition.uimodule.ui.voice.VoiceLoggingFragment"
+        android:name="com.example.passiomodulenew.ui.voice.VoiceLoggingFragment"
         android:label="VoiceLoggingFragment"
         tools:layout="@layout/fragment_voice_logging">
 
@@ -509,7 +509,7 @@
 
     <fragment
         android:id="@+id/take_select_photo"
-        android:name="ai.passio.nutrition.uimodule.ui.image.TakeOrSelectPhotoFragment"
+        android:name="com.example.passiomodulenew.ui.image.TakeOrSelectPhotoFragment"
         android:label="Choose Photo"
         tools:layout="@layout/fragment_add_food">
 
@@ -524,7 +524,7 @@
 
     <fragment
         android:id="@+id/take_photo"
-        android:name="ai.passio.nutrition.uimodule.ui.image.TakePhotoFragment"
+        android:name="com.example.passiomodulenew.ui.image.TakePhotoFragment"
         android:label="Take Photo"
         tools:layout="@layout/fragment_take_photo">
 
@@ -537,7 +537,7 @@
 
     <fragment
         android:id="@+id/image_food_result"
-        android:name="ai.passio.nutrition.uimodule.ui.image.ImageFoodResultFragment"
+        android:name="com.example.passiomodulenew.ui.image.ImageFoodResultFragment"
         android:label="Food Result"
         tools:layout="@layout/fragment_image_food_result">
 
@@ -551,7 +551,7 @@
 
     <fragment
         android:id="@+id/my_profile"
-        android:name="ai.passio.nutrition.uimodule.ui.profile.MyProfileFragment"
+        android:name="com.example.passiomodulenew.ui.profile.MyProfileFragment"
         android:label="My Profile"
         tools:layout="@layout/fragment_my_profile">
 
@@ -560,7 +560,7 @@
 
     <fragment
         android:id="@+id/settings"
-        android:name="ai.passio.nutrition.uimodule.ui.settings.SettingsFragment"
+        android:name="com.example.passiomodulenew.ui.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings">
 
@@ -569,7 +569,7 @@
 
     <fragment
         android:id="@+id/nutrition_info"
-        android:name="ai.passio.nutrition.uimodule.ui.nutritioninfo.NutritionInfoFragment"
+        android:name="com.example.passiomodulenew.ui.nutritioninfo.NutritionInfoFragment"
         android:label="NutritionInfo"
         tools:layout="@layout/fragment_nutrition_info">
 

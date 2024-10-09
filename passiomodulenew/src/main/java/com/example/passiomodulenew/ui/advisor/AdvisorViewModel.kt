@@ -1,7 +1,7 @@
 package com.example.passiomodulenew.ui.advisor
 
-import ai.passio.nutrition.uimodule.ui.base.BaseViewModel
-import ai.passio.nutrition.uimodule.ui.model.PassioAdvisorData
+import com.example.passiomodulenew.ui.base.BaseViewModel
+import com.example.passiomodulenew.ui.model.PassioAdvisorData
 
 import ai.passio.passiosdk.passiofood.NutritionAdvisor
 import ai.passio.passiosdk.passiofood.data.model.PassioAdvisorFoodInfo
