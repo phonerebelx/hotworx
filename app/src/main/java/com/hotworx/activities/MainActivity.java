@@ -11,6 +11,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.passiomodulenew.NutritionUIModule;
 import com.hotworx.R;
 import com.hotworx.global.Constants;
 import com.hotworx.global.SideMenuDirection;
@@ -29,7 +31,7 @@ import com.hotworx.ui.fragments.SideMenuFragment;
 import com.hotworx.ui.fragments.SessionFlow.WorkoutSummaryFragment;
 import com.hotworx.ui.fragments.SessionFlow.WorkoutTimeFragment;
 import com.hotworx.ui.fragments.notifications.NotificationFragment;
-import com.hotworx.ui.passioactivity.PassioFragment;
+import com.hotworx.ui.passioactivity.NewPassioFragment;
 import com.hotworx.ui.views.TitleBar;
 
 import org.greenrobot.eventbus.EventBus;
@@ -38,7 +40,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.passio.modulepassio.NutritionUIModule;
 
 public class MainActivity extends DockActivity {
 
@@ -178,7 +179,7 @@ public class MainActivity extends DockActivity {
                     UIHelper.showLongToastInCenter(getApplicationContext(),
                             R.string.message_wait);
                 } else {
-                    Fragment passioFragment = new PassioFragment();
+                    Fragment passioFragment = new NewPassioFragment();
 
                     getDockActivity().getSupportFragmentManager()
                             .beginTransaction()

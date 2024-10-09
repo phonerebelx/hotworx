@@ -1,6 +1,6 @@
 package com.hotworx.helpers;
 
-import static com.passio.modulepassio.data.PassioDemoSharedPreferences.PREF_NAME;
+import static com.example.passiomodulenew.data.PassioDemoSharedPreferences.PREF_NAME;
 
 import android.app.Activity;
 import android.content.Context;

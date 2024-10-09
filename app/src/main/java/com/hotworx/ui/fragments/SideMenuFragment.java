@@ -15,15 +15,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
+import com.example.passiomodulenew.ui.activity.PassioUiModuleActivity;
 import com.hotworx.R;
 import com.hotworx.Singletons.ApiHeaderSingleton;
 import com.hotworx.ui.passioactivity.NewPassioFragment;
-import com.hotworx.ui.passioactivity.PassioFragment;
 
 import com.hotworx.activities.LoginActivity;
 import com.hotworx.global.Constants;
@@ -51,7 +48,6 @@ import com.hotworx.ui.fragments.VIDeviceManagement.RegistrationFragment;
 import com.hotworx.ui.fragments.VPT.VPTFragment;
 import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
 import com.hotworx.ui.views.TitleBar;
-import com.passio.modulepassio.ui.activity.PassioUiModuleActivity;
 
 import java.util.ArrayList;
 

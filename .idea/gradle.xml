@@ -14,8 +14,8 @@
             <option value="$PROJECT_DIR$/fitbitauth" />
             <option value="$PROJECT_DIR$/fitbitcommon" />
             <option value="$PROJECT_DIR$/hotsquadlist" />
-            <option value="$PROJECT_DIR$/modulepassio" />
             <option value="$PROJECT_DIR$/passio-sdk" />
+            <option value="$PROJECT_DIR$/passiomodulenew" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
