@@ -210,6 +210,29 @@
 
         <EditText
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="Age"
+            android:paddingBottom="5dp"
+            android:inputType="numberDecimal"
+            android:paddingTop="5dp"
+            android:textColor="@color/colorBlack"
+            android:textCursorDrawable="@drawable/cursor_custom" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#B2B2B2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:id="@+id/per_height"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

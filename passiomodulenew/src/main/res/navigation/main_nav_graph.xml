@@ -555,7 +555,6 @@
         android:label="My Profile"
         tools:layout="@layout/fragment_my_profile">
 
-
     </fragment>
 
     <fragment
@@ -572,7 +571,6 @@
         android:name="com.example.passiomodulenew.ui.nutritioninfo.NutritionInfoFragment"
         android:label="NutritionInfo"
         tools:layout="@layout/fragment_nutrition_info">
-
 
     </fragment>
 

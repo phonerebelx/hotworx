@@ -97,18 +97,29 @@ public abstract class DockActivity extends AppCompatActivity
 
 
     public void replaceDockableFragment(BaseFragment frag) {
-        FragmentTransaction transaction = getSupportFragmentManager()
-                .beginTransaction();
-
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(getDockFrameLayoutId(), frag);
         transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST
                                 : null).commit();
     }
 
-    public void replaceFragment(Fragment frag) {
+    public void replaceDockableFragment(com.example.passiomodulenew.ui.base.BaseFragment<?> frag) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(getDockFrameLayoutId(), frag);
-        transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : null).commit();
+        transaction.addToBackStack(null).commit();
+    }
+
+//    public void replaceFragment(Fragment frag) {
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(getDockFrameLayoutId(), frag);
+//        transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : null).commit();
+//    }
+
+    public void replaceFragment(Fragment frag) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(getDockFrameLayoutId(), frag); // Replace the container with the NavHostFragment
+        transaction.addToBackStack(null); // Add to back stack
+        transaction.commit();
     }
 
     public void replaceDockableFragment(BaseFragment frag, String Tag) {

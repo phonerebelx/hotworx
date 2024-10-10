@@ -113,6 +113,7 @@
     <string name="stop_timer_forty">STOP TIMER</string>
     <string name="personal_detail">Step 01: Personal Details</string>
     <string name="goal_entry">Step 02: Goal Entry</string>
+    <string name="set_goals">Set Goals</string>
     <string name="frequently_booking">Frequently booked:</string>
     <string name="location">Location: </string>
     <string name="level_acheived">LEVEL ACHIEVED: </string>
@@ -216,6 +217,7 @@
     <string name="address">Address</string>
     <string name="dob">Date of Birth</string>
     <string name="height">Height (inches)</string>
+    <string name="age">Age</string>
     <string name="weight">Weight (Lbs)</string>
     <string name="week">Mon</string>
     <string name="day">22</string>

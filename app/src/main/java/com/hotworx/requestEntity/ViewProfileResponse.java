@@ -471,6 +471,7 @@ public class ViewProfileResponse extends BaseModel implements Serializable {
     private String franchise_count; // 0
     private String full_name; // Employeeeee _
     private String gender;
+    private String age;
     private String height;
     private String height_in_cm;
     private String image_url;
@@ -521,6 +522,15 @@ public class ViewProfileResponse extends BaseModel implements Serializable {
 
     public void setDietTrax(String show_dietrax) {
         this.showdiettrax = show_dietrax;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public String getFull_name() {

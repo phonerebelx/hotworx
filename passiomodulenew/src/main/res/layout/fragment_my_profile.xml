@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/passio_background"
-    android:orientation="vertical"
-    tools:context=".ui.profile.MyProfileFragment">
+    android:orientation="vertical">
 
     <com.example.passiomodulenew.ui.base.BaseToolbar
         android:id="@+id/toolbar"
@@ -157,7 +156,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/inter_semi_bold"
                         android:padding="8dp"
-                        android:text="@string/personal_information"
+                        android:text="@string/nutrition_goals"
                         android:textColor="@color/passio_gray900"
                         android:textSize="@dimen/_12ssp"
                         app:layout_constraintStart_toStartOf="parent"

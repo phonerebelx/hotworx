@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+
 import com.example.passiomodulenew.ui.activity.PassioUiModuleActivity;
 import com.hotworx.R;
 import com.hotworx.Singletons.ApiHeaderSingleton;

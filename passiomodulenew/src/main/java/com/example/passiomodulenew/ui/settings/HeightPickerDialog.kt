@@ -1,6 +1,5 @@
 package com.example.passiomodulenew.ui.settings
 
-import com.example.passiomodulenew.ui.model.MeasurementUnit
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,6 +9,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.passiomodulenew.ui.model.MeasurementUnit
 import com.example.passiomodulenew.ui.model.UserProfile
 import com.example.passiomodulenew.ui.profile.LengthUnit
 import com.example.passiomodulenew.ui.profile.feetInchesToMeters

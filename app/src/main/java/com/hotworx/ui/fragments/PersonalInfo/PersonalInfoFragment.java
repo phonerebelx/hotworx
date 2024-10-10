@@ -52,6 +52,8 @@ public class PersonalInfoFragment extends BaseFragment {
     EditText last_name;
     @BindView(R.id.per_email)
     EditText email;
+    @BindView(R.id.age)
+    EditText age;
     @BindView(R.id.per_address)
     EditText address;
     @BindView(R.id.per_height)
@@ -136,6 +138,9 @@ public class PersonalInfoFragment extends BaseFragment {
             if (userObject.getHeight() != null)
                 height.setText(userObject.getHeight());
 
+            if (userObject.getAge() != null)
+                age.setText(userObject.getAge());
+
             if (userObject.getWeight() != null)
                 weight.setText(userObject.getWeight());
 
@@ -180,6 +185,7 @@ public class PersonalInfoFragment extends BaseFragment {
                 first_name.setEnabled(true);
                 last_name.setEnabled(true);
                 email.setEnabled(false);
+                age.setEnabled(true);
                 height.setEnabled(true);
                 weight.setEnabled(true);
                 user_name.setFocusable(true);
@@ -214,7 +220,7 @@ public class PersonalInfoFragment extends BaseFragment {
 
     private void apiCallForSaveInfo(){
      getServiceHelper().enqueueCall(getWebService().updateProfile(ApiHeaderSingleton.apiHeader(requireContext()),first_name.getText().toString(),
-             last_name.getText().toString(),email.getText().toString(),date_start.getText().toString(),
+             last_name.getText().toString(),email.getText().toString(),date_start.getText().toString(),age.getText().toString(),
              val_gender,height.getText().toString(), weight.getText().toString(),address.getText().toString()),
              WebServiceConstants.SAVE_PROFILE,true);
     }

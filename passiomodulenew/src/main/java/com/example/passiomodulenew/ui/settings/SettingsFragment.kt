@@ -99,7 +99,6 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
         }
 
         override fun onRightIconClicked() {
-
         }
 
     }

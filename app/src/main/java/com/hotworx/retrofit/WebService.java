@@ -93,8 +93,9 @@ public interface WebService {
             @Field("image_url") String image_url,
             @Field("dob") String otp,
             @Field("gender") String gender,
-            @Field("height") String height,
-            @Field("weight") String weight,
+            @Field("age") String age,
+            @Field("height") Double height,
+            @Field("weight") Double weight,
             @Field("address") String address
             );
 
@@ -234,6 +235,7 @@ public interface WebService {
             @Query("last_name") String last_name,
             @Query("email") String email,
             @Query("dob") String dob,
+            @Query("age") String age,
             @Query("gender") String gender,
             @Query("height") String height,
             @Query("weight") String weight,

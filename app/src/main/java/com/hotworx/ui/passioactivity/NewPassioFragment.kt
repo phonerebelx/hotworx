@@ -13,20 +13,27 @@ import androidx.lifecycle.LiveData
 import com.example.passiomodulenew.NutritionUIModule
 import com.example.passiomodulenew.Passio.DeleteMealData
 import com.example.passiomodulenew.Passio.GetPassioResponse
+import com.example.passiomodulenew.Passio.Profile.HotworxUserProfile
 import com.example.passiomodulenew.domain.diary.DiaryUseCase
 import com.example.passiomodulenew.domain.mealplan.MealPlanUseCase
+import com.example.passiomodulenew.domain.user.UserProfileUseCase
 import com.example.passiomodulenew.interfaces.DeletePassioDataCallback
 import com.example.passiomodulenew.interfaces.PassioDataCallback
 import com.example.passiomodulenew.interfaces.PostPassioDataCallback
+import com.example.passiomodulenew.interfaces.ProfileDataCallback
 import com.example.passiomodulenew.ui.model.FoodRecord
+import com.example.passiomodulenew.ui.model.UserProfile
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentNewPassioBinding
 import com.hotworx.global.Constants
 import com.hotworx.global.WebServiceConstants
+import com.hotworx.helpers.Utils
+import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.Passio.FoodEntry
 import com.hotworx.models.HotsquadList.Passio.PostPassioResponse
 import com.hotworx.models.HotsquadList.Passio.postPassioRequest
+import com.hotworx.models.UserData.ResponseUserProfileModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
@@ -39,12 +46,13 @@ import java.util.Date
 import java.util.Locale
 
 class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCallback,
-    DeletePassioDataCallback {
+    DeletePassioDataCallback,ProfileDataCallback {
     private var _binding: FragmentNewPassioBinding? = null
     private val binding get() = _binding
     private lateinit var passioList: GetPassioResponse
     private lateinit var recordList: com.example.passiomodulenew.Passio.PostPassioResponse
     private lateinit var deleteList: DeleteMealData
+    private lateinit var userProfile: HotworxUserProfile
     private lateinit var records: List<FoodRecord>
     private lateinit var recordsData: FoodRecord
     private var isApiCallInProgress = false // Flag to prevent multiple calls
@@ -70,27 +78,6 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val passioConfiguration = PassioConfiguration(
-//            this.requireContext(),
-//            "pHAFLe95rgGnHjSZwkZIBrY0pyqXchBZymTtp4gX4hoZ"
-//        ).apply {
-//            sdkDownloadsModels = true
-//            debugMode = -333
-//        }
-
-//        PassioSDK.instance.configure(passioConfiguration) { passioStatus ->
-//            Log.d("HHHH", passioStatus.toString())
-//            when (passioStatus.mode) {
-//                PassioMode.NOT_READY -> onSDKError("Not ready")
-//                PassioMode.FAILED_TO_CONFIGURE -> onSDKError(getString(passioStatus.error!!.errorRes))
-//                PassioMode.IS_READY_FOR_DETECTION -> onSDKReady()
-//                PassioMode.IS_BEING_CONFIGURED -> {
-//                }
-//
-//                PassioMode.IS_DOWNLOADING_MODELS -> {}
-//            }
-//        }
-
         onSDKReady()
 
         // Set the callback before calling DiaryUseCase
@@ -99,11 +86,12 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
 //        PassioHotsquadConnector().setPassioDataCallback(this)
         DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
+        UserProfileUseCase.postProfileDataCallback(this)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val logsDiary = DiaryUseCase.getLogsForDay(Date())
-//                val logsDiary = DiaryUseCase.getLogsForLast30Days()
+                val profile = UserProfileUseCase.getUserProfile()
                 val deleteDiary = DiaryUseCase.deleteRecord(FoodRecord())
                 val logsMeal = MealPlanUseCase.logFoodRecord(FoodRecord())
                 // Switch to the main thread for UI updates
@@ -112,6 +100,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
                     if (isAdded && binding != null) {
                         binding?.textView?.text = "Logs received: ${logsDiary.size}"
                         Log.e("PassioFragmentTExtData", "Logs received: ${logsDiary.size}")
+                        Log.e("PassioFragmentTExtData", "Logs received: ${profile}")
                         Log.e("PassioLogMeal", "Logs received: ${logsMeal}")
                         Log.e("DeleteeeeLogMeal", "Logs received: ${deleteDiary}")
                     } else {
@@ -231,7 +220,6 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
     }
 
     //POST API
-
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
         super.onSuccess(liveData, tag)
         when (tag) {
@@ -286,6 +274,25 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
                     dockActivity?.showErrorMessage("No response from server")
                 }
             }
+
+            "Set User Api Calling" -> {
+                try {
+                    val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, ResponseUserProfileModel::class.java)!!
+                    if (response.msg == "success") {
+                        if (response != null) {
+                            onProfileDataSuccess(userProfile)
+                        } else {
+                            onProfileDataError("Received empty response")
+                        }
+                    }
+                } catch (e: Exception) {
+                    val genericMsgResponse = GsonFactory.getConfiguredGson()
+                        ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
+                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                    Log.i("dummy error", e.message.toString())
+
+                }
+            }
         }
     }
 
@@ -335,6 +342,43 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         Log.e("RecordListtt", "Server issue: $error")
     }
 
+    //Update Profile
+    override fun onPostProfileData(profile: UserProfile) {
+        if (!isAdded || context == null) {
+            Log.e("PassioFragment", "Fragment is not attached, skipping API call")
+            return
+        }
+        getServiceHelper().enqueueCallExtended(
+            webService.update_profile(
+                ApiHeaderSingleton.apiHeader(requireContext()),
+                profile.userName,
+                "",
+                "",
+               "",
+                profile.gender.toString(),
+                profile.age.toString(),
+                profile.height,
+                profile.weight,
+                "",
+            ), "Set User Api Calling", true
+        )
+    }
+
+    override fun onProfileDataSuccess(userProfile: HotworxUserProfile) {
+        this.userProfile = userProfile
+        Log.d("recordList", "Record data received: $userProfile")
+        UserProfileUseCase.onProfileDataPost(userProfile)
+    }
+
+    override fun onProfileDataError(error: String) {
+        if (::userProfile.isInitialized) {
+            Log.d("RecordListtt", "Received Passio data from parent: $userProfile")
+        } else {
+            Log.d("RecordListtt", "passioList is not initialized. Error: $error")
+        }
+        Log.e("RecordListtt", "Server issue: $error")
+    }
+
     //Delete Passio Record
     override fun onDeletePassioData(
         uuid: String,
@@ -374,4 +418,5 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         }
         Log.e("deleteListtttttt", "Server issue: $error")
     }
+
 }

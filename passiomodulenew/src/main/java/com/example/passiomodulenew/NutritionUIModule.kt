@@ -7,7 +7,7 @@ import com.example.passiomodulenew.ui.activity.PassioUiModuleActivity
 
 object NutritionUIModule {
 
-    private var connector: PassioConnector? = null
+    var connector: PassioConnector? = null
 
     fun launch(context: Context, connector: PassioConnector? = null) {
         NutritionUIModule.connector = connector

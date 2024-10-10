@@ -109,11 +109,12 @@ class MyProfileViewModel : BaseViewModel() {
     }
 
     fun updateWeight(weight: String) {
-        if (userProfile?.measurementUnit?.weightUnit == WeightUnit.Imperial) {
-            userProfile?.weight = lbsToKg(weight.toDoubleOrNull() ?: 0.0)
-        } else {
-            userProfile?.weight = weight.toDoubleOrNull() ?: 0.0
-        }
+        userProfile?.weight = weight.toDoubleOrNull() ?: 0.0
+//        if (userProfile?.measurementUnit?.weightUnit == WeightUnit.Imperial) {
+//            userProfile?.weight = lbsToKg(weight.toDoubleOrNull() ?: 0.0)
+//        } else {
+//            userProfile?.weight = weight.toDoubleOrNull() ?: 0.0
+//        }
         updateNutritionTarget()
 
     }

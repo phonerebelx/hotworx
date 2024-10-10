@@ -18,8 +18,10 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
+import com.example.passiomodulenew.ui.dashboard.DashboardFragmentDirections
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.helpers.Utils
@@ -29,7 +31,11 @@ import com.hotworx.models.UserData.*
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.HomeFragment
+import com.hotworx.ui.fragments.HotsquadList.AddListFragment
+import com.hotworx.ui.passioactivity.PassioProfileFragment
 import com.hotworx.ui.views.TitleBar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.File
 import java.util.*
 
@@ -41,6 +47,7 @@ class ProfileAndGoalFragment : BaseFragment() {
     var gender = arrayListOf<String>("Select Gender", "male", "female")
     private lateinit var getUserDataForUpdate: DataX
     private lateinit var profileImage: ImageView
+    private lateinit var goals: ImageView
 
 //    @BindView(R.id.per_spinner_gender)
     private lateinit var per_spinner_gender: Spinner
@@ -49,6 +56,7 @@ class ProfileAndGoalFragment : BaseFragment() {
     private lateinit var etFirstName: EditText
     private lateinit var etLastName: EditText
     private lateinit var etEmail: EditText
+    private lateinit var etAge: EditText
     private lateinit var etHeight: EditText
     private lateinit var etWeight: EditText
     private lateinit var selectDate: TextView
@@ -127,6 +135,7 @@ class ProfileAndGoalFragment : BaseFragment() {
                 }
             }
         }
+
     }
 
     @SuppressLint("MissingInflatedId")
@@ -139,12 +148,14 @@ class ProfileAndGoalFragment : BaseFragment() {
         headingTextView = root.findViewById(R.id.tv_heading)
         backButton = root.findViewById(R.id.btn_back)
         profileImage = root.findViewById(R.id.profileImage)
+        goals = root.findViewById(R.id.goals)
         editProfileImage = root.findViewById(R.id.editProfileImage)
         clGoalEntry = root.findViewById(R.id.clGoalEntry)
         sVPersonalDetail = root.findViewById(R.id.sVPersonalDetail)
         etFirstName = root.findViewById(R.id.etFirstName)
         etLastName = root.findViewById(R.id.etLastName)
         etEmail = root.findViewById(R.id.etEmail)
+        etAge = root.findViewById(R.id.etAge)
         etHeight = root.findViewById(R.id.etHeight)
         etWeight = root.findViewById(R.id.etWeight)
         selectDate = root.findViewById(R.id.tvDob)
@@ -165,8 +176,12 @@ class ProfileAndGoalFragment : BaseFragment() {
         setOnClickListener()
         callApi("Profile Api Calling", "")
 
-        return root
+        goals.setOnClickListener(View.OnClickListener {
+            val passioProfileFragment = PassioProfileFragment()
+            dockActivity.replaceFragment(passioProfileFragment)
+        })
 
+        return root
     }
 
     private fun setupViews() {
@@ -217,8 +232,9 @@ class ProfileAndGoalFragment : BaseFragment() {
                         setValueForProfile.image_url,
                         setValueForProfile.dob,
                         setValueForProfile.gender,
-                        setValueForProfile.height,
-                        setValueForProfile.weight,
+                        setValueForProfile.age,
+                        setValueForProfile.height.toDouble(),
+                        setValueForProfile.weight.toDouble(),
                         setValueForProfile.address,
                     ), "Set User Api Calling", true
                 )
@@ -351,6 +367,7 @@ class ProfileAndGoalFragment : BaseFragment() {
         etFirstName.setText(getUserDataForUpdate.first_name)
         etLastName.setText(getUserDataForUpdate.last_name)
         etEmail.setText(getUserDataForUpdate.email)
+        etAge.setText(getUserDataForUpdate.age)
         etHeight.setText(getUserDataForUpdate.height)
         etWeight.setText(getUserDataForUpdate.weight)
         selectDate.setText(getUserDataForUpdate.dob)
@@ -520,6 +537,11 @@ class ProfileAndGoalFragment : BaseFragment() {
                 checkFieldFillOrNot = 0
             }
 
+            etAge.text.isEmpty() -> {
+                etAge.setError("This field is required");
+                checkFieldFillOrNot = 0
+            }
+
             etHeight.text.isEmpty() -> {
                 etHeight.setError("This field is required");
                 checkFieldFillOrNot = 0
@@ -547,6 +569,7 @@ class ProfileAndGoalFragment : BaseFragment() {
                     last_name = etLastName.text.toString(),
                     image_url = profileImageForModel.toString(),
                     dob = selectDate.text.toString(),
+                    age = etAge.text.toString(),
                     gender = selectedGenderValue,
                     height = etHeight.text.toString(),
                     weight = etWeight.text.toString()

@@ -111,6 +111,7 @@
     <string name="log_out">Log Out</string>
     <string name="calculated_bmi">Calculated BMI</string>
     <string name="personal_information">Personal Information</string>
+    <string name="nutrition_goals">Nutrition Goals</string>
     <string name="name">Name</string>
     <string name="age">Age</string>
     <string name="gender">Gender</string>

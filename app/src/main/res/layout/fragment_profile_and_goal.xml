@@ -51,7 +51,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-
             <TextView
                 android:id="@+id/tv_heading"
                 android:layout_width="match_parent"
@@ -84,6 +83,35 @@
                     android:scaleType="centerCrop"/>
             </androidx.cardview.widget.CardView>
 
+            <ImageView
+                android:id="@+id/goals"
+                android:layout_width="35dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/settings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.933"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_heading"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="68dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.05"
+                android:text="@string/set_goals"
+                android:textAlignment="center"
+                android:textSize="@dimen/_9sdp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:layout_marginRight="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.979"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/editProfileImage"
                 android:layout_width="@dimen/_25sdp"
@@ -102,7 +130,6 @@
                     android:src="@drawable/mdi_camera"
                     app:tint="@color/colorWorkOutHead" />
             </androidx.appcompat.widget.LinearLayoutCompat>
-
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linearLayoutCompat"
@@ -228,9 +255,9 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/height">
+                    android:hint="@string/age">
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etHeight"
+                    android:id="@+id/etAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10sdp"
@@ -239,7 +266,26 @@
                     android:inputType="number"
                     android:maxLines="1"
                     android:imeOptions="actionNext"/>
+
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/height">
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textSize="@dimen/_12ssp"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:imeOptions="actionNext"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -19,6 +19,7 @@ data class DataX(
     val full_name: String, // Employeeeee _
     val gender: String,
     val height: String,
+    val age: String,
     val height_in_cm: String,
     val image_url: String,
     val img_src: String,
@@ -53,5 +54,7 @@ data class DataX(
     val new_reciprocal_enabled: String?,
     val hotsquad_pending_invites: String?,
     val is_hotsquad_enabled: String?,
-    val is_passio_enabled: String?
+    val is_passio_enabled: String?,
+//    private NutritionalGoals nutritionalGoals;
+
 ): Serializable

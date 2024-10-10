@@ -19,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.hotworx.R;
 import com.hotworx.activities.DockActivity;
@@ -47,6 +49,7 @@ public abstract class BaseFragment extends Fragment implements webServiceRespons
     protected ServiceHelper serviceHelper;
     protected DockActivity myDockActivity;
     private boolean isLoading;
+
 
     @Override
     public void onStarted() {

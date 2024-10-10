@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import ai.passio.passiosdk.passiofood.data.measurement.UnitEnergy
 import ai.passio.passiosdk.passiofood.data.measurement.UnitMass
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -109,7 +110,10 @@ class DashboardFragment : BaseFragment<DashboardViewModel>() {
 
     private val baseToolbarListener = object : BaseToolbar.ToolbarListener {
         override fun onBack() {
-            viewModel.navigateBack()
+//            viewModel.navigateBack()
+            val intent = Intent("com.hotworx.OPEN_MAIN")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
         }
 
         override fun onRightIconClicked() {

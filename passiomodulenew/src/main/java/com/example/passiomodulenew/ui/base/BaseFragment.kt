@@ -18,8 +18,8 @@ import java.lang.reflect.Field
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<VM : BaseViewModel>(isSharedContext: Boolean = false) : Fragment() {
-    private lateinit var navController: NavController
-    protected val viewModel: VM by lazy {
+    lateinit var navController: NavController
+    val viewModel: VM by lazy {
         ViewModelProvider(if (isSharedContext) requireActivity() else this)[getVMClass()]
     }
     protected val sharedViewModel: SharedViewModel by activityViewModels()
