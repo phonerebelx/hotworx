@@ -17,6 +17,7 @@ import com.hotworx.models.HotsquadList.sendMemberInvitationRequest;
 import com.hotworx.models.HotsquadList.sendReferralInvitationRequest;
 import com.hotworx.models.HotsquadList.squadMemberDetailRequest;
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
+import com.hotworx.models.PassioNutritionGoals.PassioNutritionGoalsRequest;
 import com.hotworx.models.ViModel.Registration.SetRegisterLocationModel;
 import com.hotworx.models.ViModel.Unregistraion.SetUnRegisterLocationModel;
 import com.hotworx.requestEntity.AddExerciseDataModel;
@@ -240,6 +241,12 @@ public interface WebService {
             @Query("height") String height,
             @Query("weight") String weight,
             @Query("address") String address);
+
+    @POST("general/saveNutritionalGoals")
+    Call<ResponseBody> updatePassioNutritionGoals(
+            @HeaderMap Map<String, String> headers,
+            @Body PassioNutritionGoalsRequest request
+    );
 
     //Settings
 

@@ -18,6 +18,7 @@ import com.example.passiomodulenew.domain.diary.DiaryUseCase
 import com.example.passiomodulenew.domain.mealplan.MealPlanUseCase
 import com.example.passiomodulenew.domain.user.UserProfileUseCase
 import com.example.passiomodulenew.interfaces.DeletePassioDataCallback
+import com.example.passiomodulenew.interfaces.NutritionDataCallback
 import com.example.passiomodulenew.interfaces.PassioDataCallback
 import com.example.passiomodulenew.interfaces.PostPassioDataCallback
 import com.example.passiomodulenew.interfaces.ProfileDataCallback
@@ -33,6 +34,9 @@ import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.Passio.FoodEntry
 import com.hotworx.models.HotsquadList.Passio.PostPassioResponse
 import com.hotworx.models.HotsquadList.Passio.postPassioRequest
+import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest
+import com.hotworx.models.PassioNutritionGoals.NutritionPercentage
+import com.hotworx.models.PassioNutritionGoals.PassioNutritionGoalsRequest
 import com.hotworx.models.UserData.ResponseUserProfileModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
@@ -46,7 +50,7 @@ import java.util.Date
 import java.util.Locale
 
 class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCallback,
-    DeletePassioDataCallback,ProfileDataCallback {
+    DeletePassioDataCallback,ProfileDataCallback, NutritionDataCallback{
     private var _binding: FragmentNewPassioBinding? = null
     private val binding get() = _binding
     private lateinit var passioList: GetPassioResponse
@@ -87,6 +91,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
         UserProfileUseCase.postProfileDataCallback(this)
+        UserProfileUseCase.postNutritionDataCallback(this)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -288,7 +293,26 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
                 } catch (e: Exception) {
                     val genericMsgResponse = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
-                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+//                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+                    Log.i("dummy error", e.message.toString())
+
+                }
+            }
+
+            "Set Nutrition Api Calling" -> {
+                try {
+                    val response = GsonFactory.getConfiguredGson()?.fromJson(liveData.value, ResponseUserProfileModel::class.java)!!
+                    if (response.msg == "success") {
+                        if (response != null) {
+                            onProfileDataSuccess(userProfile)
+                        } else {
+                            onProfileDataError("Received empty response")
+                        }
+                    }
+                } catch (e: Exception) {
+                    val genericMsgResponse = GsonFactory.getConfiguredGson()
+                        ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
+//                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
                     Log.i("dummy error", e.message.toString())
 
                 }
@@ -371,6 +395,56 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
     }
 
     override fun onProfileDataError(error: String) {
+        if (::userProfile.isInitialized) {
+            Log.d("RecordListtt", "Received Passio data from parent: $userProfile")
+        } else {
+            Log.d("RecordListtt", "passioList is not initialized. Error: $error")
+        }
+        Log.e("RecordListtt", "Server issue: $error")
+    }
+
+    //Nutrition Goals
+    override fun onPostNutritionData(profile: UserProfile) {
+        if (!isAdded || context == null) {
+            Log.e("PassioFragment", "Fragment is not attached, skipping API call")
+            return
+        }
+
+         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
+
+        val request = PassioNutritionGoalsRequest(
+            0,
+            profile.caloriesTarget,
+            profile.activityLevel.toString(),
+            profile.waterTarget,
+            profile.targetWeight,
+            formattedDate,
+            profile.calorieDeficit.lblImperial,
+            profile.passioMealPlan?.mealPlanTitle?.get(0).toString(),
+            nutrition_percentage = NutritionPercentage(
+                carbs = profile.carbsPer,
+                protein =profile.proteinPer,
+                fat = profile.fatPer
+            )
+        )
+
+        getServiceHelper().enqueueCallExtended(
+            webService.updatePassioNutritionGoals(
+                ApiHeaderSingleton.apiHeader(requireContext()),
+                request
+            ), "Set Nutrition Api Calling", true
+        )
+    }
+
+    override fun onNutritionDataSuccess(userProfile: HotworxUserProfile) {
+        this.userProfile = userProfile
+        Log.d("recordList", "Record data received: $userProfile")
+        UserProfileUseCase.onProfileDataPost(userProfile)
+    }
+
+    override fun onNutritionDataError(error: String) {
         if (::userProfile.isInitialized) {
             Log.d("RecordListtt", "Received Passio data from parent: $userProfile")
         } else {
