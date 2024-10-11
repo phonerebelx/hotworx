@@ -37,8 +37,8 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
 
         with(binding)
         {
-            toolbar.setup(getString(R.string.settings), baseToolbarListener)
-            toolbar.hideRightIcon()
+//            toolbar.setup(getString(R.string.settings), baseToolbarListener)
+//            toolbar.hideRightIcon()
             lunch.setOnChangeListener { checkbox, isChecked ->
                 if (checkbox.isPressed) {
                     viewModel.updateLunchReminder(isChecked)
@@ -55,7 +55,6 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
                 }
             }
         }
-
     }
 
     private fun initObserver() {

@@ -1,9 +1,20 @@
 package com.example.passiomodulenew.data
 
+import android.util.Log
+import com.example.passiomodulenew.Passio.GetPassioResponse
+import com.example.passiomodulenew.domain.diary.DiaryUseCase
+import com.example.passiomodulenew.interfaces.PassioDataCallback
 import com.example.passiomodulenew.ui.model.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class PassioConnectorImpl : PassioConnector {
+
+    private var callback: PassioDataCallback? = null
+
+    fun setPassioDataCallback(callback: PassioDataCallback) {
+        this.callback = callback
+    }
 
     override fun initialize() {
         // Initialize any required resources or state here
@@ -26,12 +37,31 @@ class PassioConnectorImpl : PassioConnector {
 
     override suspend fun fetchDayRecords(day: Date): List<FoodRecord> {
         // Implement the logic to fetch food records for a specific day
+       val record:List<FoodRecord>
+
+        callback?.onFetchPassioData(day)
+
         return emptyList() // Replace with actual implementation
     }
 
     override suspend fun fetchLogsRecords(startDate: Date, endDate: Date): List<FoodRecord> {
         // Implement the logic to fetch logs between two dates
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
+
+        callback?.onFetchPassioData(startDate)
         return emptyList() // Replace with actual implementation
+    }
+
+    override fun onPassioDataReceived(passioData: GetPassioResponse?) {
+        if (passioData!!.isNotEmpty()) {
+            Log.d("DiaryUseCaseeee success gte", "Passio data received get: $passioData")
+
+        } else {
+            Log.d("DiaryUseCaseeee failed get", "Received null Passio data")
+
+        }
     }
 
     override suspend fun updateFavorite(foodRecord: FoodRecord) {
@@ -134,5 +164,4 @@ class PassioConnectorImpl : PassioConnector {
         TODO("Not yet implemented")
     }
 
-    // Implement other methods similarly...
 }

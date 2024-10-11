@@ -14,6 +14,7 @@ import com.example.passiomodulenew.NutritionUIModule
 import com.example.passiomodulenew.Passio.DeleteMealData
 import com.example.passiomodulenew.Passio.GetPassioResponse
 import com.example.passiomodulenew.Passio.Profile.HotworxUserProfile
+import com.example.passiomodulenew.data.PassioConnectorImpl
 import com.example.passiomodulenew.domain.diary.DiaryUseCase
 import com.example.passiomodulenew.domain.mealplan.MealPlanUseCase
 import com.example.passiomodulenew.domain.user.UserProfileUseCase
@@ -66,10 +67,11 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         Log.d("PassioFragmenttttt", "Fragment attached")
     }
 
-//    private val passioConnector: PassioHotsquadConnector = PassioHotsquadConnector().apply {
-////        initialize()
-//        setPassioDataCallback(this@PassioFragment)  // Set the callback
-//    }
+    private val passioConnector: PassioConnectorImpl = PassioConnectorImpl().apply {
+        initialize() // Ensure any required resources or state are initialized.
+        setPassioDataCallback(this@NewPassioFragment)  // Set the callback to the fragment.
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -87,7 +89,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         // Set the callback before calling DiaryUseCase
 //        passioConnector
         DiaryUseCase.setPassioDataCallback(this)
-//        PassioHotsquadConnector().setPassioDataCallback(this)
+//        passioConnector.setPassioDataCallback(this)
         DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
         UserProfileUseCase.postProfileDataCallback(this)
@@ -158,22 +160,16 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         Log.d("PassioFragment", "Response received for tag: $tag")
         if (tag == WebServiceConstants.GET_PASSIO_LIST) {
 
-            val passioData =
-                GsonFactory.getConfiguredGson().fromJson(result, GetPassioResponse::class.java)
+            val passioData = GsonFactory.getConfiguredGson().fromJson(result, GetPassioResponse::class.java)
 
-//            if (passioData != null && passioData.isNotEmpty()) {
-//                onPassioDataSuccess(passioData)
-//                Log.d("Success1DiaryUseCaseGetResponseSuccess", "Callback to fetch passio data for day: $passioData")
-//            } else {
-//                Log.d("PassioFragment", "Received empty response, showing empty message")
-////                showEmptyMessage()
-//                onPassioDataError("Received empty response")
-//            }
-            if (passioList.isNotEmpty()) {
+            if (passioData.isNotEmpty()) {
                 Log.d("PassioFragment", "Received non-empty Passio data")
                 DiaryUseCase.onPassioDataReceived(passioList) // Pass the API data to the use case.
+//                Log.d("PassioFragment", "Received non-empty Passio data")
+//                passioConnector.onPassioDataReceived(passioData)
             } else {
-                Log.d("PassioFragment", "Received empty Passio data")
+//                Log.d("PassioFragment", "Received empty Passio data")
+//                passioConnector.onPassioDataReceived(GetPassioResponse())
                 DiaryUseCase.onPassioDataReceived(GetPassioResponse()) // Pass an empty instance of GetPassioResponse
             }
         }
@@ -182,18 +178,17 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
     override fun ResponseFailure(message: String?, tag: String?) {
         if (tag == WebServiceConstants.GET_PASSIO_LIST) {
             onPassioDataError(message ?: "Unknown error")
-
         }
     }
 
     override fun onPassioDataSuccess(passioList: GetPassioResponse) {
         this.passioList = passioList
         if (passioList.isNotEmpty()) {
-//            PassioHotsquadConnector().onPassioDataReceived(passioList)
-            DiaryUseCase.onPassioDataReceived(passioList)
+            DiaryUseCase.onPassioDataReceived(passioList) // Notify the child module.
         } else {
             Log.d("PassioFragmentSuccess", "Received empty Passio data, not fetching local data")
         }
+
 //        if (passioList.isNotEmpty()) {
 //            Log.d("PassioFragmentSuccess", "Received non-empty Passio data")
 //

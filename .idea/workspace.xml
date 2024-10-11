@@ -405,6 +405,11 @@
           <theme>@android:style/Theme.Material.Light</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/layout/meal_time_layout.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/passiomodulenew/src/main/res/menu/advisor_menu.xml">
         <config>
           <theme>@android:style/Theme.Material.Light</theme>
@@ -440,9 +445,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/NewPassioFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/NewPassioFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/domain/user/UserProfileUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/domain/user/UserProfileUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnector.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnectorImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnectorImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/SharedPrefsPassioConnector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/SharedPrefsPassioConnector.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/domain/diary/DiaryUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/domain/diary/DiaryUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/settings/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/settings/SettingsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/menu/dashboard_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/menu/dashboard_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -452,7 +462,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=R5CR82TGVPA)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\ESHOP\.android\avd\Pixel_8_Pro_API_33.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

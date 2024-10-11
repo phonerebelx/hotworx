@@ -1,5 +1,6 @@
 package com.example.passiomodulenew.data
 
+import com.example.passiomodulenew.Passio.GetPassioResponse
 import com.example.passiomodulenew.ui.model.FoodRecord
 import com.example.passiomodulenew.ui.model.UserProfile
 import com.example.passiomodulenew.ui.model.WaterRecord
@@ -66,4 +67,6 @@ interface PassioConnector {
     suspend fun fetchRecipes(searchQuery: String): List<FoodRecord>
 
     suspend fun deleteRecipe(uuid: String): Boolean
+
+    abstract fun onPassioDataReceived(passioData: GetPassioResponse?)
 }

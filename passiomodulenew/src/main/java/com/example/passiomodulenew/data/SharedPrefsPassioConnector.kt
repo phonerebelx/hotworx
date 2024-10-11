@@ -8,6 +8,8 @@ import ai.passio.passiosdk.passiofood.data.measurement.UnitEnergy
 import ai.passio.passiosdk.passiofood.data.measurement.UnitMass
 import android.content.Context
 import android.text.format.DateFormat
+import android.util.Log
+import com.example.passiomodulenew.Passio.GetPassioResponse
 import com.example.passiomodulenew.data.PassioConnector
 import com.google.gson.GsonBuilder
 import org.joda.time.DateTime
@@ -386,5 +388,15 @@ class SharedPrefsPassioConnector(context: Context) : PassioConnector {
         val json = recipes.map { gson.toJson(it) }
         sharedPreferences.saveRecipes(json)
         return true
+    }
+
+    override fun onPassioDataReceived(passioData: GetPassioResponse?) {
+        if (passioData!!.isNotEmpty()) {
+            Log.d("DiaryUseCaseeee success gte", "Passio data received get: $passioData")
+
+        } else {
+            Log.d("DiaryUseCaseeee failed get", "Received null Passio data")
+
+        }
     }
 }

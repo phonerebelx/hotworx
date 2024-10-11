@@ -27,11 +27,14 @@ object DiaryUseCase {
     }
 
     suspend fun getLogsForDay(day: Date): List<FoodRecord> {
+        callback?.onFetchPassioData(day)
+
         return repository.getLogsForDay(day)
     }
 
     suspend fun getLogsForWeek(day: Date): List<FoodRecord> {
-        //        callback?.onFetchPassioData(day)
+
+        callback?.onFetchPassioData(day)
 
         return repository.getLogsForDay(day)
     }
