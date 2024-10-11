@@ -21,6 +21,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
+import com.example.passiomodulenew.NutritionUIModule
 import com.example.passiomodulenew.ui.dashboard.DashboardFragmentDirections
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
@@ -32,7 +33,6 @@ import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.fragments.HomeFragment
 import com.hotworx.ui.fragments.HotsquadList.AddListFragment
-import com.hotworx.ui.passioactivity.PassioProfileFragment
 import com.hotworx.ui.views.TitleBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -70,6 +70,7 @@ class ProfileAndGoalFragment : BaseFragment() {
     private lateinit var pickProfileImage: ActivityResultLauncher<PickVisualMediaRequest>
     private lateinit var editProfileImage: LinearLayoutCompat
     private lateinit var skipLayout: LinearLayoutCompat
+    private lateinit var personalInfoLayout: ConstraintLayout
     private lateinit var profileImageForModel: File
 
     // For User Goals
@@ -170,6 +171,7 @@ class ProfileAndGoalFragment : BaseFragment() {
         tVTargetWeight = root.findViewById(R.id.tVTargetWeight)
         btnSaveForm = root.findViewById(R.id.btnSaveForm)
         btnSkip = root.findViewById(R.id.btnSkip)
+        personalInfoLayout = root.findViewById(R.id.personalInfoLayout)
 
         setupViews()
         initView()
@@ -177,8 +179,10 @@ class ProfileAndGoalFragment : BaseFragment() {
         callApi("Profile Api Calling", "")
 
         goals.setOnClickListener(View.OnClickListener {
-            val passioProfileFragment = PassioProfileFragment()
-            dockActivity.replaceFragment(passioProfileFragment)
+//            val passioProfileFragment = PassioProfileFragment()
+//            dockActivity.replaceFragment(passioProfileFragment)
+            NutritionUIModule.launchProfile(this.requireContext())
+            personalInfoLayout.visibility = View.GONE
         })
 
         return root

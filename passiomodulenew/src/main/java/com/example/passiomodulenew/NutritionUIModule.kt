@@ -11,7 +11,21 @@ object NutritionUIModule {
 
     fun launch(context: Context, connector: PassioConnector? = null) {
         NutritionUIModule.connector = connector
-        context.startActivity(Intent(context, PassioUiModuleActivity::class.java))
+//        context.startActivity(Intent(context, PassioUiModuleActivity::class.java))
+        val intent = Intent(context, PassioUiModuleActivity::class.java).apply {
+            putExtra("start_destination", "home")
+        }
+        context.startActivity(intent)
+    }
+
+    fun launchProfile(context: Context, connector: PassioConnector? = null) {
+        NutritionUIModule.connector = connector
+//        context.startActivity(Intent(context, PassioUiModuleActivity::class.java))
+        val intent = Intent(context, PassioUiModuleActivity::class.java).apply {
+            putExtra("start_destination", "profile")
+            putExtra("hide_personal_info", true)
+        }
+        context.startActivity(intent)
     }
 
     internal fun getConnector(): PassioConnector? = connector

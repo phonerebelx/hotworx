@@ -997,8 +997,14 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void ResponseFailure(String message, String tag) {
-        Utils.customToast(requireContext(), message);
-        if (swipeRefreshLayout != null) swipeRefreshLayout.setRefreshing(false);
+//        Utils.customToast(requireContext(), message);
+//        if (swipeRefreshLayout != null) swipeRefreshLayout.setRefreshing(false);
+        if (isAdded()) {
+            Utils.customToast(requireContext(), message);
+        }
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override

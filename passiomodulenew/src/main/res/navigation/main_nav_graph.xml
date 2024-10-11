@@ -555,6 +555,11 @@
         android:label="My Profile"
         tools:layout="@layout/fragment_my_profile">
 
+        <argument
+            android:name="shouldHidePersonalInfo"
+            app:argType="boolean"
+            android:defaultValue="false" />
+
     </fragment>
 
     <fragment

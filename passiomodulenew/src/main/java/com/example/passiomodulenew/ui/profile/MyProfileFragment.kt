@@ -2,6 +2,7 @@ package com.example.passiomodulenew.ui.profile
 
 import com.example.passiomodulenew.ui.model.MeasurementUnit
 import ai.passio.passiosdk.passiofood.data.model.PassioMealPlan
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +36,7 @@ class MyProfileFragment : BaseFragment<MyProfileViewModel>() {
 
     private var _binding: FragmentMyProfileBinding? = null
     private val binding: FragmentMyProfileBinding get() = _binding!!
+    private var hidePersonalInfo = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,16 @@ class MyProfileFragment : BaseFragment<MyProfileViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Retrieve the "hide_personal_info" argument
+        hidePersonalInfo = arguments?.getBoolean("hide_personal_info", false) ?: false
+
+        // Set the visibility of personalInfoLayout based on the argument
+        binding.personalInfoLayout.visibility = if (hidePersonalInfo) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
 
         initObserver()
 
@@ -84,16 +97,20 @@ class MyProfileFragment : BaseFragment<MyProfileViewModel>() {
         }
     }
 
-    private val baseToolbarListener = object : BaseToolbar.ToolbarListener {
-        override fun onBack() {
+   private val baseToolbarListener = object : BaseToolbar.ToolbarListener {
+
+    override fun onBack() {
+        if(!hidePersonalInfo){
             viewModel.navigateBack()
+        }else{
+            val intent = Intent("com.hotworx.OPEN_MAIN")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
         }
-
-        override fun onRightIconClicked() {
-
-        }
-
     }
+
+    override fun onRightIconClicked() {}
+   }
 
     private fun initObserver() {
         viewModel.userProfileEvent.observe(viewLifecycleOwner, ::showUserData)
