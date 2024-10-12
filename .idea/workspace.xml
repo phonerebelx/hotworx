@@ -125,11 +125,6 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_passio_profile.xml">
-        <config>
-          <theme>@style/AppTheme.NoActionBar</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pending_invites.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
@@ -448,21 +443,31 @@
   <component name="ChangeListManager">
     <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="branch changed">
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/ProfileAndGoal/ProfileAndGoalFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/ProfileAndGoal/ProfileAndGoalFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioProfileFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_passio_profile.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_and_goal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_and_goal.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/NutritionUIModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/NutritionUIModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/activity/PassioUiModuleActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/activity/PassioUiModuleActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/MyProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/ui/profile/MyProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_my_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/layout/fragment_my_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/res/navigation/main_nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/res/navigation/main_nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/BasePreferenceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/BasePreferenceHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/NewPassioFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/NewPassioFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/Passio/GetPassioResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/Passio/GetPassioResponseItem.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/Passio/Ingredient.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/Passio/ServingSizeX.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/Passio/ServingUnitX.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnector.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnectorImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/PassioConnectorImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/SharedPrefsPassioConnector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/data/SharedPrefsPassioConnector.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/domain/diary/DiaryUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/domain/diary/DiaryUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/interfaces/NutritionDataCallback.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/interfaces/NutritionDataCallback.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/interfaces/PassioDataCallback.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/interfaces/PassioDataCallback.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/interfaces/ProfileDataCallback.kt" beforeDir="false" afterPath="$PROJECT_DIR$/passiomodulenew/src/main/java/com/example/passiomodulenew/interfaces/ProfileDataCallback.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

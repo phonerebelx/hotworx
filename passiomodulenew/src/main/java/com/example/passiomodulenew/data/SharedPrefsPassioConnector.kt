@@ -9,8 +9,7 @@ import ai.passio.passiosdk.passiofood.data.measurement.UnitMass
 import android.content.Context
 import android.text.format.DateFormat
 import android.util.Log
-import com.example.passiomodulenew.Passio.GetPassioResponse
-import com.example.passiomodulenew.data.PassioConnector
+import com.example.passiomodulenew.Passio.GetPassioResponse.GetFoodRecord
 import com.google.gson.GsonBuilder
 import org.joda.time.DateTime
 import java.util.Calendar
@@ -390,7 +389,7 @@ class SharedPrefsPassioConnector(context: Context) : PassioConnector {
         return true
     }
 
-    override fun onPassioDataReceived(passioData: GetPassioResponse?) {
+    override fun onPassioDataReceived(passioData: GetFoodRecord?) {
         if (passioData!!.isNotEmpty()) {
             Log.d("DiaryUseCaseeee success gte", "Passio data received get: $passioData")
 

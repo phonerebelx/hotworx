@@ -2,7 +2,7 @@ package com.example.passiomodulenew.domain.diary
 
 import android.util.Log
 import com.example.passiomodulenew.Passio.DeleteMealData
-import com.example.passiomodulenew.Passio.GetPassioResponse
+import com.example.passiomodulenew.Passio.GetPassioResponse.GetFoodRecord
 import com.example.passiomodulenew.data.Repository
 import com.example.passiomodulenew.interfaces.DeletePassioDataCallback
 import com.example.passiomodulenew.interfaces.PassioDataCallback
@@ -40,7 +40,7 @@ object DiaryUseCase {
     }
 
     // This method will be called from the parent once the API data is available
-    fun onPassioDataReceived(passioList: GetPassioResponse) {
+    fun onPassioDataReceived(passioList: GetFoodRecord) {
         if (passioList.isNotEmpty()) {
             Log.d("DiaryUseCaseeee success gte", "Passio data received get: $passioList")
 

@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import com.example.passiomodulenew.NutritionUIModule
 import com.example.passiomodulenew.Passio.DeleteMealData
-import com.example.passiomodulenew.Passio.GetPassioResponse
+import com.example.passiomodulenew.Passio.GetPassioResponse.GetFoodRecord
 import com.example.passiomodulenew.Passio.Profile.HotworxUserProfile
 import com.example.passiomodulenew.data.PassioConnectorImpl
 import com.example.passiomodulenew.domain.diary.DiaryUseCase
@@ -54,7 +54,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
     DeletePassioDataCallback,ProfileDataCallback, NutritionDataCallback{
     private var _binding: FragmentNewPassioBinding? = null
     private val binding get() = _binding
-    private lateinit var passioList: GetPassioResponse
+    private lateinit var passioList: GetFoodRecord
     private lateinit var recordList: com.example.passiomodulenew.Passio.PostPassioResponse
     private lateinit var deleteList: DeleteMealData
     private lateinit var userProfile: HotworxUserProfile
@@ -160,7 +160,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         Log.d("PassioFragment", "Response received for tag: $tag")
         if (tag == WebServiceConstants.GET_PASSIO_LIST) {
 
-            val passioData = GsonFactory.getConfiguredGson().fromJson(result, GetPassioResponse::class.java)
+            val passioData = GsonFactory.getConfiguredGson().fromJson(result, GetFoodRecord::class.java)
 
             if (passioData.isNotEmpty()) {
                 Log.d("PassioFragment", "Received non-empty Passio data")
@@ -170,7 +170,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
             } else {
 //                Log.d("PassioFragment", "Received empty Passio data")
 //                passioConnector.onPassioDataReceived(GetPassioResponse())
-                DiaryUseCase.onPassioDataReceived(GetPassioResponse()) // Pass an empty instance of GetPassioResponse
+                DiaryUseCase.onPassioDataReceived(GetFoodRecord()) // Pass an empty instance of GetPassioResponse
             }
         }
     }
@@ -181,7 +181,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         }
     }
 
-    override fun onPassioDataSuccess(passioList: GetPassioResponse) {
+    override fun onPassioDataSuccess(passioList: GetFoodRecord) {
         this.passioList = passioList
         if (passioList.isNotEmpty()) {
             DiaryUseCase.onPassioDataReceived(passioList) // Notify the child module.

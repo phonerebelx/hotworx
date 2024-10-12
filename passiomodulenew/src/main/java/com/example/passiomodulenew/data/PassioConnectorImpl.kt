@@ -1,8 +1,7 @@
 package com.example.passiomodulenew.data
 
 import android.util.Log
-import com.example.passiomodulenew.Passio.GetPassioResponse
-import com.example.passiomodulenew.domain.diary.DiaryUseCase
+import com.example.passiomodulenew.Passio.GetPassioResponse.GetFoodRecord
 import com.example.passiomodulenew.interfaces.PassioDataCallback
 import com.example.passiomodulenew.ui.model.*
 import java.text.SimpleDateFormat
@@ -54,7 +53,7 @@ class PassioConnectorImpl : PassioConnector {
         return emptyList() // Replace with actual implementation
     }
 
-    override fun onPassioDataReceived(passioData: GetPassioResponse?) {
+    override fun onPassioDataReceived(passioData: GetFoodRecord?) {
         if (passioData!!.isNotEmpty()) {
             Log.d("DiaryUseCaseeee success gte", "Passio data received get: $passioData")
 

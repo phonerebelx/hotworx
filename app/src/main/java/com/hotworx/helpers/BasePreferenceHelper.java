@@ -125,9 +125,9 @@ public class BasePreferenceHelper extends PreferenceHelper {
     public void putLoginData(DataX user) {
         putStringPreference(context,FILENAME,LOGIN_DATA_KEY,
                 new GsonBuilder().create().toJson(user));
-        if (user == null) {
-            clearPreferences();
-        }
+//        if (user == null) {
+//            clearPreferences();
+//        }
     }
 
     private void clearPreferences() {
