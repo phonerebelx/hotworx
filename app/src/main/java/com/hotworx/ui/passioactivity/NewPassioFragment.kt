@@ -34,9 +34,9 @@ import com.hotworx.helpers.Utils
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.Passio.FoodEntry
 import com.hotworx.models.HotsquadList.Passio.PostPassioResponse
+import com.hotworx.models.HotsquadList.Passio.postPassioRequest
 import com.hotworx.models.PassioNutritionGoals.NutritionPercentage
 import com.hotworx.models.PassioNutritionGoals.PassioNutritionGoalsRequest
-import com.hotworx.models.PostReq.postPassioRequest
 import com.hotworx.models.UserData.ResponseUserProfileModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
@@ -256,8 +256,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         }
 
         // Create the request object
-        val request =
-           postPassioRequest(food_entries = foodEntries)
+        val request = postPassioRequest(food_entries = foodEntries)
 
         // Make the API call
         getServiceHelper()?.enqueueCallExtended(
