@@ -15,13 +15,17 @@ import com.example.passiomodulenew.ui.util.isToday
 import ai.passio.passiosdk.passiofood.PassioFoodDataInfo
 import ai.passio.passiosdk.passiofood.PassioMealTime
 import ai.passio.passiosdk.passiofood.PassioSDK
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.passiomodulenew.Passio.GetPassioResponse.GetFoodRecordItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+import java.util.Locale
 
 class DiaryViewModel : BaseViewModel() {
 
@@ -43,10 +47,12 @@ class DiaryViewModel : BaseViewModel() {
     val showLoading = SingleLiveEvent<Boolean>()
 
     fun fetchLogsForCurrentDay() {
+        val formattedDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(currentDate)
+        Log.d("PassioFragment", "Formatted date for API: $formattedDate")
         viewModelScope.launch {
             showLoading.postValue(true)
             val userProfile = useCaseUserProfile.getUserProfile()
-            val records = useCase.getLogsForDay(currentDate)
+            val records = useCase.getFoodDetails(formattedDate)
             _logsLD.postValue(Pair(userProfile, records))
             showLoading.postValue(false)
 //            getQuickSuggestions()
@@ -98,9 +104,7 @@ class DiaryViewModel : BaseViewModel() {
             if (foodRecord != null) {
                 logFoodEvent.postValue(
                     ResultWrapper.Success(
-                        mealPlanUseCase.logFoodRecord(
-                            foodRecord
-                        )
+                        mealPlanUseCase.logFoodRecord(foodRecord)
                     )
                 )
                 fetchLogsForCurrentDay()

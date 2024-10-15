@@ -37,6 +37,7 @@
                 android:layout_weight=".25"
                 android:fontFamily="@font/montserrat_regular"
                 android:gravity="center"
+                android:visibility="gone"
                 android:hint="@string/sauna_no"
                 android:textColor="@color/colorLightBlack"
                 android:textColorHint="@color/colorLightBlack"
@@ -49,6 +50,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/_14sdp"
                 android:layout_weight="0.5"
+                android:visibility="gone"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -71,6 +73,7 @@
                 android:id="@+id/tvSessionName"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+
                 android:layout_marginLeft="@dimen/_14sdp"
                 android:layout_weight=".3"
                 android:fontFamily="@font/montserrat_regular"
@@ -80,7 +83,7 @@
                 android:textColorHint="@color/colorLightBlack"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
@@ -100,7 +103,8 @@
                     android:id="@+id/ivImg2"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
+
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:src="@drawable/taken" />
 

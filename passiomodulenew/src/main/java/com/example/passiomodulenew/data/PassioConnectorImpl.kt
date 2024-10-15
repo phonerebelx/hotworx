@@ -1,9 +1,14 @@
 package com.example.passiomodulenew.data
 
 import android.util.Log
+import android.view.WindowInsetsAnimation
+import com.example.passiomodulenew.DietrixBaseURL.RetrofitClient
 import com.example.passiomodulenew.Passio.GetPassioResponse.GetFoodRecord
 import com.example.passiomodulenew.interfaces.PassioDataCallback
 import com.example.passiomodulenew.ui.model.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,11 +40,9 @@ class PassioConnectorImpl : PassioConnector {
     }
 
     override suspend fun fetchDayRecords(day: Date): List<FoodRecord> {
-        // Implement the logic to fetch food records for a specific day
-       val record:List<FoodRecord>
-
-        callback?.onFetchPassioData(day)
-
+//        callback?.onFetchPassioData(day)
+//        getFoodDetails(day)
+        Log.d("fetchFoodFromCon",day.toString())
         return emptyList() // Replace with actual implementation
     }
 
@@ -49,7 +52,7 @@ class PassioConnectorImpl : PassioConnector {
         val currentDate = Date()
         val formattedDate = dateFormat.format(currentDate)
 
-        callback?.onFetchPassioData(startDate)
+//        callback?.onFetchPassioData(startDate)
         return emptyList() // Replace with actual implementation
     }
 
@@ -62,6 +65,32 @@ class PassioConnectorImpl : PassioConnector {
 
         }
     }
+
+//    private fun getFoodDetails(date: Date) {
+//        // Format the date to the required string format
+//        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+//        val formattedDate = dateFormat.format(date)
+//
+//        RetrofitClient.instance.getFoodRecord(formattedDate).enqueue(object : Callback<GetFoodRecord> {
+//            override fun onResponse(call: Call<GetFoodRecord>, response: Response<GetFoodRecord>) {
+//                if (response.isSuccessful) {
+//                    val foodRecord = response.body()
+//                    // Handle the user data here
+//                    foodRecord?.let {
+////                        println("User: ${it.}, Email: ${it.email}")
+//                        Log.d("GettingData", foodRecord[0].uuid)
+//                    }
+//                } else {
+//                    // Handle error
+//                    println("Error: ${response.code()}")
+//                }
+//            }
+//            override fun onFailure(call: Call<GetFoodRecord>, t: Throwable) {
+//                // Handle failure
+//                println("Failure: ${t.message}")
+//            }
+//        })
+//    }
 
     override suspend fun updateFavorite(foodRecord: FoodRecord) {
         // Implement the logic to update a favorite food record

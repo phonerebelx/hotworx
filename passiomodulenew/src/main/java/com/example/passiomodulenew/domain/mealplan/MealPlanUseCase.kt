@@ -31,7 +31,6 @@ object MealPlanUseCase {
         weighGrams: Double? = null
     ): FoodRecord? {
         val foodItem = repository.fetchPassioFoodItem(passioFoodDataInfo, weighGrams) ?: return null
-
         val nutritionPreview = passioFoodDataInfo.nutritionPreview
         val foodRecord = FoodRecord(foodItem)
         foodRecord.mealLabel = MealLabel.stringToMealLabel(passioMealTime.mealName)
@@ -117,13 +116,13 @@ object MealPlanUseCase {
         // Notify callback with the list of records
         var recordList = ArrayList<FoodRecord>()
         recordList.add(record)
-        callback?.onPostPassioData(formattedDate,"",recordList)
+//        callback?.onPostPassioData(formattedDate,"",recordList)
 
         Log.d("ksnklcndkndcnklcnd","food logged success")
         return try {
             val result =  repository.logFoodRecord(record)
             if (result) {
-//                callback?.onPostPassioData(formattedDate,"",records)
+                callback?.onPostPassioData(formattedDate,"",recordList)
                 true
             } else {
                 callback?.Error("Failed to post records")
@@ -142,7 +141,7 @@ object MealPlanUseCase {
         val currentDate = Date()
         val formattedDate = dateFormat.format(currentDate)
         // Notify callback with the list of records
-        callback?.onPostPassioData(formattedDate,"",records)
+//        callback?.onPostPassioData(formattedDate,"",records)
 
         records.forEach { record ->
             record.create(record.createdAtTime() ?: Date().time)
@@ -151,7 +150,7 @@ object MealPlanUseCase {
         return try {
             val result = repository.logFoodRecords(records)
             if (result) {
-//                callback?.onPostPassioData(formattedDate,"",records)
+                callback?.onPostPassioData(formattedDate,"",records)
             } else {
                 callback?.Error("Failed to post records")
             }

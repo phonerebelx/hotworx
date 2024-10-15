@@ -6,11 +6,20 @@ import com.example.passiomodulenew.ui.model.MealLabel
 import com.example.passiomodulenew.ui.model.copy
 import ai.passio.passiosdk.passiofood.PassioFoodDataInfo
 import android.util.Log
+import com.example.passiomodulenew.domain.mealplan.MealPlanUseCase
+import com.example.passiomodulenew.interfaces.PostPassioDataCallback
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 object EditFoodUseCase {
 
     private val repository = Repository.getInstance()
+    private var callback: PostPassioDataCallback? = null
+
+    fun postPassioDataCallback(callback: PostPassioDataCallback) {
+        this.callback = callback
+    }
 
     suspend fun getFoodRecord(searchResult: PassioFoodDataInfo): FoodRecord? {
         val foodItem = repository.fetchPassioFoodItem(searchResult) ?: return null
@@ -19,7 +28,9 @@ object EditFoodUseCase {
 
     suspend fun logFoodRecord(record: FoodRecord, isEditMode: Boolean): Boolean {
         Log.d("logFoodRecord", "before=== uuid ${record.uuid}")
-
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
         /*  if (!isEditMode && record.isCustomFood()) {
               record.copy().create(record.createdAtTime() ?: Date().time)
           } else if (!isEditMode && record.isRecipe()) {
@@ -29,6 +40,10 @@ object EditFoodUseCase {
           } else if (record.createdAtTime() == null) {
               record.create(Date().time)
           }*/
+
+        var recordList = ArrayList<FoodRecord>()
+        recordList.add(record)
+        callback?.onPostPassioData(formattedDate,"",recordList)
 
         val foodRecord = if (!isEditMode && record.isCustomFood()) {
             record.copy()

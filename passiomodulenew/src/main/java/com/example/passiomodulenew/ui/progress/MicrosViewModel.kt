@@ -1,5 +1,6 @@
 package com.example.passiomodulenew.ui.progress
 
+import android.util.Log
 import com.example.passiomodulenew.ui.model.MicroNutrient
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +10,9 @@ import com.example.passiomodulenew.ui.base.BaseViewModel
 import com.example.passiomodulenew.ui.util.SingleLiveEvent
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class MicrosViewModel : BaseViewModel() {
     private val useCase = DiaryUseCase
@@ -32,9 +35,11 @@ class MicrosViewModel : BaseViewModel() {
     }
 
     fun fetchLogsForCurrentDay() {
+        val formattedDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(currentDate)
+        Log.d("PassioFragment", "Formatted date for API: $formattedDate")
         viewModelScope.launch {
             _showLoading.postValue(true)
-            val records = useCase.getLogsForDay(currentDate)
+            val records = useCase.getFoodDetails(formattedDate)
             val nutrients = MicroNutrient.nutrientsFromFoodRecords(records)
             nutrientsList.clear()
             nutrientsList.addAll(nutrients)

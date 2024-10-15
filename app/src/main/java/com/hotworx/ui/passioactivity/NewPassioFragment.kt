@@ -34,10 +34,9 @@ import com.hotworx.helpers.Utils
 import com.hotworx.models.ErrorResponseEnt
 import com.hotworx.models.HotsquadList.Passio.FoodEntry
 import com.hotworx.models.HotsquadList.Passio.PostPassioResponse
-import com.hotworx.models.HotsquadList.Passio.postPassioRequest
-import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest
 import com.hotworx.models.PassioNutritionGoals.NutritionPercentage
 import com.hotworx.models.PassioNutritionGoals.PassioNutritionGoalsRequest
+import com.hotworx.models.PostReq.postPassioRequest
 import com.hotworx.models.UserData.ResponseUserProfileModel
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
@@ -85,12 +84,13 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         super.onViewCreated(view, savedInstanceState)
 
         onSDKReady()
+        val token = prefHelper.loginToken
 
         // Set the callback before calling DiaryUseCase
 //        passioConnector
-        DiaryUseCase.setPassioDataCallback(this)
+        DiaryUseCase.setPassioDataCallback(this,token)
 //        passioConnector.setPassioDataCallback(this)
-        DiaryUseCase.deletePassioDataCallback(this)
+//        DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
         UserProfileUseCase.postProfileDataCallback(this)
         UserProfileUseCase.postNutritionDataCallback(this)
@@ -140,85 +140,6 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         titleBar.showBackButton()
     }
 
-    override fun onFetchPassioData(day: Date) {
-        if (!isAdded || context == null) {
-            Log.e("PassioFragment", "Fragment is not attached, skipping API call")
-            return
-        }
-        val formattedDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(day)
-        Log.d("PassioFragment", "Formatted date for API: $formattedDate")
-
-        getServiceHelper().enqueueCall(
-            getWebService().getPassioData(apiHeader(requireContext()), formattedDate),
-            WebServiceConstants.GET_PASSIO_LIST,
-            true
-        )
-    }
-
-    override fun ResponseSuccess(result: String?, tag: String?) {
-        if (!isAdded || _binding == null) return
-        Log.d("PassioFragment", "Response received for tag: $tag")
-        if (tag == WebServiceConstants.GET_PASSIO_LIST) {
-
-            val passioData = GsonFactory.getConfiguredGson().fromJson(result, GetFoodRecord::class.java)
-
-            if (passioData.isNotEmpty()) {
-                Log.d("PassioFragment", "Received non-empty Passio data")
-                DiaryUseCase.onPassioDataReceived(passioList) // Pass the API data to the use case.
-//                Log.d("PassioFragment", "Received non-empty Passio data")
-//                passioConnector.onPassioDataReceived(passioData)
-            } else {
-//                Log.d("PassioFragment", "Received empty Passio data")
-//                passioConnector.onPassioDataReceived(GetPassioResponse())
-                DiaryUseCase.onPassioDataReceived(GetFoodRecord()) // Pass an empty instance of GetPassioResponse
-            }
-        }
-    }
-
-    override fun ResponseFailure(message: String?, tag: String?) {
-        if (tag == WebServiceConstants.GET_PASSIO_LIST) {
-            onPassioDataError(message ?: "Unknown error")
-        }
-    }
-
-    override fun onPassioDataSuccess(passioList: GetFoodRecord) {
-        this.passioList = passioList
-        if (passioList.isNotEmpty()) {
-            DiaryUseCase.onPassioDataReceived(passioList) // Notify the child module.
-        } else {
-            Log.d("PassioFragmentSuccess", "Received empty Passio data, not fetching local data")
-        }
-
-//        if (passioList.isNotEmpty()) {
-//            Log.d("PassioFragmentSuccess", "Received non-empty Passio data")
-//
-//            // Map the passioList to a list of FoodRecord
-//            apiPassioList = passioList.map { passioItem ->
-//                FoodRecord().apply {
-//                    id = passioItem.id
-//                    name = passioItem.name
-//                    additionalData = passioItem.details // Assuming this maps to additionalData; adjust as necessary
-//                    iconId = passioItem.iconId
-//                }
-//            }
-//
-//            Log.d("PassioFragmentGETT", "API data set successfully: $apiPassioList")
-//            DiaryUseCase.onPassioDataReceived(passioList) // Pass the API data to the use case.
-//        } else {
-//            Log.d("PassioFragmentGETTLOCALLL", "Received empty Passio data")
-//            DiaryUseCase.onPassioDataReceived(GetPassioResponse()) // Pass an empty instance.
-//        }
-    }
-
-    override fun onPassioDataError(error: String) {
-        if (::passioList.isInitialized) {
-            Log.d("DiaryUseCase", "Received Passio data from parent: $passioList")
-        } else {
-            Log.d("DiaryUseCase", "passioList is not initialized. Error: $error")
-        }
-        Log.e("DiaryUseCase", "Server issue: $error")
-    }
-
     //POST API
     override fun onSuccess(liveData: LiveData<String>, tag: String) {
         super.onSuccess(liveData, tag)
@@ -237,7 +158,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
                         if (response != null) {
                             onPassioDataSuccess(recordList)
                         } else {
-                            onPassioDataError("Received empty response")
+//                            onPassioDataError("Received empty response")
                         }
                     } catch (e: Exception) {
                         dockActivity?.showErrorMessage(e.message.toString())
@@ -335,7 +256,8 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
         }
 
         // Create the request object
-        val request = postPassioRequest(food_entries = foodEntries)
+        val request =
+           postPassioRequest(food_entries = foodEntries)
 
         // Make the API call
         getServiceHelper()?.enqueueCallExtended(
@@ -476,7 +398,7 @@ class NewPassioFragment : BaseFragment(), PassioDataCallback, PostPassioDataCall
     override fun deleteDataSuccess(deleteList: DeleteMealData) {
         this.deleteList = deleteList
         Log.d("DeleteList", "Record data received: $deleteList")
-        DiaryUseCase.onPassioDataDelete("", "", deleteList)
+//        DiaryUseCase.onPassioDataDelete("", "", deleteList)
     }
 
     override fun deleteDataError(error: String) {

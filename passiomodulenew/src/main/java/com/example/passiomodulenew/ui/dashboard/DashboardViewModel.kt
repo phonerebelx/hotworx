@@ -1,8 +1,10 @@
 package com.example.passiomodulenew.ui.dashboard
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.passiomodulenew.Passio.GetPassioResponse.GetFoodRecordItem
 import com.example.passiomodulenew.domain.diary.DiaryUseCase
 import com.example.passiomodulenew.domain.user.UserProfileUseCase
 import com.example.passiomodulenew.domain.water.WaterUseCase
@@ -16,7 +18,9 @@ import com.prolificinteractive.materialcalendarview.CalendarMode
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.joda.time.DateTime
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class DashboardViewModel : BaseViewModel() {
 
@@ -86,11 +90,17 @@ class DashboardViewModel : BaseViewModel() {
     }
 
     fun fetchLogsForCurrentDay() {
+        val formattedDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(currentDate)
+        Log.d("PassioFragment", "Formatted date for API: $formattedDate")
         viewModelScope.launch {
             _isLogsLoading.postValue(true)
             val userProfile = useCaseUserProfile.getUserProfile()
-            val records = useCase.getLogsForDay(currentDate)
-            _logsLD.postValue(Pair(userProfile, records))
+            val recordsGet = useCase.getFoodDetails(formattedDate.toString())
+//            val recordsPost = useCase.getLogsForDay(currentDate)
+            Log.d( "fetchLogsForrecordsGet: ",recordsGet.toString())
+//            Log.d( "fetchLogsForrecordsPost: ",recordsPost.toString())
+
+            _logsLD.postValue(Pair(userProfile, recordsGet))
             _isLogsLoading.postValue(false)
         }
         fetchWaterSummary()

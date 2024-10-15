@@ -7,13 +7,13 @@ import com.example.passiomodulenew.ui.model.copy
 import ai.passio.passiosdk.passiofood.Barcode
 import ai.passio.passiosdk.passiofood.FoodCandidates
 import ai.passio.passiosdk.passiofood.FoodDetectionConfiguration
+import com.example.passiomodulenew.interfaces.PassioDataCallback
 import kotlinx.coroutines.flow.Flow
 import java.util.Date
 
 object CustomFoodUseCase {
 
     private val repository = Repository.getInstance()
-
     suspend fun saveCustomFood(foodRecord: FoodRecord): Boolean {
         foodRecord.create(null)
         return repository.saveCustomFood(foodRecord)
@@ -31,6 +31,7 @@ object CustomFoodUseCase {
     }*/
 
     suspend fun fetchCustomFoods(): List<FoodRecord> {
+
         return repository.fetchCustomFoods()
 
     }

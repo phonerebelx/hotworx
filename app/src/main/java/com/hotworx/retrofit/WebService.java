@@ -5,7 +5,7 @@ import com.hotworx.global.WebServiceConstants;
 import com.hotworx.models.AddNutritionistRequestBody;
 import com.hotworx.models.BrivoRequestModel.BrivoCredentialRequestModel;
 import com.hotworx.models.GettingStarted.GettingStartedRequestModel;
-import com.hotworx.models.HotsquadList.Passio.postPassioRequest;
+import com.hotworx.models.PostReq.postPassioRequest;
 import com.hotworx.models.HotsquadList.SearchListRequest;
 import com.hotworx.models.HotsquadList.Session.SessionHighlightsRequest;
 import com.hotworx.models.HotsquadList.Session.SquadSessionMemberRequest;
@@ -26,12 +26,9 @@ import com.hotworx.requestEntity.SetFavoriteFood;
 import com.hotworx.requestEntity.SetIntermittentPlan;
 import com.hotworx.requestEntity.UpdateSessionEnt;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
