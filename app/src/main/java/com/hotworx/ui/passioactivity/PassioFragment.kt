@@ -93,9 +93,11 @@ class PassioFragment : BaseFragment(), PassioDataCallback ,PostPassioDataCallbac
         }
 
         // Set the callback before calling DiaryUseCase
-        passioConnector
-//        DiaryUseCase.setPassioDataCallback(this)
-        PassioHotsquadConnector().setPassioDataCallback(this)
+        var tokenUser:String = ""
+        tokenUser =  prefHelper.loginToken.toString()
+//        passioConnector
+        DiaryUseCase.setPassioDataCallback(this,tokenUser)
+//        PassioHotsquadConnector().setPassioDataCallback(this)
         DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
 
