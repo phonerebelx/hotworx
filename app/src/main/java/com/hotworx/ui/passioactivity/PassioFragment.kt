@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
+import com.example.passionewsdk.Passio.DeleteMealData
 import com.example.passionewsdk.Passio.ErrorResponseEnt
 import com.example.passionewsdk.Passio.HotworxUserProfile
 import com.example.passionewsdk.Passio.PostPassioResponse
@@ -23,10 +24,8 @@ import com.example.passionewsdk.ui.model.FoodRecord
 import com.example.passionewsdk.ui.model.UserProfile
 import com.example.passionewsdk.uimodule.NutritionUIModule
 import com.hotworx.Singletons.ApiHeaderSingleton
-import com.hotworx.Singletons.ApiHeaderSingleton.apiHeader
 import com.hotworx.databinding.FragmentPassioBinding
 import com.hotworx.global.Constants
-import com.hotworx.global.WebServiceConstants
 import com.hotworx.models.HotsquadList.Passio.FoodEntry
 import com.hotworx.models.HotsquadList.Passio.postPassioRequest
 import com.hotworx.models.PassioNutritionGoals.NutritionPercentage
@@ -45,11 +44,11 @@ import java.util.Locale
 
 class PassioFragment : BaseFragment(),
     PassioDataCallback, PostPassioDataCallback,
-    ProfileDataCallback, NutritionDataCallback {
+    ProfileDataCallback, NutritionDataCallback , DeletePassioDataCallback{
     private var _binding: FragmentPassioBinding? = null
     private val binding get() = _binding
-    private lateinit var recordList:PostPassioResponse
-//    private lateinit var deleteList: com.example.passionewsdk.passio.DeleteMealData
+    private lateinit var recordList: PostPassioResponse
+    private lateinit var deleteList: DeleteMealData
     private lateinit var records: List<FoodRecord>
     private lateinit var userProfile: HotworxUserProfile
     private lateinit var recordsData: FoodRecord
@@ -80,7 +79,7 @@ class PassioFragment : BaseFragment(),
         DiaryUseCase.setPassioDataCallback(this,tokenUser)
         UserProfileUseCase.postProfileDataCallback(this)
         UserProfileUseCase.postNutritionDataCallback(this)
-//        DiaryUseCase.deletePassioDataCallback(this)
+        DiaryUseCase.deletePassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
         EditFoodUseCase.postPassioDataCallback(this)
 
@@ -162,30 +161,30 @@ class PassioFragment : BaseFragment(),
                 }
             }
 
-//            Constants.DELETE_PASSIO_RECORD -> {
-//                val responseJson = liveData.value
-//                Log.d("Response", "LiveData value: $responseJson")
-//
-//                if (responseJson != null) {
-//                    try {
-//                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, DeleteMealData::class.java)!!
-//                        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-//                        val currentDate = Date()
-//                        val formattedDate = dateFormat.format(currentDate)
-//                        if (response != null) {
-//                            deleteDataSuccess(deleteList)
-//                        } else {
-//                            deleteDataError("Received empty response")
-//                        }
-//                    } catch (e: Exception) {
-//                        dockActivity?.showErrorMessage(e.message.toString())
-//                        Log.i("Error", e.message.toString())
-//                    }
-//                } else {
-//                    Log.e("Error", "LiveData value is null")
-//                    dockActivity?.showErrorMessage("No response from server")
-//                }
-//            }
+            Constants.DELETE_PASSIO_RECORD -> {
+                val responseJson = liveData.value
+                Log.d("Response", "LiveData value: $responseJson")
+
+                if (responseJson != null) {
+                    try {
+                        val response = GsonFactory.getConfiguredGson()?.fromJson(responseJson, DeleteMealData::class.java)!!
+                        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+                        val currentDate = Date()
+                        val formattedDate = dateFormat.format(currentDate)
+                        if (response != null) {
+                            deleteDataSuccess(deleteList)
+                        } else {
+                            deleteDataError("Received empty response")
+                        }
+                    } catch (e: Exception) {
+                        dockActivity?.showErrorMessage(e.message.toString())
+                        Log.i("Error", e.message.toString())
+                    }
+                } else {
+                    Log.e("Error", "LiveData value is null")
+                    dockActivity?.showErrorMessage("No response from server")
+                }
+            }
 
             "Set User Api Calling" -> {
                 try {
@@ -276,40 +275,40 @@ class PassioFragment : BaseFragment(),
 
 
     //Delete Passio Record
-//    override fun onDeletePassioData(uuid: String, food_entry_date: String ,recordsData: FoodRecord) {
-//        if (!isAdded || context == null) {
-//            Log.e("DeletePassioFragment", "Fragment is not attached, skipping API call")
-//            return
-//        }
-//        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-//        val currentDate = Date()
-//        val formattedDate = dateFormat.format(currentDate)
-//        this.recordsData = recordsData
-//
-//        // Make the API call
-//        getServiceHelper()?.enqueueCallExtended(
-//            getWebService()?.deletePassioData(
-//                ApiHeaderSingleton.apiHeader(requireContext()),
-//                recordsData.uuid,
-//                formattedDate
-//            ), Constants.DELETE_PASSIO_RECORD, true
-//        )
-//    }
+    override fun onDeletePassioData(uuid: String, food_entry_date: String ,recordsData: FoodRecord) {
+        if (!isAdded || context == null) {
+            Log.e("DeletePassioFragment", "Fragment is not attached, skipping API call")
+            return
+        }
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val currentDate = Date()
+        val formattedDate = dateFormat.format(currentDate)
+        this.recordsData = recordsData
 
-//    override fun deleteDataSuccess(deleteList: DeleteMealData) {
-//        this.deleteList = deleteList
-//        Log.d("DeleteList", "Record data received: $deleteList")
-//        DiaryUseCase.onPassioDataDelete("","",deleteList)
-//    }
-//
-//    override fun deleteDataError(error: String) {
-//        if (::deleteList.isInitialized) {
-//            Log.d("deleteListtttttt", "Received Passio data from parent: $deleteList")
-//        } else {
-//            Log.d("deleteListtttttt", "passioList is not initialized. Error: $error")
-//        }
-//        Log.e("deleteListtttttt", "Server issue: $error")
-//    }
+        // Make the API call
+        getServiceHelper()?.enqueueCallExtended(
+            getWebService()?.deletePassioData(
+                ApiHeaderSingleton.apiHeader(requireContext()),
+                recordsData.uuid,
+                formattedDate
+            ), Constants.DELETE_PASSIO_RECORD, true
+        )
+    }
+
+    override fun deleteDataSuccess(deleteList: DeleteMealData) {
+        this.deleteList = deleteList
+        Log.d("DeleteList", "Record data received: $deleteList")
+        DiaryUseCase.onPassioDataDelete("","",deleteList)
+    }
+
+    override fun deleteDataError(error: String) {
+        if (::deleteList.isInitialized) {
+            Log.d("deleteListtttttt", "Received Passio data from parent: $deleteList")
+        } else {
+            Log.d("deleteListtttttt", "passioList is not initialized. Error: $error")
+        }
+        Log.e("deleteListtttttt", "Server issue: $error")
+    }
 
     //Update Profile
 
