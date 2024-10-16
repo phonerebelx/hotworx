@@ -20,6 +20,7 @@ import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
 import com.hotworx.models.PassioNutritionGoals.PassioNutritionGoalsRequest;
 import com.hotworx.models.ViModel.Registration.SetRegisterLocationModel;
 import com.hotworx.models.ViModel.Unregistraion.SetUnRegisterLocationModel;
+import com.hotworx.models.passioprofile.PassioProfileResponse;
 import com.hotworx.requestEntity.AddExerciseDataModel;
 import com.hotworx.requestEntity.DeleteCalRequestBody;
 import com.hotworx.requestEntity.SetFavoriteFood;
@@ -42,6 +43,7 @@ import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
 
@@ -99,6 +101,12 @@ public interface WebService {
             @Field("height") Double height,
             @Field("weight") Double weight,
             @Field("address") String address
+    );
+
+    @PUT("activities/savePassioProfile")
+    Call<ResponseBody> update_passio_profile(
+            @HeaderMap Map<String, String> headers,
+            @Body PassioProfileResponse request
     );
 
     @POST("general/saveNutritionalGoals")

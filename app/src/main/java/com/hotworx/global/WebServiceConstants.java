@@ -3,8 +3,8 @@ package com.hotworx.global;
 
 public class WebServiceConstants {
     public static final String SERVICE_URL = "";
-    public static final String BASE_URL = "https://sailposapi.uhfdemo.com/api/v1/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
-//    public static final String BASE_URL = "https://sailposapi.hotworx.net/api/v1/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
+//    public static final String BASE_URL = "https://sailposapi.uhfdemo.com/api/v1/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
+    public static final String BASE_URL = "https://sailposapi.hotworx.net/api/v1/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
     public static final String CUSTOM_BASE_URL = "https://sailposapi.hotworx.net/"; //"https://appadminnew.uhfdemo.com/mobileservice/";
     public static final String CUSTOM_SUB_URL = "https://sailposapi.hotworx.net/nutritionix/mobileservice_nut.php?action=";
     public static final String SUB_URL = "mobileservice.php?action="; //"mobileservice_intermittent.php?action=";

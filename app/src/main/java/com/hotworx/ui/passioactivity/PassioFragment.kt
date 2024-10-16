@@ -34,6 +34,11 @@ import com.hotworx.models.HotsquadList.Passio.postPassioRequest
 import com.hotworx.models.PassioNutritionGoals.NutritionPercentage
 import com.hotworx.models.PassioNutritionGoals.PassioNutritionGoalsRequest
 import com.hotworx.models.UserData.ResponseUserProfileModel
+import com.hotworx.models.passioprofile.MacroTargets
+import com.hotworx.models.passioprofile.MealPlan
+import com.hotworx.models.passioprofile.NutritionData
+import com.hotworx.models.passioprofile.PassioProfileResponse
+import com.hotworx.models.passioprofile.ReminderSettings
 import com.hotworx.retrofit.GsonFactory
 import com.hotworx.ui.fragments.BaseFragment
 import com.hotworx.ui.views.TitleBar
@@ -327,18 +332,54 @@ class PassioFragment : BaseFragment(),
             return
         }
 
+        val reminderSettings = ReminderSettings(
+            dinner = true,
+            breakfast = true,
+            lunch = true
+        )
+
+        val macroTargets = MacroTargets(
+            fat = profile.fatPer,
+            protein = profile.proteinPer,
+            carbs = profile.carbsPer
+        )
+
+        val mealPlan = MealPlan(
+            mealPlanLabel = profile.passioMealPlan!!.mealPlanLabel,
+            mealPlanTitle = profile.passioMealPlan!!.mealPlanTitle,
+            macroTargets = macroTargets
+        )
+
+        val nutritionData = NutritionData(
+            proteinPercent =profile.proteinPer,
+            goalWater =  profile.waterTarget,
+            fatPercent = profile.fatPer,
+            waterUnit = "oz",
+            weight = profile.weight,
+            reminderSettings = reminderSettings,
+            caloriesTarget = profile.caloriesTarget,
+            height = profile.height,
+            age = profile.age,
+            goalWeightTimeLine = "",
+            mealPlan = mealPlan,
+            recommendedCalories = 0,
+            units = "",
+            gender = "male",
+            carbsPercent = profile.carbsPer,
+            activityLevel = profile.activityLevel.toString(),
+            firstName = profile.userName,
+            heightUnits =profile.height.toString(),
+            goalWeight = profile.targetWeight
+        )
+
+        val request = PassioProfileResponse(
+            data = nutritionData
+        )
+
         getServiceHelper().enqueueCallExtended(
-            webService.update_profile(
+            webService.update_passio_profile(
                 ApiHeaderSingleton.apiHeader(requireContext()),
-                profile.userName,
-                "",
-                "",
-                "",
-                profile.gender.toString(),
-                profile.age.toString(),
-                profile.height,
-                profile.weight,
-                "",
+                request
             ), "Set User Api Calling", true
         )
     }
