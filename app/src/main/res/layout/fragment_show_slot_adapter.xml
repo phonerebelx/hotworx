@@ -93,12 +93,14 @@
                     android:id="@+id/ivImg1"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:src="@drawable/available" />
 
                 <ImageView
                     android:id="@+id/ivImg2"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:src="@drawable/taken" />
 
