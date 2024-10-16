@@ -12,6 +12,7 @@ import com.example.passionewsdk.Passio.ErrorResponseEnt
 import com.example.passionewsdk.Passio.HotworxUserProfile
 import com.example.passionewsdk.Passio.PostPassioResponse
 import com.example.passionewsdk.Passio.interfaces.ProfileDataCallback
+import com.example.passionewsdk.domain.camera.CameraUseCase
 import com.example.passionewsdk.domain.customfood.CustomFoodUseCase
 import com.example.passionewsdk.domain.diary.DiaryUseCase
 import com.example.passionewsdk.domain.mealplan.MealPlanUseCase
@@ -85,6 +86,7 @@ class PassioFragment : BaseFragment(),
         RecipeUseCase.postPassioDataCallback(this)
         RecipeUseCase.postPassioDataCallback(this)
         CustomFoodUseCase.postPassioDataCallback(this)
+        CameraUseCase.postPassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
         EditFoodUseCase.postPassioDataCallback(this)
         EditFoodUseCase.postPassioDataCallback(this)
