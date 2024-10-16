@@ -1,6 +1,8 @@
 package com.hotworx.helpers;
 
 
+import static com.example.passionewsdk.data.PassioDemoSharedPreferences.PREF_NAME;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -124,14 +126,14 @@ public class BasePreferenceHelper extends PreferenceHelper {
     public void putLoginData(DataX user) {
         putStringPreference(context,FILENAME,LOGIN_DATA_KEY,
                 new GsonBuilder().create().toJson(user));
-//        if (user == null) {
-//            clearPreferences();
-//        }
+        if (user == null) {
+            clearPreferences();
+        }
     }
 
-//    private void clearPreferences() {
-//        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = preferences.edit();
+    private void clearPreferences() {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
 //
 //        // Remove the specific preferences
 //        editor.remove("foodRecords");
@@ -139,10 +141,11 @@ public class BasePreferenceHelper extends PreferenceHelper {
 //        editor.remove("waterRecords");
 //        editor.remove("foodFavorites");
 //        editor.remove("userProfile");
-//
-//        // Apply the changes
-//        editor.apply(); // use apply() instead of commit() for asynchronous saving
-//    }
+
+        editor.remove("userProfile");
+        // Apply the changes
+        editor.apply(); // use apply() instead of commit() for asynchronous saving
+    }
 
     public void saveString(String key, String value) {
         putStringPreference(context,FILENAME,key, value);

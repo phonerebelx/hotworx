@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
+import com.example.passionewsdk.uimodule.NutritionUIModule
 import com.hotworx.R
 import com.hotworx.Singletons.ApiHeaderSingleton
 import com.hotworx.helpers.Utils
@@ -41,6 +42,7 @@ class ProfileAndGoalFragment : BaseFragment() {
     var gender = arrayListOf<String>("Select Gender", "male", "female")
     private lateinit var getUserDataForUpdate: DataX
     private lateinit var profileImage: ImageView
+    private lateinit var goals: ImageView
 
 //    @BindView(R.id.per_spinner_gender)
     private lateinit var per_spinner_gender: Spinner
@@ -127,6 +129,7 @@ class ProfileAndGoalFragment : BaseFragment() {
                 }
             }
         }
+
     }
 
     @SuppressLint("MissingInflatedId")
@@ -141,6 +144,7 @@ class ProfileAndGoalFragment : BaseFragment() {
         profileImage = root.findViewById(R.id.profileImage)
         editProfileImage = root.findViewById(R.id.editProfileImage)
         clGoalEntry = root.findViewById(R.id.clGoalEntry)
+        goals = root.findViewById(R.id.goals)
         sVPersonalDetail = root.findViewById(R.id.sVPersonalDetail)
         etFirstName = root.findViewById(R.id.etFirstName)
         etLastName = root.findViewById(R.id.etLastName)
@@ -165,8 +169,11 @@ class ProfileAndGoalFragment : BaseFragment() {
         setOnClickListener()
         callApi("Profile Api Calling", "")
 
+        goals.setOnClickListener(View.OnClickListener {
+            NutritionUIModule.launchProfile(this.requireContext())
+//            personalInfoLayout.visibility = View.GONE
+        })
         return root
-
     }
 
     private fun setupViews() {

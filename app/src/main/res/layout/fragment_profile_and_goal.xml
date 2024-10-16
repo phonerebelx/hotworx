@@ -8,7 +8,7 @@
     tools:context=".ui.fragments.ProfileAndGoal.ProfileAndGoalFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewSetting"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
         android:scaleType="centerCrop"
@@ -64,6 +64,19 @@
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/goals"
+                android:layout_width="29dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:src="@drawable/settings"
+                android:tint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.934"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
