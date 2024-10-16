@@ -140,6 +140,11 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_and_goal.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_qr_dialog.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
@@ -425,6 +430,171 @@
           <theme>@android:style/Theme.Material.Light</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/activity_passio_ui_module.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/add_food_item.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/daily_nutrition_layout.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/dialog_common.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/dialog_daily_nutrition_target.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/food_search_layout.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_add_food.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_advisor.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_camera_recognition.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_custom_foods.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_dashboard.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_diary.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_edit_food.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_edit_ingredient.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_edit_recipe.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_food_creator.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_macros.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_meal_plan.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_micros.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_my_foods.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_my_profile.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_nutrition_info.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_progress.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_save_weight.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_scan_barcode.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_search.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_settings.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_voice_logging.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_water_tracking.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/layout/fragment_weight_tracking.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/menu/advisor_menu.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/menu/dashboard_menu.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/passionewsdk/src/main/res/navigation/main_nav_graph.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -432,14 +602,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0da4b98-1a4b-4bba-a41b-065f6c9063e7" name="Changes" comment="utm url issue fixed">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/activities/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/BasePreferenceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/helpers/BasePreferenceHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/HotsquadList/Passio/FoodEntry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/HotsquadList/Passio/FoodEntry.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/HotsquadList/Passio/postPassioRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/HotsquadList/Passio/postPassioRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/UserData/SetUserData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/models/UserData/SetUserData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/retrofit/WebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/ProfileAndGoal/ProfileAndGoalFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/ProfileAndGoal/ProfileAndGoalFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/SideMenuFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/SideMenuFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/BaseApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/domain/diary/DiaryUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/domain/diary/DiaryUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/domain/search/EditFoodUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/domain/search/EditFoodUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/domain/user/UserProfileUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/domain/user/UserProfileUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/models/HotsquadList/Passio/Nutrients.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/models/HotsquadList/Passio/Nutrients.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/models/HotsquadList/Passio/ServingUnitX.kt" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/models/HotsquadList/Passio/ServingUnitX.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/res/layout/fragment_my_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/res/layout/fragment_my_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modulepassio/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modulepassio/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -455,10 +646,28 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="hotworx" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -478,7 +687,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="d574ee77dcb3ff29adb6f0ad33771c243b2bde85" />
+        <entry key="$PROJECT_DIR$" value="passio-hotsquad" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -520,7 +729,7 @@
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;passio-hotsquad&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/My Projects/Android Projects/Hotworx ali github - Copy&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/My Projects/Android Projects/Hotworx ali github/passionewsdk/src/main/java/com/example/passionewsdk/passio/profile&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -537,21 +746,21 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\modulepassio\src\main\java\com\passio\modulepassio\models\HotsquadList\Passio" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\modulepassio\src\main\res\layout" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\modulepassio\src\main\java\com\passio\modulepassio" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\modulepassio\src\main\res\raw" />
-      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\sharedmodule" />
+      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passionewsdk\src\main\java\com\example\passionewsdk\passio\profile" />
+      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passionewsdk\src\main\java\com\example\passionewsdk\passio" />
+      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passionewsdk\src\main\java\com\example\passionewsdk\interfaces" />
+      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passionewsdk\src\main\res" />
+      <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passionewsdk\src\main\java\com\example\passionewsdk" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\app\src\main\res\drawable" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.example.passionewsdk.retrofitclient" />
+      <recent name="com.example.passionewsdk.dietrixapicalling" />
       <recent name="com.passio.modulepassio.data" />
       <recent name="com.passio.modulepassio.models.HotsquadList.Passio" />
       <recent name="com.passio.modulepassio.interfaces" />
-      <recent name="com.hotworx.models.HotsquadList.Passio" />
-      <recent name="com.passio.modulepassio.ui.util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.passio.modulepassio" />

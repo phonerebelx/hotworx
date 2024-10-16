@@ -1,5 +1,7 @@
 package com.passio.modulepassio.models.HotsquadList.Passio
 
+import com.passio.modulepassio.Passio.Weight
+
 data class Nutrients(
     val _calcium: Calcium,
     val _calories: Calories,

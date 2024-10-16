@@ -107,6 +107,8 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.TimeZone;
 
+import ai.passio.passiosdk.core.config.PassioConfiguration;
+import ai.passio.passiosdk.passiofood.PassioSDK;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -252,7 +254,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
         FirebaseApp.initializeApp(getContext());
         getFirebaseToken();
-
+        PassioModuleLoad();
         //addCustomEventToCalendar();
 
         return view;
@@ -315,6 +317,42 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 //            }
 //        });
     }
+
+    private void PassioModuleLoad(){
+        PassioConfiguration passioConfiguration = new PassioConfiguration(
+                requireContext(),
+                "pHAFLe95rgGnHjSZwkZIBrY0pyqXchBZymTtp4gX4hoZ"
+        );
+        passioConfiguration.setSdkDownloadsModels(true);
+        passioConfiguration.setDebugMode(-333);
+
+        PassioSDK.getInstance().configure(passioConfiguration, passioStatus -> {
+            Log.d("HHHH", passioStatus.toString());
+            switch (passioStatus.getMode()) {
+                case NOT_READY:
+                    onSDKError("Not ready");
+                    break;
+                case FAILED_TO_CONFIGURE:
+                    onSDKError(getString(passioStatus.getError().getErrorRes()));
+                    break;
+                case IS_READY_FOR_DETECTION:
+//                    onSDKReady();
+                    break;
+                case IS_BEING_CONFIGURED:
+                    // Add any necessary logic here if needed.
+                    break;
+                case IS_DOWNLOADING_MODELS:
+                    // Add any necessary logic here if needed.
+                    break;
+            }
+            return null;
+        });
+    }
+
+    private void onSDKError(String error) {
+//        textView.setText("ERROR: " + error);
+    }
+
 
     @Override
     public void onResume() {
@@ -959,7 +997,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void ResponseFailure(String message, String tag) {
-        Utils.customToast(requireContext(), message);
+//        Utils.customToast(requireContext(), message);
         if (swipeRefreshLayout != null) swipeRefreshLayout.setRefreshing(false);
     }
 

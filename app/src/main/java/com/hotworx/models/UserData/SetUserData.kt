@@ -5,8 +5,9 @@ data class SetUserData(
     val last_name: String = "",
     val image_url: String = "",
     val dob: String = "",
+    val age: String = "",
     val gender: String = "",
-    val height: String = "",
-    val weight: String = "",
+    val height: Double = 0.0,
+    val weight: Double = 0.0,
     val address: String = ""
 )

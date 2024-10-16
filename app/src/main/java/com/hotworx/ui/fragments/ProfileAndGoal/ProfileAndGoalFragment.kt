@@ -217,8 +217,9 @@ class ProfileAndGoalFragment : BaseFragment() {
                         setValueForProfile.image_url,
                         setValueForProfile.dob,
                         setValueForProfile.gender,
+                        "",
                         setValueForProfile.height,
-                        setValueForProfile.weight,
+                        setValueForProfile.weight.toDouble(),
                         setValueForProfile.address,
                     ), "Set User Api Calling", true
                 )
@@ -547,9 +548,10 @@ class ProfileAndGoalFragment : BaseFragment() {
                     last_name = etLastName.text.toString(),
                     image_url = profileImageForModel.toString(),
                     dob = selectDate.text.toString(),
+                    "",
                     gender = selectedGenderValue,
-                    height = etHeight.text.toString(),
-                    weight = etWeight.text.toString()
+                    height = etHeight.text.toString().toDouble(),
+                    weight = etWeight.text.toString().toDouble()
 
                 )
 

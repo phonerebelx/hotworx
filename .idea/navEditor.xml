@@ -29,6 +29,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="add_food_to_my_foods">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="add_food_to_photo">
                               <value>
                                 <LayoutPositions />
@@ -91,12 +96,53 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="back_to_edit_recipe">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="camera_to_diary">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="camera_to_edit">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="camera_to_edit_ingredient">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="camera_to_food_creator">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="camera_to_search">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="custom_foods">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="custom_food_to_food_creator">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -199,12 +245,135 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="edit_to_edit_recipe">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="edit_to_food_creator">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="edit_to_nutrition_info">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="edit_to_search">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="edit_ingredient">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="724" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="back_to_edit_recipe">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="edit_ingredient_to_nutrition_info">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="edit_recipe">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="402" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="edit_recipe_to_camera">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="edit_recipe_to_diary">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="edit_recipe_to_edit_ingredient">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="edit_recipe_to_my_foods">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="edit_recipe_to_search">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="edit_recipe_to_take_photo">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="edit_recipe_to_voice_logging">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="food_creator">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="500" />
+                            <option name="y" value="325" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="food_creator_to_diary">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="food_creator_to_my_foods">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="food_creator_to_scan_barcode">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="food_creator_to_take_photo">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -280,6 +449,42 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="my_foods">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="368" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="my_foods_to_diary">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="my_foods_to_edit">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="my_foods_to_edit_recipe">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="my_foods_to_food_creator">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="my_profile">
                     <value>
                       <LayoutPositions>
@@ -340,6 +545,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="scan_barcode">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="744" />
+                            <option name="y" value="325" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="scan_barcode_to_edit">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="search">
                     <value>
                       <LayoutPositions>
@@ -351,12 +577,22 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="back_to_edit_recipe">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="search_to_diary">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="search_to_edit">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="search_to_edit_ingredient">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -436,6 +672,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="back_to_edit_recipe">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="voice_logging_to_diary">
                               <value>
                                 <LayoutPositions />

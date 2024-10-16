@@ -114,7 +114,7 @@ dependencies {
     implementation project(path: ':hotsquadlist')
 
     //passio
-    implementation project(path: ':modulepassio')
+    implementation project(path: ':passionewsdk')
 //    api(project(":passio-sdk"))
 //    implementation files('../library/passio-ui-module-release.aar')
 

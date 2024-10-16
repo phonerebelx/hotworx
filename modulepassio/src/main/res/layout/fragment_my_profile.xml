@@ -30,8 +30,6 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rc_8_white"
-                android:elevation="4dp"
-                android:visibility="gone"
                 android:padding="8dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -137,7 +135,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -152,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:text="@string/personal_information"
+                    android:text="@string/nutrition_goals"
                     android:textColor="@color/passio_gray900"
                     android:textSize="16sp"
                     android:textStyle="bold"

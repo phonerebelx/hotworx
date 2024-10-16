@@ -17,6 +17,7 @@ import com.hotworx.models.HotsquadList.sendMemberInvitationRequest;
 import com.hotworx.models.HotsquadList.sendReferralInvitationRequest;
 import com.hotworx.models.HotsquadList.squadMemberDetailRequest;
 import com.hotworx.models.NewActivityModels.TimelineActivityDataModel;
+import com.hotworx.models.PassioNutritionGoals.PassioNutritionGoalsRequest;
 import com.hotworx.models.ViModel.Registration.SetRegisterLocationModel;
 import com.hotworx.models.ViModel.Unregistraion.SetUnRegisterLocationModel;
 import com.hotworx.requestEntity.AddExerciseDataModel;
@@ -84,6 +85,7 @@ public interface WebService {
             @Field("type") String type
             );
 
+
     @FormUrlEncoded
     @POST("general/update_profile")
     Call<ResponseBody> update_profile(
@@ -93,11 +95,17 @@ public interface WebService {
             @Field("image_url") String image_url,
             @Field("dob") String otp,
             @Field("gender") String gender,
-            @Field("height") String height,
-            @Field("weight") String weight,
+            @Field("age") String age,
+            @Field("height") Double height,
+            @Field("weight") Double weight,
             @Field("address") String address
-            );
+    );
 
+    @POST("general/saveNutritionalGoals")
+    Call<ResponseBody> updatePassioNutritionGoals(
+            @HeaderMap Map<String, String> headers,
+            @Body PassioNutritionGoalsRequest request
+    );
 
     @FormUrlEncoded
     @POST("general/updateGoals")

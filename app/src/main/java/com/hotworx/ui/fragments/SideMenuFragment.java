@@ -50,7 +50,7 @@ import com.hotworx.ui.fragments.VIDeviceManagement.RegistrationFragment;
 import com.hotworx.ui.fragments.VPT.VPTFragment;
 import com.hotworx.ui.fragments.VPT.VideoPlayerActivty;
 import com.hotworx.ui.views.TitleBar;
-import com.passio.modulepassio.ui.activity.PassioUiModuleActivity;
+//import com.passio.modulepassio.ui.activity.PassioUiModuleActivity;
 
 import java.util.ArrayList;
 
@@ -219,8 +219,8 @@ public class SideMenuFragment extends BaseFragment {
                 if (navigationItem.getFragment() != null) {
                     myDockActivity.replaceDockableFragment(navigationItem.getFragment());
                 }else if (navigationItem.getActivity() != null) {
-                  var intent = new Intent(getActivity(), PassioUiModuleActivity.class);
-                  startActivity(intent);
+//                  var intent = new Intent(getActivity(), PassioUiModuleActivity.class);
+//                  startActivity(intent);
                 }
                 else if (navigationItem.getUrl() != null) {
                     openUrl(navigationItem.getUrl());

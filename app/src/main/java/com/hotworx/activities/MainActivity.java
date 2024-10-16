@@ -11,6 +11,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.passionewsdk.uimodule.NutritionUIModule;
 import com.hotworx.R;
 import com.hotworx.global.Constants;
 import com.hotworx.global.SideMenuDirection;
@@ -38,7 +40,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.passio.modulepassio.NutritionUIModule;
 
 public class MainActivity extends DockActivity {
 
@@ -349,17 +350,6 @@ public class MainActivity extends DockActivity {
                         duration), Constants.HomeFragment);
                 break;
         }
-    }
-
-    private void onSDKError(String error) {
-//        textView.setText("ERROR: " + error);
-    }
-
-    private void onSDKReady() {
-        // Assuming NutritionUIModule has a static method like getInstance() or a similar one
-        NutritionUIModule.INSTANCE.launch(this, null);
-        Log.d("ytytytuy", "jhkjhkhlkhlkllhlk");
-        finish();
     }
 
     private FragmentManager.OnBackStackChangedListener getListener() {
