@@ -85,8 +85,9 @@ class PassioFragment : BaseFragment(),
         tokenUser =  prefHelper.loginToken.toString()
 //        passioConnector
         DiaryUseCase.setPassioDataCallback(this,tokenUser)
+        UserProfileUseCase.setPassioDataCallback(this,tokenUser)
         UserProfileUseCase.postProfileDataCallback(this)
-        UserProfileUseCase.postNutritionDataCallback(this)
+//        UserProfileUseCase.postNutritionDataCallback(this)
         DiaryUseCase.deletePassioDataCallback(this)
         RecipeUseCase.postPassioDataCallback(this)
         RecipeUseCase.postPassioDataCallback(this)

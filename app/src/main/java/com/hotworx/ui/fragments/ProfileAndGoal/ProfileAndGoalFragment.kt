@@ -264,7 +264,7 @@ class ProfileAndGoalFragment : BaseFragment() {
                 } catch (e: Exception) {
                     val genericMsgResponse = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, ErrorResponseEnt::class.java)!!
-                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
+//                    dockActivity?.showErrorMessage(genericMsgResponse.error.toString())
                     Log.i("dummy error", e.message.toString())
 
                 }
