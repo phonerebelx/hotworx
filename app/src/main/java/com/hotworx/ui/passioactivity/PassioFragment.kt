@@ -12,8 +12,10 @@ import com.example.passionewsdk.Passio.ErrorResponseEnt
 import com.example.passionewsdk.Passio.HotworxUserProfile
 import com.example.passionewsdk.Passio.PostPassioResponse
 import com.example.passionewsdk.Passio.interfaces.ProfileDataCallback
+import com.example.passionewsdk.domain.customfood.CustomFoodUseCase
 import com.example.passionewsdk.domain.diary.DiaryUseCase
 import com.example.passionewsdk.domain.mealplan.MealPlanUseCase
+import com.example.passionewsdk.domain.recipe.RecipeUseCase
 import com.example.passionewsdk.domain.search.EditFoodUseCase
 import com.example.passionewsdk.domain.user.UserProfileUseCase
 import com.example.passionewsdk.interfaces.DeletePassioDataCallback
@@ -80,8 +82,13 @@ class PassioFragment : BaseFragment(),
         UserProfileUseCase.postProfileDataCallback(this)
         UserProfileUseCase.postNutritionDataCallback(this)
         DiaryUseCase.deletePassioDataCallback(this)
+        RecipeUseCase.postPassioDataCallback(this)
+        RecipeUseCase.postPassioDataCallback(this)
+        CustomFoodUseCase.postPassioDataCallback(this)
         MealPlanUseCase.postPassioDataCallback(this)
         EditFoodUseCase.postPassioDataCallback(this)
+        EditFoodUseCase.postPassioDataCallback(this)
+        EditFoodUseCase.deletePassioDataCallback(this)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
