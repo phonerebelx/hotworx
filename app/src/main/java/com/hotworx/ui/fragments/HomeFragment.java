@@ -145,6 +145,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     TextView tvStreak;
     TextView tvlevel;
     String reciprocalVal = "no";
+    String hotsquadKey = "";
     @BindView(R.id.swipeContainer)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -567,6 +568,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                     Log.d("checkRecip", "this is for is_new_reciprocal " + userData.getData().get(0).getData().getNew_reciprocal_enabled());
                     is_new_reciprocal.setValue(userData.getData().get(0).getData().getNew_reciprocal_enabled());
                     unreadNotifications.setValue(userData.getData().get(0).getData().getUnread_notifications());
+                    hotsquadKey = userData.getData().get(0).getData().is_hotsquad_enabled();
                 } else {
                     unreadNotifications.setValue("0");
                 }
@@ -648,7 +650,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 @Override
                 public void onChanged(String reciprocalValue) {
                     reciprocalVal = reciprocalValue;
-                    PendingSessionFragment psf = new PendingSessionFragment(reciprocalVal);
+
+
+                    PendingSessionFragment psf = new PendingSessionFragment(reciprocalVal,hotsquadKey);
 
 
                     psf.setData(getTodaysPendingSession);

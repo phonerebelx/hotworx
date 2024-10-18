@@ -3,6 +3,7 @@ package com.hotworx.ui.adapters.DashboardAdapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.hotsquad.hotsquadlist.storage.AppPreferences
 import com.hotworx.R
 import com.hotworx.activities.DockActivity
 import com.hotworx.databinding.FragmentDashboardSessionAdapterBinding
@@ -22,7 +24,8 @@ import com.hotworx.ui.fragments.HotsquadList.MyHotsquadListFragment
 class DashboardPendingSessionAdapter(
     val context: Context,
     val onItemClickInterface: OnClickPendingModelInterface,
-    val dockActivity: DockActivity? = null
+    val dockActivity: DockActivity? = null,
+    val hotsquadKey: String
 ) : RecyclerView.Adapter<DashboardPendingSessionAdapter.ViewHolder>() {
     lateinit var binding: FragmentDashboardSessionAdapterBinding
     private lateinit var tvDate: TextView
@@ -76,6 +79,10 @@ class DashboardPendingSessionAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getTodaysPendingSessionArrayList[position]
         holder.bindItems(item)
+
+
+        Log.d("jbdjkbejkbwe",hotsquadKey)
+
         binding.ivImg1.setOnClickListener {
             onItemClickInterface.onItemClick(item, "COME_FROM_IMAGE_VIEW")
         }
@@ -87,7 +94,8 @@ class DashboardPendingSessionAdapter(
         }
 
 //                && prefHelper.getLoginData().getIs_passio_enabled().equals("yes", ignoreCase = true)
-        if(!item.has_shared_access){
+
+        if(hotsquadKey == "no"){
             binding.ivShareIcon.visibility = View.GONE
         }else{
             binding.ivShareIcon.visibility = View.VISIBLE

@@ -22,6 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.bumptech.glide.Glide;
 import com.hotworx.R;
 import com.hotworx.Singletons.ApiHeaderSingleton;
+import com.hotworx.ui.fragments.Nutritionist.InterNutritionistFragment;
 import com.hotworx.ui.passioactivity.PassioFragment;
 
 import com.hotworx.activities.LoginActivity;
@@ -156,11 +157,11 @@ public class SideMenuFragment extends BaseFragment {
         if (prefHelper.getLoginData() != null && (prefHelper.getLoginData().getIsEmployeeAllowed() != null && String.valueOf(prefHelper.getLoginData().getIsEmployeeAllowed()).equals("yes"))){
             drawerList.add(new NavigationItem(R.string.vi_management, R.drawable.hotworx_icons, new RegistrationFragment(), null,null, null));
         }
-//        drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
         
-        if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getIs_passio_enabled() != null && prefHelper.getLoginData().getIs_passio_enabled().equalsIgnoreCase("yes")) {
+        if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getShowdiettrax() != null && prefHelper.getLoginData().getShowdiettrax().equalsIgnoreCase("yes")) {
             drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
         }
+//        drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new PassioFragment(),null, null, null));
         drawerList.add(new NavigationItem(R.string.getting_started, R.drawable.icon_menu_getting_started, GetStartedFragment.Companion.newInstance(false), null,null, Constants.ACTION_GETTING_STARTED));
         drawerList.add(new NavigationItem(R.string.activity, R.drawable.icon_menu_activity, new NewActivityScreenFragment(), null,null, null));
         drawerList.add(new NavigationItem(R.string.leaderboard, R.drawable.icon_menu_leaderboard, new LeaderBoardFragment(), null,null, null));
@@ -172,8 +173,8 @@ public class SideMenuFragment extends BaseFragment {
 
         drawerList.add(new NavigationItem(R.string.rewards, R.drawable.icon_menu_rewards, new LatestRewardFragment(), null,null, null));
 
-        if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
-            drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null,null, null));
+        if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getShowdiettrax() != null && prefHelper.getLoginData().getShowdiettrax().equalsIgnoreCase("yes")) {
+//            drawerList.add(new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null,null, null));
             drawerList.add(new NavigationItem(R.string.intermittent_fasting, R.drawable.icon_menu_intermitent, new IntermittentFastingFragment(), null,null, null));
         }
 
@@ -206,8 +207,8 @@ public class SideMenuFragment extends BaseFragment {
 
                 if (prefHelper.getLoginData() != null && prefHelper.getLoginData().getDietTrax() != null && prefHelper.getLoginData().getDietTrax().equalsIgnoreCase("yes")) {
                     if (position == index) {
-                        //drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new InterNutritionistFragment(), null, null));
-                        drawerList.set(index, new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null,null, null));
+//                        drawerList.set(5, new NavigationItem(R.string.diettrax, R.drawable.activity_icon, new InterNutritionistFragment(), null, null));
+//                        drawerList.set(index, new NavigationItem(R.string.diettrax, R.drawable.icon_menu_diettrax, new NutritionistFragment(), null,null, null));
 
                         adapter.notifyDataSetChanged();
                     }

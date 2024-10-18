@@ -138,8 +138,6 @@ class ReferralDetailFragment : BaseFragment(), OnClickItemListener, OnRefreshLis
                 }
                 redeemBalanceDialogFragment.data = location
                 args.putParcelable("Location_Model", location)
-
-
             }
         })
     }
@@ -198,8 +196,7 @@ class ReferralDetailFragment : BaseFragment(), OnClickItemListener, OnRefreshLis
     }
     private fun setCurrency(currency_Symbol: String,remaining_balance: String) {
 
-            binding.tvAccountNo.text =
-                "${currency_Symbol}${remaining_balance}"
+            binding.tvAccountNo.text = "${currency_Symbol}${remaining_balance}"
        }
     private fun setLocationText(location: String?) {
         binding.tvLocation.text = location

@@ -170,8 +170,8 @@
                     android:layout_height="@dimen/_16sdp"
                     android:layout_weight="1"
                     android:visibility="gone"
-                    android:tint="@color/colorPrimaryDark"
-                    android:src="@drawable/shareicon" />
+                    android:src="@drawable/shareicon"
+                    app:tint="@color/colorPrimaryDark" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>

@@ -42,7 +42,7 @@ import com.hotworx.ui.fragments.SessionFlow.SaveCaloriesFragment
 import com.hotworx.ui.fragments.fitbit.RootActivity
 
 
-class PendingSessionFragment(var set_is_reciprocal_allowed: String) : BaseFragment(), OnClickPendingModelInterface {
+class PendingSessionFragment(var set_is_reciprocal_allowed: String,var hotsquadKey: String) : BaseFragment(), OnClickPendingModelInterface {
     private lateinit var rvPendingSessions: RecyclerView
     private lateinit var tvNoRecordFound: TextView
     private lateinit var pendingSessionAdapter: DashboardPendingSessionAdapter
@@ -52,9 +52,10 @@ class PendingSessionFragment(var set_is_reciprocal_allowed: String) : BaseFragme
     private var sessionTypesList: ArrayList<TodaysPendingSession>? = null
     private var selectedSession: TodaysPendingSession? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.d("jekjfkljf",hotsquadKey)
     }
 
     override fun onCreateView(
@@ -79,7 +80,7 @@ class PendingSessionFragment(var set_is_reciprocal_allowed: String) : BaseFragme
     private fun setPendingSessionAdapter() {
         val dataSource = sessionTypesList ?: ArrayList()
         tvNoRecordFound.isVisible = dataSource.isEmpty()
-        pendingSessionAdapter = DashboardPendingSessionAdapter(requireContext(), this,activity as? DockActivity)
+        pendingSessionAdapter = DashboardPendingSessionAdapter(requireContext(), this,activity as? DockActivity,hotsquadKey)
         pendingSessionAdapter.setList(dataSource)
         rvPendingSessions.adapter = pendingSessionAdapter
         //ApplicationManager.getInstance(myDockActivity).listSize = dataSource.size

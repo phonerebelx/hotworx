@@ -7,7 +7,7 @@ data class AmbassadorReferralDataModel(
     val trail_text: String,
     val redeemed_info_text: String?,
     val currency_Symbol: String,
-    val all_locations_total_amount: Int,
-    val all_locations_used_amount: Int,
-    val all_locations_remaining_amount: Int,
+    val all_locations_total_amount: String,
+    val all_locations_used_amount: String,
+    val all_locations_remaining_amount: String,
 )
