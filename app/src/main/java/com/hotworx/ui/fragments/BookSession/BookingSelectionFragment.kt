@@ -259,7 +259,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                     getWebViewUrlModel = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, WebViewUrlModel::class.java)!!
 
-                    if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getWebViewUrlModel.message_popup == null && getDateDataFromAdapter != initiallySelectedDate){
+                    if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getWebViewUrlModel.message_popup == null){
                         Log.d("knxlksnklxnd", getDateDataFromAdapter+initiallySelectedDate)
                         val webViewDialogFragment = WebViewFragment(locationName, getWebViewUrlModel.add_card_url.toString(),this,myDockActivity)
                         webViewDialogFragment.show(

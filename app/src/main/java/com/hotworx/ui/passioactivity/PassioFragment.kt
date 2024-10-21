@@ -247,30 +247,36 @@ class PassioFragment : BaseFragment(),
             Log.e("PassioFragment", "Fragment is not attached, skipping API call")
             return
         }
-        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-        val currentDate = Date()
-        val formattedDate = dateFormat.format(currentDate)
-        this.records = records
-        Log.d("ParentFragmentMeal", "Passio data received post: $records")
 
-        val foodEntries = records.map { record ->
-            FoodEntry(
-                food_entry_date = formattedDate,  // Use the formatted current date
-                "",           // Replace with actual URL if available
-                food_list = listOf(record)
+        if (records.isNotEmpty()) {
+            val firstRecord = records.first()
+            val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+            val createdAtTime = firstRecord.createdAtTime() ?: Date().time
+            val formattedDate = dateFormat.format(Date(createdAtTime))
+            Log.d("FormattedDate", formattedDate)
+
+            this.records = records
+            val foodEntries = records.map { record ->
+                FoodEntry(
+                    food_entry_date = formattedDate,  // Use the formatted current date
+                    "",           // Replace with actual URL if available
+                    food_list = listOf(record)
+                )
+            }
+
+            // Create the request object
+            val request = postPassioRequest(food_entries = foodEntries)
+
+            // Make the API call
+            getServiceHelper()?.enqueueCallExtended(
+                getWebService()?.postPassioData(
+                    ApiHeaderSingleton.apiHeader(requireContext()),
+                    request
+                ), Constants.POST_PASSIO_RECORD, true
             )
+        } else {
+            Log.d("FormattedDate", "Records list is empty")
         }
-
-        // Create the request object
-        val request = postPassioRequest(food_entries = foodEntries)
-
-        // Make the API call
-        getServiceHelper()?.enqueueCallExtended(
-            getWebService()?.postPassioData(
-                ApiHeaderSingleton.apiHeader(requireContext()),
-                request
-            ), Constants.POST_PASSIO_RECORD, true
-        )
     }
 
     override fun onPassioDataSuccess(recordList: PostPassioResponse) {
