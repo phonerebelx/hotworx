@@ -120,6 +120,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Text"
+                android:textColorLink="@color/blue"
+                android:autoLink="none"
                 android:textSize="@dimen/_10ssp"
                 android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_8sdp"

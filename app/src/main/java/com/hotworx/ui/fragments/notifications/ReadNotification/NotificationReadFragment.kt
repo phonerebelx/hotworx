@@ -6,12 +6,14 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.text.util.Linkify
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.text.util.LinkifyCompat
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.hotworx.R
@@ -69,12 +71,18 @@ class NotificationReadFragment : BlurDialogFragment() {
         }
 
         binding.title.text = notificationData.title
-        binding.detail.text = notificationData.body
+//        binding.detail.text = notificationData.body
         binding.time.text = notificationData.sent_at
 
         Glide.with(requireContext())
             .load(notificationData.image_url)
             .into(binding.banner)
+
+        // Make links clickable in the body text
+        binding.detail.text = notificationData.body
+        LinkifyCompat.addLinks(binding.detail, Linkify.WEB_URLS)
+        // Set the highlight color to transparent to prevent hover shade
+        binding.detail.highlightColor = Color.TRANSPARENT
     }
 
     private fun setOnClickListener(){

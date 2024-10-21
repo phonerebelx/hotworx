@@ -68,6 +68,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
     private var selectedSpinnerSlot: String = ""
     private var locationName: String = ""
     private var message_popup: Boolean? = null
+    private var initiallySelectedDate: String = ""
     private val viewTypeArray: ArrayList<String> = arrayListOf("by_session_type", "by_time")
 
     @SuppressLint("MissingInflatedId")
@@ -186,6 +187,14 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
     }
 
     private fun callBookSessionApi() {
+
+        // If the date has changed, show the update dialog
+        if (getDateDataFromAdapter != initiallySelectedDate && !::getWebViewUrlModel.isInitialized) {
+            Log.d("DateMismatch", "Date has changed: $getDateDataFromAdapter vs $initiallySelectedDate")
+            initCardUpdateDialog()
+            return
+        }
+
         if (is_reciprocal_allowed == "yes"){
         getServiceHelper().enqueueCallExtended(
             getWebService().bookSession_v2(
@@ -373,6 +382,10 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
     }
 
     override fun onItemClick(value: String?) {
+
+        if (initiallySelectedDate.isEmpty()) {
+            initiallySelectedDate = value!! // Set initially selected date
+        }
 
         getDateDataFromAdapter = value!!
         setDataForSessionModel(getDateDataFromAdapter, postLevelTwoDataMode.view_type)
