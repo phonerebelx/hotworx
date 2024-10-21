@@ -188,14 +188,8 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 
     private fun callBookSessionApi() {
 
-        // If the date has changed, show the update dialog
-        if (getDateDataFromAdapter != initiallySelectedDate && !::getWebViewUrlModel.isInitialized) {
-            Log.d("DateMismatch", "Date has changed: $getDateDataFromAdapter vs $initiallySelectedDate")
-            initCardUpdateDialog()
-            return
-        }
-
         if (is_reciprocal_allowed == "yes"){
+
         getServiceHelper().enqueueCallExtended(
             getWebService().bookSession_v2(
                 ApiHeaderSingleton.apiHeader(requireContext()),
@@ -265,14 +259,16 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                     getWebViewUrlModel = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, WebViewUrlModel::class.java)!!
 
-                    if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getWebViewUrlModel.message_popup == null){
+                    if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getWebViewUrlModel.message_popup == null && getDateDataFromAdapter != initiallySelectedDate){
+                        Log.d("knxlksnklxnd", getDateDataFromAdapter+initiallySelectedDate)
                         val webViewDialogFragment = WebViewFragment(locationName, getWebViewUrlModel.add_card_url.toString(),this,myDockActivity)
                         webViewDialogFragment.show(
                             parentFragmentManager,
                             webViewDialogFragment.tag
                         )
                     }
-                    else if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && (getWebViewUrlModel.message_popup != null && getWebViewUrlModel.message_popup == true)){
+                    else if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getDateDataFromAdapter != initiallySelectedDate && (getWebViewUrlModel.message_popup != null && getWebViewUrlModel.message_popup == true)){
+                        Log.d("knxlksnklxndCondition2", getDateDataFromAdapter+initiallySelectedDate)
                         initCardUpdateDialog()
                     }
 
@@ -420,6 +416,13 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
     }
 
     override fun onConfirmBooking() {
+//        // Check if the dates match before proceeding with the booking API call
+//        if (getDateDataFromAdapter != initiallySelectedDate) {
+//            Log.d("DateMismatch", "Date has changed: $getDateDataFromAdapter vs $initiallySelectedDate")
+//            initCardUpdateDialog() // Show the dialog when dates don't match
+//        } else {
+//           // Proceed with booking only if the dates match
+//        }
         callBookSessionApi()
         message_popup = false
     }
@@ -441,6 +444,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
             reConformDialogFragment.tag
         )
     }
+
     fun getShortMonthNameFromDate(dateString: String): String {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val date = inputFormat.parse(dateString)
