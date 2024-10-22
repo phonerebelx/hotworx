@@ -200,6 +200,11 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_session_booking_dialog.xml">
+        <config>
+          <theme>@style/AppTheme.NoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_session_member_list.xml">
         <config>
           <theme>@style/AppTheme.NoActionBar</theme>
@@ -663,11 +668,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/global/WebServiceConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/BookSession/BookingSelectionFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/fragments/BookSession/BookingSelectionFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hotworx/ui/passioactivity/PassioFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_and_goal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile_and_goal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/NutritionUIModule.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/data/PassioConnector.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/modulepassio/src/main/java/com/passio/modulepassio/data/PassioDemoSharedPreferences.kt" beforeDir="false" />
@@ -992,38 +996,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;BundleExportedModule&quot;: &quot;hotworx.app&quot;,
-    &quot;DEBUGGABLE_DEVICE&quot;: &quot;tecno_bf7-1048533372003926&quot;,
-    &quot;DEBUGGABLE_PROCESS&quot;: &quot;com.hotworx&quot;,
-    &quot;DEBUGGER_ID&quot;: &quot;Auto&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SHOW_ALL_PROCESSES&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;passio-hotsquad&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/My Projects/Android Projects/Hotworx ali github/passionewsdk/src/main/java/com/example/passionewsdk&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "BundleExportedModule": "hotworx.app",
+    "DEBUGGABLE_DEVICE": "samsung-sm_a528b-R5CR82TGVPA",
+    "DEBUGGABLE_PROCESS": "com.hotworx",
+    "DEBUGGER_ID": "Auto",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHOW_ALL_PROCESSES": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "passio-hotsquad",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "Z:/My Projects/Android Projects/Hotworx ali github/passionewsdk/src/main/java/com/example/passionewsdk",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;kotlin&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "kotlin"
     ],
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;C:\\Users\\ESHOP\\.gradle&quot;
+    "kotlin-gradle-user-dirs": [
+      "C:\\Users\\ESHOP\\.gradle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="Z:\My Projects\Android Projects\Hotworx ali github\passionewsdk\src\main\java\com\example\passionewsdk" />

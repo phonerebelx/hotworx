@@ -187,7 +187,6 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
     }
 
     private fun callBookSessionApi() {
-
         if (is_reciprocal_allowed == "yes"){
 
         getServiceHelper().enqueueCallExtended(
@@ -200,7 +199,8 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                 postBookSessionDataModel.selected_location_id,
                 message_popup), Constants.BOOKSESSION, true
         )
-        } else{
+        }
+        else{
             getServiceHelper().enqueueCallExtended(
                 getWebService().bookSession(
                     ApiHeaderSingleton.apiHeader(requireContext()),
@@ -259,6 +259,8 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                     getWebViewUrlModel = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, WebViewUrlModel::class.java)!!
 
+                    val isCardAvailable =  getWebViewUrlModel.message_popup?: false
+
                     if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getWebViewUrlModel.message_popup == null){
                         Log.d("knxlksnklxnd", getDateDataFromAdapter+initiallySelectedDate)
                         val webViewDialogFragment = WebViewFragment(locationName, getWebViewUrlModel.add_card_url.toString(),this,myDockActivity)
@@ -267,7 +269,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                             webViewDialogFragment.tag
                         )
                     }
-                    else if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getDateDataFromAdapter != initiallySelectedDate && (getWebViewUrlModel.message_popup != null && getWebViewUrlModel.message_popup == true)){
+                    else if(getWebViewUrlModel.message_popup == true && getWebViewUrlModel.card_number != null){
                         Log.d("knxlksnklxndCondition2", getDateDataFromAdapter+initiallySelectedDate)
                         initCardUpdateDialog()
                     }
@@ -423,8 +425,9 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 //        } else {
 //           // Proceed with booking only if the dates match
 //        }
+        message_popup = null
         callBookSessionApi()
-        message_popup = false
+
     }
 
     private fun initCardUpdateDialog() {

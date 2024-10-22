@@ -75,6 +75,7 @@
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:src="@drawable/settings"
                 android:tint="@color/colorPrimaryDark"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.934"
                 app:layout_constraintStart_toStartOf="parent"
