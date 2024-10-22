@@ -68,9 +68,9 @@ public class OKHttpClientCreator {
 
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                    .connectTimeout(50, TimeUnit.SECONDS)
-                    .writeTimeout(50, TimeUnit.SECONDS)
-                    .readTimeout(50, TimeUnit.SECONDS)
+                    .connectTimeout(70, TimeUnit.SECONDS)
+                    .writeTimeout(70, TimeUnit.SECONDS)
+                    .readTimeout(70, TimeUnit.SECONDS)
                     .addInterceptor(new Interceptor() {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
