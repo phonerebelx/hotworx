@@ -87,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Text"
                 android:gravity="center"
+                android:maxLines="5"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_bold"
                 android:textSize="@dimen/_11sdp"

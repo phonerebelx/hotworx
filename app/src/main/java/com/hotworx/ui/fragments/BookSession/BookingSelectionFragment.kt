@@ -143,14 +143,14 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 
             Constants.GETBOOKINGSESSION -> {
                 if (is_reciprocal_allowed == "yes"){
-                getServiceHelper().enqueueCallExtended(
-                    getWebService().getLevelTwo_v2(
-                        ApiHeaderSingleton.apiHeader(requireContext()),
-                        postLevelTwoDataMode.selected_location_id,
-                        postLevelTwoDataMode.selected_date,
-                        postLevelTwoDataMode.view_type
-                    ), Constants.GETBOOKINGSESSION, true
-                )
+                    getServiceHelper().enqueueCallExtended(
+                        getWebService().getLevelTwo_v2(
+                            ApiHeaderSingleton.apiHeader(requireContext()),
+                            postLevelTwoDataMode.selected_location_id,
+                            postLevelTwoDataMode.selected_date,
+                            postLevelTwoDataMode.view_type
+                        ), Constants.GETBOOKINGSESSION, true
+                    )
                 }else{
                     getServiceHelper().enqueueCallExtended(
                         getWebService().getLevelTwo(
@@ -189,16 +189,16 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
     private fun callBookSessionApi() {
         if (is_reciprocal_allowed == "yes"){
 
-        getServiceHelper().enqueueCallExtended(
-            getWebService().bookSession_v2(
-                ApiHeaderSingleton.apiHeader(requireContext()),
-                postBookSessionDataModel.sauna_no,
-                postBookSessionDataModel.time_slot,
-                postBookSessionDataModel.booking_date,
-                postBookSessionDataModel.session_type,
-                postBookSessionDataModel.selected_location_id,
-                message_popup), Constants.BOOKSESSION, true
-        )
+            getServiceHelper().enqueueCallExtended(
+                getWebService().bookSession_v2(
+                    ApiHeaderSingleton.apiHeader(requireContext()),
+                    postBookSessionDataModel.sauna_no,
+                    postBookSessionDataModel.time_slot,
+                    postBookSessionDataModel.booking_date,
+                    postBookSessionDataModel.session_type,
+                    postBookSessionDataModel.selected_location_id,
+                    message_popup), Constants.BOOKSESSION, true
+            )
         }
         else{
             getServiceHelper().enqueueCallExtended(
@@ -236,7 +236,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                 try {
                     getShowSlotDataModel = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, GetShowSlotDataModel::class.java)!!
-                   postLevelTwoDataMode.view_type
+                    postLevelTwoDataMode.view_type
 
                     if (postLevelTwoDataMode.view_type == "by_session_type"){
                         linearLayoutCompat6.visibility = View.INVISIBLE
@@ -269,7 +269,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                             webViewDialogFragment.tag
                         )
                     }
-                    else if(getWebViewUrlModel.message_popup == true && getWebViewUrlModel.card_number != null){
+                    else if(getWebViewUrlModel.payment_status == null && getWebViewUrlModel.message_popup == true && getWebViewUrlModel.card_available == true){
                         Log.d("knxlksnklxndCondition2", getDateDataFromAdapter+initiallySelectedDate)
                         initCardUpdateDialog()
                     }
@@ -425,8 +425,8 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 //        } else {
 //           // Proceed with booking only if the dates match
 //        }
-        message_popup = null
         callBookSessionApi()
+        message_popup = false
 
     }
 

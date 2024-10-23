@@ -2,6 +2,7 @@ package com.hotworx.models.SessionBookingModel.FinalSessionBookingModel.BookSess
 
 data class WebViewUrlModel(
     val payment_status: Boolean?,
+    val card_available: Boolean?,
     val add_card_url: String?,
     val text: String?,
     val card_number: String?,
