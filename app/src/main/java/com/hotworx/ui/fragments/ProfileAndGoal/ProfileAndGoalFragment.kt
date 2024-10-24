@@ -287,12 +287,11 @@ class ProfileAndGoalFragment : BaseFragment() {
                 try {
                     val response = GsonFactory.getConfiguredGson()
                         ?.fromJson(liveData.value, ResponseUserProfileModel::class.java)!!
-                    if (response.msg == "success") {
+                    if (response.msg == "susuccess") {
                         if (isFromSideMenu) {
                             Utils.customToast(context, "Profile updated successfully")
                             return
                         }
-                        Log.d("nksknxknsnc","nckndknckndknc")
                         sVPersonalDetail.visibility = View.GONE
                         clGoalEntry.visibility = View.VISIBLE
                         callApi("Goal Entry Api Calling", "")
