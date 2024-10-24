@@ -435,6 +435,7 @@ class ProfileAndGoalFragment : BaseFragment() {
             }
         }
         btnPersonalDetail.setOnClickListener {
+            Log.d("lmlsmclks","btn Testing")
             val checkVerifyData: Boolean = verifyProfileData()
             if (checkVerifyData) {
                 callApi("Set User Api Calling", "")

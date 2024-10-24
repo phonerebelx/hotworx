@@ -43,20 +43,20 @@ class ShowSlotAdapter(val context: Context, val onClickTypeListener: OnClickType
             this.setIsRecyclable(false)
 
             if (viewType == "by_session_type"){
-                binding.tvSessionName.visibility = View.GONE
+//                binding.tvSessionName.visibility = View.GONE
                 binding.tvSauna.text = item.suana_no
                 binding.tvFullTime.text = item.time_slot
-                setImageInView(item.slot1, itemView, binding.ivImg1,0)
-                setImageInView(item.slot2, itemView, binding.ivImg2,1)
-                setImageInView(item.slot3, itemView, binding.ivImg3,2)
+                setImageInView(item.slot1, itemView, binding.ivImg11)
+                setImageInView(item.slot2, itemView, binding.ivImg22)
+                setImageInView(item.slot3, itemView, binding.ivImg33)
             }else{
-                binding.tvSessionName.visibility = View.VISIBLE
+//                binding.tvSessionName.visibility = View.VISIBLE
                 binding.tvSauna.text = item.suana_no
-                binding.tvSessionName.text = item.session_name
+//                binding.tvSessionName.text = item.session_name
                 binding.tvFullTime.text = item.time_slot
-                setImageInView(item.slot1, itemView, binding.ivImg1,0)
-                setImageInView(item.slot2, itemView, binding.ivImg2,1)
-                setImageInView(item.slot3, itemView, binding.ivImg3,2)
+                setImageInView(item.slot1, itemView, binding.ivImg11)
+                setImageInView(item.slot2, itemView, binding.ivImg22)
+                setImageInView(item.slot3, itemView, binding.ivImg33)
             }
 
 //            arrayOfImagesNamesArray.add(imagesNamesArray)
@@ -87,63 +87,63 @@ class ShowSlotAdapter(val context: Context, val onClickTypeListener: OnClickType
         notifyDataSetChanged()
     }
 
-//    private fun setImageInView(item: String, itemView: View, slots: ImageView) {
-//        if (getImageString(item) == "availables.jfif") {
-//            slots.setImageDrawable(
-//                ContextCompat.getDrawable(
-//                    itemView.context,
-//                    R.drawable.available
-//                )
-//            )
-//            imagesNamesArray.add("availables")
-//        } else if (getImageString(item) == "booked.jfif") {
-//            slots.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.taken))
-//            imagesNamesArray.add("takens")
-//        } else {
-//            slots.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.blocked))
-//            imagesNamesArray.add("blocked")
-//        }
-//    }
-
-    private fun setImageInView(item: String, itemView: View, slots: ImageView, position: Int) {
-        val imageName = getImageString(item)
-        when (imageName) {
-            "availables.jfif" -> {
-                slots.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        itemView.context,
-                        R.drawable.available
-                    )
+    private fun setImageInView(item: String, itemView: View, slots: ImageView) {
+        if (getImageString(item) == "availables.jfif") {
+            slots.setImageDrawable(
+                ContextCompat.getDrawable(
+                    itemView.context,
+                    R.drawable.available
                 )
-                imagesNamesArray.add("availables")
-            }
-            "booked.jfif" -> {
-                slots.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        itemView.context,
-                        R.drawable.taken
-                    )
-                )
-                imagesNamesArray.add("takens")
-            }
-            else -> {
-                slots.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        itemView.context,
-                        R.drawable.blocked
-                    )
-                )
-                imagesNamesArray.add("blocked")
-            }
-        }
-
-        // Ensure arrayOfImagesNamesArray is updated for the given position
-        if (arrayOfImagesNamesArray.size > position) {
-            arrayOfImagesNamesArray[position] = imagesNamesArray
+            )
+            imagesNamesArray.add("availables")
+        } else if (getImageString(item) == "booked.jfif") {
+            slots.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.taken))
+            imagesNamesArray.add("takens")
         } else {
-            arrayOfImagesNamesArray.add(imagesNamesArray)
+            slots.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.blocked))
+            imagesNamesArray.add("blocked")
         }
     }
+
+//    private fun setImageInView(item: String, itemView: View, slots: ImageView, position: Int) {
+//        val imageName = getImageString(item)
+//        when (imageName) {
+//            "availables.jfif" -> {
+//                slots.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        itemView.context,
+//                        R.drawable.available
+//                    )
+//                )
+//                imagesNamesArray.add("availables")
+//            }
+//            "booked.jfif" -> {
+//                slots.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        itemView.context,
+//                        R.drawable.taken
+//                    )
+//                )
+//                imagesNamesArray.add("takens")
+//            }
+//            else -> {
+//                slots.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        itemView.context,
+//                        R.drawable.blocked
+//                    )
+//                )
+//                imagesNamesArray.add("blocked")
+//            }
+//        }
+//
+//        // Ensure arrayOfImagesNamesArray is updated for the given position
+//        if (arrayOfImagesNamesArray.size > position) {
+//            arrayOfImagesNamesArray[position] = imagesNamesArray
+//        } else {
+//            arrayOfImagesNamesArray.add(imagesNamesArray)
+//        }
+//    }
     private fun getImageString(date: String): String {
         if (date.isNotEmpty() || date != ""){
             imagesNames = date.split("/") as ArrayList<String>
@@ -152,56 +152,22 @@ class ShowSlotAdapter(val context: Context, val onClickTypeListener: OnClickType
         return ""
     }
 
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val item = getShowSlotDataModelItemArrayList[position]
-//
-//        holder.bindItems(item)
-//
-//        binding.ivImg1.setOnClickListener {
-//            if (arrayOfImagesNamesArray[position][0] == "availables") onClickTypeListener.onItemClick(item,"FromShowSlot")
-//        }
-//        binding.ivImg2.setOnClickListener {
-//            if (arrayOfImagesNamesArray[position][1] == "availables") onClickTypeListener.onItemClick(item,"FromShowSlot")
-//        }
-//        binding.ivImg3.setOnClickListener {
-//            if (arrayOfImagesNamesArray[position][2] == "availables") onClickTypeListener.onItemClick(item,"FromShowSlot")
-//        }
-//
-////        binding.ivImg1.setOnClickListener {
-////            onClickTypeListener.onItemClick(item, "FromShowSlot")
-////        }
-////
-////        binding.ivImg2.setOnClickListener {
-////            onClickTypeListener.onItemClick(item, "FromShowSlot")
-////        }
-////
-////        binding.ivImg3.setOnClickListener {
-////            onClickTypeListener.onItemClick(item, "FromShowSlot")
-////        }
-//    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getShowSlotDataModelItemArrayList[position]
 
         holder.bindItems(item)
 
-        // Make sure the click listeners are correctly set up and reference valid data
-        binding.ivImg1.setOnClickListener {
-            if (arrayOfImagesNamesArray.size > position && arrayOfImagesNamesArray[position][0] == "availables") {
-                onClickTypeListener.onItemClick(item, "FromShowSlot")
-            }
+        binding.ivImg11.setOnClickListener {
+            if (arrayOfImagesNamesArray[position][0] == "availables") onClickTypeListener.onItemClick(item,"FromShowSlot")
         }
-        binding.ivImg2.setOnClickListener {
-            if (arrayOfImagesNamesArray.size > position && arrayOfImagesNamesArray[position][1] == "availables") {
-                onClickTypeListener.onItemClick(item, "FromShowSlot")
-            }
+        binding.ivImg22.setOnClickListener {
+            if (arrayOfImagesNamesArray[position][1] == "availables") onClickTypeListener.onItemClick(item,"FromShowSlot")
         }
-        binding.ivImg3.setOnClickListener {
-            if (arrayOfImagesNamesArray.size > position && arrayOfImagesNamesArray[position][2] == "availables") {
-                onClickTypeListener.onItemClick(item, "FromShowSlot")
-            }
+        binding.ivImg33.setOnClickListener {
+            if (arrayOfImagesNamesArray[position][2] == "availables") onClickTypeListener.onItemClick(item,"FromShowSlot")
         }
     }
+
     override fun getItemCount(): Int {
         return when {
             ::getShowSlotDataModelItemArrayList.isInitialized -> getShowSlotDataModelItemArrayList.size

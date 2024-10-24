@@ -460,6 +460,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 //           // Proceed with booking only if the dates match
 //        }
 
+        isRetryPayment = isSuccess
         message_popup = if (isSuccess) false else null
         callBookSessionApi()
 
@@ -527,7 +528,6 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 
             "COME_FROM_RECONFORM_BOOKING_CANCEL_REQUEST_CHECK_CARD" -> {
                 message_popup = false
-                isRetryPayment = true
                 callBookSessionApi()
             }
         }
