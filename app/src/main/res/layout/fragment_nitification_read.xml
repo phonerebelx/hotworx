@@ -125,7 +125,6 @@
                 android:textSize="@dimen/_10ssp"
                 android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:maxLines="5"
                 android:textColor="@color/colorBlack"
                 android:fontFamily="@font/montserrat_regular"/>
 

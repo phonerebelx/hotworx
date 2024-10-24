@@ -49,7 +49,7 @@ class SessionBookingDialogFragment(val clickListener: BookingConfirmationDialogC
             dismiss() // Dismiss the dialog when btnCancel is clicked
         }
         btnOk.setOnClickListener {
-            clickListener.onConfirmBooking()
+            clickListener.onConfirmBooking(false)
             dismiss()
         }
     }

@@ -301,19 +301,27 @@ class PassioFragment : BaseFragment(),
             Log.e("DeletePassioFragment", "Fragment is not attached, skipping API call")
             return
         }
-        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-        val currentDate = Date()
-        val formattedDate = dateFormat.format(currentDate)
-        this.recordsData = recordsData
+//        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+//        val currentDate = Date()
+//        val formattedDate = dateFormat.format(currentDate)
 
-        // Make the API call
-        getServiceHelper()?.enqueueCallExtended(
-            getWebService()?.deletePassioData(
-                ApiHeaderSingleton.apiHeader(requireContext()),
-                recordsData.uuid,
-                formattedDate
-            ), Constants.DELETE_PASSIO_RECORD, true
-        )
+        if (recordsData.uuid.isNotEmpty()) {
+//            val firstRecord = records.first()
+            val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+            val createdAtTime = recordsData.createdAtTime() ?: Date().time
+            val formattedDate = dateFormat.format(Date(createdAtTime))
+
+            this.recordsData = recordsData
+
+            // Make the API call
+            getServiceHelper()?.enqueueCallExtended(
+                getWebService()?.deletePassioData(
+                    ApiHeaderSingleton.apiHeader(requireContext()),
+                    recordsData.uuid,
+                    formattedDate
+                ), Constants.DELETE_PASSIO_RECORD, true
+            )
+        }
     }
 
     override fun deleteDataSuccess(deleteList: DeleteMealData) {

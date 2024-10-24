@@ -74,7 +74,7 @@ class WebViewFragment(
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 val url = request?.url.toString()
                 if (url.contains("status=success")) {
-                    clickListener.onConfirmBooking()
+                    clickListener.onConfirmBooking(true)
                     dialog?.dismiss()
                     return true
                 }

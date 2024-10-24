@@ -70,6 +70,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
     private var message_popup: Boolean? = null
     private var initiallySelectedDate: String = ""
     private val viewTypeArray: ArrayList<String> = arrayListOf("by_session_type", "by_time")
+     var isRetryPayment = false
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -260,26 +261,54 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                         ?.fromJson(liveData.value, WebViewUrlModel::class.java)!!
 
                     val isCardAvailable =  getWebViewUrlModel.message_popup?: false
-
-                    if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getWebViewUrlModel.message_popup == null){
-                        Log.d("knxlksnklxnd", getDateDataFromAdapter+initiallySelectedDate)
-                        val webViewDialogFragment = WebViewFragment(locationName, getWebViewUrlModel.add_card_url.toString(),this,myDockActivity)
-                        webViewDialogFragment.show(
-                            parentFragmentManager,
-                            webViewDialogFragment.tag
-                        )
-                    }
-                    else if(getWebViewUrlModel.payment_status == null && getWebViewUrlModel.message_popup == true && getWebViewUrlModel.card_available == true){
-                        Log.d("knxlksnklxndCondition2", getDateDataFromAdapter+initiallySelectedDate)
+                    val paymentStatus = getWebViewUrlModel.payment_status?: false
+                    if (isCardAvailable) {
                         initCardUpdateDialog()
+                    } else {
+                        if (paymentStatus) {
+                            showBookingConfirmationDialog()
+                        } else if (isRetryPayment) {
+                            initReconformDialog(getWebViewUrlModel.text ?: "Not Found")
+                        } else {
+                            val webViewDialogFragment = WebViewFragment(locationName, getWebViewUrlModel.add_card_url.toString(),this,myDockActivity)
+                            webViewDialogFragment.show(
+                                parentFragmentManager,
+                                webViewDialogFragment.tag
+                            )
+                        }
                     }
 
-                    else if ((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == false) && getWebViewUrlModel.add_card_url != null){
-                        initReconformDialog(getWebViewUrlModel.text ?: "Not Found")
-                    }
-                    else if (((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == true) && getWebViewUrlModel.add_card_url == null) || (is_reciprocal_allowed == "no")) {
-                        showBookingConfirmationDialog()
-                    }
+
+
+
+
+
+
+
+
+
+
+//
+//                    if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getWebViewUrlModel.message_popup == null){
+//                        Log.d("knxlksnklxnd", getDateDataFromAdapter+initiallySelectedDate)
+//                        val webViewDialogFragment = WebViewFragment(locationName, getWebViewUrlModel.add_card_url.toString(),this,myDockActivity)
+//                        webViewDialogFragment.show(
+//                            parentFragmentManager,
+//                            webViewDialogFragment.tag
+//                        )
+//                    }
+//                    else if (((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == true) && getWebViewUrlModel.add_card_url == null) || (is_reciprocal_allowed == "no")) {
+//                        showBookingConfirmationDialog()
+//                    }
+//                    else if(getWebViewUrlModel.message_popup == true && getWebViewUrlModel.card_number != null){
+//                        Log.d("knxlksnklxndCondition2", getDateDataFromAdapter+initiallySelectedDate)
+//                        initCardUpdateDialog()
+//                    }
+//
+//                    else if ((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == false) && getWebViewUrlModel.add_card_url != null){
+//                        initReconformDialog(getWebViewUrlModel.text ?: "Not Found")
+//                    }
+
 
                 } catch (e: java.lang.Exception) {
                     dockActivity?.showErrorMessage(e.message.toString())
@@ -288,6 +317,11 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
         }
 
         checkIsLoadingEnd()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isRetryPayment = false
     }
 
     override fun onFailure(message: String, tag: String) {
@@ -417,7 +451,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
         }
     }
 
-    override fun onConfirmBooking() {
+    override fun onConfirmBooking(isSuccess: Boolean) {
 //        // Check if the dates match before proceeding with the booking API call
 //        if (getDateDataFromAdapter != initiallySelectedDate) {
 //            Log.d("DateMismatch", "Date has changed: $getDateDataFromAdapter vs $initiallySelectedDate")
@@ -425,8 +459,10 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 //        } else {
 //           // Proceed with booking only if the dates match
 //        }
+
+        message_popup = if (isSuccess) false else null
         callBookSessionApi()
-        message_popup = false
+
 
     }
 
@@ -491,6 +527,7 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 
             "COME_FROM_RECONFORM_BOOKING_CANCEL_REQUEST_CHECK_CARD" -> {
                 message_popup = false
+                isRetryPayment = true
                 callBookSessionApi()
             }
         }
