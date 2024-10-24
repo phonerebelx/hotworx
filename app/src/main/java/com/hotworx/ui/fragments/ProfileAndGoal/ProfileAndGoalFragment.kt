@@ -217,14 +217,13 @@ class ProfileAndGoalFragment : BaseFragment() {
 
             "Set User Api Calling" -> {
                 getServiceHelper().enqueueCallExtended(
-                    webService.update_profile(
+                    webService.update_profileGoals(
                         ApiHeaderSingleton.apiHeader(requireContext()),
                         setValueForProfile.first_name,
                         setValueForProfile.last_name,
                         setValueForProfile.image_url,
                         setValueForProfile.dob,
                         setValueForProfile.gender,
-                        "",
                         setValueForProfile.height,
                         setValueForProfile.weight.toDouble(),
                         setValueForProfile.address,
@@ -293,6 +292,7 @@ class ProfileAndGoalFragment : BaseFragment() {
                             Utils.customToast(context, "Profile updated successfully")
                             return
                         }
+                        Log.d("nksknxknsnc","nckndknckndknc")
                         sVPersonalDetail.visibility = View.GONE
                         clGoalEntry.visibility = View.VISIBLE
                         callApi("Goal Entry Api Calling", "")
@@ -435,9 +435,9 @@ class ProfileAndGoalFragment : BaseFragment() {
             }
         }
         btnPersonalDetail.setOnClickListener {
-            Log.d("lmlsmclks","btn Testing")
             val checkVerifyData: Boolean = verifyProfileData()
             if (checkVerifyData) {
+                Log.d("lmlsmclks","btn Testing")
                 callApi("Set User Api Calling", "")
             }
         }

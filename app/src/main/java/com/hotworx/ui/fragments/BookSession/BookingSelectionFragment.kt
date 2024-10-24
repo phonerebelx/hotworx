@@ -251,7 +251,6 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
 
                 } catch (e: Exception) {
                     dockActivity?.showErrorMessage(e.message.toString())
-
                 }
             }
 
@@ -277,39 +276,6 @@ class BookingSelectionFragment(val is_reciprocal_allowed: String) : BaseFragment
                             )
                         }
                     }
-
-
-
-
-
-
-
-
-
-
-
-//
-//                    if (getWebViewUrlModel.payment_status == null && getWebViewUrlModel.add_card_url != null && getWebViewUrlModel.message_popup == null){
-//                        Log.d("knxlksnklxnd", getDateDataFromAdapter+initiallySelectedDate)
-//                        val webViewDialogFragment = WebViewFragment(locationName, getWebViewUrlModel.add_card_url.toString(),this,myDockActivity)
-//                        webViewDialogFragment.show(
-//                            parentFragmentManager,
-//                            webViewDialogFragment.tag
-//                        )
-//                    }
-//                    else if (((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == true) && getWebViewUrlModel.add_card_url == null) || (is_reciprocal_allowed == "no")) {
-//                        showBookingConfirmationDialog()
-//                    }
-//                    else if(getWebViewUrlModel.message_popup == true && getWebViewUrlModel.card_number != null){
-//                        Log.d("knxlksnklxndCondition2", getDateDataFromAdapter+initiallySelectedDate)
-//                        initCardUpdateDialog()
-//                    }
-//
-//                    else if ((getWebViewUrlModel.payment_status != null && getWebViewUrlModel.payment_status == false) && getWebViewUrlModel.add_card_url != null){
-//                        initReconformDialog(getWebViewUrlModel.text ?: "Not Found")
-//                    }
-
-
                 } catch (e: java.lang.Exception) {
                     dockActivity?.showErrorMessage(e.message.toString())
                 }

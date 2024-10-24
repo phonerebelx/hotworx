@@ -90,14 +90,13 @@ public interface WebService {
 
     @FormUrlEncoded
     @POST("general/update_profile")
-    Call<ResponseBody> update_profile(
+    Call<ResponseBody> update_profileGoals(
             @HeaderMap Map<String, String> headers,
             @Field("first_name") String email_address,
             @Field("last_name") String password,
             @Field("image_url") String image_url,
             @Field("dob") String otp,
             @Field("gender") String gender,
-            @Field("age") String age,
             @Field("height") Double height,
             @Field("weight") Double weight,
             @Field("address") String address

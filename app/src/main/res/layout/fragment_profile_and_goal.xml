@@ -33,7 +33,6 @@
         android:id="@+id/sVPersonalDetail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="visible"
         android:background="@drawable/corner_background"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,12 +73,12 @@
                 android:layout_marginTop="12dp"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:src="@drawable/settings"
-                android:tint="@color/colorPrimaryDark"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.934"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorPrimaryDark" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/profileImage_cv"
